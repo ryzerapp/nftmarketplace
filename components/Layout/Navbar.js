@@ -111,7 +111,7 @@ const Navbar = () => {
 											<ul className="optional-item-list">
 												<li>
 													<Link
-														href="/create-collection"
+														href="/create-collectionnew"
 														activeClassName="active"
 													>
 														<a>Create</a>

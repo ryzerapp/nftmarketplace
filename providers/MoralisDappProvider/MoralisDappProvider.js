@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import MoralisDappContext from "./context";
-import CryptoniumTokenABI from '../../src/contracts/CryptoniumToken.json';
-import MarketPlaceABI from '../../src/contracts/MarketPlace.json';
+import CryptoniumTokenABI from '../../contracts_abi/CryptoniumToken.json';
+import MarketPlaceABI from '../../contracts_abi/MarketPlace.json';
 
 function MoralisDappProvider({ children }) {
   const { web3, Moralis, user } = useMoralis();

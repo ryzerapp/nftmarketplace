@@ -1,4 +1,5 @@
 import Navbar from "../components/Layout/Navbar";
+import Layout from "../components/Layout/Layout";
 import BannerArea from "../components/HomeOne/BannerArea";
 import TrendingArea from "../components/HomeOne/TrendingArea";
 import TopSeller from "../components/Common/TopSeller";
@@ -10,19 +11,11 @@ import CollectionsArea from "../components/Common/CollectionsArea";
 import Footer from "../components/Layout/Footer";
 import Copyright from "../components/Common/Copyright";
 import baseUrl from "../utils/baseUrl";
-import { useMoralis } from "react-moralis";
-import { useEffect } from "react";
 
 const Index = ({ data }) => {
-	const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
-		useMoralis();
-
-	useEffect(() => {
-		if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
-	}, [isAuthenticated, isWeb3Enabled]);
 
 	return (
-		<>
+		<Layout>
 			<Navbar />
 
 			<BannerArea data={data.slice(1, 3)} />
@@ -44,7 +37,7 @@ const Index = ({ data }) => {
 			<Footer />
 			
 			<Copyright />
-		</>
+		</Layout>
 	);
 };
 

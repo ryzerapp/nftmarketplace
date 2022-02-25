@@ -3,14 +3,20 @@ import PageBanner from '../components/Common/PageBanner';
 import Footer from '../components/Layout/Footer';
 import Copyright from '../components/Common/Copyright';
 import { useMoralis } from 'react-moralis';
+import { useRouter } from 'next/router';
 
 const AddWallet = () => {
   const { authenticate, authError, isAuthenticated, logout } = useMoralis();
+  const router = useRouter();
   const handleConnect = () => {
     if (!isAuthenticated)
+    {
       authenticate()
+      router.replace('/');
+    }
     else
       logout()
+    router.replace('/');
   }
   return (
     <>

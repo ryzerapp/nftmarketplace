@@ -1,29 +1,32 @@
 import React from 'react';
 import { useMoralis, useMoralisFile } from "react-moralis";
 import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
-import { getExplorer } from "../../helpers/networks";
 import { useWeb3ExecuteFunction } from "react-moralis";
 
 const CreateCollectionAreaNew = () => {
   const { error, isUploading, moralisFile, saveFile } = useMoralisFile();
-  const { chainId, marketAddress, cryptoniumTokenABI,
-    cryptoniumTokenAddress, nftAddress } =
+  const { cryptoniumTokenABI,
+    cryptoniumTokenAddress } =
     useMoralisDapp();
   const { Moralis } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
 
+  console.log(typeof cryptoniumTokenABI)
   async function mintNFT() {
     let options = {
       contractAddress: cryptoniumTokenAddress,
       functionName: "getNfts",
       abi: cryptoniumTokenABI,
+      params: {
+      },
     };
     await contractProcessor.fetch({
       params: options,
-      onSuccess: () => {
-        console.log("Success");
+      onSuccess: (res) => {
+        console.log(res);
       },
       onError: (error) => {
+        alert(error)
         console.log(error);
       },
     });
