@@ -3,9 +3,10 @@ import { useMoralis } from "react-moralis";
 import MoralisDappContext from "./context";
 import CryptoniumTokenABI from '../../contracts_abi/CryptoniumToken.json';
 import MarketPlaceABI from '../../contracts_abi/MarketPlace.json';
+import nftTokenABIJson from '../../contracts_abi/NFT.json';
 
 function MoralisDappProvider({ children }) {
-  const { web3, Moralis, user } = useMoralis();
+  const { web3, Moralis, user } = useMoralis(); 
   const [walletAddress, setWalletAddress] = useState();
   const [chainId, setChainId] = useState();
 
@@ -14,6 +15,10 @@ function MoralisDappProvider({ children }) {
 
   const [cryptoniumTokenABI, setCryptoniumTokenABI] = useState(CryptoniumTokenABI)
   const [cryptoniumTokenAddress, setCryptoniumTokenAddress] = useState(process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS);
+
+  const [nftTokenABI, setnftTokenABI] = useState(nftTokenABIJson)
+  const [nftTokenAddress, setnftTokenAddress] = useState(process.env.NEXT_PUBLIC_NFTTOKEN_ADDRESS);
+
 
   useEffect(() => {
     Moralis.onChainChanged(function (chain) {
@@ -43,7 +48,11 @@ function MoralisDappProvider({ children }) {
         cryptoniumTokenABI,
         cryptoniumTokenAddress,
         marketPlaceABI,
+        nftTokenABI,
+        nftTokenAddress,
         setMarketPlaceAddress,
+        setnftTokenABI,
+        setnftTokenAddress,
         setCryptoniumTokenAddress,
         setCryptoniumTokenABI,
         setMarketPlaceABI,

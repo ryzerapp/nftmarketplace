@@ -1,9 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.3;
 
+// import "github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Counters.sol";
+// import "github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+// import "github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol";
+
+
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+
 
 
 contract NFT is ERC721URIStorage {
@@ -12,7 +18,7 @@ contract NFT is ERC721URIStorage {
     address public owner;
     address contractAddress;
 
-    constructor(address marketplaceAddress) ERC721("GamifyMages", "MAGE") {
+    constructor(address marketplaceAddress) ERC721("Cryptonium", "CTR") {
         owner = msg.sender;
         contractAddress = marketplaceAddress;
     }
