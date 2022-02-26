@@ -8,25 +8,19 @@ import { useRouter } from 'next/router';
 const AddWallet = () => {
   const { authenticate, authError, isAuthenticated, logout } = useMoralis();
   const router = useRouter();
-  const handleConnect = () => {
+  const handleConnect = async () => {
     if (!isAuthenticated)
     {
-      authenticate()
+      await authenticate()
       router.replace('/');
     }
     else
-      logout()
+      await logout()
     router.replace('/');
   }
   return (
     <>
       <NavbarTwo />
-      <PageBanner
-        bannerHeading='Connect Your Wallet'
-        parentTitle='Community'
-        pageTitle='Add Wallet'
-        bg='inner-bg5'
-      />
       {authError && (
         <p >
           {authError.name}

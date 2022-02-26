@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
+import { useMoralis } from 'react-moralis';
+import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
 
 const CollectionCard = () => {
-
+  const { Moralis, isWeb3Enabled } = useMoralis();
+  const { walletAddress, chainId } = useMoralisDapp();
   //counter calculation
   const [days, setDays] = useState('');
   const [hours, setHours] = useState('');
   const [minutes, setMinutes] = useState('');
   const [seconds, setSeconds] = useState('');
-
+  const [nftBalance, setNftBalance] = useState([]);
   const comingSoonTime = () => {
     let endTime = new Date('December 23, 2021 17:00:00 PDT');
     let endTimeParse = Date.parse(endTime) / 1000;
@@ -37,347 +40,60 @@ const CollectionCard = () => {
     setMinutes(countminutes);
     setSeconds(countseconds);
   };
-
+  const setData = async () => {
+    const options = { chain: 'mumbai', address: walletAddress };
+    const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
+    setNftBalance(polygonNFTs?.result)
+  };
   useEffect(() => {
-    setInterval(() => {
-      comingSoonTime();
-    }, 1000);
-  }, []);
+    if (isWeb3Enabled)
+      setData()
+    comingSoonTime()
+  }, [isWeb3Enabled]);
 
   return (
     <>
       <div className='row justify-content-center'>
-        <div className='col-lg-4 col-md-6'>
-          <div className='featured-card box-shadow'>
-            <div className='featured-card-img'>
-              <a href='item-details.html'>
-                <img src='../images/featured/featured-img1.jpg' alt='Images' />
-              </a>
-              <p>
-                <i className='ri-heart-line'></i> 122
-              </p>
-              <button type='button' className='default-btn border-radius-5'>
-                Place Bid
-              </button>
-            </div>
-
-            <div className='content'>
-              <h3>
-                <a href='item-details.html'>Industrial Revolution</a>
-              </h3>
-              <div className='content-in'>
-                <div className='featured-card-left'>
-                  <span>100 ETH 12/14</span>
-                  <h4>Bid 80 ETH </h4>
+        {nftBalance?.length > 0 ?
+          nftBalance?.map((res) =>
+          (
+            <div className='col-lg-4 col-md-6' key={res?.token_uri}>
+              <div className='featured-card box-shadow'>
+                <div className='featured-card-img'>
+                  <a href='item-details.html'>
+                    <img src={JSON.parse(res?.metadata)?.image} alt='Images' />
+                  </a>
+                  <p>
+                    <i className='ri-heart-line'></i> 122
+                  </p>
+                  <button type='button' className='default-btn border-radius-5'>
+                    Place Bid
+                  </button>
                 </div>
+                {console.log(JSON.parse(res?.metadata))}
+                <div className='content'>
+                  <h3>
+                    <a href='item-details.html'>{JSON.parse(res?.metadata)?.name}</a>
+                  </h3>
+                  <div className='content-in'>
+                    <div className='featured-card-left'>
+                      <span>100 ETH 12/14</span>
+                      <h4>Bid 80 ETH </h4>
+                    </div>
 
-                <a href='item-details.html' className='featured-content-btn'>
-                  <i className='ri-arrow-right-line'></i>
-                </a>
-              </div>
-              <a href='author-profile.html' className='featured-user-option'>
-                <img src='../images/featured/featured-user1.jpg' alt='Images' />
-                <span>Created by @Adison</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className='col-lg-4 col-md-6'>
-          <div className='featured-card box-shadow'>
-            <div className='featured-card-img'>
-              <a href='item-details.html'>
-                <img src='../images/featured/featured-img2.jpg' alt='Images' />
-              </a>
-              <p>
-                <i className='ri-heart-line'></i> 142
-              </p>
-              <div
-                className='featured-card-clock'
-                data-countdown='2021/10/10'
-              >{days}:{hours}:{minutes}:{seconds}</div>
-              <button type='button' className='default-btn border-radius-5'>
-                Place Bid
-              </button>
-            </div>
-
-            <div className='content'>
-              <h3>
-                <a href='item-details.html'>I Love In The Air</a>
-              </h3>
-              <div className='content-in'>
-                <div className='featured-card-left'>
-                  <span>110 ETH 12/14</span>
-                  <h4>Bid 70 ETH </h4>
+                    <a href='item-details.html' className='featured-content-btn'>
+                      <i className='ri-arrow-right-line'></i>
+                    </a>
+                  </div>
+                  <a href='author-profile.html' className='featured-user-option'>
+                    <img src='../images/featured/featured-user1.jpg' alt='Images' />
+                    <span>Created by @Adison</span>
+                  </a>
                 </div>
-
-                <a href='item-details.html' className='featured-content-btn'>
-                  <i className='ri-arrow-right-line'></i>
-                </a>
               </div>
-              <a href='author-profile.html' className='featured-user-option'>
-                <img src='../images/featured/featured-user2.jpg' alt='Images' />
-                <span>Created by @Maicel</span>
-              </a>
             </div>
-          </div>
-        </div>
-
-        <div className='col-lg-4 col-md-6'>
-          <div className='featured-card box-shadow'>
-            <div className='featured-card-img'>
-              <a href='item-details.html'>
-                <img src='../images/featured/featured-img3.jpg' alt='Images' />
-              </a>
-              <p>
-                <i className='ri-heart-line'></i> 162
-              </p>
-              <div
-                className='featured-card-clock'
-                data-countdown='2021/09/09'
-              >{days}:{hours}:{minutes}:{seconds}</div>
-              <button type='button' className='default-btn border-radius-5'>
-                Place Bid
-              </button>
-            </div>
-
-            <div className='content'>
-              <h3>
-                <a href='item-details.html'>Become One With Nature</a>
-              </h3>
-              <div className='content-in'>
-                <div className='featured-card-left'>
-                  <span>120 ETH 12/14</span>
-                  <h4>Bid 80 ETH </h4>
-                </div>
-
-                <a href='item-details.html' className='featured-content-btn'>
-                  <i className='ri-arrow-right-line'></i>
-                </a>
-              </div>
-              <a href='author-profile.html' className='featured-user-option'>
-                <img src='../images/featured/featured-user3.jpg' alt='Images' />
-                <span>Created by @Jekob</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className='col-lg-4 col-md-6'>
-          <div className='featured-card box-shadow'>
-            <div className='featured-card-img'>
-              <a href='item-details.html'>
-                <img src='../images/featured/featured-img4.jpg' alt='Images' />
-              </a>
-              <p>
-                <i className='ri-heart-line'></i> 192
-              </p>
-              <button type='button' className='default-btn border-radius-5'>
-                Place Bid
-              </button>
-            </div>
-
-            <div className='content'>
-              <h3>
-                <a href='item-details.html'>Twilight Fracture City</a>
-              </h3>
-              <div className='content-in'>
-                <div className='featured-card-left'>
-                  <span>110 ETH 12/14</span>
-                  <h4>Bid 90 ETH </h4>
-                </div>
-
-                <a href='item-details.html' className='featured-content-btn'>
-                  <i className='ri-arrow-right-line'></i>
-                </a>
-              </div>
-              <a href='author-profile.html' className='featured-user-option'>
-                <img src='../images/featured/featured-user4.jpg' alt='Images' />
-                <span>Created by @Jack</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className='col-lg-4 col-md-6'>
-          <div className='featured-card box-shadow'>
-            <div className='featured-card-img'>
-              <a href='item-details.html'>
-                <img src='../images/featured/featured-img5.jpg' alt='Images' />
-              </a>
-              <p>
-                <i className='ri-heart-line'></i> 142
-              </p>
-              <button type='button' className='default-btn border-radius-5'>
-                Place Bid
-              </button>
-            </div>
-
-            <div className='content'>
-              <h3>
-                <a href='item-details.html'>Walking On Air</a>
-              </h3>
-              <div className='content-in'>
-                <div className='featured-card-left'>
-                  <span>130 ETH 12/14</span>
-                  <h4>Bid 80 ETH </h4>
-                </div>
-
-                <a href='item-details.html' className='featured-content-btn'>
-                  <i className='ri-arrow-right-line'></i>
-                </a>
-              </div>
-              <a href='author-profile.html' className='featured-user-option'>
-                <img src='../images/featured/featured-user5.jpg' alt='Images' />
-                <span>Created by @Daniel</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className='col-lg-4 col-md-6'>
-          <div className='featured-card box-shadow'>
-            <div className='featured-card-img'>
-              <a href='item-details.html'>
-                <img src='../images/featured/featured-img6.jpg' alt='Images' />
-              </a>
-              <p>
-                <i className='ri-heart-line'></i> 172
-              </p>
-              <button type='button' className='default-btn border-radius-5'>
-                Place Bid
-              </button>
-            </div>
-
-            <div className='content'>
-              <h3>
-                <a href='item-details.html'>Supper Nuemorphism</a>
-              </h3>
-              <div className='content-in'>
-                <div className='featured-card-left'>
-                  <span>140 ETH 12/14</span>
-                  <h4>Bid 90 ETH </h4>
-                </div>
-
-                <a href='item-details.html' className='featured-content-btn'>
-                  <i className='ri-arrow-right-line'></i>
-                </a>
-              </div>
-              <a href='author-profile.html' className='featured-user-option'>
-                <img src='../images/featured/featured-user6.jpg' alt='Images' />
-                <span>Created by @Samuel</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className='col-lg-4 col-md-6'>
-          <div className='featured-card box-shadow'>
-            <div className='featured-card-img'>
-              <a href='item-details.html'>
-                <img src='../images/featured/featured-img7.jpg' alt='Images' />
-              </a>
-              <p>
-                <i className='ri-heart-line'></i> 182
-              </p>
-              <button type='button' className='default-btn border-radius-5'>
-                Place Bid
-              </button>
-            </div>
-
-            <div className='content'>
-              <h3>
-                <a href='item-details.html'>Dark-light Angel</a>
-              </h3>
-              <div className='content-in'>
-                <div className='featured-card-left'>
-                  <span>160 ETH 12/14</span>
-                  <h4>Bid 100 ETH </h4>
-                </div>
-
-                <a href='item-details.html' className='featured-content-btn'>
-                  <i className='ri-arrow-right-line'></i>
-                </a>
-              </div>
-              <a href='author-profile.html' className='featured-user-option'>
-                <img src='../images/featured/featured-user7.jpg' alt='Images' />
-                <span>Created by @Martina</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className='col-lg-4 col-md-6'>
-          <div className='featured-card box-shadow'>
-            <div className='featured-card-img'>
-              <a href='item-details.html'>
-                <img src='../images/featured/featured-img8.jpg' alt='Images' />
-              </a>
-              <p>
-                <i className='ri-heart-line'></i> 142
-              </p>
-              <button type='button' className='default-btn border-radius-5'>
-                Place Bid
-              </button>
-            </div>
-
-            <div className='content'>
-              <h3>
-                <a href='item-details.html'>Exe Dream Hight</a>
-              </h3>
-              <div className='content-in'>
-                <div className='featured-card-left'>
-                  <span>170 ETH 12/14</span>
-                  <h4>Bid 90 ETH </h4>
-                </div>
-
-                <a href='item-details.html' className='featured-content-btn'>
-                  <i className='ri-arrow-right-line'></i>
-                </a>
-              </div>
-              <a href='author-profile.html' className='featured-user-option'>
-                <img src='../images/featured/featured-user8.jpg' alt='Images' />
-                <span>Created by @Henry</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className='col-lg-4 col-md-6'>
-          <div className='featured-card box-shadow'>
-            <div className='featured-card-img'>
-              <a href='item-details.html'>
-                <img src='../images/featured/featured-img9.jpg' alt='Images' />
-              </a>
-              <p>
-                <i className='ri-heart-line'></i> 132
-              </p>
-              <button type='button' className='default-btn border-radius-5'>
-                Place Bid
-              </button>
-            </div>
-
-            <div className='content'>
-              <h3>
-                <a href='item-details.html'>Art Of The Infinity</a>
-              </h3>
-              <div className='content-in'>
-                <div className='featured-card-left'>
-                  <span>170 ETH 12/14</span>
-                  <h4>Bid 90 ETH </h4>
-                </div>
-
-                <a href='item-details.html' className='featured-content-btn'>
-                  <i className='ri-arrow-right-line'></i>
-                </a>
-              </div>
-              <a href='author-profile.html' className='featured-user-option'>
-                <img src='../images/featured/featured-user1.jpg' alt='Images' />
-                <span>Created by @Jack</span>
-              </a>
-            </div>
-          </div>
-        </div>
+          )
+          ) : null}
       </div>
     </>
   );

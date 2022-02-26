@@ -16,7 +16,7 @@ const queryClientRef = new QueryClient()
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 const APP_ID = process.env.NEXT_PUBLIC_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL;
-
+import store from '../redux/store'
 function MyApp({ Component, pageProps }) {
 	const [loading, setLoading] = useState(true);
 	const isServerInfo = APP_ID && SERVER_URL ? true : false;
@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }) {
 				</Head>
 				<MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
 					<MoralisDappProvider>
-						{<Component {...pageProps} />}
+						{<Component {...pageProps} store={store} />}
 					</MoralisDappProvider>
 				</MoralisProvider>
 				<Loader loading={loading} />

@@ -19,7 +19,6 @@ function MoralisDappProvider({ children }) {
   const [nftTokenABI, setnftTokenABI] = useState(nftTokenABIJson)
   const [nftTokenAddress, setnftTokenAddress] = useState(process.env.NEXT_PUBLIC_NFTTOKEN_ADDRESS);
 
-
   useEffect(() => {
     Moralis.onChainChanged(function (chain) {
       setChainId(chain);

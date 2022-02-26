@@ -1,11 +1,13 @@
 import React from "react";
 import axios from "axios";
-import toast from "react-hot-toast";
 import baseUrl from "../../utils/baseUrl";
 import { handleLogin, redirectUser } from "../../utils/auth";
 import { useRouter } from "next/router";
 import { getAuthCredentials, isAuthenticated } from "../../utils/auth-utils";
 import { ROUTES } from "../../utils/routes";
+import toast, { Toaster } from 'react-hot-toast';
+const notify = (message) => toast(message);
+import { Watch } from 'react-loader-spinner'
 
 const INITIAL_USER = {
 	username: "",
@@ -45,16 +47,17 @@ const AuthForm = () => {
 				email: user.email,
 				password: user.password,
 			};
-			const response = await axios.post(url, payload);
-			console.log("####=>", response.data);
+			await axios.post(url, payload).then((res) => {
+				notify(res?.data?.message)
+				handleLogin(res?.data);
+				// redirectUser("", "/");
+			})
+				.catch((err) => {
+					notify(err?.response?.data?.message)
+				});;
 			setUser(INITIAL_USER);
-
-			handleLogin(response?.data);
-			redirectUser("", "/");
-
 		} catch (error) {
 			const { data } = error.response.data;
-			// console.log(data);
 			if (data) {
 				toast.error(data[0].messages[0].message);
 			}
@@ -62,6 +65,7 @@ const AuthForm = () => {
 	};
 
 	return (
+		<>
 		<form id="contactForm" onSubmit={handleSubmit}>
 			<div className="row">
 				<div className="col-lg-12">
@@ -135,6 +139,8 @@ const AuthForm = () => {
 				</div>
 			</div>
 		</form>
+			<Toaster></Toaster>
+		</>
 	);
 };
 

@@ -1,40 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import { handleLogout } from "../../utils/auth";
-import { getAuthCredentials, isAuthenticated } from "../../utils/auth-utils";
-import http from '../../utils/http';
-const MenusList = () => {
-	const [user, setUser] = useState();
+import { useMoralis } from "react-moralis";
+import { useRouter } from "next/router";
 
-	const { token, permissions } = getAuthCredentials();
-	const getUser = async () => {
-		const data = await http.get('/auth/me');
-		console.log(data?.data);
-		setUser(data?.data)
-	}
-
-	useEffect(() => {
-		if (isAuthenticated({ token, permissions })) {
-			getUser();
-		}
-	}, []);
-
-	// console.log(user);
-
+const MenusList = ({ user }) => {
+	const { isAuthenticated } = useMoralis();
+	console.log(isAuthenticated)
 	return (
 		<div className="container-fluid">
 			<nav className="navbar navbar-expand-md navbar-light">
 				<Link href="/">
 					<a className="navbar-brand">
-						<img 
-							src="/images/logo.png" 
-							alt="Logo" 
+						<img
+							src="/images/logo.png"
+							alt="Logo"
 							className="white-logo"
 						/>
 
-						<img 
-							src="/images/logo-2.png" 
-							alt="Logo" 
+						<img
+							src="/images/logo-2.png"
+							alt="Logo"
 							className="black-logo"
 						/>
 					</a>
@@ -58,7 +44,7 @@ const MenusList = () => {
 					id="navbarSupportedContent"
 				>
 					<ul className="navbar-nav m-auto">
-						<li className="nav-item">
+						{/* <li className="nav-item">
 							<a href="#" className="nav-link active">
 								Home
 								<i className="ri-arrow-down-s-line"></i>
@@ -88,7 +74,7 @@ const MenusList = () => {
 									</Link>
 								</li>
 							</ul>
-						</li>
+						</li> */}
 
 						<li className="nav-item">
 							<a href="#" className="nav-link ">
@@ -114,21 +100,11 @@ const MenusList = () => {
 								</li>
 								<li className="nav-item">
 									<Link
-										href="/discover-1"
+										href="/discover"
 										activeClassName="active"
 									>
 										<a className="nav-link">
-											Discover Style One
-										</a>
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link
-										href="/discover-2"
-										activeClassName="active"
-									>
-										<a className="nav-link">
-											Discover Style Two
+											Discover Exclusive Digital Assets
 										</a>
 									</Link>
 								</li>
@@ -137,7 +113,7 @@ const MenusList = () => {
 
 						<li className="nav-item">
 							<a href="#" className="nav-link">
-								Pages
+								Collection
 								<i className="ri-arrow-down-s-line"></i>
 							</a>
 							<ul className="dropdown-menu">
@@ -161,16 +137,9 @@ const MenusList = () => {
 									</Link>
 								</li>
 
-								<li className="nav-item">
-									<Link
-										href="/authors"
-										activeClassName="active"
-									>
-										<a className="nav-link">Authors</a>
-									</Link>
-								</li>
 
-								<li className="nav-item">
+
+								{/* <li className="nav-item">
 									<Link
 										href="/author-profile"
 										activeClassName="active"
@@ -179,9 +148,9 @@ const MenusList = () => {
 											Author Profile
 										</a>
 									</Link>
-								</li>
+								</li> */}
 
-								<li className="nav-item">
+								{/* <li className="nav-item">
 									<Link href="/team" activeClassName="active">
 										<a className="nav-link">Team</a>
 									</Link>
@@ -202,10 +171,10 @@ const MenusList = () => {
 										activeClassName="active"
 									>
 										<a className="nav-link">Contact Us</a>
-									</Link>
-								</li>
+									</Link> 
+								</li>*/}
 
-								<li className="nav-item">
+								{/* <li className="nav-item">
 									<Link
 										href="/terms-condition"
 										activeClassName="active"
@@ -214,9 +183,9 @@ const MenusList = () => {
 											Terms & Conditions
 										</a>
 									</Link>
-								</li>
+								</li> */}
 
-								<li className="nav-item">
+								{/* <li className="nav-item">
 									<Link
 										href="/privacy-policy"
 										activeClassName="active"
@@ -240,7 +209,7 @@ const MenusList = () => {
 									>
 										<a className="nav-link">Coming Soon</a>
 									</Link>
-								</li>
+								</li> */}
 							</ul>
 						</li>
 
@@ -258,22 +227,34 @@ const MenusList = () => {
 										<a className="nav-link">About Us</a>
 									</Link>
 								</li>
-
 								<li className="nav-item">
+									<Link
+										href="/authors"
+										activeClassName="active"
+									>
+										<a className="nav-link">Authors</a>
+									</Link>
+								</li>
+								{/* <li className="nav-item">
 									<Link
 										href="/add-wallet"
 										activeClassName="active"
 									>
 										<a className="nav-link">Add Wallet</a>
 									</Link>
-								</li>
+								</li> */}
 
 								<li className="nav-item">
-									<a href="#" className="nav-link">
-										Blog
-										<i className="ri-arrow-down-s-line"></i>
-									</a>
-									<ul className="dropdown-menu">
+									<Link
+										href="/blogs"
+										activeClassName="active"
+									>
+										<a className="nav-link">
+											Blogs
+										</a>
+									</Link>
+									{/* <i className="ri-arrow-down-s-line"></i> */}
+									{/* <ul className="dropdown-menu">
 										<li className="nav-item">
 											<Link
 												href="/blog-1"
@@ -334,7 +315,7 @@ const MenusList = () => {
 												<a className="nav-link">Tags</a>
 											</Link>
 										</li>
-									</ul>
+									</ul> */}
 								</li>
 
 								<li className="nav-item">
@@ -348,7 +329,7 @@ const MenusList = () => {
 							</ul>
 						</li>
 
-						<li className="nav-item">
+						{/* <li className="nav-item">
 							<a href="#" className="nav-link">
 								{user ? user?.username : "Account"}
 								<i className="ri-arrow-down-s-line"></i>
@@ -392,28 +373,86 @@ const MenusList = () => {
 												</a>
 											</Link>
 										</li>
+											<li className="nav-item">
+												<Link
+													href="/yournfts"
+													activeClassName="active"
+												>
+													<a className="nav-link">
+														Your NFT
+													</a>
+												</Link>
+											</li>
 									</>
 								)}
 							</ul>
-						</li>
-					</ul>
+						</li> */}
 
+						<li className="nav-item">
+							<a href="#" className="nav-link">
+								NFT'S
+								<i className="ri-arrow-down-s-line"></i>
+							</a>
+							<ul className="dropdown-menu">
+								<li className="nav-item">
+									<Link
+										href="/play-nft-game"
+										activeClassName="active"
+									>
+										<a className="nav-link">Play Game</a>
+									</Link>
+								</li>
+
+								<li className="nav-item">
+									<Link
+										href="/yournfts"
+										activeClassName="active"
+									>
+										<a className="nav-link">
+											Your NFT
+										</a>
+									</Link>
+								</li>
+
+								<li className="nav-item">
+									<Link
+										href="/create-collection"
+										activeClassName="active"
+									>
+										<a className="nav-link">Create New NFT</a>
+									</Link>
+								</li>
+							</ul>
+						</li>
+
+					</ul>
 					<div className="others-options">
+
 						<ul className="optional-item-list">
+							{user?.status == true ? (
+								<li>
+									<a onClick={() => handleLogout()}>Logout</a>
+								</li>
+							) : (
+									<li>
+										<Link
+											href="/login"
+											activeClassName="active"
+										>
+											<a>Login</a>
+										</Link>
+									</li>
+							)}
+
 							<li>
-								<Link
-									href="/create-collectionnew"
-									activeClassName="active"
-								>
-									<a>Create</a>
-								</Link>
-							</li>
-							<li>
+
 								<Link
 									href="/add-wallet"
 									activeClassName="active"
 								>
-									<a className="active">Connect Wallet</a>
+									<a className="active">{
+										isAuthenticated == false ? "Connect Wallet" : "MeataMask Connected"
+									}</a>
 								</Link>
 							</li>
 						</ul>

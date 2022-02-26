@@ -1,49 +1,58 @@
-import Navbar from "../components/Layout/Navbar";
-import Layout from "../components/Layout/Layout";
-import BannerArea from "../components/HomeOne/BannerArea";
-import TrendingArea from "../components/HomeOne/TrendingArea";
-import TopSeller from "../components/Common/TopSeller";
-import AuctionArea from "../components/HomeOne/AuctionArea";
-import FeaturedArea from "../components/Common/FeaturedArea";
-import CreateArea from "../components/HomeOne/CreateArea";
-import AuthorArea from "../components/HomeOne/AuthorArea";
-import CollectionsArea from "../components/Common/CollectionsArea";
-import Footer from "../components/Layout/Footer";
-import Copyright from "../components/Common/Copyright";
+import TrendingArea from '../components/Common/TrendingArea';
+import BannerArea from '../components/HomeTwo/BannerArea';
+import NavbarTwo from '../components/Layout/NavbarTwo';
+import TopSeller from '../components/Common/TopSeller';
+import AuctionArea from '../components/HomeTwo/AuctionArea';
+import FeaturedArea from '../components/Common/FeaturedArea';
+import Testimonial from '../components/Common/Testimonial';
+import AuthorArea from '../components/HomeTwo/AuthorArea'
+import BlogArea from '../components/Common/BlogArea';
+import CollectionsArea from '../components/Common/CollectionsArea';
+import Footer from '../components/Layout/Footer';
+import Copyright from '../components/Common/Copyright';
 import baseUrl from "../utils/baseUrl";
+import Layout from "../components/Layout/Layout";
 
-const Index = ({ data = [] }) => {
 
-	return (
-		<Layout>
-			<Navbar />
+const Index = ({ data, trendingData }) => {
+    return (
+        <Layout>
+            <NavbarTwo />
 
-			<BannerArea data={data?.slice(1, 3)} />
+            <BannerArea  />
 
-			<TrendingArea data={data} />
+            <TrendingArea trendingData={trendingData} />
+            
+            <TopSeller />
 
-			<TopSeller />
+            <AuctionArea />
 
-			<AuctionArea data={data?.slice(1, 6)} />
+            <FeaturedArea 
+                title="Featured Assets" 
+                data={data} 
+            />
 
-			<FeaturedArea title="Featured Assets" data={data} />
+            <Testimonial />
 
-			<CreateArea />
+            <AuthorArea />
 
-			<AuthorArea />
+            <BlogArea />
 
-			<CollectionsArea />
+            <CollectionsArea />
 
-			<Footer />
-			
-			<Copyright />
-		</Layout>
-	);
+            <Footer />
+
+            <Copyright />
+        </Layout>
+    );
 };
 
 export async function getServerSideProps(context) {
 	const res = await fetch(`${baseUrl}/nfts`);
 	const data = await res.json();
+
+    const trendinfRes = await fetch(`${baseUrl}/nfts?_limit=5`);
+	const trendingData = await trendinfRes.json();
 
 	if (!data) {
 		return {
@@ -52,9 +61,8 @@ export async function getServerSideProps(context) {
 	}
 
 	// console.log(data);
-
 	return {
-		props: { data }, // will be passed to the page component as props
+		props: { data, trendingData }, // will be passed to the page component as props
 	};
 }
 

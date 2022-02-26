@@ -9,14 +9,7 @@ const Login = () => {
 	return (
 		<>
 			<NavbarTwo />
-			{/* <PageBanner
-				bannerHeading="Log In"
-				parentTitle="Pages"
-				pageTitle="Log In"
-				bg="inner-bg4"
-			/> */}
-
-			<div className="user-area pt-100 pb-70">
+			<div className="user-area pt-50 pb-70">
 				<div className="container">
 					<div className="row align-items-center">
 						<div className="col-lg-12">

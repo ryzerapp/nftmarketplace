@@ -1,11 +1,13 @@
 import React from "react";
 import axios from "axios";
-import toast from "react-hot-toast";
 import baseUrl from "../../utils/baseUrl";
 import { handleLogin } from "../../utils/auth";
 import { useRouter } from "next/router";
 import { getAuthCredentials, isAuthenticated } from "../../utils/auth-utils";
 import { ROUTES } from "../../utils/routes";
+import toast, { Toaster } from 'react-hot-toast';
+const notify = (message) => toast(message);
+import { Watch } from 'react-loader-spinner'
 
 const INITIAL_USER = {
 	email: "",
@@ -35,13 +37,15 @@ const LoginForm = () => {
 				email: user.email,
 				password: user.password,
 			};
-			const response = await axios.post(url, payload);
-			setUser(INITIAL_USER);
-
-			handleLogin(response?.data);
+			const response = await axios.post(url, payload).then(res => {
+				handleLogin(response?.data);
+			})
+				.catch((err) => {
+					notify(err?.response?.data?.message)
+				});
 		} catch (error) {
 			const { data } = error.response.data;
-			// console.log(error);
+			console.log(error);
 			if (data) {
 				toast.error(data[0].messages[0].message);
 			}
@@ -110,6 +114,13 @@ const LoginForm = () => {
 						<ul>
 							<li>
 								<a
+									href="/register"
+								>
+									Sign Up
+								</a>
+							</li>
+							<li>
+								<a
 									href="https://www.facebook.com/"
 									target="_blank"
 								>
@@ -131,6 +142,7 @@ const LoginForm = () => {
 					</div>
 				</div>
 			</form>
+			<Toaster></Toaster>
 		</div>
 	);
 };

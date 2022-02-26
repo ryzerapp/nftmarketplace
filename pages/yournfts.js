@@ -10,13 +10,7 @@ const Collection = () => {
   return (
     <Layout>
       <NavbarTwo />
-      <PageBanner
-        bannerHeading='Recent Collection'
-        parentTitle='Pages'
-        pageTitle='Collection'
-        bg='inner-bg11'
-      />
-      <CollectionArea/>
+      <CollectionArea />
       <InvolvedArea />
       <Footer />
       <Copyright />
