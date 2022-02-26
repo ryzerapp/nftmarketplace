@@ -1,6 +1,6 @@
 const baseUrl =
 	process.env.NODE_ENV === "production"
-		? "http://localhost:1337/api"
-		: "http://localhost:1337/api";
+		? process.env.NEXT_PUBLIC_REST_API_ENDPOINT
+		: process.env.NEXT_PUBLIC_REST_API_ENDPOINT;
 
 export default baseUrl;
