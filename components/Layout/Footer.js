@@ -96,7 +96,7 @@ const Footer = () => {
 										</Link>
 									</li>
 									<li>
-										<Link href="/create-collection">
+										<Link href="/create-collectionnew">
 											<a>Create Collection</a>
 										</Link>
 									</li>

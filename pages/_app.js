@@ -13,7 +13,7 @@ import { MoralisProvider, useMoralis } from "react-moralis";
 import QuickStart from '../components/Common/QuickStart'
 import { MoralisDappProvider } from "../providers/MoralisDappProvider/MoralisDappProvider";
 const queryClientRef = new QueryClient()
-
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 const APP_ID = process.env.NEXT_PUBLIC_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL;
 

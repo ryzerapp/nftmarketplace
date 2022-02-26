@@ -41,7 +41,7 @@ const CreateArea = () => {
                         src='../images/create/create-icon2.png'
                         alt='Images'
                       />
-                      <h3><Link href='/create-collection'>
+                      <h3><Link href='/create-collectionnew'>
                         <a>
                           Create Your Collection
                         </a></Link>

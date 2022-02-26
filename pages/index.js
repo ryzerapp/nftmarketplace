@@ -12,19 +12,19 @@ import Footer from "../components/Layout/Footer";
 import Copyright from "../components/Common/Copyright";
 import baseUrl from "../utils/baseUrl";
 
-const Index = ({ data }) => {
+const Index = ({ data = [] }) => {
 
 	return (
 		<Layout>
 			<Navbar />
 
-			<BannerArea data={data.slice(1, 3)} />
+			<BannerArea data={data?.slice(1, 3)} />
 
 			<TrendingArea data={data} />
 
 			<TopSeller />
 
-			<AuctionArea data={data.slice(1, 6)} />
+			<AuctionArea data={data?.slice(1, 6)} />
 
 			<FeaturedArea title="Featured Assets" data={data} />
 

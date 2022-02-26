@@ -62,7 +62,7 @@ const BannerNFT = ({ data }) => {
 				className={`banner-card ${data.id > 2 ? "banner-card-mt" : ""}`}
 			>
 				<div className="banner-card-img">
-					<img src={data.auctionImg.url} alt="Images" />
+					<img src={data?.auctionImg?.url} alt="Images" />
 					<div className="banner-card-content">
 						<div className="card-left">
 							<span>Start Bid</span>

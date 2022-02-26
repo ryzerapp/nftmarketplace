@@ -4,7 +4,9 @@ import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappP
 import { useWeb3ExecuteFunction } from "react-moralis";
 import http from '../../utils/http';
 import Image from 'next/image';
-
+import toast, { Toaster } from 'react-hot-toast';
+const notify = (message) => toast(message);
+import { Watch } from 'react-loader-spinner'
 const CreateCollectionAreaNew = () => {
 
   const { nftTokenAddress, nftTokenABI } =
@@ -13,13 +15,25 @@ const CreateCollectionAreaNew = () => {
   const contractProcessor = useWeb3ExecuteFunction();
 
   const [imageUrl, setImage] = React.useState()
+  const [loader, setLoader] = React.useState(false)
+  const [loaderNft, setLoaderNft] = React.useState(false)
   const [nftData, setNftData] = React.useState()
 
   const handelCreate = async () => {
-    await http.post('/generate_nft', { "numberOfNft": 1 }).then((res) => {
+    setImage(undefined)
+    setNftData(undefined)
+    setLoader(true)
+    await http.post('/nfts/generate_nft', {
+      "numberOfNft": 1,
+      "author": "Mehul",
+      "description": "This is"
+    }).then((res) => {
       setImage(res?.data?.image_url)
       setNftData(res?.data)
+      setLoader(false)
+      notify(res?.data?.message)
     }).catch((err) => {
+      setLoader(false)
       console.log(err)
     })
   }
@@ -35,7 +49,6 @@ const CreateCollectionAreaNew = () => {
       base64: btoa(JSON.stringify(nftData)),
     });
     const moralisFileJson = await file.saveIPFS();
-    console.log("data", moralisFileJson);
     await mintNFT(moralisFileJson._ipfs);
   }
 
@@ -48,18 +61,46 @@ const CreateCollectionAreaNew = () => {
         tokenURI: tokenURI,
       },
     };
-    console.log(options);
+    setLoaderNft(true)
     await contractProcessor.fetch({
       params: options,
-      onSuccess: (res) => {
-        console.log(res);
-        alert("Done");
+      onSuccess: async (res) => {
+        await http.put(`/nfts/update_nft/${nftData?.id}`, {
+          "nft_is_minted": true
+        }).then((res) => {
+
+          if (res.data.status_code == 200)
+            notify("Your NFT is Created.")
+          setLoaderNft(false)
+
+        }).catch((err) => {
+          setLoaderNft(false)
+          console.log(err)
+        })
       },
       onError: (error) => {
         console.log(error);
-        alert(error);
+        setLoaderNft(false)
       },
     });
+  }
+  const Loader = () => {
+    return (
+      <>
+        <div className='container'>
+          <div className='row'>
+            <div className='d-flex pb-70 pt-70 justify-content-center' >
+              <Watch
+                height="100"
+                width="100"
+                color='grey'
+                ariaLabel='loading'
+              />
+            </div>
+          </div>
+        </div>
+      </>
+    )
   }
   return (
     <>
@@ -76,6 +117,7 @@ const CreateCollectionAreaNew = () => {
                 Play Game
               </button>
             </div>
+            {loader ? <Loader></Loader> : null}
             <div className='col-lg-12 col-md-12 d-flex flex-row'>
 
               <div className='col-6'>
@@ -95,6 +137,8 @@ const CreateCollectionAreaNew = () => {
                     (
                       <>
                         <h2>{nftData?.name}</h2>
+                        <hr></hr>
+                        <h2>{nftData?.author}</h2>
                         <hr></hr>
                         <h2>{nftData?.description}</h2>
                         <hr></hr>
@@ -122,11 +166,13 @@ const CreateCollectionAreaNew = () => {
                 </button>
               </div>) : null
             }
+            {loaderNft ? <Loader></Loader> : null}
 
           </div>
 
         </div>
       </div>
+      <Toaster></Toaster>
     </>
   );
 };

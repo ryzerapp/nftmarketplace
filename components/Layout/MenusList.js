@@ -152,7 +152,7 @@ const MenusList = () => {
 
 								<li className="nav-item">
 									<Link
-										href="/create-collection"
+										href="/create-collectionnew"
 										activeClassName="active"
 									>
 										<a className="nav-link">
@@ -402,7 +402,7 @@ const MenusList = () => {
 						<ul className="optional-item-list">
 							<li>
 								<Link
-									href="/create-collection"
+									href="/create-collectionnew"
 									activeClassName="active"
 								>
 									<a>Create</a>

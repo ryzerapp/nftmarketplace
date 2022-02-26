@@ -75,8 +75,8 @@ const AuctionArea = ({ data }) => {
 													<a>
 														<img
 															src={
-																nft.auctionImg
-																	.url
+																nft?.auctionImg
+																	?.url
 															}
 															alt="Images"
 														/>
