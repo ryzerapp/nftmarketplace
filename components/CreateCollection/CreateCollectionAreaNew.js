@@ -118,42 +118,43 @@ const CreateCollectionAreaNew = () => {
               </button>
             </div>
             {loader ? <Loader></Loader> : null}
-            <div className='col-lg-12 col-md-12 d-flex flex-row'>
+            <div className='col-lg-12 col-md-6 d-flex flex-row'>
+              <div className='row'>
+                <div className='col-lg-6 col-md-12'>
+                  {
+                    imageUrl ?
+                      (<Image
+                        src={imageUrl}
+                        alt="Picture of the author"
+                        width={500}
+                        height={500}
+                      />) : null
+                  }
+                </div>
+                <div className='col-lg-6 col-md-12 mt-4'>
+                  {
+                    nftData ?
+                      (
+                        <>
+                          <h2>{nftData?.name}</h2>
+                          <hr></hr>
+                          <h2>{nftData?.author}</h2>
+                          <hr></hr>
+                          <h2>{nftData?.description}</h2>
+                          <hr></hr>
+                          <h2>{nftData?.nft}</h2>
+                          <hr></hr>
+                          <h2>{nftData?.edition}</h2>
+                          <hr></hr>
+                          <h2>{new Date(nftData?.date).toDateString()}</h2>
+                          <hr></hr>
+                          <h2>{nftData?.compiler}</h2>
+                        </>
+                      ) : null
+                  }
+                </div>
+              </div>
 
-              <div className='col-6'>
-                {
-                  imageUrl ?
-                    (<Image
-                      src={imageUrl}
-                      alt="Picture of the author"
-                      width={500}
-                      height={500}
-                    />) : null
-                }
-              </div>
-              <div className='col-6 mt-4'>
-                {
-                  nftData ?
-                    (
-                      <>
-                        <h2>{nftData?.name}</h2>
-                        <hr></hr>
-                        <h2>{nftData?.author}</h2>
-                        <hr></hr>
-                        <h2>{nftData?.description}</h2>
-                        <hr></hr>
-                        <h2>{nftData?.nft}</h2>
-                        <hr></hr>
-                        <h2>{nftData?.edition}</h2>
-                        <hr></hr>
-                        <h2>{new Date(nftData?.date).toDateString()}</h2>
-                        <hr></hr>
-                        <h2>{nftData?.compiler}</h2>
-                        <hr></hr>
-                      </>
-                    ) : null
-                }
-              </div>
             </div>
             {
               imageUrl ? (<div className='col-xs-1 section-title  pb-70 pt-70' align="center">

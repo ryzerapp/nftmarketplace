@@ -7,7 +7,7 @@ import { getAuthCredentials, isAuthenticated } from "../../utils/auth-utils";
 import { ROUTES } from "../../utils/routes";
 import toast, { Toaster } from 'react-hot-toast';
 const notify = (message) => toast(message);
-import { Watch } from 'react-loader-spinner'
+import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
 
 const INITIAL_USER = {
 	email: "",
@@ -18,7 +18,7 @@ const LoginForm = () => {
 
 	const router = useRouter();
 	const { token, permissions } = getAuthCredentials();
-	console.log(token, permissions)
+	const { setUserData } = useMoralisDapp()
 	if (isAuthenticated({ token, permissions })) {
 		router.replace(ROUTES.DASHBOARD);
 	}
@@ -39,7 +39,13 @@ const LoginForm = () => {
 				password: user.password,
 			};
 			await axios.post(url, payload).then(res => {
-				handleLogin(res?.data);
+				if (res?.data?.statusCode == 200) {
+					handleLogin(res?.data);
+					setUserData(res?.data?.user)
+				}
+				else {
+					notify(res?.data?.message)
+				}
 			})
 				.catch((err) => {
 					notify(err?.response?.data?.message)
