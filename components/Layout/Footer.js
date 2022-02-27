@@ -91,13 +91,13 @@ const Footer = () => {
 										</Link>
 									</li>
 									<li>
-										<Link href="/author-profile">
-											<a>Author Profile</a>
+										<Link href="/coming-soon">
+											<a>Coming Soon</a>
 										</Link>
 									</li>
 									<li>
-										<Link href="/play-nft-game">
-											<a>Create Collection</a>
+										<Link href="/categories">
+											<a>Categories</a>
 										</Link>
 									</li>
 								</ul>
