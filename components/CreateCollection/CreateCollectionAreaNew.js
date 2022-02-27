@@ -11,7 +11,7 @@ const CreateCollectionAreaNew = () => {
 
   const { nftTokenAddress, nftTokenABI } =
     useMoralisDapp();
-  const { Moralis } = useMoralis();
+  const { Moralis, isAuthenticated } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
 
   const [imageUrl, setImage] = React.useState()
@@ -45,6 +45,10 @@ const CreateCollectionAreaNew = () => {
       attributes: nftData?.attributes,
       image: imageUrl,
     };
+    if (!isAuthenticated) {
+      notify("Please Connect Web3.0 Wallet")
+      return;
+    }
     const file = new Moralis.File("file.json", {
       base64: btoa(JSON.stringify(nftData)),
     });
