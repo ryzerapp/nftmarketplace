@@ -1,14 +1,11 @@
 import NavbarTwo from "../components/Layout/NavbarTwo";
 import PageBanner from "../components/Common/PageBanner";
 
-import Footer from "../components/Layout/Footer";
-import Copyright from "../components/Common/Copyright";
 import LoginForm from "../components/Login/LoginForm";
 
 const Login = () => {
 	return (
 		<>
-			<NavbarTwo />
 			<div className="user-area pt-50 pb-70">
 				<div className="container">
 					<div className="row align-items-center">
@@ -23,9 +20,6 @@ const Login = () => {
 					</div>
 				</div>
 			</div>
-
-			<Footer />
-			<Copyright />
 		</>
 	);
 };

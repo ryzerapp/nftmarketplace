@@ -1,19 +1,15 @@
-import NavbarTwo from '../components/Layout/NavbarTwo';
 import PageBanner from '../components/Common/PageBanner';
-import Footer from '../components/Layout/Footer';
-import Copyright from '../components/Common/Copyright';
 import Pagination from '../components/Common/Pagination';
 
 const Categories = () => {
   return (
     <>
-      <NavbarTwo />
-      <PageBanner
+      {/* <PageBanner
         bannerHeading='Categories Page'
         parentTitle='Community'
         pageTitle='Categories'
         bg='inner-bg1'
-      />
+      /> */}
 
       <div className='blog-widget-area pt-100 pb-70'>
         <div className='container'>
@@ -458,8 +454,6 @@ const Categories = () => {
         </div>
       </div>
 
-      <Footer />
-      <Copyright />
     </>
   );
 };

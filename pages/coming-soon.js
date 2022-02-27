@@ -1,8 +1,4 @@
 import { useState, useEffect } from 'react';
-import NavbarTwo from '../components/Layout/NavbarTwo';
-import PageBanner from '../components/Common/PageBanner';
-import Footer from '../components/Layout/Footer';
-import Copyright from '../components/Common/Copyright';
 
 const ComingSoon = () => {
   //counter calculation
@@ -50,13 +46,12 @@ const ComingSoon = () => {
   }, []);
   return (
     <>
-      <NavbarTwo />
-      <PageBanner
+      {/* <PageBanner
         bannerHeading='Coming Soon'
         parentTitle='Pages'
         pageTitle='Coming Soon'
         bg='inner-bg5'
-      />
+      /> */}
 
       <div className='coming-soon-area ptb-100'>
         <div className='d-table'>
@@ -98,8 +93,6 @@ const ComingSoon = () => {
         </div>
       </div>
 
-      <Footer />
-      <Copyright />
     </>
   );
 };

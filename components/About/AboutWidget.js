@@ -11,7 +11,7 @@ const AboutWidget = () => {
                 <div className='number'>01</div>
                 <h3>High Quality Unique Art</h3>
                 <p>
-                  Tezor is a curated marketplace that allows unique digital
+                  Cryptonium is a curated marketplace that allows unique digital
                   artwork to be traded and collected.{' '}
                 </p>
               </div>
@@ -22,7 +22,7 @@ const AboutWidget = () => {
                 <div className='number'>02</div>
                 <h3>Creator’s Royalty And Splits</h3>
                 <p>
-                  Tezor is a curated marketplace that allows unique digital
+                  Cryptonium is a curated marketplace that allows unique digital
                   artwork to be traded and collected.{' '}
                 </p>
               </div>
@@ -33,7 +33,7 @@ const AboutWidget = () => {
                 <div className='number'>03</div>
                 <h3>Built For Speed, Performance</h3>
                 <p>
-                  Tezor is a curated marketplace that allows unique digital
+                  Cryptonium is a curated marketplace that allows unique digital
                   artwork to be traded and collected.{' '}
                 </p>
               </div>
@@ -44,7 +44,7 @@ const AboutWidget = () => {
                 <div className='number'>04</div>
                 <h3>Secondary Market</h3>
                 <p>
-                  Tezor is a curated marketplace that allows unique digital
+                  Cryptonium is a curated marketplace that allows unique digital
                   artwork to be traded and collected.{' '}
                 </p>
               </div>
@@ -55,7 +55,7 @@ const AboutWidget = () => {
                 <div className='number'>05</div>
                 <h3>Show Your Support</h3>
                 <p>
-                  Tezor is a curated marketplace that allows unique digital
+                  Cryptonium is a curated marketplace that allows unique digital
                   artwork to be traded and collected.{' '}
                 </p>
               </div>
@@ -66,7 +66,7 @@ const AboutWidget = () => {
                 <div className='number'>06</div>
                 <h3>Reduce The Environmental</h3>
                 <p>
-                  Tezor is a curated marketplace that allows unique digital
+                  Cryptonium is a curated marketplace that allows unique digital
                   artwork to be traded and collected.{' '}
                 </p>
               </div>

@@ -37,7 +37,7 @@ http.interceptors.response.use(
       (error.response && error.response.status === 403)
     ) {
       Cookies.remove("AUTH_CRED");
-      Router.push(ROUTES.LOGIN);
+      // Router.push(ROUTES.LOGIN);
     }
     return Promise.reject(error);
   }

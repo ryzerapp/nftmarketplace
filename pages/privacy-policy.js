@@ -8,7 +8,7 @@ const PrivacyPolicy = () => {
     <>
       <NavbarTwo />
       <PageBanner
-        bannerHeading='Gible Privacy Policy'
+        bannerHeading='Cryptonium Privacy Policy'
         parentTitle='Pages'
         pageTitle='Privacy Policy'
         bg='inner-bg8'
@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
         <div className='container'>
           <div className='section-title text-center'>
             <span className='sp-title2'>Privacy Policy</span>
-            <h2 className='m-auto'>Tezor Privacy Policy</h2>
+            <h2 className='m-auto'>Cryptonium Privacy Policy</h2>
           </div>
           <div className='row pt-45'>
             <div className='col-lg-12'>
@@ -53,7 +53,7 @@ const PrivacyPolicy = () => {
               </div>
 
               <div className='single-content'>
-                <h3>Privacy Policy Tezor</h3>
+                <h3>Privacy Policy Cryptonium</h3>
                 <p>
                   Maecenas non sem ex. Nullam ac augue vel turpis fringilla
                   maximus. Vivamus commodo laoreet augue non porta. Nam egestas

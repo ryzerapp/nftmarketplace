@@ -17,6 +17,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 const APP_ID = process.env.NEXT_PUBLIC_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL;
 import store from '../redux/store'
+import HeaderFooter from "../components/Layout/HeaderFooter";
 function MyApp({ Component, pageProps }) {
 	const [loading, setLoading] = useState(true);
 	const isServerInfo = APP_ID && SERVER_URL ? true : false;
@@ -34,7 +35,9 @@ function MyApp({ Component, pageProps }) {
 				</Head>
 				<MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
 					<MoralisDappProvider>
-						{<Component {...pageProps} store={store} />}
+						<HeaderFooter>
+							{<Component {...pageProps} store={store} />}
+						</HeaderFooter>
 					</MoralisDappProvider>
 				</MoralisProvider>
 				<Loader loading={loading} />

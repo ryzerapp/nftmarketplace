@@ -7,7 +7,6 @@ import AuthForm from "../components/Register/AuthForm";
 const Register = () => {
 	return (
 		<>
-			<NavbarTwo />
 			{/* <PageBanner
 				bannerHeading="Register"
 				parentTitle="Discover"
@@ -15,7 +14,7 @@ const Register = () => {
 				bg="inner-bg5"
 			/> */}
 
-			<div className="user-area pt-100 pb-70">
+			<div className="user-area pt-50 pb-70">
 				<div className="container">
 					<div className="row align-items-center">
 						<div className="col-lg-12">
@@ -31,8 +30,6 @@ const Register = () => {
 				</div>
 			</div>
 
-			<Footer />
-			<Copyright />
 		</>
 	);
 };

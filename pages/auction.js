@@ -9,7 +9,6 @@ import baseUrl from "../utils/baseUrl";
 const Auction = ({ data }) => {
 	return (
 		<>
-			<NavbarTwo />
 			<PageBanner
 				bannerHeading="Live Auction Is Going On"
 				parentTitle="Discover"
@@ -18,8 +17,6 @@ const Auction = ({ data }) => {
 			/>
 			<AuctionArea data={data} />
 			<InvolvedArea />
-			<Footer />
-			<Copyright />
 		</>
 	);
 };

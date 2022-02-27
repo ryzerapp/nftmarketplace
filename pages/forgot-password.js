@@ -1,18 +1,13 @@
-import NavbarTwo from '../components/Layout/NavbarTwo';
-import PageBanner from '../components/Common/PageBanner';
-import Footer from '../components/Layout/Footer';
-import Copyright from '../components/Common/Copyright';
 
 const ForgotPassword = () => {
   return (
     <>
-      <NavbarTwo />
-      <PageBanner
+      {/* <PageBanner
         bannerHeading='Forgot Password'
         parentTitle='Discover'
         pageTitle='Forgot Password'
         bg='inner-bg5'
-      />
+      /> */}
 
       <div className='user-area pt-100 pb-70'>
         <div className='container'>
@@ -52,8 +47,6 @@ const ForgotPassword = () => {
         </div>
       </div>
 
-      <Footer />
-      <Copyright />
     </>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react';
 const AboutArea = () => {
   return (
     <>
-      <div className='about-area pt-100 pb-70'>
+      <div className='about-area pt-70 pb-70'>
         <div className='container'>
           <div className='about-content'>
             <div className='section-title'>

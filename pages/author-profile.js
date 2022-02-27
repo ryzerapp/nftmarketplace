@@ -8,7 +8,6 @@ import Copyright from '../components/Common/Copyright';
 const AuthorProfile = () => {
   return (
     <>
-      <NavbarTwo />
       <PageBanner
         bannerHeading='Author Profile'
         parentTitle='Pages'
@@ -17,8 +16,6 @@ const AuthorProfile = () => {
       />
       <AuthorProfileArea />
       <InvolvedArea />
-      <Footer />
-      <Copyright />
     </>
   );
 };

@@ -1,27 +1,21 @@
-import NavbarTwo from '../components/Layout/NavbarTwo';
-import PageBanner from '../components/Common/PageBanner';
 import InvolvedArea from '../components/Common/InvolvedArea';
-import Footer from '../components/Layout/Footer';
-import Copyright from '../components/Common/Copyright';
 
 const Contact = () => {
   return (
     <>
-      <NavbarTwo />
-      <PageBanner
+      {/* <PageBanner
         bannerHeading='Contact Us'
         parentTitle='Contact Us'
         pageTitle=''
         bg='inner-bg2'
-      />
+      /> */}
 
       <div className='contact-info-area  pt-100 pb-70'>
         <div className='container'>
           <div className='section-title text-center'>
             <h2>Contact Info</h2>
             <p>
-              Pellentesque id sollicitudin congue quisque turpis auctor turpis
-              sollicitudin ipsum etset.
+              Cryptonium Technologies
             </p>
           </div>
 
@@ -30,8 +24,8 @@ const Contact = () => {
               <div className='contact-card'>
                 <i className='ri-map-pin-line'></i>
                 <h3>Location</h3>
-                <p>Bygmestervej 59B block 2400,</p>
-                <p> Copenhagen Denmark</p>
+                <p>Ahmedabad</p>
+                <p>Gujarat India</p>
               </div>
             </div>
 
@@ -40,10 +34,10 @@ const Contact = () => {
                 <i className='ri-phone-line'></i>
                 <h3>Phone</h3>
                 <p>
-                  <a href='tel:+44012345679782'>+44 0123 4567 9782</a>
+                  <a href='tel:+44012345679782'>+919426016918</a>
                 </p>
                 <p>
-                  <a href='tel:+44012345676608'>+44 0123 4567 6608</a>
+                  <a href='tel:+44012345676608'>+919426016918</a>
                 </p>
               </div>
             </div>
@@ -53,10 +47,10 @@ const Contact = () => {
                 <i className='ri-mail-send-line'></i>
                 <h3>Email Address</h3>
                 <p>
-                  <a href='mailto:info@tezor.com'>info@tezor.com</a>
+                  <a href='mailto:info@cryptonium.com'>info@cryptonium.com</a>
                 </p>
                 <p>
-                  <a href='mailto:hello@tezor.com'>hello@tezor.com</a>
+                  <a href='mailto:hello@cryptonium.com'>hello@cryptonium.com</a>
                 </p>
               </div>
             </div>
@@ -170,8 +164,6 @@ const Contact = () => {
         </div>
       </div>
       <InvolvedArea />
-      <Footer />
-      <Copyright />
     </>
   );
 };

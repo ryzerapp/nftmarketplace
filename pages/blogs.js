@@ -1,19 +1,14 @@
-import NavbarTwo from '../components/Layout/NavbarTwo';
-import PageBanner from '../components/Common/PageBanner';
-import Footer from '../components/Layout/Footer';
-import Copyright from '../components/Common/Copyright';
 import Pagination from '../components/Common/Pagination';
 
 const BlogOne = () => {
   return (
     <>
-      <NavbarTwo />
-      <PageBanner
+      {/* <PageBanner
         bannerHeading='Blog Left Sidebar'
         parentTitle='Community'
         pageTitle='Blog Left Sidebar'
         bg='inner-bg1'
-      />
+      /> */}
       <div className='blog-area-two pt-100 pb-70'>
         <div className='container'>
           <div className='section-title'>
@@ -315,8 +310,6 @@ const BlogOne = () => {
           </div>
         </div>
       </div>
-      <Footer />
-      <Copyright />
     </>
   );
 };

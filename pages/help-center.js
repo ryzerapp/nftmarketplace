@@ -9,20 +9,17 @@ import PromoteArea from '../components/HelpCenter/PromoteArea';
 const HelpCenter = () => {
   return (
     <>
-      <NavbarTwo />
-      <PageBanner
+      {/* <PageBanner
         bannerHeading='Get Help'
         parentTitle='Community'
         pageTitle='Help Center'
         bg='inner-bg5'
-      />
+      /> */}
 
       <HelpWidget />
       <HelpCenterArea/>
       <PromoteArea/>
 
-      <Footer />
-      <Copyright />
     </>
   );
 };

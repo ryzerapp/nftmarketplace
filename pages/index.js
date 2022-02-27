@@ -17,7 +17,6 @@ import Layout from "../components/Layout/Layout";
 const Index = ({ data, trendingData }) => {
     return (
         <Layout>
-            <NavbarTwo />
 
             <BannerArea  />
 
@@ -40,9 +39,6 @@ const Index = ({ data, trendingData }) => {
 
             <CollectionsArea />
 
-            <Footer />
-
-            <Copyright />
         </Layout>
     );
 };

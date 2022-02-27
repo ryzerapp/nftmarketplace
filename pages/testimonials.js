@@ -8,7 +8,6 @@ import Copyright from '../components/Common/Copyright';
 const Testimonials = () => {
   return (
     <>
-      <NavbarTwo />
       <PageBanner
         bannerHeading='All Testimonials'
         parentTitle='Pages'
@@ -136,8 +135,6 @@ const Testimonials = () => {
         </div>
 
         <InvolvedArea />
-        <Footer />
-        <Copyright />
       </div>
     </>
   );

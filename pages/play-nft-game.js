@@ -7,10 +7,7 @@ import Copyright from '../components/Common/Copyright';
 const CreateCollection = () => {
   return (
     <Layout>
-      <NavbarTwo />
       <CreateCollectionAreaNew />
-      <Footer />
-      <Copyright />
     </Layout>
   );
 };

@@ -96,7 +96,7 @@ const Footer = () => {
 										</Link>
 									</li>
 									<li>
-										<Link href="/create-collectionnew">
+										<Link href="/play-nft-game">
 											<a>Create Collection</a>
 										</Link>
 									</li>

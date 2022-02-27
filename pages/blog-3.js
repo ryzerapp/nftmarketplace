@@ -1,19 +1,14 @@
-import NavbarTwo from '../components/Layout/NavbarTwo';
-import PageBanner from '../components/Common/PageBanner';
-import Footer from '../components/Layout/Footer';
-import Copyright from '../components/Common/Copyright';
 import Pagination from '../components/Common/Pagination';
 
 const BlogThree = () => {
   return (
     <>
-      <NavbarTwo />
-      <PageBanner
+      {/* <PageBanner
         bannerHeading='Blog Right Sidebar'
         parentTitle='Community'
         pageTitle='Blog Right Sidebar'
         bg='inner-bg2'
-      />
+      /> */}
       <div className='blog-widget-area ptb-100'>
         <div className='container'>
           <div className='row'>
@@ -465,8 +460,6 @@ const BlogThree = () => {
           </div>
         </div>
       </div>
-      <Footer />
-      <Copyright />
     </>
   );
 };

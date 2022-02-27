@@ -9,9 +9,9 @@ const Copyright = () => {
 						<div className="col-lg-8">
 							<div className="copy-right-text">
 								<p>
-									© 2021 Tezor. All Rights Reserved by{" "}
-									<a href="https://hibootstrap.com/">
-										HiBootstrap
+									© 2022 All Rights Reserved by{" "}
+									<a href="https://www.cryptonium.in/">
+										Cryptonium
 									</a>
 								</p>
 

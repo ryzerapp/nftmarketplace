@@ -41,7 +41,7 @@ const CreateArea = () => {
                         src='../images/create/create-icon2.png'
                         alt='Images'
                       />
-                      <h3><Link href='/create-collectionnew'>
+                      <h3><Link href='/play-nft-game'>
                         <a>
                           Create Your Collection
                         </a></Link>

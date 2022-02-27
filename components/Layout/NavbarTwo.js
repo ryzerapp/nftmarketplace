@@ -126,7 +126,7 @@ const NavbarTwo = () => {
 											<ul className="optional-item-list">
 												<li>
 													<Link
-														href="/create-collectionnew"
+														href="/play-nft-game"
 														activeClassName="active"
 													>
 														<a>Create</a>

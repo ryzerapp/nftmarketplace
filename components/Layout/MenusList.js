@@ -128,7 +128,7 @@ const MenusList = ({ user }) => {
 
 								<li className="nav-item">
 									<Link
-										href="/create-collectionnew"
+										href="/create-collection"
 										activeClassName="active"
 									>
 										<a className="nav-link">

@@ -6,19 +6,11 @@ import Copyright from '../components/Common/Copyright';
 const TermsCondition = () => {
   return (
     <>
-      <NavbarTwo />
-      <PageBanner
-        bannerHeading='Terms & Conditions'
-        parentTitle='Pages'
-        pageTitle='Terms & Conditions'
-        bg='inner-bg5'
-      />
-
       <div className='terms-conditions-area pt-100 pb-70'>
         <div className='container'>
           <div className='section-title text-center'>
             <span className='sp-title'>Terms & Conditions</span>
-            <h2 className='m-auto'>Tezor Terms & Conditions</h2>
+            <h2 className='m-auto'>Cryptonium Terms & Conditions</h2>
           </div>
           <div className='row pt-45'>
             <div className='col-lg-12'>
@@ -215,9 +207,6 @@ const TermsCondition = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
-      <Copyright />
     </>
   );
 };

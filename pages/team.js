@@ -9,18 +9,15 @@ import Copyright from '../components/Common/Copyright';
 const Team = () => {
   return (
     <>
-      <NavbarTwo />
-      <PageBanner
+      {/* <PageBanner
         bannerHeading='Our Team'
         parentTitle='Pages'
         pageTitle='Team'
         bg='inner-bg2'
-      />
+      /> */}
       <TeamArea/>
       <Testimonial/>
       <InvolvedArea />
-      <Footer />
-      <Copyright />
     </>
   );
 };

@@ -9,11 +9,8 @@ import Layout from '../components/Layout/Layout';
 const Collection = () => {
   return (
     <Layout>
-      <NavbarTwo />
       <CollectionArea />
       <InvolvedArea />
-      <Footer />
-      <Copyright />
     </Layout>
   );
 };

@@ -1,5 +1,4 @@
 import NavbarTwo from '../components/Layout/NavbarTwo';
-import PageBanner from '../components/Common/PageBanner';
 import Footer from '../components/Layout/Footer';
 import Copyright from '../components/Common/Copyright';
 import { useMoralis } from 'react-moralis';
@@ -20,7 +19,6 @@ const AddWallet = () => {
   }
   return (
     <>
-      <NavbarTwo />
       {authError && (
         <p >
           {authError.name}
@@ -112,7 +110,7 @@ const AddWallet = () => {
               <div className='wallet-card'>
                 <img src='../images/wallet-img/wallet-img6.png' alt='Images' />
                 <h3>
-                  <a href='contact.html'>Tezor</a>
+                  <a href='contact.html'>Cryptonium</a>
                 </h3>
                 <p>
                   Connect with your google, facebook, twitter or discord all
@@ -132,8 +130,6 @@ const AddWallet = () => {
           </div>
         </div>
       </div>
-      <Footer />
-      <Copyright />
     </>
   );
 };

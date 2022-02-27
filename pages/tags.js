@@ -7,13 +7,12 @@ import Pagination from '../components/Common/Pagination';
 const Tags = () => {
   return (
     <>
-      <NavbarTwo />
-      <PageBanner
+      {/* <PageBanner
         bannerHeading='Tags Page'
         parentTitle='Community'
         pageTitle='Tags'
         bg='inner-bg1'
-      />
+      /> */}
 
       <div className='blog-widget-area pt-100 pb-70'>
         <div className='container'>
@@ -458,8 +457,6 @@ const Tags = () => {
         </div>
       </div>
 
-      <Footer />
-      <Copyright />
     </>
   );
 };

@@ -1,5 +1,5 @@
 /*
-@File: Gible HTML Template
+@File: Cryptonium HTML Template
 
 * This file contains the styling for the actual template, this
 is the file you need to edit to change the look of the
@@ -2333,7 +2333,7 @@ Help Center Page Css
 ====================================*/
 .help-widget-form {
   position: relative;
-  margin-top: -25px;
+  margin-top: 50px;
   padding: 0 20px;
   z-index: 555;
 }
