@@ -12,10 +12,9 @@ const NavbarTwo = () => {
 	const [showWallet, setShowWallet] = useState(false);
 	const [showSearchModal, setShowSearchModal] = useState(false);
 	const [sticky, setSticky] = useState(false);
-	const { isAuthenticated } = useMoralis();
+	const { isAuthenticated: web3Authentication } = useMoralis();
 
-	const { data, isError, isLoading } = useMeQuery()
-
+	const { data, isError } = useMeQuery()
 	const toggleMenu = () => {
 		setShowMenu(!showMenu);
 	};
@@ -136,7 +135,7 @@ const NavbarTwo = () => {
 														activeClassName="active"
 													>
 														<a className="active">{
-															isAuthenticated == false ? "Connect Wallet" : "MeataMask Connected"
+															web3Authentication == false ? "Connect Wallet" : "MeataMask Connected"
 														}</a>
 													</Link>
 												</li>
