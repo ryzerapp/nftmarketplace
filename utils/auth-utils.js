@@ -28,5 +28,6 @@ export function parseSSRCookie(context) {
 }
 
 export function isAuthenticated(_cookies) {
+  console.log('isAuthenticated', !!_cookies[TOKEN])
   return !!_cookies[TOKEN];
 }

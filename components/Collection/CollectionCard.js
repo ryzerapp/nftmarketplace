@@ -1,16 +1,20 @@
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useMoralis } from 'react-moralis';
 import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
+import Loader from '../Common/Loader';
 
 const CollectionCard = () => {
-  const { Moralis, isWeb3Enabled } = useMoralis();
-  const { walletAddress, chainId } = useMoralisDapp();
+  const { Moralis, isWeb3Enabled, isAuthenticated } = useMoralis();
+  const { walletAddress } = useMoralisDapp();
   //counter calculation
   const [days, setDays] = useState('');
+  const [loader, setLoader] = useState(false);
   const [hours, setHours] = useState('');
   const [minutes, setMinutes] = useState('');
   const [seconds, setSeconds] = useState('');
   const [nftBalance, setNftBalance] = useState([]);
+  const router = useRouter()
   const comingSoonTime = () => {
     let endTime = new Date('December 23, 2021 17:00:00 PDT');
     let endTimeParse = Date.parse(endTime) / 1000;
@@ -41,19 +45,27 @@ const CollectionCard = () => {
     setSeconds(countseconds);
   };
   const setData = async () => {
+    setLoader(true)
     const options = { chain: 'mumbai', address: walletAddress };
     const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
     setNftBalance(polygonNFTs?.result)
+    setLoader(false)
   };
   useEffect(() => {
-    if (isWeb3Enabled)
+    if (isWeb3Enabled && isAuthenticated)
       setData()
     comingSoonTime()
   }, [isWeb3Enabled]);
 
+  if (loader) {
+    return (
+      <Loader />
+    )
+  }
   return (
     <>
       <div className='row justify-content-center'>
+
         {nftBalance?.length > 0 ?
           nftBalance?.map((res) =>
           (
@@ -70,7 +82,6 @@ const CollectionCard = () => {
                     Place Bid
                   </button>
                 </div>
-                {console.log(JSON.parse(res?.metadata))}
                 <div className='content'>
                   <h3>
                     <a href='item-details.html'>{JSON.parse(res?.metadata)?.name}</a>
@@ -93,7 +104,15 @@ const CollectionCard = () => {
               </div>
             </div>
           )
-          ) : null}
+          ) : <>
+            <div className='container mt-100'>
+              <div className='row'>
+                <div className='col-xs-1 section-title  pb-70' align="center">
+                  <h2>You Don't Have Any NFT</h2>
+                </div>
+              </div>
+            </div>
+          </>}
       </div>
     </>
   );

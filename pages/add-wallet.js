@@ -1,20 +1,22 @@
-import NavbarTwo from '../components/Layout/NavbarTwo';
-import Footer from '../components/Layout/Footer';
-import Copyright from '../components/Common/Copyright';
 import { useMoralis } from 'react-moralis';
 import { useRouter } from 'next/router';
+import { useMoralisDapp } from '../providers/MoralisDappProvider/MoralisDappProvider';
 
 const AddWallet = () => {
   const { authenticate, authError, isAuthenticated, logout } = useMoralis();
+  const { setWalletAddress } = useMoralisDapp()
   const router = useRouter();
   const handleConnect = async () => {
-    if (!isAuthenticated)
-    {
+    if (!isAuthenticated) {
       await authenticate()
       router.replace('/');
     }
     else
+    {
       await logout()
+      setWalletAddress("")
+    }
+
     router.replace('/');
   }
   return (

@@ -1,17 +1,11 @@
-import PageBanner from '../components/Common/PageBanner';
 import CreateCollectionArea from '../components/CreateCollection/CreateCollectionArea';
+import Web3Protected from '../components/Layout/Web3Protected';
 
 const CreateCollection = () => {
   return (
-    <>
-      {/* <PageBanner
-        bannerHeading='Recent Activity'
-        parentTitle='Activity'
-        pageTitle=''
-        bg='inner-bg13'
-      /> */}
+    <Web3Protected>
       <CreateCollectionArea />
-    </>
+    </Web3Protected>
   );
 };
 

@@ -6,7 +6,7 @@ import http from '../../utils/http';
 import Image from 'next/image';
 import toast, { Toaster } from 'react-hot-toast';
 const notify = (message) => toast(message);
-import { Watch } from 'react-loader-spinner'
+import Loader from '../Common/Loader'
 const CreateCollectionAreaNew = () => {
 
   const { nftTokenAddress, nftTokenABI } =
@@ -84,24 +84,6 @@ const CreateCollectionAreaNew = () => {
       },
     });
   }
-  const Loader = () => {
-    return (
-      <>
-        <div className='container'>
-          <div className='row'>
-            <div className='d-flex pb-70 pt-70 justify-content-center' >
-              <Watch
-                height="100"
-                width="100"
-                color='grey'
-                ariaLabel='loading'
-              />
-            </div>
-          </div>
-        </div>
-      </>
-    )
-  }
   return (
     <>
       <div className='collection-widget-area pt-100 pb-70'>
@@ -117,7 +99,7 @@ const CreateCollectionAreaNew = () => {
                 Play Game
               </button>
             </div>
-            {loader ? <Loader></Loader> : null}
+            {loader ? <Loader /> : null}
             <div className='col-lg-12 col-md-6 d-flex flex-row'>
               <div className='row'>
                 <div className='col-lg-6 col-md-12'>

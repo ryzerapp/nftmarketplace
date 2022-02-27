@@ -7,6 +7,7 @@ import nftTokenABIJson from '../../contracts_abi/NFT.json';
 
 function MoralisDappProvider({ children }) {
   const { web3, Moralis, user } = useMoralis(); 
+  console.log(user)
   const [walletAddress, setWalletAddress] = useState();
   const [chainId, setChainId] = useState();
 
@@ -52,6 +53,7 @@ function MoralisDappProvider({ children }) {
         marketPlaceABI,
         nftTokenABI,
         nftTokenAddress,
+        setWalletAddress,
         userData,
         setUserData,
         setMarketPlaceAddress,
