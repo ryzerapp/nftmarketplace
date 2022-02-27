@@ -53,22 +53,22 @@ const Footer = () => {
 								<h3>Marketplace</h3>
 								<ul className="footer-list">
 									<li>
-										<Link href="/discover-1">
+										<Link href="/discover">
 											<a>Art</a>
 										</Link>
 									</li>
 									<li>
-										<Link href="/discover-1">
+										<Link href="/discover">
 											<a>All NFTs</a>
 										</Link>
 									</li>
 									<li>
-										<Link href="/discover-1">
+										<Link href="/discover">
 											<a>Music</a>
 										</Link>
 									</li>
 									<li>
-										<Link href="/discover-1">
+										<Link href="/discover">
 											<a>Trending Cards</a>
 										</Link>
 									</li>
@@ -120,8 +120,8 @@ const Footer = () => {
 									</li>
 
 									<li>
-										<Link href="/item-details">
-											<a>Item Details</a>
+										<Link href="/help-center">
+											<a>Help Center</a>
 										</Link>
 									</li>
 
@@ -150,12 +150,12 @@ const Footer = () => {
 									</li>
 
 									<li>
-										<Link href="/blog-1">
+										<Link href="/blogs">
 											<a>Our Blog</a>
 										</Link>
 									</li>
 									<li>
-										<Link href="/discover-1">
+										<Link href="/discover">
 											<a>Discover</a>
 										</Link>
 									</li>

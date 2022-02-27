@@ -20,7 +20,6 @@ const AuthForm = () => {
 	const router = useRouter();
 	const { token, permissions } = getAuthCredentials();
 	if (isAuthenticated({ token, permissions })) {
-		console.log('Is Login Done')
 		router.replace(ROUTES.DASHBOARD);
 	}
 

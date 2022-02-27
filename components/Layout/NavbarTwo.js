@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import SearchModal from "./SearchModal";
 import Link from "../../utils/ActiveLink";
 import MenusList from "./MenusList";
-import { getAuthCredentials, isAuthenticated } from "../../utils/auth-utils";
-import http from "../../utils/http";
+import { useMeQuery } from "../../hooks/useMeQuery";
+import { handleLogout } from "../../utils/auth";
+import { useMoralis } from "react-moralis";
 
 const NavbarTwo = () => {
 
@@ -11,20 +12,9 @@ const NavbarTwo = () => {
 	const [showWallet, setShowWallet] = useState(false);
 	const [showSearchModal, setShowSearchModal] = useState(false);
 	const [sticky, setSticky] = useState(false);
+	const { isAuthenticated } = useMoralis();
 
-	const [user, setUser] = useState();
-
-	const { token, permissions } = getAuthCredentials();
-	const getUser = async () => {
-		const data = await http.get('/auth/me');
-		console.log(data?.data);
-		setUser(data?.data)
-	}
-	React.useEffect(() => {
-		if (isAuthenticated({ token, permissions })) {
-			getUser();
-		}
-	}, []);
+	const { data, isError, isLoading } = useMeQuery()
 
 	const toggleMenu = () => {
 		setShowMenu(!showMenu);
@@ -88,7 +78,7 @@ const NavbarTwo = () => {
 								: "desktop-nav nav-area"
 						}
 					>
-						<MenusList logo="" user={user} />
+						<MenusList logo="" user={data?.userD} />
 					</div>
 
 					<div className="mobile-nav">
@@ -124,22 +114,30 @@ const NavbarTwo = () => {
 									<div className="side-nav justify-content-center align-items-center">
 										<div className="side-nav-item">
 											<ul className="optional-item-list">
+												{data?.userD?.status == true ? (
+													<li>
+														<a onClick={() => handleLogout()}>Logout</a>
+													</li>
+												) : (
+														<li>
+															<Link
+																href="/login"
+																activeClassName="active"
+															>
+																<a>Login</a>
+															</Link>
+														</li>
+												)}
+
 												<li>
-													<Link
-														href="/play-nft-game"
-														activeClassName="active"
-													>
-														<a>Create</a>
-													</Link>
-												</li>
-												<li>
+
 													<Link
 														href="/add-wallet"
 														activeClassName="active"
 													>
-														<a className="active">
-															Connect Wallet
-														</a>
+														<a className="active">{
+															isAuthenticated == false ? "Connect Wallet" : "MeataMask Connected"
+														}</a>
 													</Link>
 												</li>
 											</ul>

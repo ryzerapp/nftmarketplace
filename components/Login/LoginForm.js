@@ -18,6 +18,7 @@ const LoginForm = () => {
 
 	const router = useRouter();
 	const { token, permissions } = getAuthCredentials();
+	console.log(token, permissions)
 	if (isAuthenticated({ token, permissions })) {
 		router.replace(ROUTES.DASHBOARD);
 	}
@@ -37,8 +38,8 @@ const LoginForm = () => {
 				email: user.email,
 				password: user.password,
 			};
-			const response = await axios.post(url, payload).then(res => {
-				handleLogin(response?.data);
+			await axios.post(url, payload).then(res => {
+				handleLogin(res?.data);
 			})
 				.catch((err) => {
 					notify(err?.response?.data?.message)

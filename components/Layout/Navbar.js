@@ -111,10 +111,10 @@ const Navbar = () => {
 											<ul className="optional-item-list">
 												<li>
 													<Link
-														href="/play-nft-game"
+														href="/login"
 														activeClassName="active"
 													>
-														<a>Create</a>
+														<a>Login</a>
 													</Link>
 												</li>
 												<li>

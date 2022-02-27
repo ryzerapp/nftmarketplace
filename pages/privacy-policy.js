@@ -6,13 +6,12 @@ import Copyright from '../components/Common/Copyright';
 const PrivacyPolicy = () => {
   return (
     <>
-      <NavbarTwo />
-      <PageBanner
+      {/* <PageBanner
         bannerHeading='Cryptonium Privacy Policy'
         parentTitle='Pages'
         pageTitle='Privacy Policy'
         bg='inner-bg8'
-      />
+      /> */}
       <div className='privacy-policy-area pt-100 pb-70'>
         <div className='container'>
           <div className='section-title text-center'>
@@ -242,8 +241,6 @@ const PrivacyPolicy = () => {
         </div>
       </div>
 
-      <Footer />
-      <Copyright />
     </>
   );
 };

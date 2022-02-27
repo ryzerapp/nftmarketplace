@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 
 const MenusList = ({ user }) => {
 	const { isAuthenticated } = useMoralis();
-	console.log(isAuthenticated)
 	return (
 		<div className="container-fluid">
 			<nav className="navbar navbar-expand-md navbar-light">
@@ -257,7 +256,7 @@ const MenusList = ({ user }) => {
 									{/* <ul className="dropdown-menu">
 										<li className="nav-item">
 											<Link
-												href="/blog-1"
+												href="/blogs"
 												activeClassName="active"
 											>
 												<a className="nav-link">

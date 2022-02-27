@@ -14,7 +14,7 @@ const BlogArea = () => {
 
             <div className='col-lg-4 col-md-4'>
               <div className='blog-btn text-end'>
-                <Link href='/blog-1'>
+                <Link href='/blogs'>
                   <a className='default-btn border-radius-5'>Explore More</a>
                 </Link>
               </div>
