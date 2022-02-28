@@ -1,5 +1,4 @@
 import React from 'react';
-import AuthorProfile from './AuthorProfile';
 import CollectionCard from './CollectionCard';
 
 const CollectionArea = () => {

@@ -1,16 +1,18 @@
 import React from 'react';
 import { useMoralis, useMoralisFile } from "react-moralis";
-import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
 import { useWeb3ExecuteFunction } from "react-moralis";
 import http from '../../utils/http';
 import Image from 'next/image';
 import toast, { Toaster } from 'react-hot-toast';
 const notify = (message) => toast(message);
 import Loader from '../Common/Loader'
+import { useWeb3 } from '../../providers/Web3Context';
 const CreateCollectionAreaNew = () => {
 
-  const { nftTokenAddress, nftTokenABI } =
-    useMoralisDapp();
+  const { state: { nftTokenAddress } } =
+    useWeb3();
+
+  const { state: { nftTokenABI } } = useWeb3()
   const { Moralis, isAuthenticated } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
 

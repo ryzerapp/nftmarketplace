@@ -6,7 +6,6 @@ import { useIPFS } from "./useIPFS";
 export const useNFTBalance = (options) => {
   const { account } = useMoralisWeb3Api();
   const { chainId } = useMoralisDapp();
-  console.log(chainId)
   const { resolveLink } = useIPFS();
   const [NFTBalance, setNFTBalance] = useState([]);
   const {
@@ -15,16 +14,14 @@ export const useNFTBalance = (options) => {
     error,
     isLoading,
   } = useMoralisWeb3ApiCall(account.getNFTs, {
-    chain: "80001", chain: chainId,
+    chain: "mumbai", chain: chainId,
     address: "0x1D5E50754b504A6893E692C92aFeB2d530E79FB1",
     limit: 10,
   });
-  console.log(data);
   const [fetchSuccess, setFetchSuccess] = useState(true);
   const nftBalance = async () => {
     if (data?.result) {
       const NFTs = data.result;
-      console.log(NFTs)
       setFetchSuccess(true);
       for (let NFT of NFTs) {
         if (NFT?.metadata) {
@@ -42,7 +39,6 @@ export const useNFTBalance = (options) => {
           }
         }
       }
-      console.log('Nfts', NFTs)
       setNFTBalance(NFTs);
     }
   };

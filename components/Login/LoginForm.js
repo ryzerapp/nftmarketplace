@@ -52,7 +52,6 @@ const LoginForm = () => {
 				});
 		} catch (error) {
 			const { data } = error.response.data;
-			console.log(error);
 			if (data) {
 				toast.error(data[0].messages[0].message);
 			}

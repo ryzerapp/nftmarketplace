@@ -38,7 +38,6 @@ const AuthForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// console.log(user)
 		try {
 			const url = `${baseUrl}/auth/register`;
 			const payload = {

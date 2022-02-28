@@ -5,7 +5,6 @@ const Layout = ({ children }) => {
       const { web3, isWeb3Enabled, web3EnableError, enableWeb3 } = useMoralis();
       useEffect(() => {
             if (isWeb3Enabled) {
-                  console.log('Enable')
             } else {
                   enableWeb3();
             }

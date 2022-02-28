@@ -9,7 +9,6 @@ import NftCardWithTime from "./NftCardWithTime";
 resetIdCounter();
 
 const FeaturedArea = ({ title, pagination, data }) => {
-	// console.log(data);
 
 	return (
 		<>

@@ -1,13 +1,14 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useMoralis } from 'react-moralis';
-import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
+import { useWeb3 } from '../../providers/Web3Context';
 import Loader from '../Common/Loader';
 
 const CollectionCard = () => {
   const { Moralis, isWeb3Enabled, isAuthenticated } = useMoralis();
-  const { walletAddress } = useMoralisDapp();
-  //counter calculation
+  const { state: { walletAddress, networkId } } = useWeb3();
+
+  console.log(networkId)
   const [days, setDays] = useState('');
   const [loader, setLoader] = useState(false);
   const [hours, setHours] = useState('');
@@ -46,16 +47,17 @@ const CollectionCard = () => {
   };
   const setData = async () => {
     setLoader(true)
-    const options = { chain: 'mumbai', address: walletAddress };
+    const options = { chain: networkId, address: walletAddress };
     const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
     setNftBalance(polygonNFTs?.result)
+    console.log(polygonNFTs?.result)
     setLoader(false)
   };
   useEffect(() => {
     if (isWeb3Enabled && isAuthenticated)
       setData()
     comingSoonTime()
-  }, [isWeb3Enabled]);
+  }, [isWeb3Enabled, networkId]);
 
   if (loader) {
     return (

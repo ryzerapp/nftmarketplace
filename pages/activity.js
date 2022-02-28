@@ -34,7 +34,6 @@ export async function getServerSideProps(context) {
 		};
 	}
 
-	// console.log(data);
 	return {
 		props: { data, trendingData }, // will be passed to the page component as props
 	};

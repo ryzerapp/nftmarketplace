@@ -17,7 +17,6 @@ const AuctionNFT = ({ data }) => {
 		}
 		comingSoonTime();
 	}, [data]);
-	// console.log("$$$$", formatDate("2021-11-12T06:30:00.000Z"));
 
 	const comingSoonTime = () => {
 		let endTime = new Date(formatDate(data.auctionEnds));

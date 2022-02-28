@@ -1,67 +1,77 @@
 import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import MoralisDappContext from "./context";
-import CryptoniumTokenABI from '../../contracts_abi/CryptoniumToken.json';
-import MarketPlaceABI from '../../contracts_abi/MarketPlace.json';
-import nftTokenABIJson from '../../contracts_abi/NFT.json';
+import { useWeb3 } from "../Web3Context";
+import { Actions } from "../Web3Context/reducer";
 
 function MoralisDappProvider({ children }) {
-  const { web3, Moralis, user } = useMoralis(); 
-  console.log(user)
-  const [walletAddress, setWalletAddress] = useState();
-  const [chainId, setChainId] = useState();
+  const { web3, Moralis, user, chainId } = useMoralis();
+  const { dispatch } = useWeb3();
 
-  const [marketPlaceABI, setMarketPlaceABI] = useState(MarketPlaceABI);
-  const [marketPlaceAddress, setMarketPlaceAddress] = useState(process.env.NEXT_PUBLIC_MARKETPLACE_CONTRACT_ADDRESS);
+  const changeAddress = () => {
+    if (chainId == "0x4") {
+      console.log('In Ricky Bey Chain')
 
-  const [cryptoniumTokenABI, setCryptoniumTokenABI] = useState(CryptoniumTokenABI)
-  const [cryptoniumTokenAddress, setCryptoniumTokenAddress] = useState(process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS);
-
-  const [nftTokenABI, setnftTokenABI] = useState(nftTokenABIJson)
-  const [nftTokenAddress, setnftTokenAddress] = useState(process.env.NEXT_PUBLIC_NFTTOKEN_ADDRESS);
-
-  const [userData, setUserData] = useState()
-
+      dispatch({
+        type: Actions.SET_SMARTCONTACT_ADDRESS,
+        address: {
+          nftTokenAddress: process.env.NEXT_PUBLIC_NFTTOKEN_RINKEYBY_ADDRESS,
+          marketPlaceAddress: process.env.NEXT_PUBLIC_NFTMARKETPLACE_RINKEYBY_ADDRESS
+        }
+      })
+    }
+    else if (chainId == "0x13881") {
+      console.log('In mumbai Chain')
+      dispatch({
+        type: Actions.SET_SMARTCONTACT_ADDRESS,
+        address: {
+          nftTokenAddress: process.env.NEXT_PUBLIC_NFTTOKEN_MUMBAI_ADDRESS,
+          marketPlaceAddress: process.env.NEXT_PUBLIC_MARKETPLACE_MUMBAI_CONTRACT_ADDRESS
+        }
+      })
+    }
+    else if (chainId == "0xa869") {
+      console.log('In aava Chain')
+      dispatch({
+        type: Actions.SET_SMARTCONTACT_ADDRESS,
+        address: {
+          nftTokenAddress: process.env.NEXT_PUBLIC_NFTTOKEN_AVAX_ADDRESS,
+          marketPlaceAddress: process.env.NEXT_PUBLIC_NFTMARKETPLACE_AVAX_ADDRESS
+        }
+      })
+    }
+  }
 
   useEffect(() => {
     Moralis.onChainChanged(function (chain) {
-      setChainId(chain);
+      if (chain) {
+        dispatch({ type: Actions.SET_NETWORK_ID, networkId: chain })
+        changeAddress()
+      }
     });
 
     Moralis.onAccountChanged(function (address) {
-      setWalletAddress(address[0]);
+      if (address)
+        dispatch({ type: Actions.SET_USER_ADDRESS, walletAddress: address[0] })
     });
   }, []);
 
-  useEffect(() => setChainId(web3?.givenProvider?.chainId));
-  useEffect(
-    () =>
-      setWalletAddress(
-        web3?.givenProvider?.selectedAddress || user?.get("ethAddress")
-      ),
-    [web3, user]
-  );
+
+  useEffect(() => {
+    dispatch({
+      type: Actions.SET_NETWORK_ID,
+      networkId: chainId
+    })
+    dispatch({
+      type: Actions.SET_USER_ADDRESS,
+      walletAddress: web3?.givenProvider?.selectedAddress || user?.get("ethAddress")
+    })
+    changeAddress()
+  }, [user, web3, chainId]);
 
   return (
     <MoralisDappContext.Provider
       value={{
-        walletAddress,
-        chainId,
-        marketPlaceAddress,
-        cryptoniumTokenABI,
-        cryptoniumTokenAddress,
-        marketPlaceABI,
-        nftTokenABI,
-        nftTokenAddress,
-        setWalletAddress,
-        userData,
-        setUserData,
-        setMarketPlaceAddress,
-        setnftTokenABI,
-        setnftTokenAddress,
-        setCryptoniumTokenAddress,
-        setCryptoniumTokenABI,
-        setMarketPlaceABI,
       }}
     >
       {children}

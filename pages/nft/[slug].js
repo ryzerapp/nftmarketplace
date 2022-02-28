@@ -7,7 +7,6 @@ import Copyright from "../../components/Common/Copyright";
 import baseUrl from "../../utils/baseUrl";
 
 const ItemDetails = ({ data, trendingData }) => {
-	console.log(trendingData);
 	return (
 		<>
 			<NavbarTwo />
@@ -37,7 +36,6 @@ const ItemDetails = ({ data, trendingData }) => {
 
 export async function getServerSideProps(ctx) {
 	const { slug } = ctx.query;
-	// console.log(slug);
 	const response = await fetch(`${baseUrl}/nfts?slug=${slug}`);
 	const data = await response.json();
 	const trendinfRes = await fetch(`${baseUrl}/nfts?_limit=5`);
@@ -48,7 +46,6 @@ export async function getServerSideProps(ctx) {
 			notFound: true,
 		};
 	}
-	// console.log(response);
 
 	return {
 		props: { data, trendingData }, // will be passed to the page component as props

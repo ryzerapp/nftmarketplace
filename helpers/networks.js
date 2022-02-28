@@ -68,7 +68,16 @@ export const networkConfigs = {
     rpcUrl: "https://rpc-mumbai.matic.today/",
     blockExplorerUrl: "https://mumbai.polygonscan.com/",
   },
+  "0xa869": {
+    chainId: 43114,
+    chainName: "Avalanche Testnet",
+    currencyName: "AVAX",
+    currencySymbol: "AVAX",
+    rpcUrl: "https://speedy-nodes-nyc.moralis.io/9f1fd6616c0acdc5b5f1c0cd/avalanche/testnet/",
+    blockExplorerUrl: "",
+  },
 };
+
 
 export const getNativeByChain = (chain) =>
   networkConfigs[chain]?.currencySymbol || "NATIVE";

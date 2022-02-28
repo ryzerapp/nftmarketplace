@@ -40,7 +40,6 @@ const useInchDex = (chain) => {
           amount,
         })
         .then(async (allowance) => {
-          console.log(allowance);
           if (!allowance) {
             await Moralis.Plugins.oneInch.approve({
               chain, // The blockchain you want to use (eth/bsc/polygon)
@@ -57,7 +56,6 @@ const useInchDex = (chain) => {
         if (receipt.statusCode !== 400) {
           alert("Swap Complete");
         }
-        console.log(receipt);
       })
       .catch((e) => alert(e.message));
   }

@@ -2,7 +2,6 @@ import Copyright from "../Common/Copyright";
 import Footer from "./Footer";
 import NavbarTwo from './NavbarTwo'
 const HeaderFooter = ({ children }) => {
-      console.log('Hello')
       return (
             <>
                   <NavbarTwo />
