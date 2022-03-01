@@ -69,7 +69,7 @@ export const networkConfigs = {
     blockExplorerUrl: "https://mumbai.polygonscan.com/",
   },
   "0xa869": {
-    chainId: 43114,
+    chainId: 43113,
     chainName: "Avalanche Testnet",
     currencyName: "AVAX",
     currencySymbol: "AVAX",

@@ -41,10 +41,18 @@ const CreateCollectionAreaNew = () => {
   }
 
   async function mintNFTHandle() {
-    const nftData = {
-      name: nftData?.name,
-      description: nftData?.description,
-      attributes: nftData?.attributes,
+
+    let data = { ...nftData }
+    delete data?.message;
+    delete data?.status_code;
+    delete data?.image_url;
+    delete data?.date;
+    delete data?.id;
+    delete data?.updated_at;
+    delete data?.userId;
+    delete data?.nft_is_minted;
+    const nftDataJson = {
+      ...data,
       image: imageUrl,
     };
     if (!isAuthenticated) {
@@ -52,7 +60,8 @@ const CreateCollectionAreaNew = () => {
       return;
     }
     const file = new Moralis.File("file.json", {
-      base64: btoa(JSON.stringify(nftData)),
+      base64: btoa(JSON.stringify(nftDataJson, undefined, 1)),
+      type: 'json'
     });
     const moralisFileJson = await file.saveIPFS();
     await mintNFT(moralisFileJson._ipfs);
