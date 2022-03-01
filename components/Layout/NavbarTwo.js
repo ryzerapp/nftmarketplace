@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchModal from "./SearchModal";
 import Link from "../../utils/ActiveLink";
 import MenusList from "./MenusList";
-import { useMeQuery } from "../../hooks/useMeQuery";
 import { handleLogout } from "../../utils/auth";
 import { useMoralis } from "react-moralis";
+import { useWeb3 } from "../../providers/Web3Context";
+import { Actions } from "../../providers/Web3Context/reducer";
 
 const NavbarTwo = () => {
 
@@ -13,16 +14,21 @@ const NavbarTwo = () => {
 	const [showSearchModal, setShowSearchModal] = useState(false);
 	const [sticky, setSticky] = useState(false);
 	const { isAuthenticated: web3Authentication } = useMoralis();
-
-	const { data, isError } = useMeQuery()
+	const { state: { user }, dispatch } = useWeb3()
 	const toggleMenu = () => {
 		setShowMenu(!showMenu);
 	};
 
+	useEffect(() => { }, user);
+
 	const toggleWallet = () => {
 		setShowWallet(!showWallet);
 	};
-
+	console.log(user)
+	const handleLogoutHandler = () => {
+		dispatch({ type: Actions.SET_USER, user: undefined })
+		handleLogout()
+	}
 	const toggleSearchModal = () => {
 		setShowSearchModal(!showSearchModal);
 	};
@@ -39,6 +45,8 @@ const NavbarTwo = () => {
 		// browser code
 		window.addEventListener("scroll", showStickyMenu);
 	}
+
+
 	return (
 		<>
 			<div className="navbar-style2">
@@ -77,7 +85,7 @@ const NavbarTwo = () => {
 								: "desktop-nav nav-area"
 						}
 					>
-						<MenusList logo="" user={data?.userD} />
+						<MenusList logo="" user={user} />
 					</div>
 
 					<div className="mobile-nav">
@@ -113,9 +121,9 @@ const NavbarTwo = () => {
 									<div className="side-nav justify-content-center align-items-center">
 										<div className="side-nav-item">
 											<ul className="optional-item-list">
-												{data?.userD?.status == true ? (
+												{user?.status == true ? (
 													<li>
-														<a onClick={() => handleLogout()}>Logout</a>
+														<a onClick={() => handleLogoutHandler()}>Logout</a>
 													</li>
 												) : (
 														<li>

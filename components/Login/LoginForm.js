@@ -7,7 +7,9 @@ import { getAuthCredentials, isAuthenticated } from "../../utils/auth-utils";
 import { ROUTES } from "../../utils/routes";
 import toast, { Toaster } from 'react-hot-toast';
 const notify = (message) => toast(message);
-import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
+import { useWeb3 } from "../../providers/Web3Context";
+import { Actions } from "../../providers/Web3Context/reducer";
+import Loader from "../Common/Loader";
 
 const INITIAL_USER = {
 	email: "",
@@ -18,12 +20,12 @@ const LoginForm = () => {
 
 	const router = useRouter();
 	const { token, permissions } = getAuthCredentials();
-	const { setUserData } = useMoralisDapp()
 	if (isAuthenticated({ token, permissions })) {
 		router.replace(ROUTES.DASHBOARD);
 	}
-
+	const { dispatch } = useWeb3();
 	const [user, setUser] = React.useState(INITIAL_USER);
+	const [loader, setLoader] = React.useState(false);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -32,6 +34,7 @@ const LoginForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setLoader(true)
 		try {
 			const url = `${baseUrl}/auth/login`;
 			const payload = {
@@ -40,24 +43,33 @@ const LoginForm = () => {
 			};
 			await axios.post(url, payload).then(res => {
 				if (res?.data?.statusCode == 200) {
+					setLoader(false)
 					handleLogin(res?.data);
-					setUserData(res?.data?.user)
+					notify(res?.data?.message)
+					dispatch({ type: Actions.SET_USER, user: res?.data?.user })
 				}
 				else {
 					notify(res?.data?.message)
 				}
 			})
 				.catch((err) => {
+					setLoader(false)
 					notify(err?.response?.data?.message)
 				});
 		} catch (error) {
+			setLoader(false)
 			const { data } = error.response.data;
 			if (data) {
-				toast.error(data[0].messages[0].message);
+				notify(data[0].messages[0].message);
 			}
 		}
 	};
 
+	if (loader) {
+		return (
+			<Loader />
+		)
+	}
 	return (
 		<div>
 			<form id="contactForm" onSubmit={handleSubmit}>

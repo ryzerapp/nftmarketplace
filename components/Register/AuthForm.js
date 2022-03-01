@@ -8,6 +8,8 @@ import { ROUTES } from "../../utils/routes";
 import toast, { Toaster } from 'react-hot-toast';
 const notify = (message) => toast(message);
 import { Watch } from 'react-loader-spinner'
+import Loader from "../Common/Loader";
+import { useWeb3 } from "../../providers/Web3Context";
 
 const INITIAL_USER = {
 	username: "",
@@ -29,7 +31,8 @@ const AuthForm = () => {
 		const { name, value } = e.target;
 		setUser((prevState) => ({ ...prevState, [name]: value }));
 	};
-
+	const [loader, setLoader] = React.useState(false);
+	const { dispatch } = useWeb3();
 	/**
 	 *
 	 * @param {username, email, password} e
@@ -39,6 +42,8 @@ const AuthForm = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
+			setLoader(true)
+
 			const url = `${baseUrl}/auth/register`;
 			const payload = {
 				username: user.username,
@@ -46,22 +51,35 @@ const AuthForm = () => {
 				password: user.password,
 			};
 			await axios.post(url, payload).then((res) => {
-				notify(res?.data?.message)
-				handleLogin(res?.data);
-				// redirectUser("", "/");
+				if (res?.data?.statusCode == 200) {
+					setLoader(false)
+					handleLogin(res?.data);
+					notify(res?.data?.message)
+					dispatch({ type: Actions.SET_USER, user: res?.data?.user })
+				}
+				else {
+					notify(res?.data?.message)
+				}
 			})
 				.catch((err) => {
+					setLoader(false)
 					notify(err?.response?.data?.message)
 				});;
+			setLoader(false)
 			setUser(INITIAL_USER);
 		} catch (error) {
 			const { data } = error.response.data;
 			if (data) {
 				toast.error(data[0].messages[0].message);
 			}
+			setLoader(false)
 		}
 	};
-
+	if (loader) {
+		return (
+			<Loader />
+		)
+	}
 	return (
 		<>
 		<form id="contactForm" onSubmit={handleSubmit}>

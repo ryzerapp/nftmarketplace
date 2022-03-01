@@ -16,13 +16,14 @@ export const initialState = {
   nftTokenAddress: "",
   marketPlaceAddress: "",
 
-  user: {}
+  user: undefined
 }
 export const Actions = {
   SET_NETWORK_ID: "SET_NETWORK_ID",
   SET_SMARTCONTACT_ADDRESS: "SET_SMARTCONTACT_ADDRESS",
   SET_USER_ADDRESS: "SET_USER_ADDRESS",
   SET_ERROR: "SET_ERROR",
+  SET_USER: "SET_USER",
 
 }
 export const reducer = (state, action) => {
@@ -50,6 +51,12 @@ export const reducer = (state, action) => {
       return {
         ...state,
         networkId: action.networkId,
+      };
+    }
+    case `${Actions.SET_USER}`: {
+      return {
+        ...state,
+        user: action.user,
       };
     }
     default:

@@ -81,7 +81,7 @@ const CollectionCard = () => {
     if (isWeb3Enabled && isAuthenticated)
       setData()
     comingSoonTime()
-  }, [isWeb3Enabled, networkId]);
+  }, [isWeb3Enabled, networkId, walletAddress]);
 
   if (loader) {
     return (

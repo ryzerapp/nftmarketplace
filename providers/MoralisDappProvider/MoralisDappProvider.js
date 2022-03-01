@@ -10,8 +10,6 @@ function MoralisDappProvider({ children }) {
 
   const changeAddress = () => {
     if (chainId == "0x4") {
-      console.log('In Ricky Bey Chain')
-
       dispatch({
         type: Actions.SET_SMARTCONTACT_ADDRESS,
         address: {
@@ -21,7 +19,6 @@ function MoralisDappProvider({ children }) {
       })
     }
     else if (chainId == "0x13881") {
-      console.log('In mumbai Chain')
       dispatch({
         type: Actions.SET_SMARTCONTACT_ADDRESS,
         address: {
@@ -31,7 +28,6 @@ function MoralisDappProvider({ children }) {
       })
     }
     else if (chainId == "0xa869") {
-      console.log('In aava Chain')
       dispatch({
         type: Actions.SET_SMARTCONTACT_ADDRESS,
         address: {

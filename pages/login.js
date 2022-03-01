@@ -1,6 +1,3 @@
-import NavbarTwo from "../components/Layout/NavbarTwo";
-import PageBanner from "../components/Common/PageBanner";
-
 import LoginForm from "../components/Login/LoginForm";
 
 const Login = () => {
