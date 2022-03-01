@@ -67,6 +67,9 @@
   .section-title h2 {
     font-size: 25px;
   }
+  .section-title h3 {
+    font-size: 50px;
+  }
   .section-title p {
     padding-top: 10px;
   }

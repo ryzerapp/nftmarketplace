@@ -98,7 +98,7 @@ const CollectionCard = () => {
             <div className='col-lg-4 col-md-6' key={res?.token_uri}>
               <div className='featured-card box-shadow'>
                 <div className='featured-card-img'>
-                  <a href='item-details.html'>
+                  <a href='/item-details'>
                     <img src={res?.image} alt='Images' />
                   </a>
                   <p>
@@ -110,7 +110,7 @@ const CollectionCard = () => {
                 </div>
                 <div className='content'>
                   <h3>
-                    <a href='item-details.html'>{res?.name}</a>
+                    <a href='/item-details'>{res?.name}</a>
                   </h3>
                   <div className='content-in'>
                     <div className='featured-card-left'>
@@ -121,7 +121,7 @@ const CollectionCard = () => {
                       <h4>Symbol: {res?.symbol}</h4>
                     </div>
 
-                    <a href='item-details.html' className='featured-content-btn'>
+                    <a href='/item-details' className='featured-content-btn'>
                       <i className='ri-arrow-right-line'></i>
                     </a>
                   </div>

@@ -13,7 +13,7 @@ const ItemDetailsArea = ({ data }) => {
 							<div className="item-details-left-side pr-20">
 								<div className="item-details-img">
 									<img
-										src={data.auctionImg.url}
+										src={data?.auctionImg?.url}
 										alt="Images"
 									/>
 									<span>
@@ -29,7 +29,7 @@ const ItemDetailsArea = ({ data }) => {
 							<div className="item-details-dsce">
 								<ItemDetailsDescription {...data} />
 
-								<ItemDetailsUser />
+								{/* <ItemDetailsUser /> */}
 							</div>
 						</div>
 					</div>
