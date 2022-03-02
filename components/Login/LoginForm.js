@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import baseUrl from "../../utils/baseUrl";
-import { handleLogin } from "../../utils/auth";
+import { handleLogin, handleLogout, handleLogoutLogin } from "../../utils/auth";
 import { useRouter } from "next/router";
 import { getAuthCredentials, isAuthenticated } from "../../utils/auth-utils";
 import { ROUTES } from "../../utils/routes";
@@ -23,8 +23,13 @@ const LoginForm = () => {
 	if (isAuthenticated({ token, permissions })) {
 		router.replace(ROUTES.DASHBOARD);
 	}
-	const { dispatch } = useWeb3();
-	const [user, setUser] = React.useState(INITIAL_USER);
+
+	const { state: { user }, dispatch } = useWeb3();
+
+	if (user == undefined || Object.keys(user).length == 0)
+		handleLogoutLogin();
+
+	const [localuser, setUser] = React.useState(INITIAL_USER);
 	const [loader, setLoader] = React.useState(false);
 
 	const handleChange = (e) => {
@@ -38,8 +43,8 @@ const LoginForm = () => {
 		try {
 			const url = `${baseUrl}/auth/login`;
 			const payload = {
-				email: user.email,
-				password: user.password,
+				email: localuser.email,
+				password: localuser.password,
 			};
 			await axios.post(url, payload).then(res => {
 				if (res?.data?.statusCode == 200) {
@@ -82,7 +87,7 @@ const LoginForm = () => {
 								className="form-control"
 								name="email"
 								type="email"
-								value={user.email}
+								value={localuser.email}
 								onChange={handleChange}
 							/>
 						</div>
@@ -95,7 +100,7 @@ const LoginForm = () => {
 								className="form-control"
 								name="password"
 								type="password"
-								value={user.password}
+								value={localuser.password}
 								onChange={handleChange}
 							/>
 						</div>

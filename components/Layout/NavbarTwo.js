@@ -19,14 +19,13 @@ const NavbarTwo = () => {
 		setShowMenu(!showMenu);
 	};
 
-	useEffect(() => { }, user);
+	useEffect(() => { }, [user]);
 
 	const toggleWallet = () => {
 		setShowWallet(!showWallet);
 	};
-	console.log(user)
-	const handleLogoutHandler = () => {
-		dispatch({ type: Actions.SET_USER, user: undefined })
+	const handleLogoutHandler = async () => {
+		await dispatch({ type: Actions.SET_USER, user: {} })
 		handleLogout()
 	}
 	const toggleSearchModal = () => {
@@ -45,7 +44,6 @@ const NavbarTwo = () => {
 		// browser code
 		window.addEventListener("scroll", showStickyMenu);
 	}
-
 
 	return (
 		<>
@@ -121,12 +119,8 @@ const NavbarTwo = () => {
 									<div className="side-nav justify-content-center align-items-center">
 										<div className="side-nav-item">
 											<ul className="optional-item-list">
-												{user?.status == true ? (
+												{user == undefined ? (
 													<li>
-														<a onClick={() => handleLogoutHandler()}>Logout</a>
-													</li>
-												) : (
-														<li>
 															<Link
 																href="/login"
 																activeClassName="active"
@@ -134,6 +128,11 @@ const NavbarTwo = () => {
 																<a>Login</a>
 															</Link>
 														</li>
+
+												) : (
+													<li>
+														<button onClick={() => handleLogoutHandler()}>Logout</button>
+													</li>
 												)}
 
 												<li>

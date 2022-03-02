@@ -88,7 +88,7 @@ const MenusList = ({ user }) => {
 							<ul className="dropdown-menu">
 								<li className="nav-item">
 									<Link
-										href="/collection"
+										href={!isAuthenticated({ token, permissions }) ? "/login" : "/collection"}
 										activeClassName="active"
 									>
 										<a className="nav-link">Collection</a>
@@ -97,7 +97,7 @@ const MenusList = ({ user }) => {
 
 								<li className="nav-item">
 									<Link
-										href="/create-collection"
+										href={!isAuthenticated({ token, permissions }) ? "/login" : "/create-new-collection"}
 										activeClassName="active"
 									>
 										<a className="nav-link">
@@ -192,7 +192,7 @@ const MenusList = ({ user }) => {
 					<div className="others-options">
 
 						<ul className="optional-item-list">
-							{user?.status == true ? (
+							{user?.status ? (
 								<li>
 									<a onClick={() => handleLogout()}>Logout</a>
 								</li>

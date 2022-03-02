@@ -1,6 +1,8 @@
 import CryptoniumTokenABI from '../../contracts_abi/CryptoniumToken.json';
 import MarketPlaceABI from '../../contracts_abi/MarketPlace.json';
 import nftTokenABIJson from '../../contracts_abi/NFT.json';
+import Cookies from 'js-cookie';
+import { AUTH_CRED } from '../../utils/constants';
 
 export const initialState = {
   loading: false,
@@ -13,10 +15,10 @@ export const initialState = {
   nftTokenABI: nftTokenABIJson,
   cryptoniumTokenABI: CryptoniumTokenABI,
 
+  isAuthenticated: Cookies.get(AUTH_CRED) != undefined ? true : false,
   nftTokenAddress: "",
   marketPlaceAddress: "",
-
-  user: undefined
+  user: {}
 }
 export const Actions = {
   SET_NETWORK_ID: "SET_NETWORK_ID",

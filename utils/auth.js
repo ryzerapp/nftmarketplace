@@ -34,5 +34,8 @@ export const redirectUser = (ctx, location) => {
 export const handleLogout = () => {
 	removeAuthCredentials()
 	toast.success("Logout successful");
-	Router.push("/");
+};
+
+export const handleLogoutLogin = () => {
+	removeAuthCredentials()
 };
