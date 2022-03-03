@@ -10,7 +10,6 @@ import { removeAuthCredentials, setAuthCredentials } from "./auth-utils";
  */
 export const handleLogin = (data) => {
 	setAuthCredentials(data?.token, data?.permissions);
-	Router.push("/");
 };
 
 /**

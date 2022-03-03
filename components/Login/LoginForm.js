@@ -1,68 +1,68 @@
 import React from "react";
-import axios from "axios";
-import baseUrl from "../../utils/baseUrl";
-import { handleLogin, handleLogout, handleLogoutLogin } from "../../utils/auth";
-import { useRouter } from "next/router";
-import { getAuthCredentials, isAuthenticated } from "../../utils/auth-utils";
-import { ROUTES } from "../../utils/routes";
+import { handleLogin, handleLogoutLogin } from "../../utils/auth";
+
 import toast, { Toaster } from 'react-hot-toast';
 const notify = (message) => toast(message);
 import { useWeb3 } from "../../providers/Web3Context";
 import { Actions } from "../../providers/Web3Context/reducer";
 import Loader from "../Common/Loader";
+import { useLoginMutation } from "../../hooks/Web2/mutations/useLoginMutation";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { ErrorMessage } from "@hookform/error-message";
 
-const INITIAL_USER = {
-	email: "",
-	password: "",
-};
+const schema = yup
+	.object({
+		email: yup
+			.string()
+			.required("Email must be provided.")
+			.email("Enter Valid Email."),
+		password: yup.string().required("Password must be provided"),
+	})
+	.required();
 
 const LoginForm = () => {
 
-	const router = useRouter();
-	// const { token, permissions } = getAuthCredentials();
-	// if (isAuthenticated({ token, permissions })) {
-	// 	router.replace(ROUTES.DASHBOARD);
-	// }
-
+	const { mutate, isLoading } = useLoginMutation()
 	const { state: { user }, dispatch } = useWeb3();
 
 	if (user == undefined || Object.keys(user).length == 0)
 		handleLogoutLogin();
 
-	const [localuser, setUser] = React.useState(INITIAL_USER);
-	const [loader, setLoader] = React.useState(false);
+	const { register, handleSubmit, formState: { errors } } = useForm({
+		defaultValues: {
+			email: "",
+			password: "",
+		},
+		resolver: yupResolver(schema),
+	});
 
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setUser((prevState) => ({ ...prevState, [name]: value }));
-	};
-
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		setLoader(true)
+	const onSubmit = async (data) => {
 		try {
-			const url = `${baseUrl}/auth/login`;
-			const payload = {
-				email: localuser.email,
-				password: localuser.password,
-			};
-			await axios.post(url, payload).then(res => {
-				if (res?.data?.statusCode == 200) {
-					setLoader(false)
-					handleLogin(res?.data);
-					notify(res?.data?.message)
-					dispatch({ type: Actions.SET_USER, user: res?.data?.user })
+			mutate(
+				{ ...data },
+				{
+					onSuccess: (res) => {
+						if (res?.data?.statusCode == 200) {
+							handleLogin(res?.data);
+							notify(res?.data?.message)
+							dispatch({ type: Actions.SET_USER, user: res?.data?.user })
+						}
+						else {
+							notify(res?.data?.message)
+						}
+					},
+					onError: (error) => {
+						const { data } = error.response.data;
+						if (data) {
+							notify(data[0].messages[0].message);
+						}
+						console.log(err);
+					}
 				}
-				else {
-					notify(res?.data?.message)
-				}
-			})
-				.catch((err) => {
-					setLoader(false)
-					notify(err?.response?.data?.message)
-				});
+			);
 		} catch (error) {
-			setLoader(false)
 			const { data } = error.response.data;
 			if (data) {
 				notify(data[0].messages[0].message);
@@ -70,14 +70,14 @@ const LoginForm = () => {
 		}
 	};
 
-	if (loader) {
+	if (isLoading) {
 		return (
 			<Loader />
 		)
 	}
 	return (
 		<div>
-			<form id="contactForm" onSubmit={handleSubmit}>
+			<form id="contactForm" onSubmit={handleSubmit(onSubmit)}>
 				<div className="row">
 					<div className="col-lg-12 ">
 						<div className="form-group">
@@ -87,8 +87,12 @@ const LoginForm = () => {
 								className="form-control"
 								name="email"
 								type="email"
-								value={localuser.email}
-								onChange={handleChange}
+								{...register("email")}
+							/>
+							<ErrorMessage
+								errors={errors}
+								name="email"
+								render={({ message }) => <p style={{ color: "#f14D5D", padding: 10 }}>{message}</p>}
 							/>
 						</div>
 					</div>
@@ -100,8 +104,12 @@ const LoginForm = () => {
 								className="form-control"
 								name="password"
 								type="password"
-								value={localuser.password}
-								onChange={handleChange}
+								{...register("password")}
+							/>
+							<ErrorMessage
+								errors={errors}
+								name="password"
+								render={({ message }) => <p style={{ color: "#f14D5D", padding: 10 }}>{message}</p>}
 							/>
 						</div>
 					</div>

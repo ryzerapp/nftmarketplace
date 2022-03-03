@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import http from "../utils/http";
+import http from "../../utils/http";
 
 const fetchUserdata = async ({ queryKey }) => {
   const { data } = await http.get('/auth/me');

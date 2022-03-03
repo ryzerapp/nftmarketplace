@@ -1,34 +1,33 @@
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import InvolvedArea from '../components/Common/InvolvedArea';
-import http from '../utils/http'
+import Loader from '../components/Common/Loader';
+import { useCollectionByUser } from '../hooks/Web2/useCollectionByUser';
 
 const Collection = () => {
-
   const router = useRouter()
-  const [nftBalance, setnftBalance] = useState()
-  const fetchCollection = async () => {
-    const { data, status } = await http.get('/collection');
-    if (status == 200) {
-      setnftBalance(data)
-    }
+  const { data, isFetched, isLoading } = useCollectionByUser();
+
+  if (isLoading) {
+    return (
+      <Loader />
+    )
   }
-  React.useEffect(() => {
-    fetchCollection();
-  }, [])
 
   const CollectionArea = () => {
     return (
       <div className='container'>
         <div className='row justify-content-center'>
-            {nftBalance?.length > 0 ?
-              nftBalance?.map((res) =>
+          {data?.collections?.length > 0 ?
+            data?.collections?.map((res) =>
               (
                 <div className='col-lg-4 col-md-6' key={res?.id}>
                   <div className='featured-card box-shadow'>
                     <div className='featured-card-img'>
                       <a href='/item-details'>
-                        <img src={res?.collection_cover_image} alt='Images' />
+                      <img src={res?.collection_cover_image}
+                        alt='Images' />
                       </a>
                       <p>
                         <i className='ri-heart-line'></i> 122
@@ -43,11 +42,10 @@ const Collection = () => {
                     </div>
                     <div className='content'>
                       <h3>
-                        <a href='/item-details'>{res?.name}</a>
+                      <span>{res?.collection_name}</span>
                       </h3>
                       <div className='content-in'>
-                        <div className='featured-card-left'>
-                          <h4 className="py-1">Collection Name: {res?.collection_name}</h4>
+                      <div className='featured-card-left'>
                           <h4 className="py-1" >Category: {res?.category}</h4>
                           <h4 className="py-1" >Created Date: {new Date(res?.created_at).toDateString()}</h4>
                           <h4 className="py-1" >Description: {res?.description}</h4>
@@ -58,8 +56,11 @@ const Collection = () => {
                         </a>
                       </div>
                       <a href='author-profile.html' className='featured-user-option'>
-                        <img src={res?.collection_logo_image} alt='Images' />
-                        <span>Created by @{res?.username}</span>
+                      <img
+                        src={res?.collection_logo_image}
+
+                        alt='Images' />
+                      <span>Created by @{res?.created_by}</span>
                       </a>
                     </div>
                   </div>
@@ -81,7 +82,7 @@ const Collection = () => {
   return (
     <>
       <div className='conatainer'>
-        <div className='row'>
+        <div className='row pt-70'>
           <CollectionArea></CollectionArea>
         </div>
       </div>

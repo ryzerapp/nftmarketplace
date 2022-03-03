@@ -1,22 +1,19 @@
-import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useMoralis } from 'react-moralis';
+import { useQuery } from 'react-query';
 import { useIPFS } from '../../hooks/useIPFS';
 import { useWeb3 } from '../../providers/Web3Context';
 import Loader from '../Common/Loader';
 
 const CollectionCard = () => {
-  const { Moralis, isWeb3Enabled, isAuthenticated } = useMoralis();
-  const { state: { walletAddress, networkId } } = useWeb3();
 
   const [days, setDays] = useState('');
-  const [loader, setLoader] = useState(false);
   const [hours, setHours] = useState('');
   const [minutes, setMinutes] = useState('');
   const [seconds, setSeconds] = useState('');
-  const [nftBalance, setNftBalance] = useState([]);
-  const router = useRouter()
 
+  const { Moralis, isWeb3Enabled, isAuthenticated } = useMoralis();
+  const { state: { walletAddress, networkId } } = useWeb3();
   const { resolveLink } = useIPFS();
 
   const nftBalanceJson = async (data) => {
@@ -37,8 +34,7 @@ const CollectionCard = () => {
           }
         }
       }
-      console.log(NFTs)
-      setNftBalance(NFTs);
+      return NFTs;
     }
   };
   const comingSoonTime = () => {
@@ -71,19 +67,23 @@ const CollectionCard = () => {
     setSeconds(countseconds);
   };
   const setData = async () => {
-    setLoader(true)
     const options = { chain: networkId, address: walletAddress };
     const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
-    await nftBalanceJson(polygonNFTs)
-    setLoader(false)
+    const data = await nftBalanceJson(polygonNFTs)
+    return data;
   };
+
+  const { data: nftBalance, isLoading, refetch } = useQuery(['USERNfts'], setData, {
+    keepPreviousData: true,
+    enabled: false
+  });
   useEffect(() => {
     if (isWeb3Enabled && isAuthenticated)
-      setData()
+      refetch()
     comingSoonTime()
   }, [isWeb3Enabled, networkId, walletAddress]);
 
-  if (loader) {
+  if (isLoading) {
     return (
       <Loader />
     )

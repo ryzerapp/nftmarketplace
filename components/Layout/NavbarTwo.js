@@ -131,7 +131,7 @@ const NavbarTwo = () => {
 
 												) : (
 													<li>
-														<button onClick={() => handleLogoutHandler()}>Logout</button>
+															<a onClick={() => handleLogoutHandler()}>Logout</a>
 													</li>
 												)}
 
