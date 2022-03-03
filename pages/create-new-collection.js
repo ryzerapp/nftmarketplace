@@ -3,13 +3,14 @@ const category = ['Art', 'Virtual Worlds', 'Trending Cards', 'Collectibles', 'Mu
 import { useForm } from "react-hook-form";
 import http from '../utils/http'
 import toast, { Toaster } from 'react-hot-toast';
+import { useRouter } from 'next/router';
 const notify = (message) => toast(message);
 
 export default function CreateNft() {
 
     const [selectedCategory, setselectedCategory] = useState('Art');
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+    const router = useRouter()
     const onSubmit = async (data) => {
         let dataTemp = { ...data };
         delete dataTemp?.collection_cover
@@ -63,6 +64,7 @@ export default function CreateNft() {
                         );
                         console.log(res)
                         if (res?.status == 200) {
+                            router.push('/collection')
                             notify(res?.data?.message)
                         }
                     } catch (ex) {

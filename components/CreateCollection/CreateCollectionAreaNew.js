@@ -9,9 +9,9 @@ import Loader from '../Common/Loader'
 import { useWeb3 } from '../../providers/Web3Context';
 const CreateCollectionAreaNew = () => {
 
-  const { state: { nftTokenAddress } } =
+  const { state: { nftTokenAddress, user } } =
     useWeb3();
-
+  console.log(user)
   const { state: { nftTokenABI } } = useWeb3()
   const { Moralis, isAuthenticated } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();
@@ -27,8 +27,9 @@ const CreateCollectionAreaNew = () => {
     setLoader(true)
     await http.post('/nfts/generate_nft', {
       "numberOfNft": 1,
-      "author": "Mehul",
-      "description": "This is"
+      "author": user?.username,
+      "description": "This nft created Using Our Game.",
+      "collection_id": "cryptonium"
     }).then((res) => {
       setImage(res?.data?.image_url)
       setNftData(res?.data)
@@ -55,6 +56,7 @@ const CreateCollectionAreaNew = () => {
       ...data,
       image: imageUrl,
     };
+    console.log('nftDataJson', nftDataJson)
     if (!isAuthenticated) {
       notify("Please Connect Web3.0 Wallet")
       return;
@@ -64,6 +66,7 @@ const CreateCollectionAreaNew = () => {
       type: 'json'
     });
     const moralisFileJson = await file.saveIPFS();
+    console.log('moralisFileJson', moralisFileJson)
     await mintNFT(moralisFileJson._ipfs);
   }
 
@@ -115,7 +118,7 @@ const CreateCollectionAreaNew = () => {
               </button>
             </div>
             {loader ? <Loader /> : null}
-            <div className='col-lg-12 col-md-6 d-flex flex-row'>
+            <div className='col-lg-12 col-md-6 d-flex flex-row justify-content-center'>
               <div className='row'>
                 <div className='col-lg-6 col-md-12'>
                   {
@@ -128,24 +131,24 @@ const CreateCollectionAreaNew = () => {
                       />) : null
                   }
                 </div>
-                <div className='col-lg-6 col-md-12 mt-4'>
+                <div className='col-lg-6 col-md-12 p-4'>
                   {
                     nftData ?
                       (
                         <>
-                          <h2>{nftData?.name}</h2>
+                          <h3>{nftData?.name}</h3>
                           <hr></hr>
-                          <h2>{nftData?.author}</h2>
+                          <h3>{nftData?.author}</h3>
                           <hr></hr>
-                          <h2>{nftData?.description}</h2>
+                          <h3>{nftData?.description}</h3>
                           <hr></hr>
-                          <h2>{nftData?.nft}</h2>
+                          <h3>{nftData?.unique_string}</h3>
                           <hr></hr>
-                          <h2>{nftData?.edition}</h2>
+                          <h3>{nftData?.edition}</h3>
                           <hr></hr>
-                          <h2>{new Date(nftData?.date).toDateString()}</h2>
+                          <h3>{new Date(nftData?.date).toDateString()}</h3>
                           <hr></hr>
-                          <h2>{nftData?.compiler}</h2>
+                          <h3>{nftData?.compiler}</h3>
                         </>
                       ) : null
                   }

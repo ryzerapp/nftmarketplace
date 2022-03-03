@@ -1,9 +1,11 @@
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import InvolvedArea from '../components/Common/InvolvedArea';
 import http from '../utils/http'
 
 const Collection = () => {
 
+  const router = useRouter()
   const [nftBalance, setnftBalance] = useState()
   const fetchCollection = async () => {
     const { data, status } = await http.get('/collection');
@@ -15,12 +17,10 @@ const Collection = () => {
     fetchCollection();
   }, [])
 
-  return (
-    <>
-      <div className='collection-widget-area pt-100 pb-70'>
-        <div className='container'>
-          <div className='row justify-content-center'>
-
+  const CollectionArea = () => {
+    return (
+      <div className='container'>
+        <div className='row justify-content-center'>
             {nftBalance?.length > 0 ?
               nftBalance?.map((res) =>
               (
@@ -33,7 +33,11 @@ const Collection = () => {
                       <p>
                         <i className='ri-heart-line'></i> 122
                       </p>
-                      <button type='button' className='default-btn border-radius-5'>
+                      <button type='button' className='default-btn border-radius-5' onClick={() =>
+                        router.push({
+                          pathname: '/collection-nft-details',
+                          query: { collection: res?.id, collection_name: res?.collection_name },
+                        })}>
                         Open Collection
                       </button>
                     </div>
@@ -55,7 +59,7 @@ const Collection = () => {
                       </div>
                       <a href='author-profile.html' className='featured-user-option'>
                         <img src={res?.collection_logo_image} alt='Images' />
-                        <span>Created by @Adison</span>
+                        <span>Created by @{res?.username}</span>
                       </a>
                     </div>
                   </div>
@@ -70,7 +74,15 @@ const Collection = () => {
                   </div>
                 </div>
               </>}
-          </div>
+        </div>
+      </div>
+    )
+  }
+  return (
+    <>
+      <div className='conatainer'>
+        <div className='row'>
+          <CollectionArea></CollectionArea>
         </div>
       </div>
       <InvolvedArea />

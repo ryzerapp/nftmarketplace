@@ -179,7 +179,7 @@ const MenusList = ({ user }) => {
 
 								<li className="nav-item">
 									<Link
-										href={!web3Authentication ? "/add-wallet" : "/create-collection"}
+										href={!web3Authentication ? "/add-wallet" : "/create-new-nft"}
 										activeClassName="active"
 									>
 										<a className="nav-link">Create New NFT</a>

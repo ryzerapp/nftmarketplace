@@ -19,10 +19,10 @@ const INITIAL_USER = {
 const LoginForm = () => {
 
 	const router = useRouter();
-	const { token, permissions } = getAuthCredentials();
-	if (isAuthenticated({ token, permissions })) {
-		router.replace(ROUTES.DASHBOARD);
-	}
+	// const { token, permissions } = getAuthCredentials();
+	// if (isAuthenticated({ token, permissions })) {
+	// 	router.replace(ROUTES.DASHBOARD);
+	// }
 
 	const { state: { user }, dispatch } = useWeb3();
 
