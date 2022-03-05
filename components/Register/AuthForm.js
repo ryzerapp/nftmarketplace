@@ -12,7 +12,7 @@ import * as yup from "yup";
 import { ErrorMessage } from "@hookform/error-message";
 import { useForm } from "react-hook-form";
 import { useRegisterMutation } from "../../hooks/Web2/mutations/useRegisterMutation";
-
+import { Actions } from '../../providers/Web3Context/reducer'
 const schema = yup
 	.object({
 		email: yup
@@ -27,10 +27,10 @@ const schema = yup
 const AuthForm = () => {
 
 	const router = useRouter();
-	const { token, permissions } = getAuthCredentials();
-	if (isAuthenticated({ token, permissions })) {
-		router.replace(ROUTES.DASHBOARD);
-	}
+	// const { token, permissions } = getAuthCredentials();
+	// if (isAuthenticated({ token, permissions })) {
+	// 	router.replace(ROUTES.DASHBOARD);
+	// }
 
 	const { dispatch } = useWeb3();
 	const { mutate, isLoading } = useRegisterMutation()
@@ -51,7 +51,7 @@ const AuthForm = () => {
 				{ ...data },
 				{
 					onSuccess: (res) => {
-						if (res?.data?.statusCode == 201) {
+						if (res?.data?.statusCode == 200) {
 							handleLogin(res?.data);
 							notify(res?.data?.message)
 							router.replace('/')
@@ -111,7 +111,6 @@ const AuthForm = () => {
 								type="email"
 								className="form-control"
 								name="email"
-								type="email"
 								{...register("email")}
 							/>
 							<ErrorMessage

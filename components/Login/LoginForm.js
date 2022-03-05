@@ -1,6 +1,6 @@
 import React from "react";
-import { handleLogin, handleLogoutLogin } from "../../utils/auth";
-
+import { handleLogin } from "../../utils/auth";
+import { useRouter } from "next/router";
 import toast, { Toaster } from 'react-hot-toast';
 const notify = (message) => toast(message);
 import { useWeb3 } from "../../providers/Web3Context";
@@ -25,10 +25,8 @@ const schema = yup
 const LoginForm = () => {
 
 	const { mutate, isLoading } = useLoginMutation()
-	const { state: { user }, dispatch } = useWeb3();
-
-	if (user == undefined || Object.keys(user).length == 0)
-		handleLogoutLogin();
+	const { dispatch } = useWeb3();
+	const router = useRouter();
 
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		defaultValues: {
@@ -47,6 +45,7 @@ const LoginForm = () => {
 						if (res?.data?.statusCode == 200) {
 							handleLogin(res?.data);
 							notify(res?.data?.message)
+							router.replace('/')
 							dispatch({ type: Actions.SET_USER, user: res?.data?.user })
 						}
 						else {
@@ -54,18 +53,19 @@ const LoginForm = () => {
 						}
 					},
 					onError: (error) => {
-						const { data } = error.response.data;
+
+						const { data } = error.response;
+
 						if (data) {
-							notify(data[0].messages[0].message);
+							notify(data?.message);
 						}
-						console.log(err);
 					}
 				}
 			);
 		} catch (error) {
-			const { data } = error.response.data;
+			const { data } = error.response;
 			if (data) {
-				notify(data[0].messages[0].message);
+				notify(data?.message);
 			}
 		}
 	};
@@ -83,7 +83,6 @@ const LoginForm = () => {
 						<div className="form-group">
 							<label>Email</label>
 							<input
-								type="text"
 								className="form-control"
 								name="email"
 								type="email"
