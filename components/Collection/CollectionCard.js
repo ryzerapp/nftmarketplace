@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useMoralis } from 'react-moralis';
 import { useQuery } from 'react-query';
-import { useIPFS } from '../../hooks/useIPFS';
+import { useIPFS } from '../../hooks/Web3/useIPFS';
 import { useWeb3 } from '../../providers/Web3Context';
 import Loader from '../Common/Loader';
 

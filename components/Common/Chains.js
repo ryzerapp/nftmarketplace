@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useChain from "../../hooks/useChain";
+import useChain from "../../hooks/Web3/useChain";
 import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./Logos";
 

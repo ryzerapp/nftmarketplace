@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
-import http from "../utils/http";
-import { API_ENDPOINTS } from "../utils/endpoints";
+import http from "../../utils/http";
+import { API_ENDPOINTS } from "../../utils/endpoints";
 
 const fetchUsers = async ({ queryKey }) => {
   const url = `${API_ENDPOINTS.USERS}/${queryKey[1].id}`;

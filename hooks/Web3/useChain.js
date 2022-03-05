@@ -1,4 +1,4 @@
-import { networkConfigs } from "../helpers/networks";
+import { networkConfigs } from "../../helpers/networks";
 import { useMoralis } from "react-moralis";
 
 const useChain = () => {
