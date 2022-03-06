@@ -122,6 +122,7 @@ const AuthorProfileArea = () => {
                                 openDialogTitle={"Mint Now"}
                                 saved_nfts={data?.user?.saved_nfts ? data?.user?.saved_nfts : []}
                                 user_id={data?.user?.id}
+                                editOrDelete={true}
                               />
                             )) : <div className='container mt-100'>
                               <div className='row'>
@@ -148,6 +149,8 @@ const AuthorProfileArea = () => {
                                 key={res?.id}
                                 savedCollection={data?.user?.saved_collection}
                                 user_id={data?.user?.id}
+                                editOrDelete={true}
+
                               />
                             )) : <>
                               <div className='container mt-100'>
@@ -174,6 +177,8 @@ const AuthorProfileArea = () => {
                                 key={res?.id}
                                 savedCollection={data?.user?.saved_collection ? data?.user?.saved_collection : []}
                                 user_id={data?.user?.id}
+                                editOrDelete={false}
+
                               />
                             )) : <>
                               <div className='container mt-100'>
@@ -199,6 +204,7 @@ const AuthorProfileArea = () => {
                                 openDialogTitle={"Open NFT"}
                                 saved_nfts={data?.user?.saved_nfts ? data?.user?.saved_nfts : []}
                                 user_id={data?.user?.id}
+                                editOrDelete={false}
                               />
                             )) : <div className='container mt-100'>
                               <div className='row'>

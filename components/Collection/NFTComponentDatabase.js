@@ -3,7 +3,7 @@ import { useQueryClient } from 'react-query';
 import { useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import toast from 'react-hot-toast';
 
-export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts = [], user_id }) {
+export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts = [], user_id, editOrDelete }) {
     const { mutate: updateSavednft } = useUpdateUserData()
     const queryClient = useQueryClient();
 
@@ -88,8 +88,11 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts 
                                 </i>
                                 <i style={{ color: '#0D6EfD', cursor: 'pointer' }}
                                     className='ri-share-box-line px-1'></i>
-                                <i style={{ color: '#f14d5d', cursor: 'pointer' }} className='ri-delete-bin-fill px-1'></i>
-                                <i style={{ color: '#0D6EfD', cursor: 'pointer' }} className='ri-settings-5-line px-1'></i>
+                                {editOrDelete ? (
+                                    <><i style={{ color: '#f14d5d', cursor: 'pointer' }} className='ri-delete-bin-fill px-1'></i>
+                                        <i style={{ color: '#0D6EfD', cursor: 'pointer' }} className='ri-settings-5-line px-1'></i></>
+                                ) : null}
+
 
                             </div>
                         </div>
