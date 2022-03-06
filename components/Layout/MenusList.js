@@ -185,6 +185,17 @@ const MenusList = ({ user }) => {
 										<a className="nav-link">Create New NFT</a>
 									</Link>
 								</li>
+								<li className="nav-item">
+									<Link
+										href={!isAuthenticated({ token, permissions }) ? "/login" : "/author-profile"}
+										activeClassName="active"
+									>
+										<a className="nav-link">
+											Profile
+										</a>
+									</Link>
+								</li>
+
 							</ul>
 						</li>
 

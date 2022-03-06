@@ -1,8 +1,13 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import { useQueryClient } from 'react-query';
+import NFTComponentDatabase from '../components/Collection/NFTComponentDatabase';
 import Loader from '../components/Common/Loader';
 import Layout from '../components/Layout/Layout';
+import { useUpdateUserData } from '../hooks/Web2/mutations/useUpdateUserData';
+import { useMeQuery, useSavednftsQuery } from '../hooks/Web2/useMeQuery';
 import { useNftOfCollection } from '../hooks/Web2/useNftOfCollection';
+import toast from 'react-hot-toast';
 
 const Collection = () => {
 
@@ -10,6 +15,36 @@ const Collection = () => {
   const { data, isLoading } = useNftOfCollection({
     collection_name: router.query?.collection
   })
+  const { mutate: updateSavednft } = useUpdateUserData()
+  const queryClient = useQueryClient();
+  const { data: users, isFetched } = useMeQuery()
+
+  const onClickRemovedCollection = async (ids) => {
+    await updateSavednft({
+      saved_nfts: users?.user?.saved_nfts?.filter((id) => parseFloat(id) != ids),
+    }, {
+      onSuccess: (res) => {
+        queryClient.invalidateQueries('useSavednftsQuery')
+        toast.success("Successfully Removed from Saved Nft's")
+      }
+    })
+  }
+  const onClickSavedCollection = async (id) => {
+    let lastValue = []
+    if (users?.user?.saved_nfts)
+      lastValue = [...users?.user?.saved_nfts]
+
+    await updateSavednft({
+      saved_nfts: [id, lastValue],
+      user_id: users?.user?.id
+    }, {
+      onSuccess: (res) => {
+        queryClient.invalidateQueries('useSavednftsQuery')
+        toast.success("Successfully Added to Saved Nft's")
+      }
+    })
+  }
+
   if (isLoading) {
     return (
       <Loader />
@@ -22,7 +57,7 @@ const Collection = () => {
           <div className='container'>
             <div className='row'>
               <>
-                <div className='row justify-content-center'>
+                <div className='row justify-content-left'>
                   <div className=''>
                     <h2>Created Nft Of Collection {router.query?.collection_name}</h2>
                   </div>
@@ -32,41 +67,14 @@ const Collection = () => {
                   {data?.nfts?.length > 0 ?
                     data?.nfts?.map((res) =>
                     (
-                      <div className='col-lg-4 col-md-6' key={res?.id}>
-                        <div className='featured-card box-shadow'>
-                          <div className='featured-card-img'>
-                            <a href='/item-details'>
-                              <img src={res?.image_url} alt='Images' />
-                            </a>
-                            <p>
-                              <i className='ri-heart-line'></i> 122
-                            </p>
-                            <button type='button' className='default-btn border-radius-5'>
-                              Place Bid
-                            </button>
-                          </div>
-                          <div className='content'>
-                            <h3>
-                              <span>{res?.name}</span>
-                            </h3>
-                            <div className='content-in'>
-                              <div className='featured-card-left'>
-                                <h4>Token Id: {res?.id}</h4>
-                                <h4>Created Date: {new Date(res?.created_at).toDateString()}</h4>
-                                <h4>Amount: {res?.amount}</h4>
-                              </div>
-
-                              <a href='/item-details' className='featured-content-btn'>
-                                <i className='ri-arrow-right-line'></i>
-                              </a>
-                            </div>
-                            <a href='author-profile.html' className='featured-user-option'>
-                              <img src='../images/featured/featured-user1.jpg' alt='Images' />
-                              <span>Created by @{res?.created_by}</span>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
+                      <NFTComponentDatabase
+                        nft={res}
+                        key={res?.id}
+                        openDialogTitle={"Mint Now"}
+                        savedNfts={users?.user?.saved_nfts}
+                        onClickRemovedCollection={() => onClickRemovedCollection(res?.id)}
+                        onClickSavedCollection={() => onClickSavedCollection(res?.id)}
+                      />
                     )
                     ) : <>
                       <div className='container mt-100'>

@@ -7,14 +7,14 @@ const PageBanner = ({ bannerHeading, parentTitle, pageTitle,bg }) => {
         <div className='container'>
           <div className='inner-title'>
             <h3>{bannerHeading}</h3>
-            <ul>
+            {/* <ul>
               <li>
                 <a href='index.html'>Home</a>
               </li>
               <li>{parentTitle}</li>
               { pageTitle && <li>{pageTitle}</li> }
-              
-            </ul>
+
+            </ul> */}
 
             <div className='inner-shape'>
               <img src='../images/inner-banner/inner-shape1.png' alt='Images' />

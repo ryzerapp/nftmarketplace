@@ -12,4 +12,4 @@ const useCollectionByUser = (options = {}) => {
   });
 };
 
-export { useCollectionByUser, fetchCollectionData };
+export { useCollectionByUser };

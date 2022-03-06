@@ -1,5 +1,5 @@
 import React from 'react';
-import CollectionCard from './CollectionCard';
+import NFT from './NFT';
 
 const CollectionArea = () => {
   return (
@@ -7,7 +7,7 @@ const CollectionArea = () => {
       <div className='collection-widget-area pt-100 pb-70'>
         <div className='container'>
           <div className='row'>
-            <CollectionCard />
+            <NFT />
           </div>
         </div>
       </div>
