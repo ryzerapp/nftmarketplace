@@ -6,6 +6,8 @@ import toast from 'react-hot-toast';
 export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts = [], user_id }) {
     const { mutate: updateSavednft } = useUpdateUserData()
     const queryClient = useQueryClient();
+
+
     const onBookMarkCollection = async (ids) => {
         if (saved_nfts?.indexOf(`${ids}`) > -1) {
             await updateSavednft({
@@ -19,6 +21,7 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts 
             })
         }
         else {
+
             let lastValue = []
             if (saved_nfts)
                 lastValue = [...saved_nfts]

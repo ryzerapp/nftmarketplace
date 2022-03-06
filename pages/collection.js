@@ -24,7 +24,7 @@ const Collection = () => {
               <CollectionComponent
                 collection={res}
                 key={res?.id}
-                savedCollection={users?.user?.saved_collection}
+                savedCollection={users?.user?.saved_collection ? users?.user?.saved_collection : []}
                 user_id={users?.user?.id}
               />
               )
