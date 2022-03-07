@@ -1,29 +1,23 @@
 import React from "react";
 import Link from "next/link";
 import formatDate from "../../utils/formatDate";
-import AuctionEnds from "./AuctionEnds";
 
 const ItemDetailsDescription = ({
 	data,
 	collectionName = "Cryptonium",
 	itemOwner,
 	size,
-	created_at,
 	categories,
-	auctionEnds,
 }) => {
-	console.log(data)
+	console.log('data', data)
 	return (
 		<>
 			<div className="container">
 				<div className="row">
-					<div className="col-lg-6">
-						<img src={data?.image} alt='Images' />
-					</div>
-					<div className="col-lg-6 pt-10">
+					<div className="col-lg-12 pt-10">
 						<div className="section-title">
 							<h3>Description</h3>
-							<h3 className="pt-10">{data?.description} description</h3>
+							<h3 className="pt-10">{data?.description}</h3>
 						</div>
 						<hr></hr>
 						<div className="row">
@@ -39,7 +33,7 @@ const ItemDetailsDescription = ({
 											<i className="ri-check-line"></i>
 										</div>
 
-										<span>{data?.author}</span>
+										<span>{data?.created_by}</span>
 									</div>
 								</div>
 							</div>
@@ -80,7 +74,15 @@ const ItemDetailsDescription = ({
 								</li>
 								<li>
 									Category
-									<b>: {categories ? categories[0]?.name : "Empty"}</b>
+									<b>: {categories ? categories[0]?.name : "New"}</b>
+								</li>
+								<li>
+									Total Likes:
+									<b>: {data?.total_like}</b>
+								</li>
+								<li>
+									Total Bookmark:
+									<b>: {data?.total_bookmark}</b>
 								</li>
 							</ul>
 						</div>

@@ -8,7 +8,7 @@ import { useMeQuery } from '../hooks/Web2/useMeQuery';
 const Collection = () => {
   const { data, isFetched, isLoading } = useCollectionByUser();
   const { data: users } = useMeQuery()
-
+  console.log(users?.user?.saved_collection)
   if (isLoading) {
     return (
       <Loader />
@@ -25,6 +25,7 @@ const Collection = () => {
                 collection={res}
                 key={res?.id}
                 savedCollection={users?.user?.saved_collection ? users?.user?.saved_collection : []}
+                liked_collection={users?.user?.liked_collection ? users?.user?.liked_collection : []}
                 user_id={users?.user?.id}
               />
               )

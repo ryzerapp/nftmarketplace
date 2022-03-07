@@ -4,26 +4,17 @@ import { useRouter } from "next/router";
 
 const NftCardWithoutTime = ({ data }) => {
 	const router = useRouter();
+	console.log(data)
 	return (
 		<div className="trending-item">
 			<div className="trending-img">
-				<Link href="/nft/[slug]" as={`/nft/${data?.slug}`}>
+				<Link href="/nft/[slug]" as={`/nft/${data?.id}`}>
 					<a>
-						<img src={data?.auctionImg?.url} alt="Images" />
+						<img src={data?.image_url} alt="Images" />
 					</a>
 				</Link>
 
-				<div className="trending-user">
-					<Link href="/author-profile">
-						<a className="trending-user-option">
-							<img
-								src="../images/trending/trending-user1.jpg"
-								alt="Images"
-							/>
-							<span>Created by @HiBootstrap</span>
-						</a>
-					</Link>
-				</div>
+
 				<button
 					type="button"
 					className="default-btn border-radius-5"
@@ -37,6 +28,17 @@ const NftCardWithoutTime = ({ data }) => {
 					</span>
 					<h3>Bid 80 ETH</h3>
 				</div>
+				<div className="trending-user">
+					<Link href="/author-profile">
+						<a className="trending-user-option">
+							<img
+								src="../images/trending/trending-user1.jpg"
+								alt="Images"
+							/>
+							<span>Created by @{data?.created_by}</span>
+						</a>
+					</Link>
+				</div>
 			</div>
 
 			<div className="content">
@@ -46,7 +48,8 @@ const NftCardWithoutTime = ({ data }) => {
 					</Link>
 				</h3>
 				<span>
-					<i className="ri-heart-line"></i> 340
+					<i className="ri-heart-line"></i> {data?.total_like ? data?.total_like : 0}
+					<i className="ri-bookmark-line"></i> {data?.total_bookmark ? data?.total_bookmark : 0}
 				</span>
 			</div>
 		</div>

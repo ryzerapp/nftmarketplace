@@ -1,21 +1,32 @@
 import React from 'react'
 import { useRouter } from 'next/router';
 import { useQueryClient } from 'react-query';
-import { useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
+import { useUpdateCollectionData, useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import toast from 'react-hot-toast';
 
-export default function CollectionComponent({ collection, profile, savedCollection = [], user_id, editOrDelete }) {
+export default function CollectionComponent({ collection, profile, savedCollection = [], liked_collection = [], user_id, editOrDelete }) {
     const router = useRouter()
     const queryClient = useQueryClient();
     const { mutate: updateUser } = useUpdateUserData()
-    const onBookMarkCollection = async (ids) => {
+    const { mutate: updateCollection } = useUpdateCollectionData()
+    const onSavedCollection = async (ids) => {
         if (savedCollection?.indexOf(`${ids}`) > -1) {
             await updateUser({
                 saved_collection: savedCollection?.filter((id) => parseFloat(id) != ids),
                 user_id: user_id
             }, {
-                onSuccess: (res) => {
+                onSuccess: async (res) => {
                     queryClient.invalidateQueries('savedcollection')
+                    if (savedCollection?.indexOf(`${ids}`) > -1) {
+                        await updateCollection({
+                            total_bookmark: -1,//in backend we write update code
+                            collection_id: ids
+                        }, {
+                            onError: (err) => {
+                                console.log(err)
+                            }
+                        })
+                    }
                     toast.success("Successfully Removed from Saved Nft's")
                 }
             })
@@ -29,9 +40,62 @@ export default function CollectionComponent({ collection, profile, savedCollecti
                 saved_collection: [ids, lastValue],
                 user_id: user_id
             }, {
-                onSuccess: (res) => {
+                onSuccess: async (res) => {
                     queryClient.invalidateQueries('savedcollection')
+                    if (savedCollection?.indexOf(`${ids}`) == -1) {
+                        await updateCollection({
+                            total_bookmark: 1,//in backend we write update code
+                            collection_id: ids
+                        }, {
+                            onError: (err) => {
+                                console.log(err)
+                            }
+                        })
+                    }
                     toast.success("Successfully Added to Saved Collecton")
+                }
+            })
+        }
+    }
+    const onLikedNfts = async (ids) => {
+        if (liked_collection?.indexOf(`${ids}`) > -1) {
+            await updateUser({
+                liked_collection: liked_collection?.filter((id) => parseFloat(id) != ids),
+                user_id: user_id
+            }, {
+                onSuccess: async (res) => {
+                    if (liked_collection?.indexOf(`${ids}`) > -1) {
+                        await updateCollection({
+                            total_like: -1,//in backend we write update code
+                            collection_id: ids
+                        }, {
+                            onError: (err) => {
+                                console.log(err)
+                            }
+                        })
+                    }
+                    toast.success("Successfully Removed from Liked Nft's")
+                }
+            })
+        }
+        else {
+
+            await updateUser({
+                liked_collection: liked_collection.length == 0 ? [ids] : [ids, ...liked_collection],
+                user_id: user_id
+            }, {
+                onSuccess: async (res) => {
+                    if (liked_collection?.indexOf(`${ids}`) == -1) {
+                        await updateCollection({
+                            total_like: 1,//in backend we write update code
+                            collection_id: ids
+                        }, {
+                            onError: (err) => {
+                                console.log(err)
+                            }
+                        })
+                    }
+                    toast.success("Successfully Added to Liked Nft's")
                 }
             })
         }
@@ -77,13 +141,15 @@ export default function CollectionComponent({ collection, profile, savedCollecti
                             </a>
                         </div>
                         <div className='d-flex flex-row ri-xl col-md-5 col-sm-12 '>
-                            <i style={{
-                                color: '#f14d5d', cursor: 'pointer', width: "30px",
-                            }}
-                                className='ri-heart-line'></i>
+                            <i
+                                onClick={() => onLikedNfts(collection?.id)}
+                                style={{
+                                    color: '#f14d5d', cursor: 'pointer', width: "30px",
+                                }}
+                                className={(liked_collection.indexOf(`${collection?.id}`)) > -1 ? 'ri-heart-fill' : 'ri-heart-line'}></i>
 
                             <i style={{ cursor: 'pointer' }}
-                                onClick={() => onBookMarkCollection(collection?.id)}
+                                onClick={() => onSavedCollection(collection?.id)}
                                 className={(savedCollection.indexOf(`${collection?.id}`)) > -1 ?
                                     'ri-bookmark-fill px-1' : "ri-bookmark-line px-1"}>
                             </i>

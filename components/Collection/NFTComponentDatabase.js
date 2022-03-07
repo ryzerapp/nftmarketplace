@@ -1,50 +1,108 @@
 import React from 'react'
 import { useQueryClient } from 'react-query';
-import { useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
+import { useUpdateCollectionData, useUpdatenftsData, useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import toast from 'react-hot-toast';
 
-export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts = [], user_id, editOrDelete }) {
-    const { mutate: updateSavednft } = useUpdateUserData()
+export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts = [], user_id, editOrDelete, liked_nfts = [] }) {
+    const { mutate: updateUserData } = useUpdateUserData()
+    const { mutate: updateNfts } = useUpdatenftsData()
     const queryClient = useQueryClient();
-
 
     const onBookMarkCollection = async (ids) => {
         if (saved_nfts?.indexOf(`${ids}`) > -1) {
-            await updateSavednft({
+            await updateUserData({
                 saved_nfts: saved_nfts?.filter((id) => parseFloat(id) != ids),
                 user_id: user_id
             }, {
-                onSuccess: (res) => {
+                onSuccess: async (res) => {
                     queryClient.invalidateQueries('useSavednftsQuery')
+                    if (saved_nfts?.indexOf(`${ids}`) > -1) {
+                        await updateNfts({
+                            total_bookmark: -1,//in backend we write update code
+                            nft_id: ids
+                        }, {
+                            onError: (err) => {
+                                console.log(err)
+                            }
+                        })
+                    }
                     toast.success("Successfully Removed from Saved Nft's")
                 }
             })
         }
         else {
 
-            let lastValue = []
-            if (saved_nfts)
-                lastValue = [...saved_nfts]
-
-            await updateSavednft({
-                saved_nfts: [ids, lastValue],
+            await updateUserData({
+                saved_nfts: saved_nfts.length == 0 ? [ids] : [ids, ...saved_nfts],
                 user_id: user_id
             }, {
-                onSuccess: (res) => {
+                onSuccess: async (res) => {
                     queryClient.invalidateQueries('useSavednftsQuery')
+                    if (saved_nfts?.indexOf(`${ids}`) == -1) {
+                        await updateNfts({
+                            total_bookmark: 1,//in backend we write update code
+                            nft_id: ids
+                        }, {
+                            onError: (err) => {
+                                console.log(err)
+                            }
+                        })
+                    }
                     toast.success("Successfully Added to Saved Nft's")
                 }
             })
         }
     }
+    const onLikedNfts = async (ids) => {
+        if (liked_nfts?.indexOf(`${ids}`) > -1) {
+            await updateUserData({
+                liked_nfts: liked_nfts?.filter((id) => parseFloat(id) != ids),
+                user_id: user_id
+            }, {
+                onSuccess: async (res) => {
+                    queryClient.invalidateQueries('useSavednftsQuery')
+                    if (liked_nfts?.indexOf(`${ids}`) > -1) {
+                        await updateNfts({
+                            total_like: -1,//in backend we write update code
+                            nft_id: ids
+                        }, {
+                            onError: (err) => {
+                                console.log(err)
+                            }
+                        })
+                    }
+                    toast.success("Successfully Removed from Liked Nft's")
+                }
+            })
+        }
+        else {
 
+            await updateUserData({
+                liked_nfts: liked_nfts.length == 0 ? [ids] : [ids, ...liked_nfts],
+                user_id: user_id
+            }, {
+                onSuccess: async (res) => {
+                    if (liked_nfts?.indexOf(`${ids}`) == -1) {
+                        await updateNfts({
+                            total_like: 1,//in backend we write update code
+                            nft_id: ids
+                        }, {
+                            onError: (err) => {
+                                console.log(err)
+                            }
+                        })
+                    }
+                    queryClient.invalidateQueries('useSavednftsQuery')
+                    toast.success("Successfully Added to Liked Nft's")
+                }
+            })
+        }
+    }
     return (
         <div className='col-lg-4 col-md-6'>
             <div className='featured-card box-shadow'>
                 <div className='featured-card-img'>
-                    <a href='/item-details'>
-                        <img src={nft?.image_url} alt='Images' />
-                    </a>
+                    <img src={nft?.image_url} alt='Images' />
                     <p>
                         <i className='ri-heart-line'></i> 122
                     </p>
@@ -76,10 +134,12 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts 
                         </div>
                         <div className='col-lg-12 justify-content-center text-center'>
                             <div className='pt-20 ri-xl'>
-                                <i style={{
+                                <i
+                                    onClick={() => onLikedNfts(nft?.id)}
+                                    style={{
                                     color: '#f14d5d', cursor: 'pointer', width: "30px",
                                 }}
-                                    className='ri-heart-line'></i>
+                                    className={(liked_nfts.indexOf(`${nft?.id}`)) > -1 ? 'ri-heart-fill' : 'ri-heart-line'}></i>
 
                                 <i style={{ cursor: 'pointer' }}
                                     onClick={() => onBookMarkCollection(nft?.id)}

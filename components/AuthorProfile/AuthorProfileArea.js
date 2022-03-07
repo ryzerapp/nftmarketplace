@@ -26,7 +26,6 @@ const AuthorProfileArea = () => {
   const { data, isFetched, isLoading } = useMeQuery()
   const { data: savedNfts } = useSavednftsQuery()
   const { data: savedCollection } = useCollectionSavedByUser();
-
   if (isLoading) {
     return (
       <Loader />
@@ -121,6 +120,7 @@ const AuthorProfileArea = () => {
                                 key={nft?.id}
                                 openDialogTitle={"Mint Now"}
                                 saved_nfts={data?.user?.saved_nfts ? data?.user?.saved_nfts : []}
+                                liked_nfts={data?.user?.liked_nfts ? data?.user?.liked_nfts : []}
                                 user_id={data?.user?.id}
                                 editOrDelete={true}
                               />
@@ -147,7 +147,8 @@ const AuthorProfileArea = () => {
                                 collection={res}
                                 profile={true}
                                 key={res?.id}
-                                savedCollection={data?.user?.saved_collection}
+                                savedCollection={data?.user?.saved_collection ? data?.user?.saved_collection : []}
+                                liked_collection={data?.user?.liked_collection ? data?.user?.liked_collection : []}
                                 user_id={data?.user?.id}
                                 editOrDelete={true}
 
@@ -176,6 +177,7 @@ const AuthorProfileArea = () => {
                                 profile={true}
                                 key={res?.id}
                                 savedCollection={data?.user?.saved_collection ? data?.user?.saved_collection : []}
+                                liked_collection={data?.user?.liked_collection ? data?.user?.liked_collection : []}
                                 user_id={data?.user?.id}
                                 editOrDelete={false}
 
@@ -203,6 +205,7 @@ const AuthorProfileArea = () => {
                                 key={nft?.id}
                                 openDialogTitle={"Open NFT"}
                                 saved_nfts={data?.user?.saved_nfts ? data?.user?.saved_nfts : []}
+                                liked_nfts={data?.user?.liked_nfts ? data?.user?.liked_nfts : []}
                                 user_id={data?.user?.id}
                                 editOrDelete={false}
                               />

@@ -39,7 +39,8 @@ const Collection = () => {
                         nft={res}
                         key={res?.id}
                         openDialogTitle={"Mint Now"}
-                        saved_nfts={users?.user?.saved_nfts}
+                        saved_nfts={users?.user?.saved_nfts ? users?.user?.saved_nfts : []}
+                        liked_nfts={users?.user?.liked_nfts ? users?.user?.liked_nfts : []}
                         user_id={users?.user?.id}
                       />
                     )

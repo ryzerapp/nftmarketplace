@@ -8,8 +8,6 @@ import Testimonial from '../components/Common/Testimonial';
 import AuthorArea from '../components/HomeTwo/AuthorArea'
 import BlogArea from '../components/Common/BlogArea';
 import CollectionsArea from '../components/Common/CollectionsArea';
-import Footer from '../components/Layout/Footer';
-import Copyright from '../components/Common/Copyright';
 import baseUrl from "../utils/baseUrl";
 import Layout from "../components/Layout/Layout";
 
@@ -47,7 +45,7 @@ export async function getServerSideProps(context) {
 	const res = await fetch(`${baseUrl}/nfts`);
 	const data = await res.json();
 
-    const trendinfRes = await fetch(`${baseUrl}/nfts?_limit=5`);
+    const trendinfRes = await fetch(`${baseUrl}/nfts/getTrendingArtwork`);
 	const trendingData = await trendinfRes.json();
 
 	if (!data) {

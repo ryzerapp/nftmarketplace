@@ -10,10 +10,19 @@ const fetchNftDataOfCollection = async ({ queryKey }) => {
     return { nfts: [] }
 };
 
+const fetchNftTreandingArtwork = async ({ }) => {
+  const { data } = await http.get(`/nfts/getTrendingArtwork`);
+  return data
+};
 const useNftOfCollection = (options = {}) => {
   return useQuery([`collection_${options.collection_name}`, options], fetchNftDataOfCollection, {
     keepPreviousData: true,
   });
 };
 
-export { useNftOfCollection, fetchNftDataOfCollection };
+const useNftTreandingArtwork = (options = {}) => {
+  return useQuery([`getTrendingArtwork`, options], fetchNftTreandingArtwork, {
+    keepPreviousData: true,
+  });
+};
+export { useNftOfCollection, useNftTreandingArtwork };
