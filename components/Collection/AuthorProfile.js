@@ -13,7 +13,7 @@ const AuthorProfile = () => {
         </div>
 
         <h3>
-          <a href='author-profile.html'>Olivia Jenar</a>
+          <a href='author-profile'>Olivia Jenar</a>
         </h3>
         <span>@Jenar</span>
         <p>

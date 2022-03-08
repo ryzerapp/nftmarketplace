@@ -29,7 +29,7 @@ const NftCardWithoutTime = ({ data }) => {
 					<h3>Bid 80 ETH</h3>
 				</div>
 				<div className="trending-user">
-					<Link href="/author-profile">
+					{/* <Link href="/author-profile">
 						<a className="trending-user-option">
 							<img
 								src="../images/trending/trending-user1.jpg"
@@ -37,7 +37,13 @@ const NftCardWithoutTime = ({ data }) => {
 							/>
 							<span>Created by @{data?.created_by}</span>
 						</a>
-					</Link>
+					</Link> */}
+					<a href={`author-profile?author_name=${data?.created_by}`} className='trending-user-option'>
+						<img
+							src={data?.profile_photo ? data?.profile_photo : "../images/author/author-user13.png"}
+							alt='Images' />
+						<span>Created by @{data?.created_by}</span>
+					</a>
 				</div>
 			</div>
 

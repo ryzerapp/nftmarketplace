@@ -64,7 +64,7 @@ const AuctionNFT = ({ data }) => {
 					</Link>
 					<div className="auction-card-user">
 						<a
-							href="author-profile.html"
+							href="author-profile"
 							className="auction-card-user-option"
 						>
 							<img

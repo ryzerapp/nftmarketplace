@@ -3,7 +3,7 @@ import { useQueryClient } from 'react-query';
 import { useUpdateCollectionData, useUpdatenftsData, useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import toast from 'react-hot-toast';
 
-export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts = [], user_id, editOrDelete, liked_nfts = [] }) {
+export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts = [], user, editOrDelete, liked_nfts = [], author_name }) {
     const { mutate: updateUserData } = useUpdateUserData()
     const { mutate: updateNfts } = useUpdatenftsData()
     const queryClient = useQueryClient();
@@ -12,10 +12,13 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts 
         if (saved_nfts?.indexOf(`${ids}`) > -1) {
             await updateUserData({
                 saved_nfts: saved_nfts?.filter((id) => parseFloat(id) != ids),
-                user_id: user_id
+                user_id: user?.id
             }, {
                 onSuccess: async (res) => {
                     queryClient.invalidateQueries('useSavednftsQuery')
+                    if (author_name)
+                        queryClient.invalidateQueries(`user_${author_name}`)
+
                     if (saved_nfts?.indexOf(`${ids}`) > -1) {
                         await updateNfts({
                             total_bookmark: -1,//in backend we write update code
@@ -34,9 +37,12 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts 
 
             await updateUserData({
                 saved_nfts: saved_nfts.length == 0 ? [ids] : [ids, ...saved_nfts],
-                user_id: user_id
+                user_id: user?.id
             }, {
                 onSuccess: async (res) => {
+                    if (author_name)
+                        queryClient.invalidateQueries(`user_${author_name}`)
+
                     queryClient.invalidateQueries('useSavednftsQuery')
                     if (saved_nfts?.indexOf(`${ids}`) == -1) {
                         await updateNfts({
@@ -57,10 +63,12 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts 
         if (liked_nfts?.indexOf(`${ids}`) > -1) {
             await updateUserData({
                 liked_nfts: liked_nfts?.filter((id) => parseFloat(id) != ids),
-                user_id: user_id
+                user_id: user?.id
             }, {
                 onSuccess: async (res) => {
-                    queryClient.invalidateQueries('useSavednftsQuery')
+                    if (author_name)
+                        queryClient.invalidateQueries(`user_${author_name}`)
+                    // queryClient.invalidateQueries('useSavednftsQuery')
                     if (liked_nfts?.indexOf(`${ids}`) > -1) {
                         await updateNfts({
                             total_like: -1,//in backend we write update code
@@ -79,7 +87,7 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts 
 
             await updateUserData({
                 liked_nfts: liked_nfts.length == 0 ? [ids] : [ids, ...liked_nfts],
-                user_id: user_id
+                user_id: user?.id
             }, {
                 onSuccess: async (res) => {
                     if (liked_nfts?.indexOf(`${ids}`) == -1) {
@@ -92,7 +100,10 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts 
                             }
                         })
                     }
-                    queryClient.invalidateQueries('useSavednftsQuery')
+                    if (author_name)
+                        queryClient.invalidateQueries(`user_${author_name}`)
+
+                    // queryClient.invalidateQueries('useSavednftsQuery')
                     toast.success("Successfully Added to Liked Nft's")
                 }
             })
@@ -127,8 +138,8 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts 
                     </div>
                     <div className='row text-center'>
                         <div className='col-lg-12'>
-                            <a href='author-profile.html' className='featured-user-option'>
-                                <img src='../images/featured/featured-user1.jpg' alt='Images' />
+                            <a href={`/author-profile?author_name=${nft?.created_by}`} className='featured-user-option'>
+                                <img src={user?.profile_photo ? user?.profile_photo : "../images/author/author-user13.png"} alt='Images' />
                                 <span>Created by @{nft?.created_by}</span>
                             </a>
                         </div>

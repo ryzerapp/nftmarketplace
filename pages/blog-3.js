@@ -22,7 +22,7 @@ const BlogThree = () => {
                       </a>
 
                       <div className='blog-user'>
-                        <a href='author-profile.html' className='blog-user-option'>
+                        <a href='author-profile' className='blog-user-option'>
                           <img
                             src='../images/blog/blog-user1.jpg'
                             alt='Images'
@@ -57,7 +57,7 @@ const BlogThree = () => {
                       </a>
 
                       <div className='blog-user'>
-                        <a href='author-profile.html' className='blog-user-option'>
+                        <a href='author-profile' className='blog-user-option'>
                           <img
                             src='../images/blog/blog-user2.jpg'
                             alt='Images'
@@ -93,7 +93,7 @@ const BlogThree = () => {
                       </a>
 
                       <div className='blog-user'>
-                        <a href='author-profile.html' className='blog-user-option'>
+                        <a href='author-profile' className='blog-user-option'>
                           <img
                             src='../images/blog/blog-user3.jpg'
                             alt='Images'
@@ -129,7 +129,7 @@ const BlogThree = () => {
                       </a>
 
                       <div className='blog-user'>
-                        <a href='author-profile.html' className='blog-user-option'>
+                        <a href='author-profile' className='blog-user-option'>
                           <img
                             src='../images/blog/blog-user4.jpg'
                             alt='Images'
@@ -164,7 +164,7 @@ const BlogThree = () => {
                       </a>
 
                       <div className='blog-user'>
-                        <a href='author-profile.html' className='blog-user-option'>
+                        <a href='author-profile' className='blog-user-option'>
                           <img
                             src='../images/blog/blog-user5.jpg'
                             alt='Images'
@@ -199,7 +199,7 @@ const BlogThree = () => {
                       </a>
 
                       <div className='blog-user'>
-                        <a href='author-profile.html' className='blog-user-option'>
+                        <a href='author-profile' className='blog-user-option'>
                           <img
                             src='../images/blog/blog-user6.jpg'
                             alt='Images'
@@ -234,7 +234,7 @@ const BlogThree = () => {
                       </a>
 
                       <div className='blog-user'>
-                        <a href='author-profile.html' className='blog-user-option'>
+                        <a href='author-profile' className='blog-user-option'>
                           <img
                             src='../images/blog/blog-user7.jpg'
                             alt='Images'
@@ -270,7 +270,7 @@ const BlogThree = () => {
                       </a>
 
                       <div className='blog-user'>
-                        <a href='author-profile.html' className='blog-user-option'>
+                        <a href='author-profile' className='blog-user-option'>
                           <img
                             src='../images/blog/blog-user8.jpg'
                             alt='Images'

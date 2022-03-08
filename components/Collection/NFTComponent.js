@@ -32,7 +32,7 @@ export default function NFTComponent({ nft }) {
                             <i className='ri-arrow-right-line'></i>
                         </a>
                     </div>
-                    <a href='author-profile.html' className='featured-user-option'>
+                    <a href='author-profile' className='featured-user-option'>
                         <img src='../images/featured/featured-user1.jpg' alt='Images' />
                         <span>Created by @Adison</span>
                     </a>

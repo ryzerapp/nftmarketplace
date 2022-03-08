@@ -1,5 +1,5 @@
 import PageBanner from '../components/Common/PageBanner';
-import AuthorProfile from '../components/Profile/AuthorProfile';
+import UserProfile from '../components/Profile/UserProfile';
 import InvolvedArea from '../components/Common/InvolvedArea';
 
 const Profile = () => {
@@ -11,7 +11,7 @@ const Profile = () => {
         pageTitle='Profile'
         bg='inner-bg10'
       />
-      <AuthorProfile />
+      <UserProfile />
       <InvolvedArea />
     </>
   );

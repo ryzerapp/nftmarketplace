@@ -351,7 +351,7 @@ const FeaturedArea = () => {
                               </Link>
                             </div>
                             <a
-                              href='author-profile.html'
+                              href='author-profile'
                               className='featured-user-option'
                             >
                               <img
@@ -404,7 +404,7 @@ const FeaturedArea = () => {
                               </Link>
                             </div>
                             <a
-                              href='author-profile.html'
+                              href='author-profile'
                               className='featured-user-option'
                             >
                               <img
@@ -1417,7 +1417,7 @@ const FeaturedArea = () => {
                               </Link>
                             </div>
                             <a
-                              href='author-profile.html'
+                              href='author-profile'
                               className='featured-user-option'
                             >
                               <img
@@ -1891,7 +1891,7 @@ const FeaturedArea = () => {
                             </Link>
                             <div className='featured-user'>
                               <a
-                                href='author-profile.html'
+                                href='author-profile'
                                 className='featured-user-option'
                               >
                                 <img
@@ -2055,7 +2055,7 @@ const FeaturedArea = () => {
                               </a>
                             </div>
                             <a
-                              href='author-profile.html'
+                              href='author-profile'
                               className='featured-user-option'
                             >
                               <img
@@ -2112,7 +2112,7 @@ const FeaturedArea = () => {
                               </a>
                             </div>
                             <a
-                              href='author-profile.html'
+                              href='author-profile'
                               className='featured-user-option'
                             >
                               <img
@@ -2171,7 +2171,7 @@ const FeaturedArea = () => {
                               </a>
                             </div>
                             <a
-                              href='author-profile.html'
+                              href='author-profile'
                               className='featured-user-option'
                             >
                               <img
@@ -2224,7 +2224,7 @@ const FeaturedArea = () => {
                               </a>
                             </div>
                             <a
-                              href='author-profile.html'
+                              href='author-profile'
                               className='featured-user-option'
                             >
                               <img
@@ -2275,7 +2275,7 @@ const FeaturedArea = () => {
                               </a>
                             </div>
                             <a
-                              href='author-profile.html'
+                              href='author-profile'
                               className='featured-user-option'
                             >
                               <img
@@ -2326,7 +2326,7 @@ const FeaturedArea = () => {
                               </a>
                             </div>
                             <a
-                              href='author-profile.html'
+                              href='author-profile'
                               className='featured-user-option'
                             >
                               <img
@@ -2377,7 +2377,7 @@ const FeaturedArea = () => {
                               </a>
                             </div>
                             <a
-                              href='author-profile.html'
+                              href='author-profile'
                               className='featured-user-option'
                             >
                               <img
@@ -2428,7 +2428,7 @@ const FeaturedArea = () => {
                               </a>
                             </div>
                             <a
-                              href='author-profile.html'
+                              href='author-profile'
                               className='featured-user-option'
                             >
                               <img

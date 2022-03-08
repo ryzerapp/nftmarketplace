@@ -26,7 +26,7 @@ const Collection = () => {
                 key={res?.id}
                 savedCollection={users?.user?.saved_collection ? users?.user?.saved_collection : []}
                 liked_collection={users?.user?.liked_collection ? users?.user?.liked_collection : []}
-                user_id={users?.user?.id}
+                user={users?.user}
               />
               )
               ) : <>

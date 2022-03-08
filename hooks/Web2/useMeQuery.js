@@ -19,6 +19,22 @@ const useMeQuery = (options = {}) => {
   });
 };
 
+const fetchAuthorData = async ({ queryKey }) => {
+  const { data } = await http.get(`/getauthor/${queryKey[1].author_name}`);
+  return { user: data }
+};
+
+const useAuthorQuery = (options = {}) => {
+  if (options?.author_name) {
+    return useQuery([`user_${options.author_name}`, options], fetchAuthorData, {
+      keepPreviousData: true,
+    });
+  }
+  else
+    return { user: [] }
+
+};
+
 const useSavednftsQuery = (options = {}) => {
   return useQuery([`useSavednftsQuery`, options], fetchsavednft, {
     keepPreviousData: true,
@@ -29,4 +45,4 @@ const useCollectionSavedByUser = (options = {}) => {
     keepPreviousData: true,
   });
 };
-export { useMeQuery, useSavednftsQuery, useCollectionSavedByUser };
+export { useMeQuery, useSavednftsQuery, useCollectionSavedByUser, useAuthorQuery };

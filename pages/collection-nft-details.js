@@ -41,7 +41,7 @@ const Collection = () => {
                         openDialogTitle={"Mint Now"}
                         saved_nfts={users?.user?.saved_nfts ? users?.user?.saved_nfts : []}
                         liked_nfts={users?.user?.liked_nfts ? users?.user?.liked_nfts : []}
-                        user_id={users?.user?.id}
+                        user={users?.user}
                       />
                     )
                     ) : <>

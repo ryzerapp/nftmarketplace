@@ -204,7 +204,7 @@ const BannerArea = () => {
                         />
                         <div className='banner-item-user'>
                           <a
-                            href='author-profile.html'
+                            href='author-profile'
                             className='banner-item-user-option'
                           >
                             <img

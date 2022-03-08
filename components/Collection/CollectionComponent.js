@@ -4,7 +4,7 @@ import { useQueryClient } from 'react-query';
 import { useUpdateCollectionData, useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import toast from 'react-hot-toast';
 
-export default function CollectionComponent({ collection, profile, savedCollection = [], liked_collection = [], user_id, editOrDelete }) {
+export default function CollectionComponent({ collection, profile, savedCollection = [], liked_collection = [], user, editOrDelete, author_name }) {
     const router = useRouter()
     const queryClient = useQueryClient();
     const { mutate: updateUser } = useUpdateUserData()
@@ -13,10 +13,13 @@ export default function CollectionComponent({ collection, profile, savedCollecti
         if (savedCollection?.indexOf(`${ids}`) > -1) {
             await updateUser({
                 saved_collection: savedCollection?.filter((id) => parseFloat(id) != ids),
-                user_id: user_id
+                user_id: user?.id
             }, {
                 onSuccess: async (res) => {
                     queryClient.invalidateQueries('savedcollection')
+                    if (author_name)
+                        queryClient.invalidateQueries(`user_${author_name}`)
+
                     if (savedCollection?.indexOf(`${ids}`) > -1) {
                         await updateCollection({
                             total_bookmark: -1,//in backend we write update code
@@ -38,10 +41,13 @@ export default function CollectionComponent({ collection, profile, savedCollecti
 
             await updateUser({
                 saved_collection: [ids, lastValue],
-                user_id: user_id
+                user_id: user?.id
             }, {
                 onSuccess: async (res) => {
                     queryClient.invalidateQueries('savedcollection')
+                    if (author_name)
+                        queryClient.invalidateQueries(`user_${author_name}`)
+
                     if (savedCollection?.indexOf(`${ids}`) == -1) {
                         await updateCollection({
                             total_bookmark: 1,//in backend we write update code
@@ -61,9 +67,12 @@ export default function CollectionComponent({ collection, profile, savedCollecti
         if (liked_collection?.indexOf(`${ids}`) > -1) {
             await updateUser({
                 liked_collection: liked_collection?.filter((id) => parseFloat(id) != ids),
-                user_id: user_id
+                user_id: user?.id
             }, {
                 onSuccess: async (res) => {
+                    if (author_name)
+                        queryClient.invalidateQueries(`user_${author_name}`)
+
                     if (liked_collection?.indexOf(`${ids}`) > -1) {
                         await updateCollection({
                             total_like: -1,//in backend we write update code
@@ -82,9 +91,12 @@ export default function CollectionComponent({ collection, profile, savedCollecti
 
             await updateUser({
                 liked_collection: liked_collection.length == 0 ? [ids] : [ids, ...liked_collection],
-                user_id: user_id
+                user_id: user?.id
             }, {
                 onSuccess: async (res) => {
+                    if (author_name)
+                        queryClient.invalidateQueries(`user_${author_name}`)
+
                     if (liked_collection?.indexOf(`${ids}`) == -1) {
                         await updateCollection({
                             total_like: 1,//in backend we write update code
@@ -132,10 +144,9 @@ export default function CollectionComponent({ collection, profile, savedCollecti
                     </div>
                     <div className='row align-items-center '>
                         <div className='col-md-7 col-sm-12'>
-                            <a href='author-profile.html' className='featured-user-option'>
+                            <a href={`author-profile?author_name=${collection?.created_by}`} className='featured-user-option'>
                                 <img
-                                    src={collection?.collection_logo_image}
-
+                                    src={user?.profile_photo ? user?.profile_photo : "../images/author/author-user13.png"}
                                     alt='Images' />
                                 <span>Created by @{collection?.created_by}</span>
                             </a>

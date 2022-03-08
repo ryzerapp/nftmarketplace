@@ -13,7 +13,7 @@ const AuthorArea = () => {
           <div className='row pt-45 justify-content-center'>
             <div className='col-lg-3 col-6'>
               <div className='author-card box-shadow'>
-                <a href='author-profile.html'>
+                <a href='author-profile'>
                   <img src='../images/author/author-img6.jpg' alt='Images' />
                 </a>
                 <div className='content'>
@@ -23,7 +23,7 @@ const AuthorArea = () => {
                   </div>
 
                   <h3>
-                    <a href='author-profile.html'>Olivia Jenar</a>
+                    <a href='author-profile'>Olivia Jenar</a>
                   </h3>
                   <span>@Jenar</span>
 
@@ -60,7 +60,7 @@ const AuthorArea = () => {
 
             <div className='col-lg-3 col-6'>
               <div className='author-card box-shadow'>
-                <a href='author-profile.html'>
+                <a href='author-profile'>
                   <img src='../images/author/author-img7.jpg' alt='Images' />
                 </a>
                 <div className='content'>
@@ -70,7 +70,7 @@ const AuthorArea = () => {
                   </div>
 
                   <h3>
-                    <a href='author-profile.html'>James Parker</a>
+                    <a href='author-profile'>James Parker</a>
                   </h3>
                   <span>@Parker</span>
 
@@ -107,7 +107,7 @@ const AuthorArea = () => {
 
             <div className='col-lg-3 col-6'>
               <div className='author-card box-shadow'>
-                <a href='author-profile.html'>
+                <a href='author-profile'>
                   <img src='../images/author/author-img8.jpg' alt='Images' />
                 </a>
                 <div className='content'>
@@ -117,7 +117,7 @@ const AuthorArea = () => {
                   </div>
 
                   <h3>
-                    <a href='author-profile.html'>Lucas Adison</a>
+                    <a href='author-profile'>Lucas Adison</a>
                   </h3>
                   <span>@Adison</span>
 
@@ -154,7 +154,7 @@ const AuthorArea = () => {
 
             <div className='col-lg-3 col-6'>
               <div className='author-card box-shadow'>
-                <a href='author-profile.html'>
+                <a href='author-profile'>
                   <img src='../images/author/author-img12.jpg' alt='Images' />
                 </a>
                 <div className='content'>
@@ -164,7 +164,7 @@ const AuthorArea = () => {
                   </div>
 
                   <h3>
-                    <a href='author-profile.html'>Amelia Rosia</a>
+                    <a href='author-profile'>Amelia Rosia</a>
                   </h3>
                   <span>@Rosia</span>
 
@@ -201,7 +201,7 @@ const AuthorArea = () => {
 
             <div className='col-lg-3 col-6'>
               <div className='author-card box-shadow'>
-                <a href='author-profile.html'>
+                <a href='author-profile'>
                   <img src='../images/author/author-img1.jpg' alt='Images' />
                 </a>
                 <div className='content'>
@@ -211,7 +211,7 @@ const AuthorArea = () => {
                   </div>
 
                   <h3>
-                    <a href='author-profile.html'>Barb E. Dahl</a>
+                    <a href='author-profile'>Barb E. Dahl</a>
                   </h3>
                   <span>@Dahl</span>
 
@@ -248,7 +248,7 @@ const AuthorArea = () => {
 
             <div className='col-lg-3 col-6'>
               <div className='author-card box-shadow'>
-                <a href='author-profile.html'>
+                <a href='author-profile'>
                   <img src='../images/author/author-img2.jpg' alt='Images' />
                 </a>
                 <div className='content'>
@@ -258,7 +258,7 @@ const AuthorArea = () => {
                   </div>
 
                   <h3>
-                    <a href='author-profile.html'>Biff Wellington</a>
+                    <a href='author-profile'>Biff Wellington</a>
                   </h3>
                   <span>@Biff</span>
 
@@ -295,7 +295,7 @@ const AuthorArea = () => {
 
             <div className='col-lg-3 col-6'>
               <div className='author-card box-shadow'>
-                <a href='author-profile.html'>
+                <a href='author-profile'>
                   <img src='../images/author/author-img3.jpg' alt='Images' />
                 </a>
                 <div className='content'>
@@ -305,7 +305,7 @@ const AuthorArea = () => {
                   </div>
 
                   <h3>
-                    <a href='author-profile.html'>Adam Zapel</a>
+                    <a href='author-profile'>Adam Zapel</a>
                   </h3>
                   <span>@Adam</span>
 
@@ -342,7 +342,7 @@ const AuthorArea = () => {
 
             <div className='col-lg-3 col-6'>
               <div className='author-card box-shadow'>
-                <a href='author-profile.html'>
+                <a href='author-profile'>
                   <img src='../images/author/author-img4.jpg' alt='Images' />
                 </a>
                 <div className='content'>
@@ -352,7 +352,7 @@ const AuthorArea = () => {
                   </div>
 
                   <h3>
-                    <a href='author-profile.html'>Orson Carte</a>
+                    <a href='author-profile'>Orson Carte</a>
                   </h3>
                   <span>@Orson</span>
 
@@ -389,7 +389,7 @@ const AuthorArea = () => {
 
             <div className='col-lg-3 col-6'>
               <div className='author-card box-shadow'>
-                <a href='author-profile.html'>
+                <a href='author-profile'>
                   <img src='../images/author/author-img5.jpg' alt='Images' />
                 </a>
                 <div className='content'>
@@ -399,7 +399,7 @@ const AuthorArea = () => {
                   </div>
 
                   <h3>
-                    <a href='author-profile.html'>Ray Gunn</a>
+                    <a href='author-profile'>Ray Gunn</a>
                   </h3>
                   <span>@Ray</span>
 
@@ -436,7 +436,7 @@ const AuthorArea = () => {
 
             <div className='col-lg-3 col-6'>
               <div className='author-card box-shadow'>
-                <a href='author-profile.html'>
+                <a href='author-profile'>
                   <img src='../images/author/author-img9.jpg' alt='Images' />
                 </a>
                 <div className='content'>
@@ -446,7 +446,7 @@ const AuthorArea = () => {
                   </div>
 
                   <h3>
-                    <a href='author-profile.html'>Thomas Jon</a>
+                    <a href='author-profile'>Thomas Jon</a>
                   </h3>
                   <span>@Thomas</span>
 
@@ -483,7 +483,7 @@ const AuthorArea = () => {
 
             <div className='col-lg-3 col-6'>
               <div className='author-card box-shadow'>
-                <a href='author-profile.html'>
+                <a href='author-profile'>
                   <img src='../images/author/author-img11.jpg' alt='Images' />
                 </a>
                 <div className='content'>
@@ -496,7 +496,7 @@ const AuthorArea = () => {
                   </div>
 
                   <h3>
-                    <a href='author-profile.html'>Radil Hence</a>
+                    <a href='author-profile'>Radil Hence</a>
                   </h3>
                   <span>@Hence</span>
 
@@ -533,7 +533,7 @@ const AuthorArea = () => {
 
             <div className='col-lg-3 col-6'>
               <div className='author-card box-shadow'>
-                <a href='author-profile.html'>
+                <a href='author-profile'>
                   <img src='../images/author/author-img12.jpg' alt='Images' />
                 </a>
                 <div className='content'>
@@ -546,7 +546,7 @@ const AuthorArea = () => {
                   </div>
 
                   <h3>
-                    <a href='author-profile.html'>Anvi Jordan</a>
+                    <a href='author-profile'>Anvi Jordan</a>
                   </h3>
                   <span>@Jordan</span>
 

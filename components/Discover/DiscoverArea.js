@@ -92,7 +92,7 @@ const DiscoverArea = () => {
                         </a>
                       </div>
                       <a
-                        href='author-profile.html'
+                        href='author-profile'
                         className='featured-user-option'
                       >
                         <img
@@ -144,7 +144,7 @@ const DiscoverArea = () => {
                         </a>
                       </div>
                       <a
-                        href='author-profile.html'
+                        href='author-profile'
                         className='featured-user-option'
                       >
                         <img
@@ -196,7 +196,7 @@ const DiscoverArea = () => {
                         </a>
                       </div>
                       <a
-                        href='author-profile.html'
+                        href='author-profile'
                         className='featured-user-option'
                       >
                         <img
@@ -244,7 +244,7 @@ const DiscoverArea = () => {
                         </a>
                       </div>
                       <a
-                        href='author-profile.html'
+                        href='author-profile'
                         className='featured-user-option'
                       >
                         <img
@@ -292,7 +292,7 @@ const DiscoverArea = () => {
                         </a>
                       </div>
                       <a
-                        href='author-profile.html'
+                        href='author-profile'
                         className='featured-user-option'
                       >
                         <img
@@ -340,7 +340,7 @@ const DiscoverArea = () => {
                         </a>
                       </div>
                       <a
-                        href='author-profile.html'
+                        href='author-profile'
                         className='featured-user-option'
                       >
                         <img
@@ -388,7 +388,7 @@ const DiscoverArea = () => {
                         </a>
                       </div>
                       <a
-                        href='author-profile.html'
+                        href='author-profile'
                         className='featured-user-option'
                       >
                         <img
@@ -436,7 +436,7 @@ const DiscoverArea = () => {
                         </a>
                       </div>
                       <a
-                        href='author-profile.html'
+                        href='author-profile'
                         className='featured-user-option'
                       >
                         <img
@@ -484,7 +484,7 @@ const DiscoverArea = () => {
                         </a>
                       </div>
                       <a
-                        href='author-profile.html'
+                        href='author-profile'
                         className='featured-user-option'
                       >
                         <img

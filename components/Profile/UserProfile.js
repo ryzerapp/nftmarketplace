@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import http from '../../utils/http'
+import toast from 'react-hot-toast';
+import { ErrorMessage } from "@hookform/error-message";
+
 const Tabs = dynamic(
   import('react-tabs').then((mod) => mod.Tabs),
   { ssr: false }
@@ -10,6 +14,20 @@ import CollectionComponent from '../Collection/CollectionComponent';
 import Loader from '../Common/Loader';
 import NFT from '../Collection/NFT';
 import NFTComponentDatabase from '../Collection/NFTComponentDatabase';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
+import { useQueryClient } from 'react-query';
+const schema = yup
+  .object({
+    email: yup
+      .string()
+      .required("Email must be provided.")
+      .email("Enter Valid Email."),
+    password: yup.string().required("Password must be provided"),
+  })
+  .required();
 
 resetIdCounter();
 
@@ -22,10 +40,66 @@ const Heading = ({ heading }) => {
     </>
   )
 }
-const AuthorProfileArea = () => {
+const UserProfile = () => {
   const { data, isFetched, isLoading } = useMeQuery()
   const { data: savedNfts } = useSavednftsQuery()
   const { data: savedCollection } = useCollectionSavedByUser();
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {
+      first_name: "",
+      last_name: "",
+      professional_summery: "",
+      walletAddress: ""
+    },
+    // resolver: yupResolver(schema),
+  });
+  const { mutate: updateUserData } = useUpdateUserData()
+  const queryClient = useQueryClient();
+
+  const onSubmit = async (formInputData) => {
+    try {
+
+      Object.keys(formInputData).forEach(key => {
+        if (formInputData[key] == null || formInputData[key] == "") {
+          delete formInputData[key];
+        }
+      });
+      let finalObj = { ...formInputData }
+      if (formInputData?.profile_photo?.length > 0) {
+        const formData = new FormData();
+        formData.append("file", formInputData?.profile_photo[0]);
+        formData.append("fileName", formInputData?.profile_photo[0]?.name);
+        try {
+          const res = await http.post("/attachments",
+            formData
+          );
+          if (res?.status == 201) {
+            finalObj.profile_photo = res?.data?.image;
+          }
+        } catch (ex) {
+          console.log(ex);
+        }
+      }
+      else {
+        delete finalObj.profile_photo
+      }
+      await updateUserData({
+        ...finalObj,
+        user_id: data?.user?.id
+      }, {
+        onSuccess: async (res) => {
+          queryClient.invalidateQueries('USER')
+          toast.success("Successfully Updated.")
+        }
+      })
+    } catch (error) {
+      console.log(error)
+      // const { data } = error.response;
+      // if (data) {
+      //   notify(data?.message);
+      // }
+    }
+  };
   if (isLoading) {
     return (
       <Loader />
@@ -40,22 +114,26 @@ const AuthorProfileArea = () => {
               <div className='author-profile-sidebar  mr-20'>
                 <div className='author-user'>
                   <img
-                    src={(data?.user?.profileimage) ? (data?.user?.profileimage) : "../images/author/author-user13.png"}
+                    src={(data?.user?.profile_photo) ? (data?.user?.profile_photo) : "../images/author/author-user13.png"}
                     alt='Images' />
                   <i className='ri-check-line'></i>
                 </div>
 
                 <h3>
-                  <a href='author-profile.html'>Olivia Jenar</a>
+                  <a href='author-profile'>{data?.user?.first_name} {data?.user?.last_name}</a>
                 </h3>
                 <span>@{data?.user?.username}</span>
-                <p>
-                  All the Lorem Ipsum generators on the Internet tend to repeat
-                  predefined chunks as necessary
-                </p>
-                <div className='sp-title'>
-                  0x76669f...a0e9ca52 <i className='ri-folders-line'></i>
+                <div className="d-flex .flex-wrap">
+                  <p style={{
+                    overflow: "hidden"
+                  }}>
+                    {data?.user?.professional_summery}
+
+                  </p>
                 </div>
+                <span>Wallet Address:</span>
+                <p > {data?.user?.walletAddress ? ((data?.user?.walletAddress).substr(0, 10)) + ".........." +
+                  (data?.user?.walletAddress).split("").reverse().join("").substr(1, 10) : "Plase Update Your Address"}</p>
                 <div className='author-content'>
                   <div className='content-left'>
                     <span>Followers</span>
@@ -85,13 +163,15 @@ const AuthorProfileArea = () => {
                 </div>
               </div>
             </div>
-
             <div className='col-lg-9'>
               <div className='tab featured-tab-area featured-tab-area-ml author-tab-area'>
                 <Tabs>
                   <div className='col-lg-12'>
                     <ul className='tabs author-tabs'>
                       <TabList>
+                        <Tab>
+                          <a>Update Your Profile</a>
+                        </Tab>
                         <Tab>
                           <a>NFT's</a>
                         </Tab>
@@ -104,11 +184,123 @@ const AuthorProfileArea = () => {
                         <Tab>
                           <a>Saved NFT's</a>
                         </Tab>
+
                       </TabList>
                     </ul>
                   </div>
-
                   <div className='tab_content author_tab_content pt-45'>
+                    <TabPanel>
+                      <div className='tabs_item'>
+                        <div className='row justify-content-left'>
+                          <div className='collection-form-area'>
+                            <div className='collection-form'>
+                              <form onSubmit={handleSubmit(onSubmit)}>
+                                <div className='row'>
+                                  <div className='col-lg-12'>
+                                    <div className='form-group'>
+                                      <label>Frist Name</label>
+                                      <input
+                                        type='text'
+                                        {...register("first_name")}
+                                        name="first_name"
+                                        className='form-control'
+                                        placeholder='e. g. “mic”'
+                                      />
+                                      <ErrorMessage
+                                        errors={errors}
+                                        name="first_name"
+                                        render={({ message }) => <p style={{ color: "#f14D5D", padding: 10 }}>{message}</p>}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className='col-lg-12'>
+                                    <div className='form-group'>
+                                      <label>Last Name</label>
+                                      <input
+                                        type='text'
+                                        name="last_name"
+                                        {...register("last_name")}
+                                        className='form-control'
+                                        placeholder='e. g. “Wilson”'
+                                      />
+                                      <ErrorMessage
+                                        errors={errors}
+                                        name="last_name"
+                                        render={({ message }) => <p style={{ color: "#f14D5D", padding: 10 }}>{message}</p>}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className='col-lg-12 col-md-12'>
+                                    <div className='form-group'>
+                                      <label>Professional Summery</label>
+                                      <input
+                                        type='text'
+                                        name="professional_summery"
+                                        {...register("professional_summery")}
+                                        className='form-control'
+                                        placeholder='e. g. “Your Work Summery in few Line”'
+
+                                      />
+                                      <ErrorMessage
+                                        errors={errors}
+                                        name="professional_summery"
+                                        render={({ message }) => <p style={{ color: "#f14D5D", padding: 10 }}>{message}</p>}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className='col-lg-12 col-md-12'>
+                                    <div className='form-group'>
+                                      <label>Web 3.0 Wallet Address</label>
+                                      <input
+                                        type='text'
+                                        name="walletAddress"
+                                        {...register("walletAddress")}
+                                        className='form-control'
+                                        placeholder='e. g. 0x1D5E50754b504A6893E692C92aFeB2d530E79FB1'
+                                      />
+                                      <ErrorMessage
+                                        errors={errors}
+                                        name="walletAddress"
+                                        render={({ message }) => <p style={{ color: "#f14D5D", padding: 10 }}>{message}</p>}
+                                      />
+                                    </div>
+                                  </div>
+
+                                  <div className='col-lg-12 col-md-12'>
+                                    <div className='form-group'>
+                                      <label>Profile Photo</label>
+                                      <input
+                                        {...register("profile_photo")}
+                                        className='profileButton-input'
+                                        type='file'
+                                        name="profile_photo"
+                                        accept='image/*'
+                                      />
+                                      <ErrorMessage
+                                        errors={errors}
+                                        name="profile_photo"
+                                        render={({ message }) => <p style={{ color: "#f14D5D", padding: 10 }}>{message}</p>}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className='col-lg-12 col-md-12 text-center'>
+                                  <button
+                                    className='default-btn border-radius-5'
+                                  >
+                                    Update Profile
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </TabPanel>
+
+
                     <TabPanel>
                       <div className='tabs_item'>
                         <div className='row justify-content-left'>
@@ -121,7 +313,7 @@ const AuthorProfileArea = () => {
                                 openDialogTitle={"Mint Now"}
                                 saved_nfts={data?.user?.saved_nfts ? data?.user?.saved_nfts : []}
                                 liked_nfts={data?.user?.liked_nfts ? data?.user?.liked_nfts : []}
-                                user_id={data?.user?.id}
+                                user={data?.user}
                                 editOrDelete={true}
                               />
                             )) : <div className='container mt-100'>
@@ -149,7 +341,7 @@ const AuthorProfileArea = () => {
                                 key={res?.id}
                                 savedCollection={data?.user?.saved_collection ? data?.user?.saved_collection : []}
                                 liked_collection={data?.user?.liked_collection ? data?.user?.liked_collection : []}
-                                user_id={data?.user?.id}
+                                user={data?.user}
                                 editOrDelete={true}
 
                               />
@@ -178,7 +370,7 @@ const AuthorProfileArea = () => {
                                 key={res?.id}
                                 savedCollection={data?.user?.saved_collection ? data?.user?.saved_collection : []}
                                 liked_collection={data?.user?.liked_collection ? data?.user?.liked_collection : []}
-                                user_id={data?.user?.id}
+                                user={data?.user}
                                 editOrDelete={false}
 
                               />
@@ -206,7 +398,7 @@ const AuthorProfileArea = () => {
                                 openDialogTitle={"Open NFT"}
                                 saved_nfts={data?.user?.saved_nfts ? data?.user?.saved_nfts : []}
                                 liked_nfts={data?.user?.liked_nfts ? data?.user?.liked_nfts : []}
-                                user_id={data?.user?.id}
+                                user={data?.user}
                                 editOrDelete={false}
                               />
                             )) : <div className='container mt-100'>
@@ -219,27 +411,29 @@ const AuthorProfileArea = () => {
                         </div>
                       </div>
                     </TabPanel>
+
+
                   </div>
                 </Tabs>
               </div>
 
               <div className='col-lg-12 col-md-12'>
                 <div className='pagination-area'>
-                  <a href='author-profile.html' className='prev page-numbers'>
+                  <a href='author-profile' className='prev page-numbers'>
                     <i className='ri-arrow-left-s-line'></i>
                   </a>
 
                   <span className='page-numbers current' aria-current='page'>
                     1
                   </span>
-                  <a href='author-profile.html' className='page-numbers'>
+                  <a href='author-profile' className='page-numbers'>
                     2
                   </a>
-                  <a href='author-profile.html' className='page-numbers'>
+                  <a href='author-profile' className='page-numbers'>
                     3
                   </a>
 
-                  <a href='author-profile.html' className='next page-numbers'>
+                  <a href='author-profile' className='next page-numbers'>
                     <i className='ri-arrow-right-s-line'></i>
                   </a>
                 </div>
@@ -252,7 +446,7 @@ const AuthorProfileArea = () => {
   );
 };
 
-export default AuthorProfileArea;
+export default UserProfile;
 
 
 //counter calculation
@@ -340,7 +534,7 @@ export default AuthorProfileArea;
         </a>
       </div>
       <a
-        href='author-profile.html'
+        href='author-profile'
         className='featured-user-option'
       >
         <img
