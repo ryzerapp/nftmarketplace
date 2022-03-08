@@ -21,7 +21,9 @@ const NftCardWithTime = ({ data }) => {
 	}, [data]);
 
 	const comingSoonTime = () => {
-		let endTime = new Date(formatDate(data.auctionEnds));
+		let endTime = new Date(formatDate(data?.auctionEnds));
+		if (data?.id == 10)
+			endTime = new Date('2022-03-10')
 		let endTimeParse = Date.parse(endTime) / 1000;
 		let now = new Date();
 		let nowParse = Date.parse(now) / 1000;
@@ -50,11 +52,12 @@ const NftCardWithTime = ({ data }) => {
 		setSeconds(countseconds);
 	};
 
-	// useEffect(() => {
-	// 	setInterval(() => {
-	// 		comingSoonTime();
-	// 	}, 1000);
-	// }, []);
+	useEffect(() => {
+		const timer = setInterval(() => {
+			comingSoonTime();
+		}, 1000);
+		return () => clearTimeout(timer);
+	}, []);
 
 	return (
 		<div className="col-lg-3 col-md-6">

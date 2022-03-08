@@ -23,7 +23,10 @@ const fetchAuthorData = async ({ queryKey }) => {
   const { data } = await http.get(`/getauthor/${queryKey[1].author_name}`);
   return { user: data }
 };
-
+const fetchUserAuctionData = async ({ }) => {
+  const { data } = await http.get(`/auctions/getUserAuctions`);
+  return data
+};
 const useAuthorQuery = (options = {}) => {
   if (options?.author_name) {
     return useQuery([`user_${options.author_name}`, options], fetchAuthorData, {
@@ -45,4 +48,9 @@ const useCollectionSavedByUser = (options = {}) => {
     keepPreviousData: true,
   });
 };
-export { useMeQuery, useSavednftsQuery, useCollectionSavedByUser, useAuthorQuery };
+const useAuctionByUser = (options = {}) => {
+  return useQuery([`getUserAuctions`, options], fetchUserAuctionData, {
+    keepPreviousData: true,
+  });
+};
+export { useMeQuery, useSavednftsQuery, useCollectionSavedByUser, useAuthorQuery, useAuctionByUser };

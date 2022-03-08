@@ -19,7 +19,7 @@ const AuctionNFT = ({ data }) => {
 	}, [data]);
 
 	const comingSoonTime = () => {
-		let endTime = new Date(formatDate(data.auctionEnds));
+		let endTime = new Date(formatDate(data?.auctionDate));
 		let endTimeParse = Date.parse(endTime) / 1000;
 		let now = new Date();
 		let nowParse = Date.parse(now) / 1000;
@@ -49,9 +49,10 @@ const AuctionNFT = ({ data }) => {
 	};
 
 	useEffect(() => {
-		setInterval(() => {
+		const timer = setInterval(() => {
 			comingSoonTime();
 		}, 1000);
+		return () => clearTimeout(timer);
 	}, []);
 	return (
 		<div className="col-lg-4 col-md-6">
@@ -59,19 +60,19 @@ const AuctionNFT = ({ data }) => {
 				<div className="auction-card-img">
 					<Link href="/nft/[slug]" as={`/nft/${data.slug}`}>
 						<a>
-							<img src={data.auctionImg.url} alt="Images" />
+							<img src={data.auctionImage} alt="Images" />
 						</a>
 					</Link>
 					<div className="auction-card-user">
 						<a
-							href="author-profile"
+							href={`author-profile?author_name=${data?.username}`} 
 							className="auction-card-user-option"
 						>
 							<img
-								src="../images/auctions/auctions-user2.jpg"
+								src={data?.profile_photo ? data?.profile_photo : "../images/author/author-user13.png"}
 								alt="Images"
 							/>
-							<span>Created by @Emilia</span>
+							<span>Created by @{data?.username}</span>
 						</a>
 					</div>
 					<div className="auction-card-into">
@@ -87,27 +88,29 @@ const AuctionNFT = ({ data }) => {
 					</div>
 				</div>
 
-				<div className="content">
+				<div className="content text-center">
 					<h3>
 						{" "}
 						<Link href="/nft/[slug]" as={`/nft/${data.slug}`}>
 							<a>{data.name}</a>
 						</Link>
 					</h3>
-					<p>
-						<i className="ri-heart-line"></i> 162
-					</p>
-					<div className="auction-card-content">
+					<div className="d-flex justify-content-between">
 						<div className="card-left">
 							<span>Start Bid</span>
 							<h4>
-								{data.cryptoCost} {data.cryptoType}
+								{data?.start_bid ? data?.start_bid : 10} ETH
 							</h4>
 						</div>
 						<div className="card-right">
 							<span>Highest Bid</span>
-							<h4>12,00 ETH</h4>
+							<h4>{data?.highest_bid ? data?.highest_bid : 0} ETH</h4>
 						</div>
+						<div className="card-right">
+							<span>Total Bid</span>
+							<h4>{data?.total_bid ? data?.total_bid : 0}</h4>
+						</div>
+
 					</div>
 					<Link href="/add-wallet">
 						<a className="place-btn">Place Bid</a>

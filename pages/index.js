@@ -2,7 +2,7 @@ import TrendingArea from '../components/Common/TrendingArea';
 import BannerArea from '../components/HomeTwo/BannerArea';
 import NavbarTwo from '../components/Layout/NavbarTwo';
 import TopSeller from '../components/Common/TopSeller';
-import AuctionArea from '../components/HomeTwo/AuctionArea';
+import AuctionArea from '../components/Auction/AuctionArea';
 import FeaturedArea from '../components/Common/FeaturedArea';
 import Testimonial from '../components/Common/Testimonial';
 import AuthorArea from '../components/HomeTwo/AuthorArea'
@@ -25,7 +25,7 @@ const Index = ({ data, trendingData }) => {
             <AuctionArea />
 
             <FeaturedArea 
-                title="Featured Assets" 
+                title="Live Auction" 
                 data={data} 
             />
 
@@ -42,7 +42,7 @@ const Index = ({ data, trendingData }) => {
 };
 
 export async function getServerSideProps(context) {
-	const res = await fetch(`${baseUrl}/nfts`);
+    const res = await fetch(`${baseUrl}/nfts/getFeaturedArtwork`);
 	const data = await res.json();
 
     const trendinfRes = await fetch(`${baseUrl}/nfts/getTrendingArtwork`);
@@ -55,7 +55,7 @@ export async function getServerSideProps(context) {
 	}
 
 	return {
-		props: { data, trendingData }, // will be passed to the page component as props
+        props: { data, trendingData }, // will be passed to the page component as props
 	};
 }
 

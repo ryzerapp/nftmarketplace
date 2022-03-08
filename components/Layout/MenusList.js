@@ -105,6 +105,16 @@ const MenusList = ({ user }) => {
 										</a>
 									</Link>
 								</li>
+								<li className="nav-item">
+									<Link
+										href={!isAuthenticated({ token, permissions }) ? "/login" : "/auction/create"}
+										activeClassName="active"
+									>
+										<a className="nav-link">
+											Create Auction
+										</a>
+									</Link>
+								</li>
 							</ul>
 						</li>
 

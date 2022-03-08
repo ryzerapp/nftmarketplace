@@ -37,14 +37,16 @@ const FeaturedArea = ({ title, pagination, data }) => {
 								<TabPanel>
 									<div className="tabs_item">
 										<div className="row justify-content-center">
-											{data.map((nft) => {
+											{data && data.length > 0 ? data.map((nft) => {
 												return (
 													<NftCardWithTime
 														data={nft}
 														key={nft.id}
 													/>
 												);
-											})}
+											}) : <>
+												<p>Please Wait for Some live Auction</p>
+											</>}
 										</div>
 									</div>
 								</TabPanel>

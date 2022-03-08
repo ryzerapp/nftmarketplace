@@ -1,8 +1,16 @@
 import React from "react";
+import { usegetAuctions } from "../../hooks/Web2/useAuctions";
 import Pagination from "../Common/Pagination";
 import AuctionNFT from "./AuctionNFT";
-
-const AuctionArea = ({ data }) => {
+import Loading from '../Common/Loader'
+const AuctionArea = ({ }) => {
+	const { data, isLoading } = usegetAuctions()
+	if (isLoading) {
+		return (
+			<Loading></Loading>
+		)
+	}
+	console.log(data)
 	return (
 		<>
 			<div className="auctions-area-three pt-100 pb-70">
@@ -12,9 +20,14 @@ const AuctionArea = ({ data }) => {
 					</div>
 
 					<div className="row justify-content-center pt-45">
-						{data.map((nft) => {
-							return <AuctionNFT key={nft.id} data={nft} />;
-						})}
+						{data && data.length > 0 ?
+							data.map((nft) => {
+								return <AuctionNFT key={nft.id} data={nft} />;
+							}) : (
+								<>
+									<p>Please Wait for Some live Auction</p>
+								</>
+							)}
 
 						<Pagination />
 					</div>
