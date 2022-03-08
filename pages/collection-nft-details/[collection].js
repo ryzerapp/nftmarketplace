@@ -1,16 +1,16 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import NFTComponentDatabase from '../components/Collection/NFTComponentDatabase';
-import Loader from '../components/Common/Loader';
-import Layout from '../components/Layout/Layout';
-import { useMeQuery } from '../hooks/Web2/useMeQuery';
-import { useNftOfCollection } from '../hooks/Web2/useNftOfCollection';
+import NFTComponentDatabase from '../../components/Collection/NFTComponentDatabase';
+import Loader from '../../components/Common/Loader';
+import Layout from '../../components/Layout/Layout';
+import { useMeQuery } from '../../hooks/Web2/useMeQuery';
+import { useNftOfCollection } from '../../hooks/Web2/useNftOfCollection';
 
-const Collection = () => {
+const Collection = ({ collection }) => {
 
   const router = useRouter()
   const { data, isLoading } = useNftOfCollection({
-    collection_name: router.query?.collection
+    collection_name: collection
   })
   const { data: users, isFetched } = useMeQuery()
   if (isLoading) {
@@ -63,4 +63,10 @@ const Collection = () => {
   );
 };
 
+export async function getServerSideProps(ctx) {
+  const { collection } = ctx.query;
+  return {
+    props: { collection }, // will be passed to the page component as props
+  };
+}
 export default Collection;

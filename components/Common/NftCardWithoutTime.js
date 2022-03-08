@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 const NftCardWithoutTime = ({ data }) => {
 	const router = useRouter();
-	console.log(data)
 	return (
 		<div className="trending-item">
 			<div className="trending-img">
@@ -29,15 +28,6 @@ const NftCardWithoutTime = ({ data }) => {
 					<h3>Bid 80 ETH</h3>
 				</div>
 				<div className="trending-user">
-					{/* <Link href="/author-profile">
-						<a className="trending-user-option">
-							<img
-								src="../images/trending/trending-user1.jpg"
-								alt="Images"
-							/>
-							<span>Created by @{data?.created_by}</span>
-						</a>
-					</Link> */}
 					<a href={`author-profile?author_name=${data?.created_by}`} className='trending-user-option'>
 						<img
 							src={data?.profile_photo ? data?.profile_photo : "../images/author/author-user13.png"}

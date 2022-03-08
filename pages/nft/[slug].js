@@ -13,7 +13,7 @@ const ItemDetails = ({ data, trendingData }) => {
 				bg="inner-bg12"
 			/>
 
-			<ItemDetailsArea data={data} key={data.id} />;
+			<ItemDetailsArea data={data[0]} key={data[0]?.id} />;
 
 			<TrendingArea
 				trendingData={trendingData}
@@ -28,7 +28,6 @@ const ItemDetails = ({ data, trendingData }) => {
 export async function getServerSideProps(ctx) {
 	const { slug } = ctx.query;
 	const response = await fetch(`${baseUrl}/nfts/${slug}`);
-	console.log(response)
 	const data = await response.json();
 	const trendinfRes = await fetch(`${baseUrl}/nfts/getTrendingArtwork`);
 	const trendingData = await trendinfRes.json();

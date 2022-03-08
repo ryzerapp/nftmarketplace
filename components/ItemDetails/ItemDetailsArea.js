@@ -1,7 +1,6 @@
 import React from "react";
 import ItemDetailsDescription from "./ItemDetailsDescription";
 import ItemDetailsHistory from "./ItemDetailsHistory";
-import ItemDetailsUser from "./ItemDetailsUser";
 
 const ItemDetailsArea = ({ data }) => {
 	return (
@@ -18,15 +17,13 @@ const ItemDetailsArea = ({ data }) => {
 									/>
 								</div>
 
-								<ItemDetailsHistory />
+								<ItemDetailsHistory />{/*this is for bid part */}
 							</div>
 						</div>
 
 						<div className="col-lg-6">
 							<div className="item-details-dsce">
 								<ItemDetailsDescription data={data} />
-
-								{/* <ItemDetailsUser /> */}
 							</div>
 						</div>
 					</div>

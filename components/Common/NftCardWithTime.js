@@ -50,31 +50,29 @@ const NftCardWithTime = ({ data }) => {
 		setSeconds(countseconds);
 	};
 
-	useEffect(() => {
-		setInterval(() => {
-			comingSoonTime();
-		}, 1000);
-	}, []);
+	// useEffect(() => {
+	// 	setInterval(() => {
+	// 		comingSoonTime();
+	// 	}, 1000);
+	// }, []);
 
 	return (
 		<div className="col-lg-3 col-md-6">
 			<div className="featured-item">
 				<div className="featured-item-img">
-					<Link href="/nft/[slug]" as={`/nft/${data.slug}`}>
+					<Link href="/nft/[slug]" as={`/nft/${data?.id}`}>
 						<a>
-							<img src={data?.auctionImg?.url} alt="Images" />
+							<img src={data?.image_url} alt="Images" />
 						</a>
 					</Link>
+
 					<div className="featured-user">
-						<Link href="/author-profile">
-							<a className="featured-user-option">
+						<a href={`author-profile?author_name=${data?.created_by}`} className='featured-user-option'>
 								<img
-									src="../images/featured/featured-user1.jpg"
-									alt="Images"
-								/>
-								<span>Created by @HiBootstrap</span>
-							</a>
-						</Link>
+								src={data?.profile_photo ? data?.profile_photo : "../images/author/author-user13.png"}
+								alt='Images' />
+							<span>Created by @{data?.created_by}</span>
+						</a>
 					</div>
 					<button
 						type="button"
@@ -93,7 +91,7 @@ const NftCardWithTime = ({ data }) => {
 
 				<div className="content">
 					<h3>
-						<Link href="/author-profile">
+						<Link href="/nft/[slug]" as={`/nft/${data?.id}`}>
 							<a>{data.name}</a>
 						</Link>
 					</h3>

@@ -7,9 +7,8 @@ const ItemDetailsDescription = ({
 	collectionName = "Cryptonium",
 	itemOwner,
 	size,
-	categories,
 }) => {
-	console.log('data', data)
+	console.log(data)
 	return (
 		<>
 			<div className="container">
@@ -26,13 +25,14 @@ const ItemDetailsDescription = ({
 									<h3>Creator</h3>
 									<div className="content">
 										<div className="images">
-											<img
-												src="../images/Item-details/Item-details-user2.jpg"
-												alt="Images"
-											/>
-											<i className="ri-check-line"></i>
+											<a href={`/author-profile?author_name=${data?.created_by}`}>
+												<img
+													src={(data?.profile_photo) ? (data?.profile_photo) : "../images/author/author-user13.png"}
+													alt="Images"
+												/>
+												<i className="ri-check-line"></i>
+											</a>
 										</div>
-
 										<span>{data?.created_by}</span>
 									</div>
 								</div>
@@ -42,13 +42,15 @@ const ItemDetailsDescription = ({
 									<h3>Collection</h3>
 									<div className="content">
 										<div className="images">
-											<img
-												src="../images/Item-details/Item-details-user1.jpg"
-												alt="Images"
-											/>
+											<a href={`/collection-nft-details/${data?.collection_id}`}>
+												<img
+													src={data?.collection_logo_image ? data?.collection_logo_image : "../images/author/author-user13.png"}
+													alt="Images"
+												/>
+											</a>
 										</div>
 
-										<span>{collectionName}</span>
+										<span>{data?.collection_name}</span>
 									</div>
 								</div>
 							</div>
@@ -74,15 +76,15 @@ const ItemDetailsDescription = ({
 								</li>
 								<li>
 									Category
-									<b>: {categories ? categories[0]?.name : "New"}</b>
+									<b>: {data?.category ? data?.category : "Not Assign"}</b>
 								</li>
 								<li>
 									Total Likes:
-									<b>: {data?.total_like}</b>
+									<b>: {data?.total_like ? data?.total_like : 0}</b>
 								</li>
 								<li>
 									Total Bookmark:
-									<b>: {data?.total_bookmark}</b>
+									<b>: {data?.total_bookmark ? data?.total_bookmark : 0}</b>
 								</li>
 							</ul>
 						</div>

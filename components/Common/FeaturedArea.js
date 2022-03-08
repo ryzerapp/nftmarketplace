@@ -9,7 +9,6 @@ import NftCardWithTime from "./NftCardWithTime";
 resetIdCounter();
 
 const FeaturedArea = ({ title, pagination, data }) => {
-
 	return (
 		<>
 			<div className="featured-area pt-100 pb-70">
@@ -30,84 +29,11 @@ const FeaturedArea = ({ title, pagination, data }) => {
 										<Tab>
 											<a>All</a>
 										</Tab>
-										<Tab>
-											<a>Art</a>
-										</Tab>
-
-										<Tab>
-											<a>Virtual Worlds</a>
-										</Tab>
-										<Tab>
-											<a>Collectibles</a>
-										</Tab>
-										<Tab>
-											<a>Music</a>
-										</Tab>
 									</TabList>
 								</ul>
 							</div>
 
 							<div className="tab_content  pt-45">
-								<TabPanel>
-									<div className="tabs_item">
-										<div className="row justify-content-center">
-											{data.map((nft) => {
-												return (
-													<NftCardWithTime
-														data={nft}
-														key={nft.id}
-													/>
-												);
-											})}
-										</div>
-									</div>
-								</TabPanel>
-
-								<TabPanel>
-									<div className="tabs_item">
-										<div className="row justify-content-center">
-											{data.map((nft) => {
-												return (
-													<NftCardWithTime
-														data={nft}
-														key={nft.id}
-													/>
-												);
-											})}
-										</div>
-									</div>
-								</TabPanel>
-
-								<TabPanel>
-									<div className="tabs_item">
-										<div className="row justify-content-center">
-											{data.map((nft) => {
-												return (
-													<NftCardWithTime
-														data={nft}
-														key={nft.id}
-													/>
-												);
-											})}
-										</div>
-									</div>
-								</TabPanel>
-
-								<TabPanel>
-									<div className="tabs_item">
-										<div className="row justify-content-center">
-											{data.map((nft) => {
-												return (
-													<NftCardWithTime
-														data={nft}
-														key={nft.id}
-													/>
-												);
-											})}
-										</div>
-									</div>
-								</TabPanel>
-
 								<TabPanel>
 									<div className="tabs_item">
 										<div className="row justify-content-center">

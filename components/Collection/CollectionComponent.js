@@ -122,10 +122,7 @@ export default function CollectionComponent({ collection, profile, savedCollecti
                         <i className='ri-heart-line'></i> 122
                     </p>
                     <button type='button' className='default-btn border-radius-5' onClick={() =>
-                        router.push({
-                            pathname: '/collection-nft-details',
-                            query: { collection: collection?.id, collection_name: collection?.collection_name },
-                        })}>
+                        router.push(`/collection-nft-details/${collection?.id}`)}>
                         Open Collection
                     </button>
                 </div>
