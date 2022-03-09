@@ -19,6 +19,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import { useQueryClient } from 'react-query';
+import CreateAuction from '../../pages/auction/create';
 const schema = yup
   .object({
     email: yup
@@ -94,10 +95,6 @@ const UserProfile = () => {
       })
     } catch (error) {
       console.log(error)
-      // const { data } = error.response;
-      // if (data) {
-      //   notify(data?.message);
-      // }
     }
   };
   if (isLoading) {
@@ -170,7 +167,10 @@ const UserProfile = () => {
                     <ul className='tabs author-tabs'>
                       <TabList>
                         <Tab>
-                          <a>Update Your Profile</a>
+                          <a>Update Profile</a>
+                        </Tab>
+                        <Tab>
+                          <a>Create Auctions</a>
                         </Tab>
                         <Tab>
                           <a>NFT's</a>
@@ -179,12 +179,8 @@ const UserProfile = () => {
                           <a>Collections</a>
                         </Tab>
                         <Tab>
-                          <a>Saved Collection</a>
+                          <a>Saved Items</a>
                         </Tab>
-                        <Tab>
-                          <a>Saved NFT's</a>
-                        </Tab>
-
                       </TabList>
                     </ul>
                   </div>
@@ -299,8 +295,9 @@ const UserProfile = () => {
 
                       </div>
                     </TabPanel>
-
-
+                    <TabPanel>
+                      <CreateAuction nfts={data?.user?.nfts?.filter((nft) => !nft.auction_iscreated)}></CreateAuction>
+                    </TabPanel>
                     <TabPanel>
                       <div className='tabs_item'>
                         <div className='row justify-content-left'>
@@ -383,13 +380,6 @@ const UserProfile = () => {
                                 </div>
                               </div>
                             </>}
-                        </div>
-                      </div>
-                    </TabPanel>
-
-                    <TabPanel>
-                      <div className='tabs_item'>
-                        <div className='row justify-content-left'>
                           {savedNfts?.length > 0 ?
                             savedNfts?.map((nft) => (
                               <NFTComponentDatabase
@@ -411,8 +401,6 @@ const UserProfile = () => {
                         </div>
                       </div>
                     </TabPanel>
-
-
                   </div>
                 </Tabs>
               </div>

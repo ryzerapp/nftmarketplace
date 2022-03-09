@@ -24,10 +24,10 @@ const Index = ({ data, trendingData }) => {
 
             <AuctionArea />
 
-            <FeaturedArea 
-                title="Live Auction" 
-                data={data} 
-            />
+            {/* <FeaturedArea
+                title="Live Auction"
+                data={data}
+            /> */}
 
             <Testimonial />
 

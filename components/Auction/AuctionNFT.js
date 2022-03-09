@@ -58,7 +58,7 @@ const AuctionNFT = ({ data }) => {
 		<div className="col-lg-4 col-md-6">
 			<div className="auction-card">
 				<div className="auction-card-img">
-					<Link href="/nft/[slug]" as={`/nft/${data.slug}`}>
+					<Link href="/auction/[slug]" as={`/auction/${data?.id}`}>
 						<a>
 							<img src={data.auctionImage} alt="Images" />
 						</a>
@@ -91,7 +91,7 @@ const AuctionNFT = ({ data }) => {
 				<div className="content text-center">
 					<h3>
 						{" "}
-						<Link href="/nft/[slug]" as={`/nft/${data.slug}`}>
+						<Link href="/auction/[slug]" as={`/auction/${data?.id}`}>
 							<a>{data.name}</a>
 						</Link>
 					</h3>

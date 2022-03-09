@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import formatDate from "../../utils/formatDate";
+import AuthorLink from "../SmallComponent/AuthorLink";
 
 const NftCardWithTime = ({ data }) => {
 	const router = useRouter();
@@ -70,12 +71,14 @@ const NftCardWithTime = ({ data }) => {
 					</Link>
 
 					<div className="featured-user">
-						<a href={`author-profile?author_name=${data?.created_by}`} className='featured-user-option'>
-								<img
-								src={data?.profile_photo ? data?.profile_photo : "../images/author/author-user13.png"}
-								alt='Images' />
-							<span>Created by @{data?.created_by}</span>
-						</a>
+						<AuthorLink
+							data={
+								{
+									"created_by": data?.created_by,
+									"profile_photo": data?.profile_photo
+								}}
+							classNameData={"featured-user-option"}
+						/>
 					</div>
 					<button
 						type="button"

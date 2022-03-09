@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import AuthorLink from "../SmallComponent/AuthorLink";
 
 const NftCardWithoutTime = ({ data }) => {
 	const router = useRouter();
@@ -28,18 +29,20 @@ const NftCardWithoutTime = ({ data }) => {
 					<h3>Bid 80 ETH</h3>
 				</div>
 				<div className="trending-user">
-					<a href={`author-profile?author_name=${data?.created_by}`} className='trending-user-option'>
-						<img
-							src={data?.profile_photo ? data?.profile_photo : "../images/author/author-user13.png"}
-							alt='Images' />
-						<span>Created by @{data?.created_by}</span>
-					</a>
+					<AuthorLink
+						data={
+							{
+								"created_by": data?.created_by,
+								"profile_photo": data?.profile_photo
+							}}
+						classNameData={"trending-user-option"}
+					/>
 				</div>
 			</div>
 
 			<div className="content">
 				<h3>
-					<Link href="/nft/[slug]" as={`/nft/${data?.slug}`}>
+					<Link href="/nft/[slug]" as={`/nft/${data?.id}`}>
 						<a>{data?.name}</a>
 					</Link>
 				</h3>

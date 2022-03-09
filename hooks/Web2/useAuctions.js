@@ -12,4 +12,19 @@ const usegetAuctions = (options = {}) => {
   });
 };
 
-export { usegetAuctions };
+const fetchBidsData = async ({ queryKey }) => {
+  if (queryKey[1].nft_id) {
+    const { data } = await http.get(`/bids/findOneByNftId/${queryKey[1].nft_id}`);
+    return data
+  }
+  else
+    return []
+};
+
+const useBids = (options = {}) => {
+  return useQuery([`bids_${options.nft_id}`, options], fetchBidsData, {
+    keepPreviousData: true,
+  });
+};
+
+export { usegetAuctions, useBids };

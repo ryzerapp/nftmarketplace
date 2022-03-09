@@ -53,7 +53,7 @@ const TrendingArea = ({ bg, trendingData }) => {
 
 						<div className="col-lg-4 col-md-6">
 							<div className="trending-btn text-end">
-								<Link href="/item-details">
+								<Link href="/collection">
 									<a className="default-btn border-radius-5">
 										Explore More
 									</a>
