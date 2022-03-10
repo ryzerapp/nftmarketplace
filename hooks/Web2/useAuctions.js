@@ -5,12 +5,26 @@ const fetchAuctionData = async ({ }) => {
   const { data } = await http.get('/auctions');
   return data
 };
+const fetchAuctionDataById = async ({ queryKey }) => {
+  if (queryKey[1].auction_id) {
+    const { data } = await http.get(`/auctions/${queryKey[1].auction_id}`);
+    return data
+  }
+  else
+    return []
+};
 
 const usegetAuctions = (options = {}) => {
-  return useQuery([`collection`, options], fetchAuctionData, {
+  return useQuery([`auctions`, options], fetchAuctionData, {
     keepPreviousData: true,
   });
 };
+const usegetAuctionsById = (options = {}) => {
+  return useQuery([`auctions${options.auction_id}`, options], fetchAuctionDataById, {
+    keepPreviousData: true,
+  });
+};
+
 
 const fetchBidsData = async ({ queryKey }) => {
   if (queryKey[1].nft_id) {
@@ -27,4 +41,4 @@ const useBids = (options = {}) => {
   });
 };
 
-export { usegetAuctions, useBids };
+export { usegetAuctions, useBids, usegetAuctionsById };

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import formatDate from "../../utils/formatDate";
 
-const AuctionNFT = ({ data }) => {
+const AuctionNFT = ({ data, isfromProfile }) => {
 	const [days, setDays] = useState("");
 	const [hours, setHours] = useState("");
 	const [minutes, setMinutes] = useState("");
@@ -41,7 +41,6 @@ const AuctionNFT = ({ data }) => {
 		if (countseconds < "10") {
 			countseconds = "0" + countseconds;
 		}
-
 		setDays(countdays);
 		setHours(counthours);
 		setMinutes(countminutes);
@@ -63,18 +62,21 @@ const AuctionNFT = ({ data }) => {
 							<img src={data.auctionImage} alt="Images" />
 						</a>
 					</Link>
-					<div className="auction-card-user">
-						<a
-							href={`author-profile?author_name=${data?.username}`} 
-							className="auction-card-user-option"
-						>
-							<img
-								src={data?.profile_photo ? data?.profile_photo : "../images/author/author-user13.png"}
-								alt="Images"
-							/>
-							<span>Created by @{data?.username}</span>
-						</a>
-					</div>
+					{isfromProfile ? null : (
+						<div className="auction-card-user">
+							<a
+								href={`author-profile?author_name=${data?.created_by}`}
+								className="auction-card-user-option"
+							>
+								<img
+									src={data?.created_user_photo ? data?.created_user_photo : "../images/author/author-user13.png"}
+									alt="Images"
+								/>
+								<span>Created by @{data?.created_by}</span>
+							</a>
+						</div>
+					)}
+
 					<div className="auction-card-into">
 						<h3>Remaining Time</h3>
 						<div className="auction-timer">
@@ -108,7 +110,7 @@ const AuctionNFT = ({ data }) => {
 						</div>
 						<div className="card-right">
 							<span>Total Bid</span>
-							<h4>{data?.total_bid ? data?.total_bid : 0}</h4>
+							<h4>{data?.bids ? data?.bids?.length : 0}</h4>
 						</div>
 
 					</div>

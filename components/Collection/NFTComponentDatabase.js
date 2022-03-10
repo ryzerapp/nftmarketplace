@@ -2,7 +2,6 @@ import React from 'react'
 import { useQueryClient } from 'react-query';
 import { useUpdateCollectionData, useUpdatenftsData, useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import toast from 'react-hot-toast';
-import AuthorLink from '../SmallComponent/AuthorLink';
 import Link from 'next/link';
 export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts = [], user, editOrDelete, liked_nfts = [], author_name }) {
     const { mutate: updateUserData } = useUpdateUserData()
@@ -141,16 +140,8 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts 
                     </div>
                     <div className='row text-center'>
                         <div className='col-lg-12'>
-                            {/* <AuthorLink
-                                data={
-                                    {
-                                        "created_by": nft?.created_by,
-                                        "profile_photo": user?.profile_photo
-                                    }}
-                                classNameData={"featured-user-option"}
-                            /> */}
                             <a href={`/author-profile?author_name=${nft?.created_by}`} className='featured-user-option'>
-                                <img src={user?.profile_photo ? user?.profile_photo : "../images/author/author-user13.png"} alt='Images' />
+                                <img src={nft?.created_user_photo ? nft?.created_user_photo : "../images/author/author-user13.png"} alt='Images' />
                                 <span>Created by @{nft?.created_by}</span>
                             </a>
                         </div>

@@ -143,7 +143,7 @@ export default function CollectionComponent({ collection, profile, savedCollecti
                         <div className='col-md-7 col-sm-12'>
                             <a href={`author-profile?author_name=${collection?.created_by}`} className='featured-user-option'>
                                 <img
-                                    src={user?.profile_photo ? user?.profile_photo : "../images/author/author-user13.png"}
+                                    src={collection?.created_user_photo ? collection?.created_user_photo : "../images/author/author-user13.png"}
                                     alt='Images' />
                                 <span>Created by @{collection?.created_by}</span>
                             </a>
@@ -174,18 +174,6 @@ export default function CollectionComponent({ collection, profile, savedCollecti
 
                         </div>
                     </div>
-                    {/* {(
-                        <div className='row d-flex justify-content-center pt-2'>
-                            <div className='col-lg-6'>
-                                <button className='btn btn-outline-primary w-100'>Update Collection </button>
-                            </div>
-                            <div className='col-lg-6'>
-                                <button
-                                    onClick={() => onClickRemoveCollection()}
-                                    className='btn btn-outline-danger w-100 mt-sm-1 mt-lg-0 mt-xs-1'>Remove Collection</button>
-                            </div>
-                        </div>
-                    )} */}
                 </div>
             </div>
         </div >

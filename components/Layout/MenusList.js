@@ -195,18 +195,6 @@ const MenusList = ({ user }) => {
 										</a>
 									</Link>
 								</li>
-								<li className="nav-item">
-									<Link
-										href={!isAuthenticated({ token, permissions }) ? "/login" : "/author-profile"}
-										activeClassName="active"
-									>
-										<a className="nav-link">
-											Author Profile
-										</a>
-									</Link>
-								</li>
-
-
 							</ul>
 						</li>
 

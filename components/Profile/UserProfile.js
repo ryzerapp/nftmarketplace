@@ -20,6 +20,8 @@ import * as yup from "yup";
 import { useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import { useQueryClient } from 'react-query';
 import CreateAuction from '../../pages/auction/create';
+import AuctionArea from '../Auction/AuctionArea';
+import AuctionNFT from '../Auction/AuctionNFT';
 const schema = yup
   .object({
     email: yup
@@ -52,7 +54,6 @@ const UserProfile = () => {
       professional_summery: "",
       walletAddress: ""
     },
-    // resolver: yupResolver(schema),
   });
   const { mutate: updateUserData } = useUpdateUserData()
   const queryClient = useQueryClient();
@@ -177,6 +178,9 @@ const UserProfile = () => {
                         </Tab>
                         <Tab>
                           <a>Collections</a>
+                        </Tab>
+                        <Tab>
+                          <a>Auctions</a>
                         </Tab>
                         <Tab>
                           <a>Saved Items</a>
@@ -358,6 +362,26 @@ const UserProfile = () => {
                     <TabPanel>
                       <div className='tabs_item'>
                         <div className='row justify-content-left'>
+                          {data?.user?.auctions?.length > 0 ?
+                            data?.user?.auctions?.map((auction) =>
+                            (
+                              <AuctionNFT key={auction.id} data={auction} isfromProfile={true} />
+                            )) : <>
+                              <div className='container mt-100'>
+                                <div className='row'>
+                                  <div className='col-xs-1 section-title  pb-70' align="center">
+                                    <h2>You Don't Have Any Auctions</h2>
+                                  </div>
+                                </div>
+                              </div>
+                            </>}
+                        </div>
+                      </div>
+                    </TabPanel>
+
+                    <TabPanel>
+                      <div className='tabs_item'>
+                        <div className='row justify-content-left'>
                           {savedCollection?.length > 0 ?
                             savedCollection?.map((res) =>
                             (
@@ -380,6 +404,7 @@ const UserProfile = () => {
                                 </div>
                               </div>
                             </>}
+                          <hr></hr>
                           {savedNfts?.length > 0 ?
                             savedNfts?.map((nft) => (
                               <NFTComponentDatabase
@@ -435,102 +460,3 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
-
-
-//counter calculation
-// const [days, setDays] = useState('');
-// const [hours, setHours] = useState('');
-// const [minutes, setMinutes] = useState('');
-// const [seconds, setSeconds] = useState('');
-// const comingSoonTime = () => {
-//   let endTime = new Date('December 23, 2021 17:00:00 PDT');
-//   let endTimeParse = Date.parse(endTime) / 1000;
-//   let now = new Date();
-//   let nowParse = Date.parse(now) / 1000;
-//   let timeLeft = endTimeParse - nowParse;
-//   let countdays = Math.floor(timeLeft / 86400);
-//   let counthours = Math.floor((timeLeft - countdays * 86400) / 3600);
-//   let countminutes = Math.floor(
-//     (timeLeft - countdays * 86400 - counthours * 3600) / 60
-//   );
-//   let countseconds = Math.floor(
-//     timeLeft - countdays * 86400 - counthours * 3600 - countminutes * 60
-//   );
-//   if (counthours < '10') {
-//     counthours = '0' + counthours;
-//   }
-//   if (countminutes < '10') {
-//     countminutes = '0' + countminutes;
-//   }
-//   if (countseconds < '10') {
-//     countseconds = '0' + countseconds;
-//   }
-
-//   setDays(countdays);
-//   setHours(counthours);
-//   setMinutes(countminutes);
-//   setSeconds(countseconds);
-// };
-
-// useEffect(() => {
-//   setInterval(() => {
-//     comingSoonTime();
-//   }, 1000);
-// }, []);
-
-{/* <div className='col-lg-4 col-md-6'>
-  <div className='featured-card box-shadow'>
-    <div className='featured-card-img'>
-      <a href='item-details.html'>
-        <img
-          src='../images/featured/featured-img2.jpg'
-          alt='Images'
-        />
-      </a>
-      <p>
-        <i className='ri-heart-line'></i> 142
-      </p>
-      <div
-        className='featured-card-clock'
-        data-countdown='2021/10/10'
-      >{days}:{hours}:{minutes}:{seconds}</div>
-      <button
-        type='button'
-        className='default-btn border-radius-5'
-      >
-        Place Bid
-      </button>
-    </div>
-
-    <div className='content'>
-      <h3>
-        <a href='item-details.html'>
-          I Love In The Air
-        </a>
-      </h3>
-      <div className='content-in'>
-        <div className='featured-card-left'>
-          <span>110 ETH 12/14</span>
-          <h4>Bid 70 ETH </h4>
-        </div>
-
-        <a
-          href='item-details.html'
-          className='featured-content-btn'
-        >
-          <i className='ri-arrow-right-line'></i>
-        </a>
-      </div>
-      <a
-        href='author-profile'
-        className='featured-user-option'
-      >
-        <img
-          src='../images/featured/featured-user2.jpg'
-          alt='Images'
-        />
-        <span>Created by @Maicel</span>
-      </a>
-    </div>
-  </div>
-</div> */}

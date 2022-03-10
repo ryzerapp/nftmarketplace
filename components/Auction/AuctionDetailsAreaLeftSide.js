@@ -1,8 +1,8 @@
 import React from "react";
-import AuctionDetailsDescription from "../Auction/AuctionDetailsDescription";
-import AuctionDetailsHistory from "../Auction/AuctionDetailsHistory";
+import AuctionDetailsDescriptionRightSide from "./AuctionDetailsDescriptionRightSide";
+import AuctionBids from "./AuctionBids";
 
-const AuctionDetailsArea = ({ data }) => {
+const AuctionDetailsAreaLeftSide = ({ data }) => {
 	return (
 		<>
 			<div className="item-details-area pt-100 pb-70">
@@ -16,14 +16,13 @@ const AuctionDetailsArea = ({ data }) => {
 										alt="Images"
 									/>
 								</div>
-
-								<AuctionDetailsHistory data={data} />{/*this is for bid part */}
+								<AuctionBids bids={data?.bids} />{/*this is for bid part */}
 							</div>
 						</div>
 
 						<div className="col-lg-6">
 							<div className="item-details-dsce">
-								<AuctionDetailsDescription data={data} />
+								<AuctionDetailsDescriptionRightSide data={data} />
 							</div>
 						</div>
 					</div>
@@ -33,4 +32,4 @@ const AuctionDetailsArea = ({ data }) => {
 	);
 };
 
-export default AuctionDetailsArea;
+export default AuctionDetailsAreaLeftSide;

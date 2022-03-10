@@ -1,12 +1,5 @@
 import React from 'react';
-import { useBids } from '../../hooks/Web2/useAuctions';
-
-const AuctionDetailsHistory = ({ data }) => {
-
-  const { nfts } = data;
-  const { data: bids } = useBids({
-    nft_id: nfts[0]?.id
-  })
+const AuctionBids = ({ bids }) => {
 
   return (
     <>
@@ -14,7 +7,7 @@ const AuctionDetailsHistory = ({ data }) => {
         <h3>Bid History</h3>
         <div className='item-details-into'>
           <div className='row'>
-            {bids && bids.length > 0 ? bids.map((bid) => {
+            {bids && bids?.length > 0 ? bids.map((bid) => {
               return (
                 <div className='col-lg-12' key={bid?.id}>
                   <div className='item-details-card'>
@@ -47,4 +40,4 @@ const AuctionDetailsHistory = ({ data }) => {
   );
 };
 
-export default AuctionDetailsHistory;
+export default AuctionBids;

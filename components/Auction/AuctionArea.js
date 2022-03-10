@@ -10,7 +10,6 @@ const AuctionArea = ({ }) => {
 			<Loading></Loading>
 		)
 	}
-	console.log(data)
 	return (
 		<>
 			<div className="auctions-area-three pt-100 pb-70">
@@ -21,8 +20,8 @@ const AuctionArea = ({ }) => {
 
 					<div className="row justify-content-center pt-45">
 						{data && data.length > 0 ?
-							data.map((nft) => {
-								return <AuctionNFT key={nft.id} data={nft} />;
+							data.map((auction) => {
+								return <AuctionNFT key={auction.id} data={auction} />;
 							}) : (
 								<>
 									<p>Please Wait for Some live Auction</p>
