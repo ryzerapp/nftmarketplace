@@ -7,6 +7,12 @@ import { getAuthCredentials, isAuthenticated } from "../../utils/auth-utils";
 const MenusList = ({ user }) => {
 	const { isAuthenticated: web3Authentication } = useMoralis();
 	const { token, permissions } = getAuthCredentials();
+	const avatarStyle = {
+		padding: "0px 5px",
+		borderRadius: "25px",
+		marginRight: "8px",
+		backgroundColor: "lightgray",
+	};
 
 	return (
 		<div className="container-fluid">
@@ -185,36 +191,52 @@ const MenusList = ({ user }) => {
 										<a className="nav-link">Create New NFT</a>
 									</Link>
 								</li>
-								<li className="nav-item">
-									<Link
-										href={!isAuthenticated({ token, permissions }) ? "/login" : "/profile"}
-										activeClassName="active"
-									>
-										<a className="nav-link">
-											Profile
-										</a>
-									</Link>
-								</li>
 							</ul>
 						</li>
-
+						{token && (
+							<li className="nav-item" style={{ display: "flex" }}>
+								<a href="#" className="nav-link" style={avatarStyle}>
+									<i class="ri-user-3-line"></i>
+								</a>
+								<span>{user?.username}</span>
+								<ul className="dropdown-menu">
+									<li className="nav-item">
+										<Link href="/profile" activeClassName="active">
+											<a class Name="nav-link">
+												Profile
+											</a>
+										</Link>
+									</li>
+									<li className="nav-item">
+										<Link href="/#" activeClassName="active">
+											<a class Name="nav-link">
+												Notifications
+											</a>
+										</Link>
+									</li>
+									<li className="nav-item">
+										<Link href="/">
+											<a className="nav-link" onClick={() => handleLogout()}>
+												Logout
+											</a>
+										</Link>
+									</li>
+								</ul>
+							</li>
+						)}
 					</ul>
 					<div className="others-options">
 
 						<ul className="optional-item-list">
-							{user?.status ? (
+							{!token && (
 								<li>
-									<a onClick={() => handleLogout()}>Logout</a>
+									<Link
+										href="/login"
+										activeClassName="active"
+									>
+										<a>Login</a>
+									</Link>
 								</li>
-							) : (
-									<li>
-										<Link
-											href="/login"
-											activeClassName="active"
-										>
-											<a>Login</a>
-										</Link>
-									</li>
 							)}
 
 							<li>
