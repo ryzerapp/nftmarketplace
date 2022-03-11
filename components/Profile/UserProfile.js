@@ -20,6 +20,7 @@ import AuctionNFT from '../Auction/AuctionNFT';
 import AuthorLeftSide from '../Authors/AuthorLeftSide';
 import RenderNFTInTabs from '../Tabs/RenderNFTInTabs';
 import RenderCollectionInTabs from '../Tabs/RenderCollectionInTabs';
+import NFTListComponentBlockChain from '../NFTS/NFTListComponentBlockChain';
 const schema = yup
   .object({
     email: yup
@@ -261,9 +262,16 @@ const UserProfile = () => {
                                   openDialogTitle={"Mint NFT"}
                                   editOrDelete={true}
                                   user={data?.user}
+                                  profile={true}
                                   nfts={data?.user?.nfts?.filter((nft) => !nft.nft_is_minted)}
                                   message="You Don't Have Unminted NFTs"
                                 />
+                              </div>
+                              <div className='border border-red'>
+                                <div className='row justify-content-ceneter px-4'>
+                                  <div className='pt-4'></div>
+                                  <NFTListComponentBlockChain></NFTListComponentBlockChain>
+                                </div>
                               </div>
                             </div>
                           </div>

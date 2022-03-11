@@ -12,6 +12,7 @@ import Loader from '../Common/Loader';
 import AuthorLeftSide from '../Authors/AuthorLeftSide';
 import RenderNFTInTabs from '../Tabs/RenderNFTInTabs';
 import RenderCollectionInTabs from '../Tabs/RenderCollectionInTabs';
+import NFTListComponentBlockChain from '../NFTS/NFTListComponentBlockChain';
 
 resetIdCounter();
 const AuthorProfile = () => {
@@ -58,7 +59,14 @@ const AuthorProfile = () => {
                                   editOrDelete={true}
                                   user={data?.user}
                                   nfts={data?.user?.nfts?.filter((nft) => nft.nft_is_minted)}
-                                  message="user Don't Have NFTs"
+                                  message="User Don't Have Minted NFTs"
+                                />
+                              </div>
+                              <hr></hr>
+                              <div className='row justify-content-ceneter px-4'>
+                                <div className='pt-4'></div>
+                                <NFTListComponentBlockChain
+                                  brefetch={true}
                                 />
                               </div>
                             </div>

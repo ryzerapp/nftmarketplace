@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { useMoralis, useWeb3ExecuteFunction } from 'react-moralis';
 import { useWeb3 } from '../../providers/Web3Context';
 import http from '../../utils/http';
-export default function NFTComponentDatabase({ nft, openDialogTitle, user, editOrDelete }) {
+export default function NFTComponentDatabase({ nft, openDialogTitle, user, editOrDelete, profile, formCollection }) {
     const { mutate: updateUserData } = useUpdateUserData()
     const { mutate: updateNfts } = useUpdatenftsData()
     const queryClient = useQueryClient();
@@ -216,12 +216,18 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, user, editO
                         </a>
                     </div>
                     <div className='row text-center'>
-                        <div className='col-lg-12'>
-                            <a href={`/author-profile?author_name=${nft?.created_by}`} className='featured-user-option'>
-                                <img src={nft?.created_user_photo ? nft?.created_user_photo : "../images/author/author-user13.png"} alt='Images' />
-                                <span>Created by @{nft?.created_by}</span>
-                            </a>
-                        </div>
+                        {!formCollection ? (
+                            <div className='col-lg-12'>
+                                <a href={`/author-profile?author_name=${profile ? user?.username : nft?.author?.username}`} className='featured-user-option'>
+                                    <img
+                                        src={profile ?
+                                            (user?.profile_photo ? user?.profile_photo : "../images/author/author-user13.png") :
+                                            (nft?.author?.profile_photo ?
+                                                nft?.author?.profile_photo : "../images/author/author-user13.png")} />
+                                    <span>Created by @{profile ? user?.username : nft?.author?.username}</span>
+                                </a>
+                            </div>
+                        ) : null}
                         <div className='col-lg-12 justify-content-center text-center'>
                             <div className='pt-20 ri-xl'>
                                 <i

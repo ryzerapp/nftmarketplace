@@ -47,6 +47,8 @@ const NFTListComponentBlockChain = ({ brefetch }) => {
   });
 
   useEffect(() => {
+    if (brefetch)
+      refetch()
     if (isWeb3Enabled && isAuthenticated)
       refetch()
   }, [isWeb3Enabled, networkId, walletAddress]);

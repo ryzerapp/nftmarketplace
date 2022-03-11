@@ -30,6 +30,7 @@ const Collection = ({ collection }) => {
                         openDialogTitle={"Open Now"}
                         editOrDelete={false}
                         user={users?.user}
+                        formCollection={true}
                         nfts={data?.nfts ? data?.nfts : []}
                         message="This Collection Don't Have Any NFT"
                       />

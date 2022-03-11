@@ -65,14 +65,15 @@ const AuctionNFT = ({ data, isfromProfile }) => {
 					{isfromProfile ? null : (
 						<div className="auction-card-user">
 							<a
-								href={`author-profile?author_name=${data?.created_by}`}
+								href={`author-profile?author_name=${data?.author?.username}`}
 								className="auction-card-user-option"
 							>
 								<img
-									src={data?.created_user_photo ? data?.created_user_photo : "../images/author/author-user13.png"}
+									src={data?.author?.profile_photo ? data?.author?.profile_photo
+										: "../images/author/author-user13.png"}
 									alt="Images"
 								/>
-								<span>Created by @{data?.created_by}</span>
+								<span>Created by @{data?.author?.username}</span>
 							</a>
 						</div>
 					)}

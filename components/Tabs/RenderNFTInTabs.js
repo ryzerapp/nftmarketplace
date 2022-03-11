@@ -1,7 +1,7 @@
 import React from 'react'
 import NFTComponentDatabase from '../NFTS/NFTComponentDatabase'
 
-export default function RenderNFTInTabs({ openDialogTitle, editOrDelete, user, nfts, message }) {
+export default function RenderNFTInTabs({ openDialogTitle, editOrDelete, user, nfts, message, profile, formCollection }) {
     return (
         <>
             {nfts?.length > 0 ?
@@ -11,6 +11,8 @@ export default function RenderNFTInTabs({ openDialogTitle, editOrDelete, user, n
                         key={nft?.id}
                         openDialogTitle={openDialogTitle}
                         user={user}
+                        profile={profile}
+                        formCollection={formCollection}
                         editOrDelete={editOrDelete}
                     />
                 )) : <div className='container mt-100'>

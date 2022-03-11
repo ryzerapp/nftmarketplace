@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import InvolvedArea from '../components/Common/InvolvedArea';
 import Loader from '../components/Common/Loader';
 import RenderCollectionInTabs from '../components/Tabs/RenderCollectionInTabs';
-import { useCollectionByUser } from '../hooks/Web2/useCollectionByUser';
+import { useCollections } from '../hooks/Web2/useCollections';
 import { useMeQuery } from '../hooks/Web2/useMeQuery';
 
 const Collection = () => {
-  const { data, isLoading } = useCollectionByUser();
+  const { data, isLoading } = useCollections();
   const { data: users } = useMeQuery()
+  console.log(data)
   if (isLoading) {
     return (
       <Loader />

@@ -144,11 +144,14 @@ export default function CollectionComponent({ collection, profile, user, editOrD
                     </div>
                     <div className='row align-items-center '>
                         <div className='col-md-7 col-sm-12'>
-                            <a href={`author-profile?author_name=${collection?.created_by}`} className='featured-user-option'>
+                            <a href={`author-profile?author_name=${profile ? user?.username : collection?.author?.username}`} className='featured-user-option'>
                                 <img
-                                    src={collection?.created_user_photo ? collection?.created_user_photo : "../images/author/author-user13.png"}
+                                    src={profile ?
+                                        (user?.profile_photo ? user?.profile_photo : "../images/author/author-user13.png") :
+                                        (collection?.author?.profile_photo ?
+                                            collection?.author?.profile_photo : "../images/author/author-user13.png")}
                                     alt='Images' />
-                                <span>Created by @{collection?.created_by}</span>
+                                <span>Created by @{profile ? user?.username : collection?.author?.username}</span>
                             </a>
                         </div>
                         <div className='d-flex flex-row ri-xl col-md-5 col-sm-12 '>

@@ -1,4 +1,3 @@
-import PageBanner from '../components/Common/PageBanner';
 import AuthorProfile from '../components/Profile/AuthorProfile';
 import InvolvedArea from '../components/Common/InvolvedArea';
 

@@ -2,14 +2,14 @@ import { useQuery } from "react-query";
 import http from "../../utils/http";
 
 const fetchCollectionData = async ({ }) => {
-  const { data } = await http.get('/collection/findById');
+  const { data } = await http.get('/collection');
   return { collections: data };
 };
 
-const useCollectionByUser = (options = {}) => {
+const useCollections = (options = {}) => {
   return useQuery([`collection`, options], fetchCollectionData, {
     keepPreviousData: true,
   });
 };
 
-export { useCollectionByUser };
+export { useCollections };

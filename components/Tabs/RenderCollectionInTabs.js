@@ -1,7 +1,7 @@
 import React from 'react'
 import CollectionComponent from '../Collection/CollectionComponent'
 
-export default function RenderCollectionInTabs({ openDialogTitle, editOrDelete, user, collections, message, profile }) {
+export default function RenderCollectionInTabs({ editOrDelete, user, collections, message, profile }) {
     return (
         <>
             {collections?.length > 0 ?
