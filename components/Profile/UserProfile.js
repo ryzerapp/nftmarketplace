@@ -10,16 +10,12 @@ const Tabs = dynamic(
 );
 import { resetIdCounter, Tab, TabList, TabPanel } from 'react-tabs';
 import { useCollectionSavedByUser, useMeQuery, useSavednftsQuery } from '../../hooks/Web2/useMeQuery';
-import CollectionComponent from '../Collection/CollectionComponent';
 import Loader from '../Common/Loader';
-import NFT from '../Collection/NFT';
-import NFTComponentDatabase from '../Collection/NFTComponentDatabase';
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
 import { useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import { useQueryClient } from 'react-query';
 import CreateAuction from '../../pages/auction/create';
-import AuctionArea from '../Auction/AuctionArea';
 import AuctionNFT from '../Auction/AuctionNFT';
 import AuthorLeftSide from '../Authors/AuthorLeftSide';
 import RenderNFTInTabs from '../Tabs/RenderNFTInTabs';

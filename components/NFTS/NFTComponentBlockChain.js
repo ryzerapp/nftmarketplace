@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function NFTComponent({ nft }) {
+export default function NFTComponentBlockChain({ nft }) {
     return (
         <div className='col-lg-3 col-md-4'>
             <div className='featured-card box-shadow'>

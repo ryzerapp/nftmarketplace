@@ -7,13 +7,14 @@ import { useRouter } from 'next/router';
 import { useMoralis, useWeb3ExecuteFunction } from 'react-moralis';
 import { useWeb3 } from '../../providers/Web3Context';
 import http from '../../utils/http';
-export default function NFTComponentDatabase({ nft, openDialogTitle, user, editOrDelete, author_name }) {
+export default function NFTComponentDatabase({ nft, openDialogTitle, user, editOrDelete }) {
     const { mutate: updateUserData } = useUpdateUserData()
     const { mutate: updateNfts } = useUpdatenftsData()
     const queryClient = useQueryClient();
     const router = useRouter()
-    let saved_nfts = user?.saved_nfts;
-    let liked_nfts = user?.liked_nfts;
+    let saved_nfts = user?.saved_nfts ? user?.saved_nfts : [];
+    let liked_nfts = user?.liked_nfts ? user?.liked_nfts : [];
+    const author_name = user?.username;
     const onBookMarkCollection = async (ids) => {
         if (saved_nfts?.indexOf(`${ids}`) > -1) {
             await updateUserData({
@@ -177,7 +178,7 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, user, editO
         });
     }
     return (
-        <div className='col-lg-4 col-md-6'>
+        <div className='col-lg-3 col-md-4'>
             <div className='featured-card box-shadow'>
                 <div className='featured-card-img'>
                     <img src={nft?.image_url} alt='Images' />
@@ -226,8 +227,8 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, user, editO
                                 <i
                                     onClick={() => onLikedNfts(nft?.id)}
                                     style={{
-                                    color: '#f14d5d', cursor: 'pointer', width: "30px",
-                                }}
+                                        color: '#f14d5d', cursor: 'pointer', width: "30px",
+                                    }}
                                     className={(liked_nfts.indexOf(`${nft?.id}`)) > -1 ? 'ri-heart-fill' : 'ri-heart-line'}></i>
 
                                 <i style={{ cursor: 'pointer' }}

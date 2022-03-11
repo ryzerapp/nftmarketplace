@@ -7,7 +7,6 @@ import FeaturedArea from '../components/HomeThree/FeaturedArea';
 import Testimonial from '../components/HomeThree/Testimonial';
 import AuthorArea from '../components/HomeThree/AuthorArea';
 import BlogArea from '../components/Common/BlogArea';
-import CollectionArea from '../components/Common/CollectionsArea';
 import Footer from '../components/Layout/Footer';
 import Copyright from '../components/Common/Copyright';
 
@@ -32,7 +31,6 @@ const Index = () => {
 
       <BlogArea />
 
-      <CollectionArea />
 
       <Footer />
 

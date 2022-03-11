@@ -1,5 +1,5 @@
 import React from 'react'
-import NFTComponentDatabase from '../Collection/NFTComponentDatabase'
+import NFTComponentDatabase from '../NFTS/NFTComponentDatabase'
 
 export default function RenderNFTInTabs({ openDialogTitle, editOrDelete, user, nfts, message }) {
     return (

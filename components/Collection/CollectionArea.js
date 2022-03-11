@@ -1,16 +1,10 @@
 import React from 'react';
-import NFT from './NFT';
+import NFTListComponentBlockChain from './NFTListComponentBlockChain';
 
 const CollectionArea = () => {
   return (
     <>
-      <div className='collection-widget-area pt-100 pb-70'>
-        <div className='container'>
-          <div className='row'>
-            <NFT />
-          </div>
-        </div>
-      </div>
+
     </>
   );
 };

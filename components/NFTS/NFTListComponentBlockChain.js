@@ -4,9 +4,9 @@ import { useQuery } from 'react-query';
 import { useIPFS } from '../../hooks/Web3/useIPFS';
 import { useWeb3 } from '../../providers/Web3Context';
 import Loader from '../Common/Loader';
-import NFTComponent from './NFTComponent';
+import NFTComponentBlockChain from './NFTComponentBlockChain';
 
-const NFT = ({ brefetch }) => {
+const NFTListComponentBlockChain = ({ brefetch }) => {
 
   const { Moralis, isWeb3Enabled, isAuthenticated } = useMoralis();
   const { state: { walletAddress, networkId } } = useWeb3();
@@ -63,7 +63,7 @@ const NFT = ({ brefetch }) => {
         {nftBalance?.length > 0 ?
           nftBalance?.map((res) =>
           (
-            <NFTComponent
+            <NFTComponentBlockChain
               nft={res}
               key={res?.token_uri}
             />
@@ -82,4 +82,4 @@ const NFT = ({ brefetch }) => {
   );
 };
 
-export default NFT;
+export default NFTListComponentBlockChain;
