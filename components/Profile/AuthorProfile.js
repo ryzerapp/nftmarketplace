@@ -12,6 +12,7 @@ import CollectionComponent from '../Collection/CollectionComponent';
 import Loader from '../Common/Loader';
 import NFT from '../Collection/NFT';
 import NFTComponentDatabase from '../Collection/NFTComponentDatabase';
+import AuthorLeftSide from '../Authors/AuthorLeftSide';
 
 resetIdCounter();
 
@@ -39,59 +40,7 @@ const AuthorProfile = () => {
       <div className='author-profile-area pt-70 pb-70'>
         <div className='container'>
           <div className='row'>
-            <div className='col-lg-3'>
-              <div className='author-profile-sidebar  mr-20'>
-                <div className='author-user'>
-                  <img
-                    src={(data?.user?.profile_photo) ? (data?.user?.profile_photo) : "../images/author/author-user13.png"}
-                    alt='Images' />
-                  <i className='ri-check-line'></i>
-                </div>
-
-                <h3>
-                  <a href='author-profile'>{data?.user?.first_name} {data?.user?.last_name}</a>
-                </h3>
-                <span>@{data?.user?.username}</span>
-                <div className="d-flex .flex-wrap">
-                  <p style={{
-                    overflow: "hidden"
-                  }}>
-                    {data?.user?.professional_summery}
-
-                  </p>
-                </div>
-                <span>Wallet Address:</span>
-                <p > {data?.user?.walletAddress ? ((data?.user?.walletAddress).substr(0, 10)) + ".........." +
-                  (data?.user?.walletAddress).split("").reverse().join("").substr(1, 10) : "Plase Update Your Address"}</p>
-                <div className='author-content'>
-                  <div className='content-left'>
-                    <span>Followers</span>
-                    <h4>2941</h4>
-                  </div>
-
-                  <div className='content-right'>
-                    Follow
-                    <ul className='author-social'>
-                      <li>
-                        <a href='https://www.facebook.com/' target='_blank'>
-                          <i className='ri-facebook-fill'></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href='https://www.instagram.com/' target='_blank'>
-                          <i className='ri-instagram-fill'></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href='https://twitter.com/' target='_blank'>
-                          <i className='ri-twitter-fill'></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <AuthorLeftSide user={data?.user} />
             <div className='col-lg-9'>
               <div className='tab featured-tab-area featured-tab-area-ml author-tab-area'>
                 <Tabs>
