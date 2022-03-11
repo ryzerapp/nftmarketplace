@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function NFTComponent({ nft }) {
     return (
-        <div className='col-lg-4 col-md-6'>
+        <div className='col-lg-3 col-md-4'>
             <div className='featured-card box-shadow'>
                 <div className='featured-card-img'>
                     <a href='/item-details'>

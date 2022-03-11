@@ -41,7 +41,7 @@ const NFT = ({ brefetch }) => {
     return data;
   };
 
-  const { data: nftBalance, isLoading, refetch } = useQuery(['USERNfts'], setData, {
+  const { data: nftBalance, isLoading, refetch } = useQuery(['USERBlockChainNFTs'], setData, {
     keepPreviousData: true,
     enabled: false
   });
@@ -71,8 +71,8 @@ const NFT = ({ brefetch }) => {
           ) : <>
             <div className='container mt-100'>
               <div className='row'>
-                <div className='col-xs-1 section-title  pb-70' align="center">
-                  <h2>You Don't Have Any NFT</h2>
+                <div className='col-xs-1 section-title pb-70 pt-50' align="center">
+                  <p>You Don't Have Any NFT On Chain {networkId}</p>
                 </div>
               </div>
             </div>

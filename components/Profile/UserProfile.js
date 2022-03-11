@@ -15,7 +15,6 @@ import Loader from '../Common/Loader';
 import NFT from '../Collection/NFT';
 import NFTComponentDatabase from '../Collection/NFTComponentDatabase';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import { useQueryClient } from 'react-query';
@@ -105,11 +104,11 @@ const UserProfile = () => {
   }
   return (
     <>
-      <div className='author-profile-area pt-100 pb-70'>
+      <div className='author-profile-area pt-70'>
         <div className='container'>
           <div className='row'>
             <div className='col-lg-3'>
-              <div className='author-profile-sidebar  mr-20'>
+              <div className='author-profile-sidebar mr-20'>
                 <div className='author-user'>
                   <img
                     src={(data?.user?.profile_photo) ? (data?.user?.profile_photo) : "../images/author/author-user13.png"}
@@ -299,157 +298,183 @@ const UserProfile = () => {
 
                       </div>
                     </TabPanel>
+
                     <TabPanel>
                       <CreateAuction nfts={data?.user?.nfts?.filter((nft) => !nft.auction_iscreated)}></CreateAuction>
                     </TabPanel>
+
                     <TabPanel>
-                      <div className='tabs_item'>
+                      <div className='tabs_item pb-70'>
                         <div className='row justify-content-left'>
-                          <Heading heading={"UnMinted NFT's"}></Heading>
-                          {data?.user?.nfts?.filter((nft) => !nft.nft_is_minted)?.length > 0 ?
-                            data?.user?.nfts?.filter((nft) => !nft.nft_is_minted)?.map((nft) => (
-                              <NFTComponentDatabase
-                                nft={nft}
-                                key={nft?.id}
-                                openDialogTitle={"Mint Now"}
-                                saved_nfts={data?.user?.saved_nfts ? data?.user?.saved_nfts : []}
-                                liked_nfts={data?.user?.liked_nfts ? data?.user?.liked_nfts : []}
-                                user={data?.user}
-                                editOrDelete={true}
-                              />
-                            )) : <div className='container mt-100'>
-                              <div className='row'>
-                                <div className='col-xs-1 section-title  pb-70' align="center">
-                                  <h2>You Don't Have Any Saved NFT</h2>
-                                </div>
+                          <div className='' align="center">
+                            <div className='border border-red'>
+                              <div className='row justify-content-ceneter px-4'>
+                                <div className='pt-4'></div>
+                                {data?.user?.nfts?.filter((nft) => !nft.nft_is_minted)?.length > 0 ?
+                                  data?.user?.nfts?.filter((nft) => !nft.nft_is_minted)?.map((nft) => (
+                                    <NFTComponentDatabase
+                                      nft={nft}
+                                      key={nft?.id}
+                                      openDialogTitle={"Mint Now"}
+                                      saved_nfts={data?.user?.saved_nfts ? data?.user?.saved_nfts : []}
+                                      liked_nfts={data?.user?.liked_nfts ? data?.user?.liked_nfts : []}
+                                      user={data?.user}
+                                      editOrDelete={true}
+                                    />
+                                  )) : <div className='container mt-100'>
+                                    <div className='row'>
+                                      <div className='col-xs-1 section-title pb-70 pt-50' align="center">
+                                        <p>You Don't Have Unminted NFTs</p>
+                                      </div>
+                                    </div>
+                                  </div>}
                               </div>
-                            </div>}
+                            </div>
+                          </div>
                         </div>
-                        <Heading heading={"Minted NFT's"}></Heading>
-                        <NFT brefetch={true} />
-                      </div>
-                    </TabPanel>
-
-                    <TabPanel>
-                      <div className='tabs_item'>
-                        <div className='row justify-content-left'>
-                          {data?.user?.collections?.length > 0 ?
-                            data?.user?.collections?.map((res) =>
-                            (
-                              <CollectionComponent
-                                collection={res}
-                                profile={true}
-                                key={res?.id}
-                                savedCollection={data?.user?.saved_collection ? data?.user?.saved_collection : []}
-                                liked_collection={data?.user?.liked_collection ? data?.user?.liked_collection : []}
-                                user={data?.user}
-                                editOrDelete={true}
-
-                              />
-                            )) : <>
-                              <div className='container mt-100'>
-                                <div className='row'>
-                                  <div className='col-xs-1 section-title  pb-70' align="center">
-                                    <h2>You Don't Have Any Collection</h2>
-                                  </div>
-                                </div>
-                              </div>
-                            </>}
+                        <div className='border border-red'>
+                          <div className='row justify-content-ceneter px-4'>
+                            <div className='pt-4'></div>
+                            <NFT brefetch={true} />
+                          </div>
                         </div>
                       </div>
                     </TabPanel>
 
                     <TabPanel>
-                      <div className='tabs_item'>
+                      <div className='tabs_item pb-70'>
                         <div className='row justify-content-left'>
-                          {data?.user?.auctions?.length > 0 ?
-                            data?.user?.auctions?.map((auction) =>
-                            (
-                              <AuctionNFT key={auction.id} data={auction} isfromProfile={true} />
-                            )) : <>
-                              <div className='container mt-100'>
-                                <div className='row'>
-                                  <div className='col-xs-1 section-title  pb-70' align="center">
-                                    <h2>You Don't Have Any Auctions</h2>
-                                  </div>
-                                </div>
+                          <div className='' align="center">
+                            <div className='border border-red'>
+                              <div className='row justify-content-ceneter px-4'>
+                                <div className='pt-4'></div>
+                                {data?.user?.collections?.length > 0 ?
+                                  data?.user?.collections?.map((res) =>
+                                  (
+                                    <CollectionComponent
+                                      collection={res}
+                                      profile={true}
+                                      key={res?.id}
+                                      savedCollection={data?.user?.saved_collection ? data?.user?.saved_collection : []}
+                                      liked_collection={data?.user?.liked_collection ? data?.user?.liked_collection : []}
+                                      user={data?.user}
+                                      editOrDelete={true}
+
+                                    />
+                                  )) : <div className='container mt-100'>
+                                    <div className='row'>
+                                      <div className='col-xs-1 section-title pb-70 pt-50' align="center">
+                                        <p>You Don't Have Any Collection</p>
+                                      </div>
+                                    </div>
+                                  </div>}
                               </div>
-                            </>}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </TabPanel>
 
                     <TabPanel>
-                      <div className='tabs_item'>
+                      <div className='tabs_item pb-70'>
                         <div className='row justify-content-left'>
-                          {savedCollection?.length > 0 ?
-                            savedCollection?.map((res) =>
-                            (
-                              <CollectionComponent
-                                collection={res}
-                                profile={true}
-                                key={res?.id}
-                                savedCollection={data?.user?.saved_collection ? data?.user?.saved_collection : []}
-                                liked_collection={data?.user?.liked_collection ? data?.user?.liked_collection : []}
-                                user={data?.user}
-                                editOrDelete={false}
+                          <div className='' align="center">
+                            <div className='border border-red'>
+                              <div className='row justify-content-ceneter px-4'>
+                                <div className='pt-4'></div>
+                                {data?.user?.auctions?.length > 0 ?
+                                  data?.user?.auctions?.map((auction) =>
+                                  (
+                                    <AuctionNFT key={auction.id} data={auction} isfromProfile={true} />
+                                  )) : <>
+                                    <div className='container mt-100'>
+                                      <div className='row'>
+                                        <div className='col-xs-1 section-title pb-70 pt-50' align="center">
+                                          <p>You Don't Have Any Auction</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </>}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className='tabs_item pb-70'>
+                        <div className='row justify-content-left'>
 
-                              />
-                            )) : <>
-                              <div className='container mt-100'>
-                                <div className='row'>
-                                  <div className='col-xs-1 section-title  pb-70' align="center">
-                                    <h2>You Don't Have Any Saved Collection</h2>
-                                  </div>
+                        </div>
+                      </div>
+                    </TabPanel>
+
+                    <TabPanel>
+                      <div className='tabs_item pb-70'>
+                        <div className='row justify-content-left'>
+                          <div className='' align="center">
+                            <div className='border border-red'>
+                              <p className='justify-content-left pt-4'>Saved Collection</p>
+                              <div className='row justify-content-ceneter px-4'>
+                                <hr ></hr>
+                                {savedCollection?.length > 0 ?
+                                  savedCollection?.map((res) =>
+                                  (
+                                    <CollectionComponent
+                                      collection={res}
+                                      profile={true}
+                                      key={res?.id}
+                                      savedCollection={data?.user?.saved_collection ? data?.user?.saved_collection : []}
+                                      liked_collection={data?.user?.liked_collection ? data?.user?.liked_collection : []}
+                                      user={data?.user}
+                                      editOrDelete={false}
+
+                                    />
+                                  )) : <>
+                                    <div className='container mt-100'>
+                                      <div className='row'>
+                                        <div className='col-xs-1 section-title pb-70 pt-50' align="center">
+                                          <p>You Don't Have Any Saved Collection</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </>}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className='row pt-3 pb-70s'>
+                            <div className='' align="center">
+                              <div className='border border-red'>
+                                <p className='justify-content-left pt-4'>Saved NFTS</p>
+                                <div className='row justify-content-ceneter px-4'>
+                                  <hr ></hr>
+                                  {savedNfts?.length > 0 ?
+                                    savedNfts?.map((nft) => (
+                                      <NFTComponentDatabase
+                                        nft={nft}
+                                        key={nft?.id}
+                                        openDialogTitle={"Open NFT"}
+                                        saved_nfts={data?.user?.saved_nfts ? data?.user?.saved_nfts : []}
+                                        liked_nfts={data?.user?.liked_nfts ? data?.user?.liked_nfts : []}
+                                        user={data?.user}
+                                        editOrDelete={false}
+                                      />
+                                    )) : <div className='container mt-100'>
+                                      <div className='row'>
+                                        <div className='col-xs-1 section-title pb-70 pt-50' align="center">
+                                          <p>You Don't Have Any Saved Collection</p>
+                                        </div>
+                                      </div>
+                                    </div>}
                                 </div>
                               </div>
-                            </>}
-                          <hr></hr>
-                          {savedNfts?.length > 0 ?
-                            savedNfts?.map((nft) => (
-                              <NFTComponentDatabase
-                                nft={nft}
-                                key={nft?.id}
-                                openDialogTitle={"Open NFT"}
-                                saved_nfts={data?.user?.saved_nfts ? data?.user?.saved_nfts : []}
-                                liked_nfts={data?.user?.liked_nfts ? data?.user?.liked_nfts : []}
-                                user={data?.user}
-                                editOrDelete={false}
-                              />
-                            )) : <div className='container mt-100'>
-                              <div className='row'>
-                                <div className='col-xs-1 section-title  pb-70' align="center">
-                                  <h2>You Don't Have Any Saved NFT</h2>
-                                </div>
-                              </div>
-                            </div>}
+                            </div>
+                          </div>
+
                         </div>
                       </div>
                     </TabPanel>
                   </div>
                 </Tabs>
-              </div>
-
-              <div className='col-lg-12 col-md-12'>
-                <div className='pagination-area'>
-                  <a href='author-profile' className='prev page-numbers'>
-                    <i className='ri-arrow-left-s-line'></i>
-                  </a>
-
-                  <span className='page-numbers current' aria-current='page'>
-                    1
-                  </span>
-                  <a href='author-profile' className='page-numbers'>
-                    2
-                  </a>
-                  <a href='author-profile' className='page-numbers'>
-                    3
-                  </a>
-
-                  <a href='author-profile' className='next page-numbers'>
-                    <i className='ri-arrow-right-s-line'></i>
-                  </a>
-                </div>
               </div>
             </div>
           </div>

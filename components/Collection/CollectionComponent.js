@@ -113,7 +113,7 @@ export default function CollectionComponent({ collection, profile, savedCollecti
         }
     }
     return (
-        <div className={!profile ? 'col-lg-4 col-md-6' : 'col-lg-6'} key={collection?.id}>
+        <div className={!profile ? 'col-lg-3 col-md-6' : 'col-lg-6 col-md-6'} key={collection?.id}>
             <div className='featured-card box-shadow'>
                 <div className='featured-card-img'>
                     <img src={collection?.collection_cover_image}

@@ -11,7 +11,6 @@ const CreateCollectionAreaNew = () => {
 
   const { state: { nftTokenAddress, user } } =
     useWeb3();
-  console.log(user)
   const { state: { nftTokenABI } } = useWeb3()
   const { Moralis, isAuthenticated } = useMoralis();
   const contractProcessor = useWeb3ExecuteFunction();

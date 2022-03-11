@@ -36,7 +36,7 @@ const AuthorProfile = () => {
   }
   return (
     <>
-      <div className='author-profile-area pt-100 pb-70'>
+      <div className='author-profile-area pt-70 pb-70'>
         <div className='container'>
           <div className='row'>
             <div className='col-lg-3'>
@@ -117,7 +117,7 @@ const AuthorProfile = () => {
                               <NFTComponentDatabase
                                 nft={nft}
                                 key={nft?.id}
-                                openDialogTitle={"Mint Now"}
+                                openDialogTitle={"Open NFT"}
                                 saved_nfts={data?.user?.saved_nfts ? data?.user?.saved_nfts : []}
                                 liked_nfts={data?.user?.liked_nfts ? data?.user?.liked_nfts : []}
                                 user={data?.user}

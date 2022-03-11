@@ -3,10 +3,15 @@ import { useQueryClient } from 'react-query';
 import { useUpdateCollectionData, useUpdatenftsData, useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useMoralis, useWeb3ExecuteFunction } from 'react-moralis';
+import { useWeb3 } from '../../providers/Web3Context';
+import http from '../../utils/http';
 export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts = [], user, editOrDelete, liked_nfts = [], author_name }) {
     const { mutate: updateUserData } = useUpdateUserData()
     const { mutate: updateNfts } = useUpdatenftsData()
     const queryClient = useQueryClient();
+    const router = useRouter()
 
     const onBookMarkCollection = async (ids) => {
         if (saved_nfts?.indexOf(`${ids}`) > -1) {
@@ -109,6 +114,67 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts 
             })
         }
     }
+    const { state: { nftTokenAddress } } =
+        useWeb3();
+    const { state: { nftTokenABI } } = useWeb3()
+    const { Moralis, isAuthenticated } = useMoralis();
+    const contractProcessor = useWeb3ExecuteFunction();
+    async function mintNFTHandle() {
+
+        const { attributes, created_at, created_by,
+            cryptoCost, cryptoType, description,
+            edition, image, name, unique_string } = nft;
+
+        const nftDataJson = {
+            attributes, created_at, created_by,
+            cryptoCost, cryptoType, description,
+            edition, image, name, unique_string,
+            image: nft?.image_url,
+        };
+        console.log('nftDataJson', nftDataJson)
+        if (!isAuthenticated) {
+            toast.success("Please Connect Web3.0 Wallet")
+            return;
+        }
+        const file = new Moralis.File("file.json", {
+            base64: btoa(JSON.stringify(nftDataJson, undefined, 1)),
+            type: 'json'
+        });
+        const moralisFileJson = await file.saveIPFS();
+        console.log('moralisFileJson', moralisFileJson)
+        await mintNFT(moralisFileJson._ipfs);
+    }
+    async function mintNFT(tokenURI) {
+        let options = {
+            contractAddress: nftTokenAddress,
+            functionName: "createToken",
+            abi: nftTokenABI,
+            params: {
+                tokenURI: tokenURI,
+            },
+        };
+        await contractProcessor.fetch({
+            params: options,
+            onSuccess: async (res) => {
+                queryClient.invalidateQueries('USER')
+                queryClient.invalidateQueries('USERBlockChainNFTs')
+
+                await http.put(`/nfts/update_nft/${nft?.id}`, {
+                    "nft_is_minted": true
+                }).then((res) => {
+
+                    if (res.data.status_code == 200)
+                        toast.success("Your NFT is Created.")
+
+                }).catch((err) => {
+                    console.log(err)
+                })
+            },
+            onError: (error) => {
+                console.log(error);
+            },
+        });
+    }
     return (
         <div className='col-lg-4 col-md-6'>
             <div className='featured-card box-shadow'>
@@ -117,7 +183,16 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts 
                     <p>
                         <i className='ri-heart-line'></i> 122
                     </p>
-                    <button type='button' className='default-btn border-radius-5'>
+                    <button type='button' className='default-btn border-radius-5' onClick={() => {
+                        if (openDialogTitle == "Open NFT") {
+                            router.push(`/nft/${nft?.id}`)
+                        }
+                        else if (openDialogTitle == "Mint Now") {
+                            mintNFTHandle()
+                        }
+                    }
+                    }
+                    >
                         {openDialogTitle ? openDialogTitle : "Place Bid"}
                     </button>
                 </div>
