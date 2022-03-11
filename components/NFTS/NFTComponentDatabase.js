@@ -86,6 +86,9 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, user, editO
                             }
                         })
                     }
+                    if (router.query?.collection)
+                        queryClient.invalidateQueries(`collection_${router.query?.collection}`)
+
                     toast.success("Successfully Removed from Liked Nft's")
                 }
             })
@@ -110,7 +113,9 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, user, editO
                     if (author_name)
                         queryClient.invalidateQueries(`user_${author_name}`)
 
-                    // queryClient.invalidateQueries('useSavednftsQuery')
+                    if (router.query?.collection)
+                        queryClient.invalidateQueries(`collection_${router.query?.collection}`)
+
                     toast.success("Successfully Added to Liked Nft's")
                 }
             })
@@ -183,7 +188,7 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, user, editO
                 <div className='featured-card-img'>
                     <img src={nft?.image_url} alt='Images' />
                     <p>
-                        <i className='ri-heart-line'></i> 122
+                        <i className='ri-heart-line'></i> {nft?.total_like ? nft?.total_like : 0}
                     </p>
                     <button type='button' className='default-btn border-radius-5' onClick={() => {
                         if (openDialogTitle == "Open NFT") {
