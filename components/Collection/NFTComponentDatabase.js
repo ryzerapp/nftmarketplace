@@ -7,12 +7,13 @@ import { useRouter } from 'next/router';
 import { useMoralis, useWeb3ExecuteFunction } from 'react-moralis';
 import { useWeb3 } from '../../providers/Web3Context';
 import http from '../../utils/http';
-export default function NFTComponentDatabase({ nft, openDialogTitle, saved_nfts = [], user, editOrDelete, liked_nfts = [], author_name }) {
+export default function NFTComponentDatabase({ nft, openDialogTitle, user, editOrDelete, author_name }) {
     const { mutate: updateUserData } = useUpdateUserData()
     const { mutate: updateNfts } = useUpdatenftsData()
     const queryClient = useQueryClient();
     const router = useRouter()
-
+    let saved_nfts = user?.saved_nfts;
+    let liked_nfts = user?.liked_nfts;
     const onBookMarkCollection = async (ids) => {
         if (saved_nfts?.indexOf(`${ids}`) > -1) {
             await updateUserData({

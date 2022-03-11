@@ -4,11 +4,14 @@ import { useQueryClient } from 'react-query';
 import { useUpdateCollectionData, useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import toast from 'react-hot-toast';
 
-export default function CollectionComponent({ collection, profile, savedCollection = [], liked_collection = [], user, editOrDelete, author_name }) {
+export default function CollectionComponent({ collection, profile, user, editOrDelete }) {
     const router = useRouter()
     const queryClient = useQueryClient();
     const { mutate: updateUser } = useUpdateUserData()
     const { mutate: updateCollection } = useUpdateCollectionData()
+    const savedCollection = user?.saved_collection ? user?.saved_collection : [];
+    const liked_collection = user?.liked_collection ? user?.liked_collection : [];
+    const author_name = user?.username;
     const onSavedCollection = async (ids) => {
         if (savedCollection?.indexOf(`${ids}`) > -1) {
             await updateUser({

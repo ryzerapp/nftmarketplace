@@ -22,6 +22,8 @@ import CreateAuction from '../../pages/auction/create';
 import AuctionArea from '../Auction/AuctionArea';
 import AuctionNFT from '../Auction/AuctionNFT';
 import AuthorLeftSide from '../Authors/AuthorLeftSide';
+import RenderNFTInTabs from '../Tabs/RenderNFTInTabs';
+import RenderCollectionInTabs from '../Tabs/RenderCollectionInTabs';
 const schema = yup
   .object({
     email: yup
@@ -259,35 +261,19 @@ const UserProfile = () => {
                             <div className='border border-red'>
                               <div className='row justify-content-ceneter px-4'>
                                 <div className='pt-4'></div>
-                                {data?.user?.nfts?.filter((nft) => !nft.nft_is_minted)?.length > 0 ?
-                                  data?.user?.nfts?.filter((nft) => !nft.nft_is_minted)?.map((nft) => (
-                                    <NFTComponentDatabase
-                                      nft={nft}
-                                      key={nft?.id}
-                                      openDialogTitle={"Mint Now"}
-                                      saved_nfts={data?.user?.saved_nfts ? data?.user?.saved_nfts : []}
-                                      liked_nfts={data?.user?.liked_nfts ? data?.user?.liked_nfts : []}
-                                      user={data?.user}
-                                      editOrDelete={true}
-                                    />
-                                  )) : <div className='container mt-100'>
-                                    <div className='row'>
-                                      <div className='col-xs-1 section-title pb-70 pt-50' align="center">
-                                        <p>You Don't Have Unminted NFTs</p>
-                                      </div>
-                                    </div>
-                                  </div>}
+                                <RenderNFTInTabs
+                                  openDialogTitle={"Mint NFT"}
+                                  editOrDelete={true}
+                                  user={data?.user}
+                                  nfts={data?.user?.nfts?.filter((nft) => !nft.nft_is_minted)}
+                                  message="You Don't Have Unminted NFTs"
+                                />
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div className='border border-red'>
-                          <div className='row justify-content-ceneter px-4'>
-                            <div className='pt-4'></div>
-                            <NFT brefetch={true} />
-                          </div>
-                        </div>
                       </div>
+
                     </TabPanel>
 
                     <TabPanel>
@@ -297,26 +283,13 @@ const UserProfile = () => {
                             <div className='border border-red'>
                               <div className='row justify-content-ceneter px-4'>
                                 <div className='pt-4'></div>
-                                {data?.user?.collections?.length > 0 ?
-                                  data?.user?.collections?.map((res) =>
-                                  (
-                                    <CollectionComponent
-                                      collection={res}
-                                      profile={true}
-                                      key={res?.id}
-                                      savedCollection={data?.user?.saved_collection ? data?.user?.saved_collection : []}
-                                      liked_collection={data?.user?.liked_collection ? data?.user?.liked_collection : []}
-                                      user={data?.user}
-                                      editOrDelete={true}
-
-                                    />
-                                  )) : <div className='container mt-100'>
-                                    <div className='row'>
-                                      <div className='col-xs-1 section-title pb-70 pt-50' align="center">
-                                        <p>You Don't Have Any Collection</p>
-                                      </div>
-                                    </div>
-                                  </div>}
+                                <RenderCollectionInTabs
+                                  editOrDelete={true}
+                                  user={data?.user}
+                                  profile={true}
+                                  collections={data?.user?.collections}
+                                  message="You Don't Have Any Collection"
+                                />
                               </div>
                             </div>
                           </div>
@@ -364,28 +337,13 @@ const UserProfile = () => {
                               <p className='justify-content-left pt-4'>Saved Collection</p>
                               <div className='row justify-content-ceneter px-4'>
                                 <hr ></hr>
-                                {savedCollection?.length > 0 ?
-                                  savedCollection?.map((res) =>
-                                  (
-                                    <CollectionComponent
-                                      collection={res}
-                                      profile={true}
-                                      key={res?.id}
-                                      savedCollection={data?.user?.saved_collection ? data?.user?.saved_collection : []}
-                                      liked_collection={data?.user?.liked_collection ? data?.user?.liked_collection : []}
-                                      user={data?.user}
-                                      editOrDelete={false}
-
-                                    />
-                                  )) : <>
-                                    <div className='container mt-100'>
-                                      <div className='row'>
-                                        <div className='col-xs-1 section-title pb-70 pt-50' align="center">
-                                          <p>You Don't Have Any Saved Collection</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </>}
+                                <RenderCollectionInTabs
+                                  editOrDelete={true}
+                                  user={data?.user}
+                                  profile={true}
+                                  collections={savedCollection ? savedCollection : []}
+                                  message="You Don't Have Any Collection"
+                                />
                               </div>
                             </div>
                           </div>
@@ -396,24 +354,13 @@ const UserProfile = () => {
                                 <p className='justify-content-left pt-4'>Saved NFTS</p>
                                 <div className='row justify-content-ceneter px-4'>
                                   <hr ></hr>
-                                  {savedNfts?.length > 0 ?
-                                    savedNfts?.map((nft) => (
-                                      <NFTComponentDatabase
-                                        nft={nft}
-                                        key={nft?.id}
-                                        openDialogTitle={"Open NFT"}
-                                        saved_nfts={data?.user?.saved_nfts ? data?.user?.saved_nfts : []}
-                                        liked_nfts={data?.user?.liked_nfts ? data?.user?.liked_nfts : []}
-                                        user={data?.user}
-                                        editOrDelete={false}
-                                      />
-                                    )) : <div className='container mt-100'>
-                                      <div className='row'>
-                                        <div className='col-xs-1 section-title pb-70 pt-50' align="center">
-                                          <p>You Don't Have Any Saved Collection</p>
-                                        </div>
-                                      </div>
-                                    </div>}
+                                  <RenderNFTInTabs
+                                    openDialogTitle={"Open NFT"}
+                                    editOrDelete={true}
+                                    user={data?.user}
+                                    nfts={savedNfts ? savedNfts : []}
+                                    message="You Don't Have Saved NFTs"
+                                  />
                                 </div>
                               </div>
                             </div>
