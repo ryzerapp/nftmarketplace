@@ -83,7 +83,7 @@ const BannerArea = () => {
           <div className='row align-items-center'>
             <div className='col-lg-6'>
               <div className='banner-content-two'>
-                <h1>Collect NFTs From Our Creative & Rare Digital Artwork</h1>
+                <h1>India's First Multi Chain NFT Marketplace</h1>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                   aliquam etiam rhoncus aenean a iaculis aliquet accumsan
