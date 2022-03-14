@@ -224,12 +224,6 @@ const MenusList = ({ user }) => {
 								</ul>
 							</li>
 						)}
-						<li className="nav-item" style={{ display: "flex" }}>
-							<a href="https://docs.cryptonium.in/" className="nav-link" style={avatarStyle}>
-								<i class="ri-booklet-line"></i>
-							</a>
-							<span>{"Docs"}</span>
-						</li>
 					</ul>
 					<div className="others-options">
 

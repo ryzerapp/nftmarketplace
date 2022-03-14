@@ -33,7 +33,6 @@ export const useUpdateCollectionData = () => {
 const handleNftsUpdate = (data) => {
     const nft_id = data?.nft_id;
     delete data?.nft_id;
-    console.log(data)
     return http.put(`/nfts/update_nft/${nft_id}`, data);
 };
 export const useUpdatenftsData = () => {

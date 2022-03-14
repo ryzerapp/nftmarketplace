@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 const OwlCarousel = dynamic(import('react-owl-carousel3'));
+import { getAuthCredentials } from "../../utils/auth-utils";
 
 const options = {
   loop: true,
@@ -38,6 +39,7 @@ const BannerArea = () => {
   const [hours, setHours] = useState('');
   const [minutes, setMinutes] = useState('');
   const [seconds, setSeconds] = useState('');
+  const { token, permissions } = getAuthCredentials();
 
   const comingSoonTime = () => {
     let endTime = new Date('August 23, 2022 17:00:00 PDT');
@@ -90,12 +92,12 @@ const BannerArea = () => {
                   sodales consectetur.
                 </p>
                 <div className='banner-btn'>
-                  <Link href='/about'>
-                    <a className='default-btn border-radius-5'>Explore More</a>
+                  <Link href='https://docs.cryptonium.in/'>
+                    <a className='default-btn border-radius-5'>How It's Work?</a>
                   </Link>
-                  <Link href='/add-wallet'>
+                  <Link href={token ? '/play-nft-game' : '/login'}>
                     <a className='default-btn two border-radius-5'>
-                      Connect NFT
+                      Play Game
                     </a>
                   </Link>
                 </div>
@@ -158,7 +160,7 @@ const BannerArea = () => {
                           alt='Images'
                         />
                         <div className='banner-item-user'>
-                          <Link href='/author-profile'>
+                          {/* <Link href='/author-profile'> */}
                             <a className='banner-item-user-option'>
                               <img
                                 src='../images/home-two/home-two-user2.jpg'
@@ -166,7 +168,7 @@ const BannerArea = () => {
                               />
                               <span>Created by @Adison</span>
                             </a>
-                          </Link>
+                          {/* </Link> */}
                         </div>
                       </div>
 
@@ -190,9 +192,9 @@ const BannerArea = () => {
                             </div>
                           </div>
                         </div>
-                        <Link href='/author-profile'>
+                        {/* <Link href='/author-profile'> */}
                           <a className='place-btn'>Place Bid</a>
-                        </Link>
+                        {/* </Link> */}
                       </div>
                     </div>
 

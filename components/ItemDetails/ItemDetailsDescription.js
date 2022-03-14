@@ -8,7 +8,6 @@ const ItemDetailsDescription = ({
 	itemOwner,
 	size,
 }) => {
-	console.log(data)
 	return (
 		<>
 			<div className="container">

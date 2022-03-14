@@ -32,7 +32,6 @@ export default function CreateAuction({ nfts }) {
             }
 
             await http.post('/auctions', dataTemp).then(async (res) => {
-                console.log(res)
                 if (res?.status == 201) {
                     notify("Auction Created.")
                     router.push('/auction')

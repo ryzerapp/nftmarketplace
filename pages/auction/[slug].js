@@ -6,7 +6,6 @@ const ItemDetails = ({ slug }) => {
 	const { data } = usegetAuctionsById({
 		auction_id: slug
 	})
-	console.log(data)
 	return (
 		<>
 			<PageBanner

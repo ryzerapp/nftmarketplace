@@ -22,7 +22,6 @@ export default function CreateNft() {
             };
 
             await http.post('/collection', payload).then(async (res) => {
-                console.log(res)
                 if (res?.status == 201) {
                     let collection_id = res?.data?.collection?.id;
                     let finalObj = {}

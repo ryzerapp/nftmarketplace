@@ -15,10 +15,8 @@ const CreateCollection = () => {
       const payload = {
         ...data,
       };
-      console.log(payload);
       return;
       await http.post('/save_nft', payload).then(async (res) => {
-        console.log(res)
         if (res?.status == 201) {
           let collection_id = res?.data?.collection?.id;
           let finalObj = {}
@@ -58,7 +56,6 @@ const CreateCollection = () => {
             const res = await http.put(`/collection/${collection_id}`,
               finalObj
             );
-            console.log(res)
             if (res?.status == 200) {
               notify(res?.data?.message)
             }

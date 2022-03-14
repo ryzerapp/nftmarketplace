@@ -55,7 +55,6 @@ const CreateCollectionAreaNew = () => {
       ...data,
       image: imageUrl,
     };
-    console.log('nftDataJson', nftDataJson)
     if (!isAuthenticated) {
       notify("Please Connect Web3.0 Wallet")
       return;
@@ -65,7 +64,6 @@ const CreateCollectionAreaNew = () => {
       type: 'json'
     });
     const moralisFileJson = await file.saveIPFS();
-    console.log('moralisFileJson', moralisFileJson)
     await mintNFT(moralisFileJson._ipfs);
   }
 

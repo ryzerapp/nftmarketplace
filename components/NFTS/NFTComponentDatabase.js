@@ -138,7 +138,6 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, user, editO
             edition, image, name, unique_string,
             image: nft?.image_url,
         };
-        console.log('nftDataJson', nftDataJson)
         if (!isAuthenticated) {
             toast.success("Please Connect Web3.0 Wallet")
             return;
@@ -148,7 +147,6 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, user, editO
             type: 'json'
         });
         const moralisFileJson = await file.saveIPFS();
-        console.log('moralisFileJson', moralisFileJson)
         await mintNFT(moralisFileJson._ipfs);
     }
     async function mintNFT(tokenURI) {
