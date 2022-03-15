@@ -56,6 +56,7 @@ export const reducer = (state, action) => {
       };
     }
     case `${Actions.SET_USER}`: {
+      localStorage.setItem('username', action.user.username);
       return {
         ...state,
         user: action.user,

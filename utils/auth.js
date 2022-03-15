@@ -31,6 +31,7 @@ export const redirectUser = (ctx, location) => {
  * Logout
  */
 export const handleLogout = () => {
+	localStorage.removeItem('username')
 	removeAuthCredentials()
 	toast.success("Logout successful");
 };

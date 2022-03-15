@@ -198,7 +198,7 @@ const MenusList = ({ user }) => {
 								<a href="#" className="nav-link" style={avatarStyle}>
 									<i class="ri-user-3-line"></i>
 								</a>
-								<span>{user?.username}</span>
+								<span>{user?.username || localStorage.getItem('username')}</span>
 								<ul className="dropdown-menu">
 									<li className="nav-item">
 										<Link href="/profile" activeClassName="active">
