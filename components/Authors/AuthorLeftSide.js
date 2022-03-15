@@ -25,8 +25,9 @@ export default function AuthorLeftSide({ user }) {
                         </p>
                     </div>
                     <span>Wallet Address:</span>
+
                     <p > {user?.walletAddress ? ((user?.walletAddress).substr(0, 10)) + ".........." +
-                        (user?.walletAddress).split("").reverse().join("").substr(1, 10) : "Plase Update Your Address"}</p>
+                        (user?.walletAddress).split("").reverse().join("").substr(0, 10).split("").reverse().join("") : "Plase Update Your Address"}</p>
                     <div className='author-content'>
                         <div className='content-left'>
                             <span>Followers</span>

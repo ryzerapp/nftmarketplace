@@ -248,7 +248,9 @@ const UserProfile = () => {
                     </TabPanel>
 
                     <TabPanel>
-                      <CreateAuction nfts={data?.user?.nfts?.filter((nft) => !nft.auction_iscreated)}></CreateAuction>
+                      <div className='tabs_item'>
+                        <CreateAuction nfts={data?.user?.nfts?.filter((nft) => !nft.auction_iscreated)}></CreateAuction>
+                      </div>
                     </TabPanel>
 
                     <TabPanel>
