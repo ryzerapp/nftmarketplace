@@ -8,7 +8,6 @@ import NFTComponentBlockChain from './NFTComponentBlockChain';
 
 const NFTListComponentBlockChain = ({ brefetch, walletAddressPassed }) => {
 
-  console.log(walletAddressPassed)
   const { Moralis, isWeb3Enabled, isAuthenticated } = useMoralis();
   const { state: { walletAddress, networkId } } = useWeb3();
   const { resolveLink } = useIPFS();

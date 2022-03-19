@@ -21,7 +21,6 @@ resetIdCounter();
 const AuthorProfile = () => {
   const { isAuthenticated, isWeb3Enabled
     , } = useMoralis()
-  const [networkName, setNetworkName] = React.useState("");
   const router = useRouter()
   const { data, isFetched, isLoading, refetch
   } = useAuthorQuery({
@@ -34,14 +33,12 @@ const AuthorProfile = () => {
     )
   }
   const { state: { networkId } } = useWeb3();
-  React.useEffect(() => {
-    if (networkId) {
-      setNetworkName(networkId);
-
-      if (isWeb3Enabled && isAuthenticated)
-        refetch()
-    }
-  }, [networkId])
+  // React.useEffect(() => {
+  //   if (networkId) {
+  //     if (isWeb3Enabled && isAuthenticated)
+  //       refetch()
+  //   }
+  // }, [networkId])
   return (
     <>
       <div className='author-profile-area pt-70 pb-70'>
@@ -82,7 +79,6 @@ const AuthorProfile = () => {
                               <hr></hr>
                               <div className='row justify-content-ceneter px-4'>
                                 <div className='pt-4'></div>
-                                <p>Networkid: {networkName}</p>
                                 <Chains></Chains>
                                 <div className='pt-4'></div>
                                 <NFTListComponentBlockChain
