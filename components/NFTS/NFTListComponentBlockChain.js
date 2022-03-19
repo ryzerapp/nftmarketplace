@@ -6,8 +6,9 @@ import { useWeb3 } from '../../providers/Web3Context';
 import Loader from '../Common/Loader';
 import NFTComponentBlockChain from './NFTComponentBlockChain';
 
-const NFTListComponentBlockChain = ({ brefetch }) => {
+const NFTListComponentBlockChain = ({ brefetch, walletAddressPassed }) => {
 
+  console.log(walletAddressPassed)
   const { Moralis, isWeb3Enabled, isAuthenticated } = useMoralis();
   const { state: { walletAddress, networkId } } = useWeb3();
   const { resolveLink } = useIPFS();
@@ -35,7 +36,7 @@ const NFTListComponentBlockChain = ({ brefetch }) => {
   };
 
   const setData = async () => {
-    const options = { chain: networkId, address: walletAddress };
+    const options = { chain: networkId, address: walletAddressPassed ? walletAddressPassed : walletAddress };
     const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
     const data = await nftBalanceJson(polygonNFTs)
     return data;

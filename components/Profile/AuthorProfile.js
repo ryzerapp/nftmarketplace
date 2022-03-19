@@ -13,18 +13,35 @@ import AuthorLeftSide from '../Authors/AuthorLeftSide';
 import RenderNFTInTabs from '../Tabs/RenderNFTInTabs';
 import RenderCollectionInTabs from '../Tabs/RenderCollectionInTabs';
 import NFTListComponentBlockChain from '../NFTS/NFTListComponentBlockChain';
+import { useMoralis } from 'react-moralis';
+import { useWeb3 } from '../../providers/Web3Context';
+import Chains from '../Common/Chains';
 
 resetIdCounter();
 const AuthorProfile = () => {
+  const { isAuthenticated, isWeb3Enabled
+    , } = useMoralis()
+  const [networkName, setNetworkName] = React.useState("");
   const router = useRouter()
-  const { data, isFetched, isLoading } = useAuthorQuery({
+  const { data, isFetched, isLoading, refetch
+  } = useAuthorQuery({
     author_name: router.query?.author_name
   })
+
   if (isLoading) {
     return (
       <Loader />
     )
   }
+  const { state: { networkId } } = useWeb3();
+  React.useEffect(() => {
+    if (networkId) {
+      setNetworkName(networkId);
+
+      if (isWeb3Enabled && isAuthenticated)
+        refetch()
+    }
+  }, [networkId])
   return (
     <>
       <div className='author-profile-area pt-70 pb-70'>
@@ -65,7 +82,11 @@ const AuthorProfile = () => {
                               <hr></hr>
                               <div className='row justify-content-ceneter px-4'>
                                 <div className='pt-4'></div>
+                                <p>Networkid: {networkName}</p>
+                                <Chains></Chains>
+                                <div className='pt-4'></div>
                                 <NFTListComponentBlockChain
+                                  walletAddressPassed={data?.user?.walletAddress}
                                   brefetch={true}
                                 />
                               </div>

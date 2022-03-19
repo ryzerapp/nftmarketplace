@@ -35,6 +35,7 @@ const useAuthorQuery = (options = {}) => {
   if (options?.author_name) {
     return useQuery([`user_${options.author_name}`, options], fetchAuthorData, {
       keepPreviousData: true,
+      enabled: false
     });
   }
   else
