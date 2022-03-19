@@ -3,7 +3,6 @@ import { useGetTopAuthor } from '../../hooks/Web2/useMeQuery';
 
 const TopSeller = ({ pt100 }) => {
   const { data } = useGetTopAuthor();
-  console.log(data)
   return (
     <>
       <div className={`top-sellers-area pb-70 ${pt100}`}>

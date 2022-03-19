@@ -24,7 +24,9 @@ const AuctionArea = ({ }) => {
 								return <AuctionNFT key={auction.id} data={auction} />;
 							}) : (
 								<>
+									<div className="col-x text-center p-5 border">
 									<p>Please Wait for Some live Auction</p>
+									</div>
 								</>
 							)}
 

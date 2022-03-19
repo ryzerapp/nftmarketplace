@@ -45,7 +45,9 @@ const FeaturedArea = ({ title, pagination, data }) => {
 													/>
 												);
 											}) : <>
-												<p>Please Wait for Some live Auction</p>
+													<div className="col-x text-center p-5 border">
+														<p>Please Wait for Some live Auction</p>
+													</div>
 											</>}
 										</div>
 									</div>
