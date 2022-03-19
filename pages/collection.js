@@ -8,7 +8,6 @@ import { useMeQuery } from '../hooks/Web2/useMeQuery';
 const Collection = () => {
   const { data, isLoading } = useCollections();
   const { data: users } = useMeQuery()
-  console.log(data)
   if (isLoading) {
     return (
       <Loader />

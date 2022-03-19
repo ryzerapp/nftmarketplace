@@ -26,7 +26,6 @@ const AuthorProfile = () => {
   } = useAuthorQuery({
     author_name: router.query?.author_name
   })
-
   if (isLoading) {
     return (
       <Loader />
@@ -79,7 +78,7 @@ const AuthorProfile = () => {
                               <hr></hr>
                               <div className='row justify-content-ceneter px-4'>
                                 <div className='pt-4'></div>
-                                <Chains></Chains>
+                                {/* <Chains></Chains> */}
                                 <div className='pt-4'></div>
                                 <NFTListComponentBlockChain
                                   walletAddressPassed={data?.user?.walletAddress}
