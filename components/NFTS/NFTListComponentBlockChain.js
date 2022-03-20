@@ -41,6 +41,7 @@ const NFTListComponentBlockChain = ({ brefetch, walletAddressPassed }) => {
     return data;
   };
 
+
   const { data: nftBalance, isLoading, refetch } = useQuery(['USERBlockChainNFTs'], setData, {
     keepPreviousData: true,
     enabled: false

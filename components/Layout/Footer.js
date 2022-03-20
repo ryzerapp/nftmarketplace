@@ -18,7 +18,7 @@ const Footer = () => {
 										</a>
 									</Link>
 								</div>
-								<p>Subscribe to our newsletter</p>
+								<p style={{ color: 'white' }}>Subscribe to our newsletter</p>
 								<div className="newsletter-area">
 									<form
 										className="newsletter-form"
