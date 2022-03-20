@@ -26,6 +26,7 @@ Default CSS
   --bodyFonts: 'Josefin Sans', sans-serif;
   --pinkColor: #F14D5D;
   --titleColor: #000000;
+  --titleColorWhite: #ffffff;
   --bodyColor: #666666;
   --lightblueColor: #8D99FF;
   --whiteColor: #ffffff;
@@ -264,7 +265,7 @@ Section Title Style
   font-size: 40px;
   margin-top: 0;
   line-height: 1.2;
-  color: var(--titleColor);
+  color: var(--titleColorWhite);
   margin-bottom: 0;
 }
 

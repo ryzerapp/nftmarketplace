@@ -9,7 +9,7 @@ const DarkProNew = ({ }) => {
 							<div class="container">
 								<div class="row align-items-center justify-content-center gutter-vr-30px">
 									<div class="col-lg-6 order-lg-last">
-										<div class="banner-gfx banner-gfx-re-s3 animated" data-animate="fadeInUp" data-delay="1.25">
+										<div class="banner-gfx banner-gfx-re-s3 " data-animate="fadeInUp" data-delay="1.25">
 											<img src="images/dark/gfx-d-dark.png" alt="header" />
 											<img class="banner-gfx-icon banner-gfx-icon-1" src="images/icons/icon-custom.png" alt="" />
 											<img class="banner-gfx-icon banner-gfx-icon-2" src="images/icons/icon-bitcoin.png" alt="" />
@@ -18,25 +18,25 @@ const DarkProNew = ({ }) => {
 									<div class="col-lg-6">
 										<div class="banner-caption wide-auto text-center text-lg-left">
 											<div class="cpn-head mt-0">
-												<h1 class="title title-xl-2 title-semibold animated" data-animate="fadeInUp" data-delay="1.35">India's First Multi Chain NFT Marketplace With MetaVerse</h1>
+												<h1 class="title title-xl-2 title-semibold " data-animate="fadeInUp" data-delay="1.35">India's First Multi Chain NFT Marketplace With MetaVerse</h1>
 											</div>
 											<div class="cpn-text cpn-text-s1">
-												<p class="lead animated" data-animate="fadeInUp" data-delay="1.45">Sell and Buy NFT &amp; Buy New Planet In Metaverse</p>
+												<p class="lead " data-animate="fadeInUp" data-delay="1.45">Sell and Buy NFT &amp; Buy New Planet In Metaverse</p>
 											</div>
 											<div class="cpn-btns">
-												<ul class="btn-grp animated" data-animate="fadeInUp" data-delay="1.55">
+												<ul class="btn-grp " data-animate="fadeInUp" data-delay="1.55">
 													<li><a href="https://docs.cryptonium.in/" class="btn btn-md btn-grad btn-round">How It's Work?</a></li>
 													<li><a href="https://metaverse.cryptonium.in/" class="btn btn-md btn-grad btn-grad-alternet btn-round">Explore Metaverse</a></li>
 												</ul>
 											</div>
 											<div class="cpn-social">
 												<ul class="social">
-													<li class="animated" data-animate="fadeInUp" data-delay="1.65"><a href="#"><em class="social-icon fab fa-facebook-f"></em></a></li>
-													<li class="animated" data-animate="fadeInUp" data-delay="1.7"><a href="#"><em class="social-icon fab fa-twitter"></em></a></li>
-													<li class="animated" data-animate="fadeInUp" data-delay="1.75"><a href="#"><em class="social-icon fab fa-youtube"></em></a></li>
-													<li class="animated" data-animate="fadeInUp" data-delay="1.8"><a href="#"><em class="social-icon fab fa-github"></em></a></li>
-													<li class="animated" data-animate="fadeInUp" data-delay="1.85"><a href="#"><em class="social-icon fab fa-bitcoin"></em></a></li>
-													<li class="animated" data-animate="fadeInUp" data-delay="1.9"><a href="#"><em class="social-icon fab fa-medium-m"></em></a></li>
+													<li class="" data-animate="fadeInUp" data-delay="1.65"><a href="#"><em class="social-icon fab fa-facebook-f"></em></a></li>
+													<li class="" data-animate="fadeInUp" data-delay="1.7"><a href="#"><em class="social-icon fab fa-twitter"></em></a></li>
+													<li class="" data-animate="fadeInUp" data-delay="1.75"><a href="#"><em class="social-icon fab fa-youtube"></em></a></li>
+													<li class="" data-animate="fadeInUp" data-delay="1.8"><a href="#"><em class="social-icon fab fa-github"></em></a></li>
+													<li class="" data-animate="fadeInUp" data-delay="1.85"><a href="#"><em class="social-icon fab fa-bitcoin"></em></a></li>
+													<li class="" data-animate="fadeInUp" data-delay="1.9"><a href="#"><em class="social-icon fab fa-medium-m"></em></a></li>
 												</ul>
 											</div>
 										</div>
@@ -58,18 +58,18 @@ const DarkProNew = ({ }) => {
 								<div class="nk-block nk-block-text-wrap">
 									<div class="row align-items-center justify-content-center justify-content-md-between gutter-vr-30px">
 										<div class="col-mb-9 col-sm-7 col-md-6 col-lg-5 order-md-last">
-											<div class="nk-block-img animated" data-animate="fadeInUp" data-delay=".1">
+											<div class="nk-block-img " data-animate="fadeInUp" data-delay=".1">
 												<img src="images/dark-pro/gfx/gfx-z-a.png" alt="app" />
 											</div>
 										</div>
 										<div class="col-sm-10 col-md-6 text-center text-md-left">
 											<div class="nk-block-text">
-												<h2 class="title animated" data-animate="fadeInUp" data-delay=".2">We’ve built a platform <br />to buy and sell NFT's.</h2>
-												<p class="lead animated" data-animate="fadeInUp" data-delay=".3">We’re reinventing the nft creation part for creator. We provide multi-chain support for nft creation.
+												<h2 class="title " data-animate="fadeInUp" data-delay=".2">We’ve built a platform <br />to buy and sell NFT's.</h2>
+												<p class="lead " data-animate="fadeInUp" data-delay=".3">We’re reinventing the nft creation part for creator. We provide multi-chain support for nft creation.
 													<br />
 													If you are not creator, don't worry Just Play below game and get your nft now.
 												</p>
-												<a href="/play-nft-game" class="video-popup btn-play-wrap animated" data-animate="fadeInUp" data-delay=".4">
+												<a href="/play-nft-game" class="video-popup btn-play-wrap " data-animate="fadeInUp" data-delay=".4">
 													<div class="btn-play btn-play-sm btn-play-s2">
 														<em class="btn-play-icon"></em>
 													</div>
@@ -91,17 +91,17 @@ const DarkProNew = ({ }) => {
 								<div class="nk-block nk-block-features-2">
 									<div class="row align-items-center gutter-vr-30px justify-content-center justify-content-md-between">
 										<div class="col-mb-9 col-sm-7 col-md-6 col-lg-5">
-											<div class="gfx py-4 animated" data-animate="fadeInUp" data-delay=".1">
+											<div class="gfx py-4 " data-animate="fadeInUp" data-delay=".1">
 												<img src="images/dark-pro/gfx/gfx-z-a.png" alt="app" />
 											</div>
 										</div>
 										<div class="col-sm-10 col-md-6 text-center text-md-left">
 
 											<div class="nk-block-text">
-												<h4 class="title title-lg animated" data-animate="fadeInUp" data-delay=".2">What is Cryptonium MetaVerse ?</h4>
-												<p class="lead animated" data-animate="fadeInUp" data-delay=".3">Cryptonium metaverse is a platform for the future of space exploration.</p>
-												<p class="animated" data-animate="fadeInUp" data-delay=".4">In Cryptonium metaverse user can buy new planet. and Build new colony in that plante using NFT's</p>
-												<p class="animated" data-animate="fadeInUp" data-delay=".5">Explore the metaverse for more details.</p>
+												<h4 class="title title-lg " data-animate="fadeInUp" data-delay=".2">What is Cryptonium MetaVerse ?</h4>
+												<p class="lead " data-animate="fadeInUp" data-delay=".3">Cryptonium metaverse is a platform for the future of space exploration.</p>
+												<p class="" data-animate="fadeInUp" data-delay=".4">In Cryptonium metaverse user can buy new planet. and Build new colony in that plante using NFT's</p>
+												<p class="" data-animate="fadeInUp" data-delay=".5">Explore the metaverse for more details.</p>
 											</div>
 										</div>
 									</div>
@@ -116,30 +116,30 @@ const DarkProNew = ({ }) => {
 										<span class="line-1"></span><span class="line-2"></span><span class="line-3"></span><span class="line-4"></span>
 										<span class="line-5"></span><span class="line-6"></span><span class="line-7"></span><span class="line-8"></span>
 									</div>
-									<h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="APPS">The Cryptonium App</h2>
-									<p class="animated" data-animate="fadeInUp" data-delay=".2">The Cryptocurrency industry is one of the Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<h2 class="title title-s4 " data-animate="fadeInUp" data-delay=".1" title="APPS">The Cryptonium App</h2>
+									<p class="" data-animate="fadeInUp" data-delay=".2">The Cryptocurrency industry is one of the Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 								</div>
 
 								<div class="nk-block nk-block-text-wrap">
 									<div class="row align-items-center justify-content-center justify-content-md-between gutter-vr-30px">
 										<div class="col-mb-9 col-sm-7 col-md-6">
-											<div class="nk-block-img animated" data-animate="fadeInUp" data-delay=".3">
+											<div class="nk-block-img " data-animate="fadeInUp" data-delay=".3">
 												<img src="images/dark-pro/dark/gfx-z-c.png" alt="app" />
 											</div>
 										</div>
 										<div class="col-sm-10 col-md-6 col-lg-5">
 											<div class="nk-block-text ml-lg-3 ml-xl-0">
-												<p class="animated" data-animate="fadeInUp" data-delay=".4">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris nisi commodo consequat.</p>
+												<p class="" data-animate="fadeInUp" data-delay=".4">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris nisi commodo consequat.</p>
 												<ul class="list list-dot pdb-r">
-													<li class="animated" data-animate="fadeInUp" data-delay=".5">Crypto-news curation</li>
-													<li class="animated" data-animate="fadeInUp" data-delay=".55">Natural Language Understanding</li>
-													<li class="animated" data-animate="fadeInUp" data-delay=".65">Wallet aggregation</li>
-													<li class="animated" data-animate="fadeInUp" data-delay=".7">Professional Network</li>
-													<li class="animated" data-animate="fadeInUp" data-delay=".75">No more expensive fees</li>
+													<li class="" data-animate="fadeInUp" data-delay=".5">Crypto-news curation</li>
+													<li class="" data-animate="fadeInUp" data-delay=".55">Natural Language Understanding</li>
+													<li class="" data-animate="fadeInUp" data-delay=".65">Wallet aggregation</li>
+													<li class="" data-animate="fadeInUp" data-delay=".7">Professional Network</li>
+													<li class="" data-animate="fadeInUp" data-delay=".75">No more expensive fees</li>
 												</ul>
 												<ul class="btn-grp justify-content-center justify-content-md-start">
-													<li class="animated" data-animate="fadeInUp" data-delay=".85"><a href="#" class="btn btn-grad btn-round btn-md">Get the app now</a></li>
-													<li class="animated" data-animate="fadeInUp" data-delay=".95">
+													<li class="" data-animate="fadeInUp" data-delay=".85"><a href="#" class="btn btn-grad btn-round btn-md">Get the app now</a></li>
+													<li class="" data-animate="fadeInUp" data-delay=".95">
 														<ul class="btn-grp gutter-15px">
 															<li><a href="#"><em class="fab fa-apple"></em></a></li>
 															<li><a href="#"><em class="fab fa-android"></em></a></li>
@@ -158,45 +158,45 @@ const DarkProNew = ({ }) => {
 
 							<div class="container">
 								<div class="section-head text-center wide-auto-sm">
-									<h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="TOKEN">Token Sale</h2>
-									<p class="animated" data-animate="fadeInUp" data-delay=".2">The Cryptocurrency industry is one of the Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<h2 class="title title-s4 " data-animate="fadeInUp" data-delay=".1" title="TOKEN">Token Sale</h2>
+									<p class="" data-animate="fadeInUp" data-delay=".2">The Cryptocurrency industry is one of the Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 								</div>
 								<div class="nk-block nk-block-token mgb-m30">
 									<div class="row align-items-center justify-content-between gutter-vr-50px">
 										<div class="col-lg-6">
 											<div class="row gutter-vr-30px">
 												<div class="col-sm-6">
-													<div class="stage-info animated" data-animate="fadeInUp" data-delay=".3">
+													<div class="stage-info " data-animate="fadeInUp" data-delay=".3">
 														<h6 class="title title-s6 title-xs-s2">Start</h6>
 														<p>Feb 8, 2022 (9:00AM GMT)</p>
 													</div>
 												</div>
 												<div class="col-sm-6">
-													<div class="stage-info animated" data-animate="fadeInUp" data-delay=".4">
+													<div class="stage-info " data-animate="fadeInUp" data-delay=".4">
 														<h6 class="title title-s6 title-xs-s2">Number of tokens for sale</h6>
 														<p>900,000 ICC (9%)</p>
 													</div>
 												</div>
 												<div class="col-sm-6">
-													<div class="stage-info animated" data-animate="fadeInUp" data-delay=".5">
+													<div class="stage-info " data-animate="fadeInUp" data-delay=".5">
 														<h6 class="title title-s6 title-xs-s2">End</h6>
 														<p>Feb 20, 2022 (11:00AM GMT)</p>
 													</div>
 												</div>
 												<div class="col-sm-6">
-													<div class="stage-info animated" data-animate="fadeInUp" data-delay=".6">
+													<div class="stage-info " data-animate="fadeInUp" data-delay=".6">
 														<h6 class="title title-s6 title-xs-s2">Tokens exchange rate</h6>
 														<p>1 ETH = 650 ICC, 1 BTC = 1940 ICC</p>
 													</div>
 												</div>
 												<div class="col-sm-6">
-													<div class="stage-info animated" data-animate="fadeInUp" data-delay=".7">
+													<div class="stage-info " data-animate="fadeInUp" data-delay=".7">
 														<h6 class="title title-s6 title-xs-s2">Acceptable currencies</h6>
 														<p>ETH, BTC, LTC</p>
 													</div>
 												</div>
 												<div class="col-sm-6">
-													<div class="stage-info animated" data-animate="fadeInUp" data-delay=".8">
+													<div class="stage-info " data-animate="fadeInUp" data-delay=".8">
 														<h6 class="title title-s6 title-xs-s2">Minimal transaction amount</h6>
 														<p>1 ETH/ 1 BTC/ 1 LTC</p>
 													</div>
@@ -204,7 +204,7 @@ const DarkProNew = ({ }) => {
 											</div>
 										</div>
 										<div class="col-lg-5">
-											<div class="token-status token-status-s5 bg-theme-alt round no-bd animated" data-animate="fadeInUp" data-delay=".9">
+											<div class="token-status token-status-s5 bg-theme-alt round no-bd " data-animate="fadeInUp" data-delay=".9">
 												<div class="token-box token-box-s3">
 													<div class="countdown-s3 countdown-s4 countdown" data-date="2022/04/22"></div>
 												</div>
@@ -225,16 +225,16 @@ const DarkProNew = ({ }) => {
 									<div class="row justify-content-center gutter-vr-40px">
 										<div class="col-md-6 col-mb-8">
 											<div class="single-chart">
-												<h3 class="mgb-l text-center title-lg animated" data-animate="fadeInUp" data-delay=".1">Distribution <br />of tokens</h3>
-												<div class="chart animated" data-animate="fadeInUp" data-delay=".2">
+												<h3 class="mgb-l text-center title-lg " data-animate="fadeInUp" data-delay=".1">Distribution <br />of tokens</h3>
+												<div class="chart " data-animate="fadeInUp" data-delay=".2">
 													<img src="images/dark-pro/dark/e-dark.png" alt="chart" />
 												</div>
 											</div>
 										</div>
 										<div class="col-md-6 col-mb-8">
 											<div class="single-chart">
-												<h3 class="mgb-l text-center title-lg animated" data-animate="fadeInUp" data-delay=".3">Use <br />of proceeds</h3>
-												<div class="chart animated" data-animate="fadeInUp" data-delay=".4">
+												<h3 class="mgb-l text-center title-lg " data-animate="fadeInUp" data-delay=".3">Use <br />of proceeds</h3>
+												<div class="chart " data-animate="fadeInUp" data-delay=".4">
 													<img src="images/dark-pro/dark/f-dark.png" alt="chart" />
 												</div>
 											</div>
@@ -247,13 +247,13 @@ const DarkProNew = ({ }) => {
 						<section class="section bg-theme tc-light section-connect" id="roadmap">
 							<div class="container ov-h">
 								<div class="section-head text-center wide-auto-sm">
-									<h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="Roadmap">Our Roadmap</h2>
+									<h2 class="title title-s4 " data-animate="fadeInUp" data-delay=".1" title="Roadmap">Our Roadmap</h2>
 								</div>
 							</div>
 
 							<div class="nk-block ov-h">
 								<div class="container">
-									<div class="roadmap-list animated" data-animate="fadeInUp" data-delay=".2">
+									<div class="roadmap-list " data-animate="fadeInUp" data-delay=".2">
 										<div class="roadmap-item roadmap-item-sm roadmap-done">
 											<div class="roadmap-innr">
 												<h6 class="roadmap-title roadmap-title-s2">March 2022</h6>
@@ -328,14 +328,14 @@ const DarkProNew = ({ }) => {
 						{/* <section class="section bg-theme-dark tc-light ov-h pdb-0" id="team">
 							<div class="container">
 								<div class="section-head text-center wide-auto-sm tc-light">
-									<h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="team">Powered by a team</h2>
-									<p class="animated" data-animate="fadeInUp" data-delay=".2">The Cryptocurrency industry is one of the Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<h2 class="title title-s4 " data-animate="fadeInUp" data-delay=".1" title="team">Powered by a team</h2>
+									<p class="" data-animate="fadeInUp" data-delay=".2">The Cryptocurrency industry is one of the Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 								</div>
 
 								<div class="nk-block nk-block-team-list team-list">
 									<div class="row justify-content-center">
 										<div class="col-lg-3 col-mb-6">
-											<div class="team team-s3 team-s3-alt animated" data-animate="fadeInUp" data-delay=".3">
+											<div class="team team-s3 team-s3-alt " data-animate="fadeInUp" data-delay=".3">
 												<div class="team-photo round-full team-photo-bg">
 													<a href="#team-popup-1" class="team-show content-popup" data-overlay="bg-theme-grad-alternet"></a>
 													<img src="images/dark-pro/team/sq-a.jpg" alt="team" class="round-full" />
@@ -387,7 +387,7 @@ const DarkProNew = ({ }) => {
 											</div>
 										</div>
 										<div class="col-lg-3 col-mb-6">
-											<div class="team team-s3 team-s3-alt animated" data-animate="fadeInUp" data-delay=".4">
+											<div class="team team-s3 team-s3-alt " data-animate="fadeInUp" data-delay=".4">
 												<div class="team-photo round-full team-photo-bg">
 													<a href="#team-popup-2" class="team-show content-popup" data-overlay="bg-theme-grad-alternet"></a>
 													<img src="images/dark-pro/team/sq-b.jpg" alt="team" class="round-full" />
@@ -424,7 +424,7 @@ const DarkProNew = ({ }) => {
 											</div>
 										</div>
 										<div class="col-lg-3 col-mb-6">
-											<div class="team team-s3 team-s3-alt animated" data-animate="fadeInUp" data-delay=".5">
+											<div class="team team-s3 team-s3-alt " data-animate="fadeInUp" data-delay=".5">
 												<div class="team-photo round-full team-photo-bg">
 													<a href="#team-popup-3" class="team-show content-popup" data-overlay="bg-theme-grad-alternet"></a>
 													<img src="images/dark-pro/team/sq-c.jpg" alt="team" class="round-full" />
@@ -462,7 +462,7 @@ const DarkProNew = ({ }) => {
 											</div>
 										</div>
 										<div class="col-lg-3 col-mb-6">
-											<div class="team team-s3 team-s3-alt animated" data-animate="fadeInUp" data-delay=".6">
+											<div class="team team-s3 team-s3-alt " data-animate="fadeInUp" data-delay=".6">
 												<div class="team-photo round-full team-photo-bg">
 													<a href="#team-popup-4" class="team-show content-popup" data-overlay="bg-theme-grad-alternet"></a>
 													<img src="images/dark-pro/team/sq-d.jpg" alt="team" class="round-full" />
@@ -503,11 +503,11 @@ const DarkProNew = ({ }) => {
 								</div>
 								<div class="nk-block nk-block-team-list">
 									<div class="section-head section-head-sm text-center wide-auto-sm">
-										<h2 class="title-lg-2 title-semibold animated" data-animate="fadeInUp" data-delay=".7">ADVISORS</h2>
+										<h2 class="title-lg-2 title-semibold " data-animate="fadeInUp" data-delay=".7">ADVISORS</h2>
 									</div>
 									<div class="row justify-content-center">
 										<div class="col-lg-3 col-mb-6">
-											<div class="team team-s3 team-s3-alt animated" data-animate="fadeInUp" data-delay=".8">
+											<div class="team team-s3 team-s3-alt " data-animate="fadeInUp" data-delay=".8">
 												<div class="team-photo round-full team-photo-bg">
 													<a href="#team-popup-1" class="team-show content-popup" data-overlay="bg-theme-grad-alternet"></a>
 													<img src="images/dark-pro/team/sq-e.jpg" alt="team" class="round-full" />
@@ -559,7 +559,7 @@ const DarkProNew = ({ }) => {
 											</div>
 										</div>
 										<div class="col-lg-3 col-mb-6">
-											<div class="team team-s3 team-s3-alt animated" data-animate="fadeInUp" data-delay=".9">
+											<div class="team team-s3 team-s3-alt " data-animate="fadeInUp" data-delay=".9">
 												<div class="team-photo round-full team-photo-bg">
 													<a href="#team-popup-2" class="team-show content-popup" data-overlay="bg-theme-grad-alternet"></a>
 													<img src="images/dark-pro/team/sq-f.jpg" alt="team" class="round-full" />
@@ -597,7 +597,7 @@ const DarkProNew = ({ }) => {
 											</div>
 										</div>
 										<div class="col-lg-3 col-mb-6">
-											<div class="team team-s3 team-s3-alt animated" data-animate="fadeInUp" data-delay="1">
+											<div class="team team-s3 team-s3-alt " data-animate="fadeInUp" data-delay="1">
 												<div class="team-photo round-full team-photo-bg">
 													<a href="#team-popup-3" class="team-show content-popup" data-overlay="bg-theme-grad-alternet"></a>
 													<img src="images/dark-pro/team/sq-g.jpg" alt="team" class="round-full" />
@@ -643,16 +643,16 @@ const DarkProNew = ({ }) => {
 							<div class="container">
 
 								<div class="section-head text-center wide-auto-sm tc-light">
-									<h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="Partners">Cryptonium Crypto Partners</h2>
+									<h2 class="title title-s4 " data-animate="fadeInUp" data-delay=".1" title="Partners">Cryptonium Crypto Partners</h2>
 								</div>
 
 								<div class="nk-block block-partners">
 									<ul class="partner-list flex-wrap">
-										<li class="partner-logo-lg animated" data-animate="fadeInUp" data-delay=".2"><img src="images/dark-pro/partners/a-md.png" alt="partner" /></li>
-										<li class="partner-logo-lg animated" data-animate="fadeInUp" data-delay=".3"><img src="images/dark-pro/partners/b-md.png" alt="partner" /></li>
-										<li class="partner-logo-lg animated" data-animate="fadeInUp" data-delay=".4"><img src="images/dark-pro/partners/c-md.png" alt="partner" /></li>
-										<li class="partner-logo-lg animated" data-animate="fadeInUp" data-delay=".5"><img src="images/dark-pro/partners/d-md.png" alt="partner" /></li>
-										<li class="partner-logo-lg animated" data-animate="fadeInUp" data-delay=".6"><img src="images/dark-pro/partners/e-md.png" alt="partner" /></li>
+										<li class="partner-logo-lg " data-animate="fadeInUp" data-delay=".2"><img src="images/dark-pro/partners/a-md.png" alt="partner" /></li>
+										<li class="partner-logo-lg " data-animate="fadeInUp" data-delay=".3"><img src="images/dark-pro/partners/b-md.png" alt="partner" /></li>
+										<li class="partner-logo-lg " data-animate="fadeInUp" data-delay=".4"><img src="images/dark-pro/partners/c-md.png" alt="partner" /></li>
+										<li class="partner-logo-lg " data-animate="fadeInUp" data-delay=".5"><img src="images/dark-pro/partners/d-md.png" alt="partner" /></li>
+										<li class="partner-logo-lg " data-animate="fadeInUp" data-delay=".6"><img src="images/dark-pro/partners/e-md.png" alt="partner" /></li>
 									</ul>
 								</div>
 
@@ -664,21 +664,21 @@ const DarkProNew = ({ }) => {
 							<div class="container">
 
 								<div class="section-head wide-auto-sm text-center">
-									<h2 class="title-xs animated" data-animate="fadeInUp" data-delay=".1">As seen in</h2>
+									<h2 class="title-xs " data-animate="fadeInUp" data-delay=".1">As seen in</h2>
 								</div>
 
 								<div class="nk-block block-partners">
 									<ul class="partner-list partner-list-s2 flex-wrap">
-										<li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".2"><img src="images/dark-pro/partners/a-xs.png" alt="partner" /></li>
-										<li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".25"><img src="images/dark-pro/partners/b-xs.png" alt="partner" /></li>
-										<li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".3"><img src="images/dark-pro/partners/c-xs.png" alt="partner" /></li>
-										<li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".35"><img src="images/dark-pro/partners/d-xs.png" alt="partner" /></li>
-										<li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".4"><img src="images/dark-pro/partners/e-xs.png" alt="partner" /></li>
-										<li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".45"><img src="images/dark-pro/partners/f-xs.png" alt="partner" /></li>
-										<li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".5"><img src="images/dark-pro/partners/a-sm.png" alt="partner" /></li>
-										<li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".55"><img src="images/dark-pro/partners/b-sm.png" alt="partner" /></li>
-										<li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".6"><img src="images/dark-pro/partners/c-sm.png" alt="partner" /></li>
-										<li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".65"><img src="images/dark-pro/partners/d-sm.png" alt="partner" /></li>
+										<li class="partner-logo-s2 " data-animate="fadeInUp" data-delay=".2"><img src="images/dark-pro/partners/a-xs.png" alt="partner" /></li>
+										<li class="partner-logo-s2 " data-animate="fadeInUp" data-delay=".25"><img src="images/dark-pro/partners/b-xs.png" alt="partner" /></li>
+										<li class="partner-logo-s2 " data-animate="fadeInUp" data-delay=".3"><img src="images/dark-pro/partners/c-xs.png" alt="partner" /></li>
+										<li class="partner-logo-s2 " data-animate="fadeInUp" data-delay=".35"><img src="images/dark-pro/partners/d-xs.png" alt="partner" /></li>
+										<li class="partner-logo-s2 " data-animate="fadeInUp" data-delay=".4"><img src="images/dark-pro/partners/e-xs.png" alt="partner" /></li>
+										<li class="partner-logo-s2 " data-animate="fadeInUp" data-delay=".45"><img src="images/dark-pro/partners/f-xs.png" alt="partner" /></li>
+										<li class="partner-logo-s2 " data-animate="fadeInUp" data-delay=".5"><img src="images/dark-pro/partners/a-sm.png" alt="partner" /></li>
+										<li class="partner-logo-s2 " data-animate="fadeInUp" data-delay=".55"><img src="images/dark-pro/partners/b-sm.png" alt="partner" /></li>
+										<li class="partner-logo-s2 " data-animate="fadeInUp" data-delay=".6"><img src="images/dark-pro/partners/c-sm.png" alt="partner" /></li>
+										<li class="partner-logo-s2 " data-animate="fadeInUp" data-delay=".65"><img src="images/dark-pro/partners/d-sm.png" alt="partner" /></li>
 									</ul>
 								</div>
 							</div>
@@ -686,12 +686,12 @@ const DarkProNew = ({ }) => {
 						<section class="section section-contact bg-theme-dark tc-light" id="blog">
 							<div class="container">
 								<div class="section-head text-center wide-auto-sm">
-									<h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="news">Cryptonium Crypto News</h2>
+									<h2 class="title title-s4 " data-animate="fadeInUp" data-delay=".1" title="news">Cryptonium Crypto News</h2>
 								</div>
 								<div class="nk-block nk-block-blog">
 									<div class="row justify-content-center">
 										<div class="col-lg-4 col-sm-9">
-											<div class="blog blog-s2 animated" data-animate="fadeInUp" data-delay=".2">
+											<div class="blog blog-s2 " data-animate="fadeInUp" data-delay=".2">
 												<div class="blog-photo">
 													<img src="images/dark-pro/blog/a.jpg" alt="blog-thumb" />
 												</div>
@@ -706,7 +706,7 @@ const DarkProNew = ({ }) => {
 											</div>
 										</div>
 										<div class="col-lg-4 col-sm-9">
-											<div class="blog blog-s2 animated" data-animate="fadeInUp" data-delay=".3">
+											<div class="blog blog-s2 " data-animate="fadeInUp" data-delay=".3">
 												<div class="blog-photo">
 													<img src="images/dark-pro/blog/b.jpg" alt="blog-thumb" />
 												</div>
@@ -721,7 +721,7 @@ const DarkProNew = ({ }) => {
 											</div>
 										</div>
 										<div class="col-lg-4 col-sm-9">
-											<div class="blog blog-s2 animated" data-animate="fadeInUp" data-delay=".4">
+											<div class="blog blog-s2 " data-animate="fadeInUp" data-delay=".4">
 												<div class="blog-photo">
 													<img src="images/dark-pro/blog/c.jpg" alt="blog-thumb" />
 												</div>
@@ -737,7 +737,7 @@ const DarkProNew = ({ }) => {
 										</div>
 									</div>
 								</div>
-								<div class="text-center pdt-r animated" data-animate="fadeInUp" data-delay=".5">
+								<div class="text-center pdt-r " data-animate="fadeInUp" data-delay=".5">
 									<a href="#" class="link link-primary link-uc link-animate"><span>Read all News</span> <em class="link-icon ti ti-angle-right"></em></a>
 								</div>
 							</div>
@@ -745,20 +745,20 @@ const DarkProNew = ({ }) => {
 						<section class="section bg-theme tc-light pb-0" id="faqs">
 							<div class="container">
 								<div class="section-head text-center wide-auto-sm">
-									<h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="FAQS">Frequently Asked Question</h2>
-									<p class="animated" data-animate="fadeInUp" data-delay=".2">Below we’ve provided a bit of Cryptonium, Cryptonium Token, cryptocurrencies, and few others. If you have any other questions, please get in touch using the contact form below.</p>
+									<h2 class="title title-s4 " data-animate="fadeInUp" data-delay=".1" title="FAQS">Frequently Asked Question</h2>
+									<p class="" data-animate="fadeInUp" data-delay=".2">Below we’ve provided a bit of Cryptonium, Cryptonium Token, cryptocurrencies, and few others. If you have any other questions, please get in touch using the contact form below.</p>
 								</div>
 								<div class="nk-block">
 									<div class="row justify-content-center">
 										<div class="col-xl-8 col-lg-10">
-											<ul class="nav tab-nav tab-nav-line mgb-r animated" data-animate="fadeInUp" data-delay=".3">
+											<ul class="nav tab-nav tab-nav-line mgb-r " data-animate="fadeInUp" data-delay=".3">
 												<li><a class="active" data-toggle="tab" href="#general-questions-19">General</a></li>
 												<li><a data-toggle="tab" href="#ico-questions-19">Pre-Cryptonium &amp; Cryptonium</a></li>
 												<li><a data-toggle="tab" href="#tokens-sales-19">Token</a></li>
 												<li><a data-toggle="tab" href="#client-19">Client</a></li>
 												<li><a data-toggle="tab" href="#legal-19">Legal</a></li>
 											</ul>
-											<div class="tab-content animated" data-animate="fadeInUp" data-delay=".4">
+											<div class="tab-content " data-animate="fadeInUp" data-delay=".4">
 												<div class="tab-pane fade show active" id="general-questions-19">
 													<div class="accordion accordion-faq" id="faq-67">
 														<div class="accordion-item accordion-item-s4 bg-theme-alt">
@@ -968,26 +968,26 @@ const DarkProNew = ({ }) => {
 						<section class="section section-contact bg-theme tc-light" id="contact">
 							<div class="container">
 								<div class="section-head text-center wide-auto-sm">
-									<h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="Contact">Contact Cryptonium Crypto</h2>
-									<p class="animated" data-animate="fadeInUp" data-delay=".2">Any question? Reach out to us and we’ll get back to you shortly.</p>
+									<h2 class="title title-s4 " data-animate="fadeInUp" data-delay=".1" title="Contact">Contact Cryptonium Crypto</h2>
+									<p class="" data-animate="fadeInUp" data-delay=".2">Any question? Reach out to us and we’ll get back to you shortly.</p>
 								</div>
 								<div class="nk-block block-contact">
 									<div class="row justify-content-center text-center">
 										<div class="col-xl-8 col-lg-10">
 											<ul class="contact-list contact-list-s1 flex-wrap flex-md-nowrap pdb-l">
-												<li class="animated" data-animate="fadeInUp" data-delay=".3">
+												<li class="" data-animate="fadeInUp" data-delay=".3">
 													<em class="contact-icon fas fa-phone"></em>
 													<div class="contact-text">
 														<span>+91 9426016918</span>
 													</div>
 												</li>
-												<li class="animated" data-animate="fadeInUp" data-delay=".4">
+												<li class="" data-animate="fadeInUp" data-delay=".4">
 													<em class="contact-icon fas fa-envelope"></em>
 													<div class="contact-text">
 														<span>info@cryptonium.in</span>
 													</div>
 												</li>
-												<li class="animated" data-animate="fadeInUp" data-delay=".5">
+												<li class="" data-animate="fadeInUp" data-delay=".5">
 													<em class="contact-icon fas fa-paper-plane"></em>
 													<div class="contact-text">
 														<span>Join us on Telegram</span>
