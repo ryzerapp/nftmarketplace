@@ -12,8 +12,10 @@
     "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.8.8",
     "@openzeppelin/contracts": "^4.5.0",
-    "@react-three/drei": "^8.18.1",
+    "@react-three/cannon": "^5.0.1",
+    "@react-three/drei": "^8.18.3",
     "@react-three/fiber": "^7.0.26",
+    "@react-three/postprocessing": "^2.2.4",
     "@walletconnect/web3-provider": "^1.7.1",
     "@web3auth/web3auth": "^0.3.2",
     "axios": "^0.22.0",
@@ -42,6 +44,8 @@
     "sass": "^1.44.0",
     "three": "^0.138.3",
     "truffle": "^5.5.2",
+    "uuid-by-string": "^3.0.6",
+    "wouter": "^2.8.0-alpha.2",
     "yup": "^0.32.11"
   },
   "devDependencies": {

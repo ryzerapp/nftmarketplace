@@ -1,37 +1,11 @@
-import TrendingArea from '../components/Common/TrendingArea';
 import BannerArea from '../components/HomeTwo/BannerArea';
-import NavbarTwo from '../components/Layout/NavbarTwo';
-import TopSeller from '../components/Common/TopSeller';
-import AuctionArea from '../components/Auction/AuctionArea';
-import FeaturedArea from '../components/Common/FeaturedArea';
-import Testimonial from '../components/Common/Testimonial';
-import AuthorArea from '../components/HomeTwo/AuthorArea'
-import BlogArea from '../components/Common/BlogArea';
-import CollectionsArea from '../components/Common/CollectionsArea';
 import baseUrl from "../utils/baseUrl";
 import Layout from "../components/Layout/Layout";
-
-
+import MainScreen from '../components/ThreeJs/MainScreen'
 const Index = ({ data, trendingData }) => {
     return (
         <Layout>
-
-            <BannerArea  />
-
-            <TrendingArea trendingData={trendingData} />
-            
-            <TopSeller />
-
-            <AuctionArea />
-
-            <Testimonial />
-
-            <AuthorArea />
-
-            <BlogArea />
-
-            <CollectionsArea />
-
+            <BannerArea />
         </Layout>
     );
 };
