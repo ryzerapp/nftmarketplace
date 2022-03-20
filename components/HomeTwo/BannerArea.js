@@ -95,9 +95,9 @@ const BannerArea = () => {
                   <Link href='https://docs.cryptonium.in/'>
                     <a className='default-btn border-radius-5'>How It's Work?</a>
                   </Link>
-                  <Link href={token ? '/play-nft-game' : '/login'}>
+                  <Link href='https://metaverse.cryptonium.in/'>
                     <a className='default-btn two border-radius-5'>
-                      Play Game
+                      Explore Metaverse
                     </a>
                   </Link>
                 </div>
