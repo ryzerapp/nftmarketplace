@@ -63,14 +63,15 @@ const NavbarTwo = () => {
 									)}
 								</div>
 								<div className="logo">
-									<Link href="/">
+									{/* <Link href="/">
 										<a>
 											<img
 												src="../images/logo-2.png"
 												alt="logo"
 											/>
 										</a>
-									</Link>
+									</Link> */}
+									<h1>Cryptonium</h1>
 								</div>
 							</div>
 						</div>

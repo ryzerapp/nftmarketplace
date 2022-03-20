@@ -4,7 +4,7 @@ const Copyright = () => {
 	return (
 		<>
 			<div className="copyright-area">
-				<div className="container">
+				<div className="container p-3">
 					<div className="row align-items-center">
 						<div className="col-lg-8">
 							<div className="copy-right-text">

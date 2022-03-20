@@ -25,11 +25,13 @@ Default CSS
 :root {
   --bodyFonts: 'Josefin Sans', sans-serif;
   --pinkColor: #F14D5D;
+  --pinkColor_new: #1a5bfe;
   --titleColor: #000000;
   --titleColorWhite: #ffffff;
   --bodyColor: #666666;
   --lightblueColor: #8D99FF;
   --whiteColor: #ffffff;
+  --darkBg: #0c0d23;
   --fontSize: 16px;
   --transition: .5s;
 }
@@ -278,7 +280,7 @@ Section Title Style
 Navbar Area
 ===================================*/
 .desktop-nav {
-  background-color: var(--whiteColor);
+  background-color: var(--darkBg);
   z-index: 99;
   padding-top: 0;
   padding-bottom: 0;
@@ -311,7 +313,7 @@ Navbar Area
 }
 
 .desktop-nav .navbar .navbar-nav .nav-item a {
-  color: var(--titleColor);
+  color: var(--whiteColor);
   position: relative;
   z-index: 1;
   font-family: var(--bodyFonts);
@@ -7129,7 +7131,7 @@ Coming Soon Area End
 Footer Area
 ====================================*/
 .footer-area {
-  background-color: #F6F6F6;
+  background-color: var(--darkBg);
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -7145,7 +7147,7 @@ Footer Area
   margin-top: 0;
   font-size: 24px;
   margin-bottom: 25px;
-  color: var(--titleColor);
+  color: var(--whiteColor);
   line-height: 1.2;
   position: relative;
   z-index: 1;
@@ -7192,7 +7194,7 @@ Footer Area
 }
 
 .footer-widget .footer-list li a {
-  color: var(--bodyColor);
+  color: var(--whiteColor);
 }
 
 .footer-widget .footer-list li a:hover {
@@ -7212,7 +7214,7 @@ Footer Area
 }
 
 .newsletter-area .newsletter-form .form-control {
-  background: var(--whiteColor);
+  background: var(--darkBg);
   border-radius: 5px;
   height: 50px;
   line-height: 50px;
@@ -7262,7 +7264,7 @@ Footer Area
 }
 
 .copyright-area {
-  background-color: var(--whiteColor);
+  background-color: var(--darkBg);
   padding: 15px 0;
 }
 
@@ -7281,7 +7283,7 @@ Footer Area
 }
 
 .copy-right-text p {
-  color: var(--bodyColor);
+  color: var(--whiteColor);
   margin-bottom: 0;
 }
 
@@ -7310,7 +7312,7 @@ Footer Area
 }
 
 .copy-right-text .copy-right-list li a {
-  color: var(--bodyColor);
+  color: var(--whiteColor);
 }
 
 .copy-right-text .copy-right-list li a:hover {

@@ -6,7 +6,7 @@ const HeaderFooter = ({ children }) => {
             <>
                   <NavbarTwo />
                   {children}
-                  {/* <Footer></Footer> */}
+                  <Footer></Footer>
                   <Copyright></Copyright>
             </>
       )
