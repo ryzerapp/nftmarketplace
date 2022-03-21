@@ -159,7 +159,7 @@ const DarkProNew = ({ }) => {
 							<div class="container">
 								<div class="section-head text-center wide-auto-sm">
 									<h2 class="title title-s4 " data-animate="fadeInUp" data-delay=".1" title="TOKEN">Token Sale</h2>
-									<p class="" data-animate="fadeInUp" data-delay=".2">The Cryptocurrency industry is one of the Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<p class="" data-animate="fadeInUp" data-delay=".2"></p>
 								</div>
 								<div class="nk-block nk-block-token mgb-m30">
 									<div class="row align-items-center justify-content-between gutter-vr-50px">
@@ -256,68 +256,68 @@ const DarkProNew = ({ }) => {
 									<div class="roadmap-list " data-animate="fadeInUp" data-delay=".2">
 										<div class="roadmap-item roadmap-item-sm roadmap-done">
 											<div class="roadmap-innr">
-												<h6 class="roadmap-title roadmap-title-s2">March 2022</h6>
-												<p>Start of the Cryptonium Crypto Platform Development.</p>
+												<h6 class="roadmap-title roadmap-title-s2">Jan 2022</h6>
+												<p>Start of the Cryptonium Platform Development.</p>
 											</div>
 										</div>
 										<div class="roadmap-item roadmap-done">
 											<div class="roadmap-innr">
-												<h6 class="roadmap-title roadmap-title-s2">June 2022</h6>
-												<p>Over 100 merchants on site</p>
+												<h6 class="roadmap-title roadmap-title-s2">FEB 2022</h6>
+												<p>Integrate NFT's and Collection Supoport</p>
 											</div>
 										</div>
 										<div class="roadmap-item roadmap-item-lg">
 											<div class="roadmap-innr">
+												<h6 class="roadmap-title roadmap-title-s2">March 2022</h6>
+												<p>Launched of Auction and NFT Game</p>
+											</div>
+										</div>
+										<div class="roadmap-item">
+											<div class="roadmap-innr">
+												<h6 class="roadmap-title roadmap-title-s2">April 2022</h6>
+												<p>Cryptonium Metaverse Development Start</p>
+											</div>
+										</div>
+										<div class="roadmap-item roadmap-item-sm">
+											<div class="roadmap-innr">
+												<h6 class="roadmap-title roadmap-title-s2">May 2022</h6>
+												<p>Distribution Of Cryptonium Token</p>
+											</div>
+										</div>
+										<div class="roadmap-item">
+											<div class="roadmap-innr">
 												<h6 class="roadmap-title roadmap-title-s2">June 2022</h6>
-												<p>Launched of mobile Apps</p>
+												<p>Launch NFT marketplace on all chain</p>
+											</div>
+										</div>
+										<div class="roadmap-item roadmap-item-lg">
+											<div class="roadmap-innr">
+												<h6 class="roadmap-title roadmap-title-s2">July 2022</h6>
+												<p>Integrate NFT's and Metaverse</p>
 											</div>
 										</div>
 										<div class="roadmap-item">
 											<div class="roadmap-innr">
 												<h6 class="roadmap-title roadmap-title-s2">August 2022</h6>
-												<p>Cryptonium preparation &amp; Press Tour</p>
+												<p>Lunch Governance Token</p>
 											</div>
 										</div>
 										<div class="roadmap-item roadmap-item-sm">
 											<div class="roadmap-innr">
-												<h6 class="roadmap-title roadmap-title-s2">October 2022</h6>
-												<p>Start Token Sale Round (1)</p>
-											</div>
-										</div>
-										<div class="roadmap-item">
-											<div class="roadmap-innr">
-												<h6 class="roadmap-title roadmap-title-s2">December 2022</h6>
-												<p>Partnership for the future EcoSystem</p>
-											</div>
-										</div>
-										<div class="roadmap-item roadmap-item-lg">
-											<div class="roadmap-innr">
-												<h6 class="roadmap-title roadmap-title-s2">January 2022</h6>
-												<p>Our team set-up and commercial preparation</p>
-											</div>
-										</div>
-										<div class="roadmap-item">
-											<div class="roadmap-innr">
-												<h6 class="roadmap-title roadmap-title-s2">May 2022</h6>
-												<p>Priority opening for Token holder</p>
-											</div>
-										</div>
-										<div class="roadmap-item roadmap-item-sm">
-											<div class="roadmap-innr">
-												<h6 class="roadmap-title roadmap-title-s2">June 2022</h6>
-												<p>Start Token Sale Round (2)</p>
+												<h6 class="roadmap-title roadmap-title-s2">September 2022</h6>
+												<p>Final Lunch Of Metaverse</p>
 											</div>
 										</div>
 										<div class="roadmap-item">
 											<div class="roadmap-innr">
 												<h6 class="roadmap-title roadmap-title-s2">Octorber 2022</h6>
-												<p>Blockchain usage announcement for global Network</p>
+												<p>Lunch Mobile Application</p>
 											</div>
 										</div>
 										<div class="roadmap-item roadmap-item-lg">
 											<div class="roadmap-innr">
 												<h6 class="roadmap-title roadmap-title-s2">December 2022</h6>
-												<p>Operational Launch United States to general</p>
+												<p>Mega Events In Bangalore For Auction</p>
 											</div>
 										</div>
 									</div>
@@ -683,7 +683,7 @@ const DarkProNew = ({ }) => {
 								</div>
 							</div>
 						</section> */}
-						<section class="section section-contact bg-theme-dark tc-light" id="blog">
+						{/* <section class="section section-contact bg-theme-dark tc-light" id="blog">
 							<div class="container">
 								<div class="section-head text-center wide-auto-sm">
 									<h2 class="title title-s4 " data-animate="fadeInUp" data-delay=".1" title="news">Cryptonium Crypto News</h2>
@@ -741,7 +741,7 @@ const DarkProNew = ({ }) => {
 									<a href="#" class="link link-primary link-uc link-animate"><span>Read all News</span> <em class="link-icon ti ti-angle-right"></em></a>
 								</div>
 							</div>
-						</section>
+						</section> */}
 						<section class="section bg-theme tc-light pb-0" id="faqs">
 							<div class="container">
 								<div class="section-head text-center wide-auto-sm">
