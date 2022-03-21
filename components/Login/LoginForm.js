@@ -45,7 +45,7 @@ const LoginForm = () => {
 						if (res?.data?.statusCode == 200) {
 							handleLogin(res?.data);
 							notify(res?.data?.message)
-							router.replace('/')
+							router.replace('/discover')
 							dispatch({ type: Actions.SET_USER, user: res?.data?.user })
 						}
 						else {

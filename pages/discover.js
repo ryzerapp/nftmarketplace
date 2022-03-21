@@ -16,6 +16,8 @@ const Index = ({ data, trendingData }) => {
     return (
         <Layout>
 
+            <BannerArea></BannerArea>
+
             <TrendingArea trendingData={trendingData} />
 
             <TopSeller />
