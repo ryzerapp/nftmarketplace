@@ -26,7 +26,7 @@ Default CSS
   --bodyFonts: "Josefin Sans", sans-serif;
   --pinkColor: #f14d5d;
   --pinkColor_new: #1a5bfe;
-  --titleColor: #ffffff;
+  --titleColor: #000000;
   --titleColorWhite: #ffffff;
   --bodyColor: #666666;
   --lightblueColor: #8d99ff;
@@ -35,7 +35,6 @@ Default CSS
   --fontSize: 16px;
   --transition: 0.5s;
   --transperentBgColor: rgba(250, 250, 250, 0.35);
-  --transperentBgColor2: rgba(250, 250, 250, 0.8);
 }
 
 body {
@@ -4096,7 +4095,7 @@ Top Seller Area End
 Activity Area
 ====================================*/
 .activity-card {
-  background: var(--transperentBgColor2);
+  background: var(--whiteColor);
   backdrop-filter: saturate(180%) blur(100px);
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
@@ -7046,7 +7045,7 @@ Collections Area End
 
 .side-bar-widget .title {
   font-size: 22px;
-  color: var(--titleColor);
+  color: var(--whiteColor);
   margin-bottom: 20px;
   width: 100%;
 }
@@ -7167,7 +7166,7 @@ Collections Area End
 }
 
 .side-bar-widget-categories {
-  background-color: var(--transperentBgColor2);
+  background-color: var(--whiteColor);
   padding: 30px 20px;
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
@@ -7449,6 +7448,7 @@ Contact Area
 }
 
 .contact-form h3 {
+  color: var(--whiteColor);
   font-size: 26px;
   margin-bottom: 20px;
 }
@@ -7536,7 +7536,7 @@ Contact Area
 
 .contact-form .agree-label label {
   font-weight: 400;
-  color: var(--titleColor);
+  color: var(--whiteColor);
   margin-left: 25px;
 }
 
