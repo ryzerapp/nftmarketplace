@@ -34,6 +34,7 @@ Default CSS
   --darkBg: #0c0d23;
   --fontSize: 16px;
   --transition: .5s;
+   --transperentBgColor: rgba(250, 250, 250, 0.35);
 }
 
 body {
@@ -45,6 +46,10 @@ body {
   font-family: var(--bodyFonts);
 }
 
+.transparentbg {
+        background-color:var(--transperentBgColor)
+      }
+                
 p {
   color: var(--bodyColor);
   margin-bottom: 10px;
@@ -1113,7 +1118,7 @@ Main Banner Area
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(250, 250, 250, 0.35);
+  background-color: var(--transperentBgColor);
   -webkit-backdrop-filter: blur(25px);
           backdrop-filter: blur(25px);
   border-radius: 5px;
@@ -1356,7 +1361,7 @@ Main Banner Area
   right: 0;
   width: 100%;
   height: 70%;
-  background-color: rgba(250, 250, 250, 0.35);
+  background-color: var(--transperentBgColor);
   -webkit-backdrop-filter: blur(25px);
           backdrop-filter: blur(25px);
   border-radius: 5px;
@@ -2118,7 +2123,7 @@ Trending Area
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(250, 250, 250, 0.35);
+  background-color: var(--transperentBgColor);
   -webkit-backdrop-filter: blur(25px);
           backdrop-filter: blur(25px);
   border-radius: 5px;
@@ -3646,7 +3651,7 @@ Auctions Area
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(250, 250, 250, 0.35);
+  background-color: var(--transperentBgColor);
   -webkit-backdrop-filter: blur(25px);
           backdrop-filter: blur(25px);
   border-radius: 5px;
@@ -3970,7 +3975,7 @@ Auctions Area
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(250, 250, 250, 0.35);
+  background-color: var(--transperentBgColor);
   -webkit-backdrop-filter: blur(25px);
           backdrop-filter: blur(25px);
   border-radius: 5px;
