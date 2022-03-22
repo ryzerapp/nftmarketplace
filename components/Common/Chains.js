@@ -108,11 +108,11 @@ function Chains() {
   };
   return (
     <div className="container text-center">
-      <h2 style={{ color: "#666666" }}>Connect Your wallet</h2>
-      <p>
+      <h2 style={{ color: "white" }}>Connect Your wallet</h2>
+      <p style={{ color: "white" }}>
         Connect with one of available wallet providers.
       </p>
-      <p>
+      <p style={{ color: "white" }}>
         Select available Chains
       </p>
       <Dropdown
