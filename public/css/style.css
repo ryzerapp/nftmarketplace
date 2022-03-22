@@ -26,7 +26,7 @@ Default CSS
   --bodyFonts: "Josefin Sans", sans-serif;
   --pinkColor: #f14d5d;
   --pinkColor_new: #1a5bfe;
-  --titleColor: #000000;
+  --titleColor: #ffffff;
   --titleColorWhite: #ffffff;
   --bodyColor: #666666;
   --lightblueColor: #8d99ff;
@@ -429,7 +429,7 @@ Navbar Area
 }
 
 .desktop-nav .navbar .navbar-nav .nav-item .dropdown-menu li a {
-  color: var(--titleColor);
+  color: var(--darkBg);
   padding: 12px 20px 7px;
   margin: 0;
 }
@@ -3674,7 +3674,7 @@ Collection Form Area
 .collection-form {
   padding: 35px 25px;
   margin-bottom: 30px;
-  background-color: var(--transperentBgColor);
+  background-color: var(--darkBg);
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
 }
@@ -3688,7 +3688,7 @@ Collection Form Area
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: 600;
-  color: var(--titleColor);
+  color: var(--whiteColor);
 }
 
 .collection-form .form-group.checkbox-option {
@@ -3719,7 +3719,7 @@ Collection Form Area
   height: 50px;
   color: var(--bodyColor);
   border: none;
-  background-color: #f8f8f8;
+  background-color: var(--whiteColor);
   font-size: 15px;
   padding: 15px 20px;
   width: 100%;
@@ -6318,7 +6318,7 @@ Author Area
 
 .author-profile-sidebar {
   margin-bottom: 30px;
-  background-color: var(--transperentBgColor);
+  background-color: var(--whiteColor);
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
   border-radius: 15px;
@@ -7438,7 +7438,7 @@ Contact Area
   position: relative;
   z-index: 1;
   margin-bottom: 30px;
-  background-color: var(--whiteColor);
+  background-color: var(--darkBg);
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
   padding: 40px 30px;
@@ -7460,6 +7460,8 @@ Contact Area
 
 .contact-form .form-group label {
   margin-bottom: 15px;
+  color:var(--whiteColor);
+
 }
 
 .contact-form .form-group.checkbox-option {
@@ -7579,7 +7581,7 @@ Contact Area
 
 .user-all-form .contact-form {
   max-width: 750px;
-  background-color: var(--transperentBgColor);
+  background-color: var(--darkBg);
   border: none;
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
@@ -7639,7 +7641,7 @@ Contact Area
   padding: 10px 30px;
   width: 100%;
   border: 1px solid #c4c4c4;
-  color: var(--bodyFonts);
+  color: var(--whiteColor);
   text-align: center;
   border-radius: 5px;
   font-size: 17px;

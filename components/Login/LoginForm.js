@@ -79,13 +79,14 @@ const LoginForm = () => {
 		<div>
 			<form id="contactForm" onSubmit={handleSubmit(onSubmit)}>
 				<div className="row">
-					<div className="col-lg-12 ">
+					<div className="col-lg-12 pt-3">
 						<div className="form-group">
-							<label>Email</label>
+							{/* <label>Email</label> */}
 							<input
 								className="form-control"
 								name="email"
 								type="email"
+								placeholder="Enter Your Email"
 								{...register("email")}
 							/>
 							<ErrorMessage
@@ -96,13 +97,14 @@ const LoginForm = () => {
 						</div>
 					</div>
 
-					<div className="col-12">
+					<div className="col-12 py-3">
 						<div className="form-group">
-							<label>Password</label>
+							{/* <label>Password</label> */}
 							<input
 								className="form-control"
 								name="password"
 								type="password"
+								placeholder="Enter Your  Passowrd"
 								{...register("password")}
 							/>
 							<ErrorMessage

@@ -87,12 +87,13 @@ const AuthForm = () => {
 		<>
 			<form id="contactForm" onSubmit={handleSubmit(onSubmit)}>
 				<div className="row">
-					<div className="col-lg-12">
+					<div className="col-lg-12 pt-3">
 						<div className="form-group">
-							<label>Your Name</label>
+							{/* <label>Your Name</label> */}
 							<input
 								type="text"
 								className="form-control"
+								placeholder="Enter Username"
 								name="username"
 								{...register("username")}
 							/>
@@ -104,10 +105,11 @@ const AuthForm = () => {
 						</div>
 					</div>
 
-					<div className="col-lg-12 ">
+					<div className="col-lg-12 py-3">
 						<div className="form-group">
-							<label>Email</label>
+							{/* <label>Email</label> */}
 							<input
+								placeholder="Enter Email Address"
 								type="email"
 								className="form-control"
 								name="email"
@@ -121,11 +123,12 @@ const AuthForm = () => {
 						</div>
 					</div>
 
-					<div className="col-12">
+					<div className="col-12 pb-3">
 						<div className="form-group">
-							<label>Password</label>
+							{/* <label>Password</label> */}
 							<input
 								className="form-control"
+								placeholder="Enter Password"
 								name="password"
 								type="password"
 								{...register("password")}

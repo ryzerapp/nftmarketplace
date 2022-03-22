@@ -9,7 +9,7 @@ const Login = () => {
 						<div className="col-lg-12">
 							<div className="user-all-form">
 								<div className="contact-form">
-									<h3> Log In Now</h3>
+									<h3 className="text-center"> Log In Now</h3>
 									<LoginForm />
 								</div>
 							</div>

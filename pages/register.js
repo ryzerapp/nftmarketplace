@@ -9,7 +9,7 @@ const Register = () => {
 						<div className="col-lg-12">
 							<div className="user-all-form">
 								<div className="contact-form">
-									<h3> Create Account </h3>
+									<h3 className="text-center"> Create Account </h3>
 									<div className="bar"></div>
 									<AuthForm />
 								</div>
