@@ -7070,11 +7070,7 @@ Collections Area End
 }
 
 .side-bar-widget .search-form .form-control {
-<<<<<<< HEAD
-  background-color: #f6f6f6;
-=======
   background-color: var(--darkBg);
->>>>>>> master
   border-radius: 15px;
   border: none;
   height: 50px;
