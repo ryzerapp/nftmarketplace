@@ -108,7 +108,7 @@ function Chains() {
   };
   return (
     <div className="container text-center">
-      <h2>Connect Your wallet</h2>
+      <h2 style={{ color: "#666666" }}>Connect Your wallet</h2>
       <p>
         Connect with one of available wallet providers.
       </p>
