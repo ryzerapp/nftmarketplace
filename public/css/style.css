@@ -2516,7 +2516,7 @@ Inner Banner Area
 }
 
 .involved-area-two {
-  background-color: #0a1831;
+  background-color: var(--darkBg);
 }
 
 .involved-area-two .section-title h2 {
@@ -5698,7 +5698,7 @@ Author Area
 }
 
 .author-widget-bg {
-  background-color: var(--whiteColor);
+  background-color: var(--darkBg);
 }
 
 .author-area-shape {

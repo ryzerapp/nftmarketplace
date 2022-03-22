@@ -120,14 +120,14 @@ const MenusList = ({ user }) => {
 								<i className="ri-arrow-down-s-line"></i>
 							</a>
 							<ul className="dropdown-menu">
-								<li className="nav-item">
+								{/* <li className="nav-item">
 									<Link
 										href="/about"
 										activeClassName="active"
 									>
 										<a className="nav-link">About Us</a>
 									</Link>
-								</li>
+								</li> */}
 								<li className="nav-item">
 									<Link
 										href="/authors"
@@ -144,15 +144,6 @@ const MenusList = ({ user }) => {
 										<a className="nav-link">
 											Blogs
 										</a>
-									</Link>
-								</li>
-
-								<li className="nav-item">
-									<Link
-										href="/help-center"
-										activeClassName="active"
-									>
-										<a className="nav-link">Help Center</a>
 									</Link>
 								</li>
 							</ul>

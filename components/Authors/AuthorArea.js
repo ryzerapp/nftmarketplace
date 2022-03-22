@@ -4,7 +4,7 @@ import Pagination from '../Common/Pagination';
 const AuthorArea = () => {
   return (
     <>
-      <div className='author-widget-bg author-area-bg pt-100 pb-70'>
+      <div className='author-widget-bg author-area-bg pt-70 pb-70'>
         <div className='container'>
           <div className='section-title'>
             <h2>Top Author</h2>
