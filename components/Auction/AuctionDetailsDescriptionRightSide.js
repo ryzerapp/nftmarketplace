@@ -69,7 +69,7 @@ const AuctionDetailsDescription = ({
 				<div className="row">
 					<div className="col-lg-12 pt-10">
 						<div className="section-title">
-							<h3>Description</h3>
+							<h3 style={{ color: 'white' }}>Description</h3>
 							<span 	>{data?.description}</span>
 						</div>
 						<hr></hr>

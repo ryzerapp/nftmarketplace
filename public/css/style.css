@@ -3238,11 +3238,12 @@ Item Details Area
 
 .item-details-content {
   padding: 35px 20px;
-  background-color: #f6f6f6;
+  background-color: var(--darkBg);
   margin-bottom: 30px;
 }
 
 .item-details-content h3 {
+  color: var(--whiteColor);
   margin-bottom: 20px;
 }
 
@@ -3277,6 +3278,7 @@ Item Details Area
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border-radius: 20px;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -3402,6 +3404,7 @@ Item Details Area
 }
 
 .item-details-price .item-details-title h3 {
+  color: var(--whiteColor);
   margin-bottom: 0;
   font-size: 20px;
 }
