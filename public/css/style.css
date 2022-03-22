@@ -35,6 +35,7 @@ Default CSS
   --fontSize: 16px;
   --transition: .5s;
    --transperentBgColor: rgba(250, 250, 250, 0.35);
+   --transperentBgColor2: rgba(250, 250, 250, 0.8);
 }
 
 body {
@@ -49,7 +50,7 @@ body {
 .transparentbg {
         background-color:var(--transperentBgColor)
       }
-                
+            
 p {
   color: var(--bodyColor);
   margin-bottom: 10px;
@@ -2145,7 +2146,7 @@ Trending Area
 .trending-item .content {
   text-align: center;
   padding: 20px;
-  background-color: var(--whiteColor);
+  background-color: var(--transperentBgColor);
   border-radius: 0 0 5px 5px;
 }
 
@@ -3458,7 +3459,8 @@ Top Seller Area End
 Activity Area
 ====================================*/
 .activity-card {
-  background-color: var(--whiteColor);
+  background: var(--transperentBgColor2);
+  backdrop-filter: saturate(180%) blur(100px);
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
           box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
   padding: 20px 20px;
@@ -3485,7 +3487,7 @@ Activity Area
 
 .activity-card .activity-content p {
   font-size: 15px;
-  color: var(--bodyFonts);
+  color: var(--darkBg);
   margin-bottom: 15px;
 }
 
@@ -3499,7 +3501,7 @@ Activity Area
 
 .activity-card .activity-content span {
   font-size: 15px;
-  color: var(--bodyFonts);
+  color: var(--darkBg);
   margin-bottom: 0;
 }
 
@@ -6279,7 +6281,7 @@ Collections Area End
 }
 
 .side-bar-widget .search-form .form-control {
-  background-color: #F6F6F6;
+  background-color: var(--darkBg);
   border-radius: 15px;
   border: none;
   height: 50px;
@@ -6373,7 +6375,7 @@ Collections Area End
 }
 
 .side-bar-widget-categories {
-  background-color: var(--whiteColor);
+  background-color: var(--transperentBgColor2);
   padding: 30px 20px;
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
           box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
@@ -6383,7 +6385,7 @@ Collections Area End
 
 .side-bar-widget-categories .title {
   font-size: 22px;
-  color: var(--titleColor);
+  color: var(--darkBg);
   margin-bottom: 20px;
 }
 
@@ -6404,7 +6406,7 @@ Collections Area End
 
 .side-bar-widget-categories ul li a {
   display: inline-block;
-  color: var(--bodyColor);
+  color: var(--darkBg);
   width: 100%;
   border-radius: 3px;
   position: relative;
