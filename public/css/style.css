@@ -2745,7 +2745,7 @@ Trending Area
 .trending-item .content {
   text-align: center;
   padding: 20px;
-  background-color: var(--whiteColor);
+  background-color: var(--transperentBgColor);
   border-radius: 0 0 5px 5px;
 }
 
@@ -4093,7 +4093,8 @@ Top Seller Area End
 Activity Area
 ====================================*/
 .activity-card {
-  background-color: var(--whiteColor);
+  background: var(--transperentBgColor2);
+  backdrop-filter: saturate(180%) blur(100px);
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
   padding: 20px 20px;
@@ -4120,7 +4121,7 @@ Activity Area
 
 .activity-card .activity-content p {
   font-size: 15px;
-  color: var(--bodyFonts);
+  color: var(--darkBg);
   margin-bottom: 15px;
 }
 
@@ -4134,7 +4135,7 @@ Activity Area
 
 .activity-card .activity-content span {
   font-size: 15px;
-  color: var(--bodyFonts);
+  color: var(--darkBg);
   margin-bottom: 0;
 }
 
@@ -7069,7 +7070,11 @@ Collections Area End
 }
 
 .side-bar-widget .search-form .form-control {
+<<<<<<< HEAD
   background-color: #f6f6f6;
+=======
+  background-color: var(--darkBg);
+>>>>>>> master
   border-radius: 15px;
   border: none;
   height: 50px;
@@ -7163,7 +7168,7 @@ Collections Area End
 }
 
 .side-bar-widget-categories {
-  background-color: var(--whiteColor);
+  background-color: var(--transperentBgColor2);
   padding: 30px 20px;
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
@@ -7173,7 +7178,7 @@ Collections Area End
 
 .side-bar-widget-categories .title {
   font-size: 22px;
-  color: var(--titleColor);
+  color: var(--darkBg);
   margin-bottom: 20px;
 }
 
@@ -7194,7 +7199,7 @@ Collections Area End
 
 .side-bar-widget-categories ul li a {
   display: inline-block;
-  color: var(--bodyColor);
+  color: var(--darkBg);
   width: 100%;
   border-radius: 3px;
   position: relative;
