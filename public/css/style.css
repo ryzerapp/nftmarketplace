@@ -35,6 +35,7 @@ Default CSS
   --fontSize: 16px;
   --transition: 0.5s;
   --transperentBgColor: rgba(250, 250, 250, 0.35);
+  --transperentBgColor2: rgba(250, 250, 250, 0.8);
 }
 
 body {
@@ -1917,7 +1918,8 @@ Main Banner Area
 .banner-area-two {
   position: relative;
   z-index: 1;
-  background-image: url(../images/home-two/home-two-bg.jpg);
+  /* background-image: url(../images/home-two/home-two-bg.jpg); */
+  background-color: var(--darkBg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1928,14 +1930,14 @@ Main Banner Area
   font-size: 62px;
   margin-bottom: 20px;
   line-height: 1.2;
-  color: var(--titleColor);
+  color: var(--whiteColor);
   max-width: 600px;
 }
 
 .banner-content-two p {
   margin-bottom: 30px;
   max-width: 700px;
-  color: #0c0b0b;
+  color: var(--whiteColor);
 }
 
 .banner-content-two .banner-btn .two {
@@ -2657,7 +2659,7 @@ Trending Area
   z-index: 1;
   top: 25px;
   left: 20px;
-  background-color: var(--whiteColor);
+  background-color: var(--transperentBgColor);
   padding: 7px 12px;
   display: inline-block;
   border-radius: 50px;
@@ -4075,11 +4077,12 @@ Top Seller Area
 }
 
 .top-sellers-item .content h3 a {
-  color: var(--titleColor);
+  color: var(--whiteColor);
 }
 
 .top-sellers-item .content span {
   font-size: 14px;
+  color: var(--whiteColor);
 }
 
 .top-sellers-item:hover h3 a {
@@ -5401,7 +5404,7 @@ Testimonial Area
   font-size: 20px;
   max-width: 850px;
   margin-bottom: 20px;
-  color: var(--titleColor);
+  color: var(--whiteColor);
   margin-left: auto;
   margin-right: auto;
 }
@@ -5671,7 +5674,7 @@ Author Area
 }
 
 .author-area-bg2 {
-  background-image: url(../images/author/author-bg.png);
+  /* background-image: url(../images/author/author-bg.png); */
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -6541,7 +6544,7 @@ Author Area End
 Blog Area
 ====================================*/
 .blog-area {
-  background-color: #f4f7f6;
+  background-color: var(--darkBg);
 }
 
 .blog-card {

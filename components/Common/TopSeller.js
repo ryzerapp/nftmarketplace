@@ -36,9 +36,9 @@ const TopSeller = ({ pt100 }) => {
                           <img
                             src={author?.profile_photo ? author?.profile_photo : "../images/author/author-user13.png"}
                             alt='Images'
-                            width={100}
+                            width={50}
+                            height={50}
                             style={{ objectFit: 'contain' }}
-                            height={100}
                           />
                         </a>
                       </Link>
