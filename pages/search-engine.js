@@ -6,6 +6,7 @@ import { useIPFS } from '../hooks/Web3/useIPFS';
 
 const SearchEngine = ({ }) => {
     const [searchValue, setsearchValue] = useState("")
+    const [isSearchChnage, setisSearchChnage] = useState(false)
     const [searchResultNFTs, setsearchResultNFTs] = useState([])
     const [loader, setLoader] = useState(false)
     const { resolveLink } = useIPFS();
@@ -27,6 +28,8 @@ const SearchEngine = ({ }) => {
                             });
                     } catch (error) {
                         console.log(error)
+                        setLoader(false)
+
                     }
                 }
             }
@@ -46,6 +49,7 @@ const SearchEngine = ({ }) => {
 
     const handleClick = async () => {
         setLoader(true)
+        setisSearchChnage(true)
         await setData(searchValue)
         setLoader(false)
     }
@@ -91,17 +95,19 @@ const SearchEngine = ({ }) => {
                                                                     )
                                                                 })
                                                                 :
-                                                                (searchResultNFTs.length == 500 ? (
+                                                                (searchResultNFTs.length > 100 ? (
                                                                     searchResultNFTs?.map((nft) => {
                                                                         return (
                                                                             <NFTComponentBlockChainSearch nft={nft} key={nft?.token_uri} />
                                                                         )
                                                                     })
-                                                                ) : <h1>Hello</h1>)
+                                                                ) : <><h1 className='text-center pt-5'>Try Another Search</h1></>
+                                                                )
                                                         }
                                                     </div>
                                                 </>
-                                            ) : <><h1 className='text-center pt-5'>Try Another Search</h1></>
+                                            ) :
+                                            <><h1 className='text-center pt-5'>Try Another Search</h1></> 
                                     }
                                 </>
                         }
