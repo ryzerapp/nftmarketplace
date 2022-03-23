@@ -184,7 +184,12 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, user, editO
         <div className='col-lg-3 col-md-4'>
             <div className='featured-card box-shadow'>
                 <div className='featured-card-img'>
-                    <img src={nft?.image_url} alt='Images' />
+                    <img src={nft?.image_url}
+                        onError={({ currentTarget }) => {
+                            currentTarget.onerror = null; // prevents looping
+                            currentTarget.src = "../images/notfoundimage.png";
+                        }}
+                        alt='Images' />
                     <p>
                         <i className='ri-heart-line'></i> {nft?.total_like ? nft?.total_like : 0}
                     </p>

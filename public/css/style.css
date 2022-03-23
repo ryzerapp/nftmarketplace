@@ -50,6 +50,52 @@ body {
   background-color: var(--transperentBgColor);
 }
 
+.collection-widget-area
+{
+  background-color: var(--darkBg);
+}
+.collection-widget-area h1
+{
+  color: var(--whiteColor);
+}
+
+.search-engine .form {
+    position: relative
+}
+
+.search-engine .form .fa-search {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #9ca3af
+}
+
+.search-engine .form span {
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+    border-left: 1px solid #d1d5db
+}
+
+.search-engine .left-pan {
+    padding-left: 7px
+}
+
+.search-engine .left-pan i {
+    padding-left: 10px
+}
+
+.search-engine .form-input {
+    height: 55px;
+    text-indent: 33px;
+    border-radius: 10px
+}
+
+.search-engine .form-input:focus {
+    box-shadow: none;
+    border: none
+}
 .user-area,
 .wallet-area,
 .author-profile-area {
@@ -5269,6 +5315,21 @@ Featured Area
 }
 
 .featured-card .content .featured-user-option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background-color: #e5e5e5;
+  padding: 7px 15px 7px 10px;
+  display: inline-block;
+  border-radius: 50px;
+}
+.featured-card .content .featured-user-optionnew {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

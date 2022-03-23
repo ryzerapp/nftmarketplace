@@ -67,10 +67,10 @@ const MenusList = ({ user }) => {
 								</li>
 								<li className="nav-item">
 									<Link
-										href="/auction"
+										href="/search-engine"
 										activeClassName="active"
 									>
-										<a className="nav-link">Live Auction</a>
+										<a className="nav-link">Search Engine</a>
 									</Link>
 								</li>
 								<li className="nav-item">

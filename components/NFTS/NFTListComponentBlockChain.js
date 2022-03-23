@@ -5,6 +5,7 @@ import { useIPFS } from '../../hooks/Web3/useIPFS';
 import { useWeb3 } from '../../providers/Web3Context';
 import Loader from '../Common/Loader';
 import NFTComponentBlockChain from './NFTComponentBlockChain';
+import NFTComponentBlockChainSearch from './NFTComponentBlockChainSearch';
 
 const NFTListComponentBlockChain = ({ brefetch, walletAddressPassed }) => {
 
@@ -66,7 +67,7 @@ const NFTListComponentBlockChain = ({ brefetch, walletAddressPassed }) => {
         {nftBalance?.length > 0 ?
           nftBalance?.map((res) =>
           (
-            <NFTComponentBlockChain
+            <NFTComponentBlockChainSearch
               nft={res}
               key={res?.token_uri}
             />

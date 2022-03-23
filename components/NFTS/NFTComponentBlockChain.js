@@ -6,7 +6,12 @@ export default function NFTComponentBlockChain({ nft }) {
             <div className='featured-card box-shadow'>
                 <div className='featured-card-img'>
                     <a href='/item-details'>
-                        <img src={nft?.image_url} alt='Images' />
+                        <img src={nft?.image_url}
+                            onError={({ currentTarget }) => {
+                                currentTarget.onerror = null; // prevents looping
+                                currentTarget.src = "../images/notfoundimage.png";
+                            }}
+                            alt='Images' />
                     </a>
                     <p>
                         <i className='ri-heart-line'></i> 122
