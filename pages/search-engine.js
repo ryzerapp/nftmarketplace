@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useMoralis } from 'react-moralis';
 import Loader from '../components/Common/Loader';
-import NFTComponentBlockChain from '../components/NFTS/NFTComponentBlockChain';
 import NFTComponentBlockChainSearch from '../components/NFTS/NFTComponentBlockChainSearch';
 import { useIPFS } from '../hooks/Web3/useIPFS';
 
@@ -17,7 +16,8 @@ const SearchEngine = ({ }) => {
             for (let NFT of NFTs) {
                 if (NFT?.metadata) {
                     NFT.metadata = JSON.parse(NFT.metadata);
-                    NFT.image_url = resolveLink(NFT.metadata?.image);
+                    NFT.image_url = resolveLink(NFT.metadata?.image ?
+                        NFT.metadata?.image : NFT.metadata?.image_url);
                 } else if (NFT?.token_uri) {
                     try {
                         await fetch(NFT.token_uri)
@@ -34,7 +34,7 @@ const SearchEngine = ({ }) => {
         }
     };
     const setData = async (search) => {
-        const options = { q: search, chain: "bsc", filter: "name" };
+        const options = { q: search, chain: "eth", filter: "name" };
         const NFTs = await Moralis.Web3API.token.searchNFTs(options);
         const data = await nftBalanceJson(NFTs)
 
