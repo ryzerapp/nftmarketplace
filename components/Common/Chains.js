@@ -7,38 +7,17 @@ import 'react-dropdown/style.css';
 import { useWeb3 } from "../../providers/Web3Context";
 import { Actions } from "../../providers/Web3Context/reducer";
 
-
 const menuItems = [
   {
     key: "0x1",
     value: "Ethereum",
     icon: <ETHLogo />,
   },
-  // {
-  //   key: "0x539",
-  //   value: "Local Chain",
-  //   icon: <ETHLogo />,
-  // },
-  // {
-  //   key: "0x3",
-  //   value: "Ropsten Testnet",
-  //   icon: <ETHLogo />,
-  // },
   {
     key: "0x4",
     value: "Rinkeby Testnet",
     icon: <ETHLogo />,
   },
-  // {
-  //   key: "0x2a",
-  //   value: "Kovan Testnet",
-  //   icon: <ETHLogo />,
-  // },
-  // {
-  //   key: "0x5",
-  //   value: "Goerli Testnet",
-  //   icon: <ETHLogo />,
-  // },
   {
     key: "0x38",
     value: "Binance",

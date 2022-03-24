@@ -3934,6 +3934,7 @@ Collection Form Area
 
 .collection-category h3 {
   font-size: 20px;
+  color: var(--whiteColor);
   margin-bottom: 20px;
 }
 
