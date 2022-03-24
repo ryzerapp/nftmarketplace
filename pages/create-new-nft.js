@@ -1,14 +1,35 @@
-import CreateCollectionArea from '../components/CreateCollection/CreateCollectionArea';
 const category = ['Art', 'Virtual Worlds', 'Trending Cards', 'Collectibles', 'Music', 'Games', 'Memes', 'NFT Gifts', 'Domains']
 import { useForm } from "react-hook-form";
 import http from '../utils/http'
 import toast, { Toaster } from 'react-hot-toast';
 import { useState } from 'react';
-const notify = (message) => toast(message);
-
+import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./../components/Common/Logos";
+const menuItems = [
+  {
+    key: "eth",
+    value: "Ethereum",
+    icon: <ETHLogo />,
+  },
+  {
+    key: "bsc",
+    value: "Binance",
+    icon: <BSCLogo />,
+  },
+  {
+    key: "polygon",
+    value: "Polygon",
+    icon: <PolygonLogo />,
+  },
+  {
+    key: "0xa86a",
+    value: "Avalanche",
+    icon: <AvaxLogo />,
+  },
+];
 const CreateCollection = () => {
   const [selectedCategory, setselectedCategory] = useState('Art');
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [chainId, setchainId] = useState("eth")
 
   const onSubmit = async (data) => {
     try {
@@ -57,25 +78,25 @@ const CreateCollection = () => {
               finalObj
             );
             if (res?.status == 200) {
-              notify(res?.data?.message)
+              toast.success(res?.data?.message)
             }
           } catch (ex) {
             console.log(ex);
           }
         }
         else {
-          notify(res?.data?.message)
+          toast.success(res?.data?.message)
         }
 
       })
         .catch((err) => {
-          notify(err?.response?.data?.message)
+          toast.error(err?.response?.data?.message)
         });
 
     } catch (error) {
       const { data } = error.response.data;
       if (data) {
-        notify(data[0].messages[0].message);
+        toast.error(data[0].messages[0].message);
       }
     }
   };
@@ -84,7 +105,8 @@ const CreateCollection = () => {
     <>
       <div className="container">
         <div className='user-area pt-100 pb-70'>
-          <div className='container'>
+          <div className='container'
+          >
             <div className='row'>
               <div className='col-lg-12'>
                 <div className='collection-form-area'>
@@ -144,7 +166,7 @@ const CreateCollection = () => {
                           </div>
                         </div>
                         <div className='col-lg-12 col-md-12'>
-                          <div className='form-group'>image_url
+                          <div className='form-group'>
                             <label>Choose NFT Image</label>
                             <input
                               {...register("image_url")}
@@ -154,18 +176,45 @@ const CreateCollection = () => {
                             />
                           </div>
                         </div>
-
-                        <div className='collection-category'>
-                          <h3>Choose NFT Category</h3>
+                      </div>
+                      <div className="d-flex flex-row justify-content-start align-items-center" >
+                        <div
+                          style={{
+                            height: 50,
+                            lineHeight: 50
+                          }}
+                        >
+                          <h5 style={{ color: 'white' }}> Select Crypto Type:</h5>
+                        </div>
+                        <div
+                          style={{
+                            height: 50
+                          }}
+                          className='collection-category text-center pb-3 pl-3'>
                           <ul>
-                            {category?.map((item, index) => {
+                            {menuItems?.map((item, index) => {
                               return (
-                                <li key={index} style={{ backgroundColor: selectedCategory == item ? '#f14d5d' : '#f6f6f6' }}>
-                                  <a
-                                    style={{ color: selectedCategory == item ? 'white' : '#8d99ff' }}
-                                    onClick={() => setselectedCategory(item)}>
-                                    {item}
-                                  </a>
+                                <li key={index} style={{
+                                  backgroundColor: chainId == item?.key ? '#f6f6f6' : '#0c0d23',
+                                  border: chainId == item?.key ? '1px solid white' : '1px solid white',
+                                }}>
+                                  <div
+                                    style={{
+                                      cursor: 'pointer'
+                                    }}
+                                    onClick={() => setchainId(item?.key)}
+                                  >
+                                    {item?.icon}
+                                    <a
+                                      className='ml-2'
+                                      style={{
+                                        color: chainId == item?.key ? '#0c0d23' : '#8d99ff',
+                                      }}
+                                    >
+                                      {item?.value}
+                                    </a>
+                                  </div>
+
                                 </li>
                               )
                             })}
@@ -173,11 +222,28 @@ const CreateCollection = () => {
                           </ul>
                         </div>
                       </div>
+                      <div className='col-lg-12 col-md-12'>
+                        <div className='form-group'>
+                          <label>Crypto Cost</label>
+                          <input
+                            type='text'
+                            {...register("crypto_cost")}
+                            className='form-control'
+                            placeholder='e. g. “after purchasing you’ll able to get the real product”'
+
+                          />
+                        </div>
+                      </div>
                       <div className='col-lg-12 col-md-12 text-center'>
                         <button
                           className='default-btn border-radius-5'
                         >
                           Cook New Nft
+                        </button>
+                        <button
+                          className='default-btn border-radius-5 ml-5'
+                        >
+                          Create NFT(Mint Later)
                         </button>
                       </div>
                     </form>
@@ -187,10 +253,7 @@ const CreateCollection = () => {
             </div>
           </div>
         </div>
-
       </div>
-      <Toaster></Toaster>
-      <CreateCollectionArea />
     </>
   );
 };

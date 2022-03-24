@@ -6,8 +6,8 @@ import NFTComponentBlockChainSearch from '../components/NFTS/NFTComponentBlockCh
 import { useIPFS } from '../hooks/Web3/useIPFS';
 import toast, { Toaster } from 'react-hot-toast';
 
-import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./../components/Common/Logos";
 const category = ['Search by Title', 'Search by Author Address', 'Search by Contract Address']
+import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./../components/Common/Logos";
 const menuItems = [
     {
         key: "eth",

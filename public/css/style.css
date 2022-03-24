@@ -31,7 +31,8 @@ Default CSS
   --bodyColor: #666666;
   --lightblueColor: #8d99ff;
   --whiteColor: #ffffff;
-  --darkBg: #0c0d23;
+  /* --darkBg: #0c0d23; */
+  --darkBg: #08091b;
   --fontSize: 16px;
   --transition: 0.5s;
   --transperentBgColor: rgba(250, 250, 250, 0.35);
