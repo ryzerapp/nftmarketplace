@@ -742,7 +742,7 @@ const DarkProNew = ({ }) => {
 								</div>
 							</div>
 						</section> */}
-						<section class="section bg-theme tc-light pb-0" id="faqs">
+						{/* <section class="section bg-theme tc-light pb-0" id="faqs">
 							<div class="container">
 								<div class="section-head text-center wide-auto-sm">
 									<h2 class="title title-s4 " data-animate="fadeInUp" data-delay=".1" title="FAQS">Frequently Asked Question</h2>
@@ -964,7 +964,7 @@ const DarkProNew = ({ }) => {
 									</div>
 								</div>
 							</div>
-						</section>
+						</section> */}
 						<section class="section section-contact bg-theme tc-light" id="contact">
 							<div class="container">
 								<div class="section-head text-center wide-auto-sm">
