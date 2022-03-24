@@ -968,7 +968,7 @@ const DarkProNew = ({ }) => {
 						<section class="section section-contact bg-theme tc-light" id="contact">
 							<div class="container">
 								<div class="section-head text-center wide-auto-sm">
-									<h2 class="title title-s4 " data-animate="fadeInUp" data-delay=".1" title="Contact">Contact Cryptonium Crypto</h2>
+									<h2 class="title title-s4 " data-animate="fadeInUp" data-delay=".1" title="Contact">Contact Us</h2>
 									<p class="" data-animate="fadeInUp" data-delay=".2">Any question? Reach out to us and we’ll get back to you shortly.</p>
 								</div>
 								<div class="nk-block block-contact">
