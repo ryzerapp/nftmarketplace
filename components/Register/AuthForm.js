@@ -1,8 +1,6 @@
 import React from "react";
 import { handleLogin } from "../../utils/auth";
 import { useRouter } from "next/router";
-import { getAuthCredentials, isAuthenticated } from "../../utils/auth-utils";
-import { ROUTES } from "../../utils/routes";
 import toast, { Toaster } from 'react-hot-toast';
 const notify = (message) => toast(message);
 import Loader from "../Common/Loader";

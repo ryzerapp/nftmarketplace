@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useMoralis } from 'react-moralis';
+import web3 from 'web3'
 import Loader from '../components/Common/Loader';
 import NFTComponentBlockChainSearch from '../components/NFTS/NFTComponentBlockChainSearch';
 import { useIPFS } from '../hooks/Web3/useIPFS';
+import toast, { Toaster } from 'react-hot-toast';
+
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./../components/Common/Logos";
 const category = ['Search by Title', 'Search by Author Address', 'Search by Contract Address']
 const menuItems = [
@@ -34,7 +37,6 @@ const SearchEngine = ({ }) => {
     const [placeholder, setplaceholder] = useState("Search anything...")
     const [loader, setLoader] = useState(false)
     const [selectedCategory, setselectedCategory] = useState('Search by Title');
-
     const { resolveLink } = useIPFS();
 
     const nftBalanceJson = async (data) => {
@@ -63,10 +65,25 @@ const SearchEngine = ({ }) => {
         }
     };
     const setData = async (search) => {
-        const options = { q: search, chain: chainId };
-        console.log(options)
-        const NFTs = await Moralis.Web3API.token.searchNFTs(options);
-        const data = await nftBalanceJson(NFTs)
+        var data;
+        if (selectedCategory == "Search by Title") {
+            console.log('ttile')
+            const options = { q: search, chain: chainId };
+            const NFTs = await Moralis.Web3API.token.searchNFTs(options);
+            data = await nftBalanceJson(NFTs)
+        }
+        else if (selectedCategory == "Search by Author Address") {
+            console.log('Author')
+            const options = { chain: chainId, address: search };
+            const NFTs = await Moralis.Web3API.account.getNFTs(options);
+            data = await nftBalanceJson(NFTs)
+        }
+        else if (selectedCategory == "Search by Contract Address") {
+            console.log('Contract')
+            const options = { chain: chainId, address: search };
+            const NFTs = await Moralis.Web3API.account.getNFTs(options);
+            data = await nftBalanceJson(NFTs)
+        }
         setLoader(false)
         setsearchResultNFTs([]);
         setsearchResultNFTs(data);
@@ -74,9 +91,19 @@ const SearchEngine = ({ }) => {
     const { Moralis } = useMoralis();
 
     const handleClick = async () => {
+        if (selectedCategory != "Search by Title") {
+            if (!web3.utils.isAddress(searchValue)) {
+                toast.error("Please add valid web 3 address.");
+                return false;
+            }
+        }
         setLoader(true)
         await setData(searchValue)
         setLoader(false)
+    }
+    const handleClickFilter = async (item) => {
+        setselectedCategory(item)
+        setplaceholder(item)
     }
     return (
         <>
@@ -98,7 +125,7 @@ const SearchEngine = ({ }) => {
                                                         color: selectedCategory == item ? '#0c0d23' : '#8d99ff',
                                                         cursor: 'pointer'
                                                     }}
-                                                    onClick={() => setselectedCategory(item)}>
+                                                    onClick={() => handleClickFilter(item)}>
                                                     {item}
                                                 </a>
                                             </li>
