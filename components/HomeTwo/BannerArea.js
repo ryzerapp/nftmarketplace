@@ -87,9 +87,9 @@ const BannerArea = () => {
               <div className='banner-content-two'>
                 <h1>India's First Multi Chain NFT Marketplace</h1>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  aliquam etiam rhoncus aenean a iaculis aliquet accumsan
-                  sodales consectetur.
+                  We’re reinventing the nft creation part for creator.
+                  We provide multi-chain support for nft creation.
+                  If you are not creator, don't worry Just Play below game and get your nft now.
                 </p>
                 <div className='banner-btn'>
                   <Link href='https://docs.cryptonium.in/'>

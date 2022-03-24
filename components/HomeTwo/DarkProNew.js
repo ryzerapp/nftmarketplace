@@ -1,4 +1,4 @@
-
+import Link from 'next/link';
 const DarkProNew = ({ }) => {
 	return (
 		<>
@@ -975,22 +975,34 @@ const DarkProNew = ({ }) => {
 									<div class="row justify-content-center text-center">
 										<div class="col-xl-8 col-lg-10">
 											<ul class="contact-list contact-list-s1 flex-wrap flex-md-nowrap pdb-l">
-												<li class="" data-animate="fadeInUp" data-delay=".3">
+												<li class="" data-animate="fadeInUp" data-delay=".3"
+													style={{
+														cursor: "pointer"
+													}}>
 													<em class="contact-icon fas fa-phone"></em>
 													<div class="contact-text">
 														<span>+91 9426016918</span>
 													</div>
 												</li>
-												<li class="" data-animate="fadeInUp" data-delay=".4">
+												<li class="" data-animate="fadeInUp" data-delay=".4"
+													style={{
+														cursor: "pointer"
+													}}>
 													<em class="contact-icon fas fa-envelope"></em>
 													<div class="contact-text">
 														<span>info@cryptonium.in</span>
 													</div>
 												</li>
-												<li class="" data-animate="fadeInUp" data-delay=".5">
+												<li class="" data-animate="fadeInUp" data-delay=".5"
+													style={{
+														cursor: "pointer"
+													}}
+												>
 													<em class="contact-icon fas fa-paper-plane"></em>
 													<div class="contact-text">
-														<span>Join us on Telegram</span>
+														<Link href='https://discord.gg/rNyYTmQz'>
+															<span>Join us on Discord</span>
+														</Link>
 													</div>
 												</li>
 											</ul>
