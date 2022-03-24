@@ -18,6 +18,19 @@ const useMeQuery = (options = {}) => {
     keepPreviousData: true,
   });
 };
+const fetchFollowerData = async ({queryKey}) => {
+  console.log('queryKey', queryKey);
+  let info=queryKey[1];
+  const { data } = await http.get(`follows/isfollow/${info?.me}/${info?.author}`);
+  console.log('isFOllowData',data);
+  return data.isFollow
+}
+
+const useFollowerQuery = (options = {}) => {
+  return useQuery([`isfollow`, options],fetchFollowerData, {
+    keepPreviousData: true,
+  });
+};
 
 const fetchAuthorData = async ({ queryKey }) => {
   const { data } = await http.get(`/getauthor/${queryKey[1].author_name}`);
@@ -68,5 +81,6 @@ export {
   useCollectionSavedByUser,
   useAuthorQuery,
   useAuctionByUser,
-  useGetTopAuthor
+  useGetTopAuthor,
+  useFollowerQuery
 };
