@@ -65,8 +65,6 @@ export default function AuthorLeftSide({ user }) {
                                     <div>following</div> :
                                     <div>follow</div>
                                 }
-                                {console.log('dataFollow', dataFollow)}
-
                             </button>
                         </div>
                     </div>

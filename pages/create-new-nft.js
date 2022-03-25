@@ -1,4 +1,3 @@
-const category = ['Art', 'Virtual Worlds', 'Trending Cards', 'Collectibles', 'Music', 'Games', 'Memes', 'NFT Gifts', 'Domains']
 import { useForm } from "react-hook-form";
 import http from '../utils/http'
 import toast, { Toaster } from 'react-hot-toast';
@@ -27,62 +26,37 @@ const menuItems = [
   },
 ];
 const CreateCollection = () => {
-  const [selectedCategory, setselectedCategory] = useState('Art');
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const [chainId, setchainId] = useState("eth")
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const [chainId, setchainId] = useState("Ethereum")
 
   const onSubmit = async (data) => {
     try {
       const payload = {
         ...data,
+        cryptoType: chainId
       };
-      return;
-      await http.post('/save_nft', payload).then(async (res) => {
+      delete payload?.collection_name;
+      if (payload?.image_url?.length > 0) {
+        const formData = new FormData();
+        formData.append("file", data?.image_url[0]);
+        formData.append("fileName", data?.image_url[0]?.name);
+        try {
+          const res = await http.post("/attachments",
+            formData
+          );
+          if (res?.status == 201) {
+            payload?.image_url = res?.data?.image;
+          }
+        } catch (ex) {
+          reset()
+          console.log(ex);
+          return;
+        }
+      }
+      await http.post('/nfts/save_nft', payload).then(async (res) => {
         if (res?.status == 201) {
-          let collection_id = res?.data?.collection?.id;
-          let finalObj = {}
-          if (data?.collection_cover?.length > 0) {
-            const formData = new FormData();
-            formData.append("file", data?.collection_cover[0]);
-            formData.append("fileName", data?.collection_cover[0]?.name);
-            try {
-              const res = await http.post("/attachments",
-                formData
-              );
-              if (res?.status == 201) {
-                finalObj.collection_cover_image = res?.data?.image;
-              }
-
-
-            } catch (ex) {
-              console.log(ex);
-            }
-          }
-          if (data?.collection_logo?.length > 0) {
-            const formData = new FormData();
-            formData.append("file", data?.collection_logo[0]);
-            formData.append("fileName", data?.collection_logo[0]?.name);
-            try {
-              const res = await http.post("/attachments",
-                formData
-              );
-              if (res?.status == 201) {
-                finalObj.collection_logo_image = res?.data?.image;
-              }
-            } catch (ex) {
-              console.log(ex);
-            }
-          }
-          try {
-            const res = await http.put(`/collection/${collection_id}`,
-              finalObj
-            );
-            if (res?.status == 200) {
-              toast.success(res?.data?.message)
-            }
-          } catch (ex) {
-            console.log(ex);
-          }
+          reset()
+          toast.success("Successfully Created.")
         }
         else {
           toast.success(res?.data?.message)
@@ -90,10 +64,12 @@ const CreateCollection = () => {
 
       })
         .catch((err) => {
+          reset()
           toast.error(err?.response?.data?.message)
         });
 
     } catch (error) {
+      reset()
       const { data } = error.response.data;
       if (data) {
         toast.error(data[0].messages[0].message);
@@ -145,7 +121,7 @@ const CreateCollection = () => {
                           <div className='form-group'>
                             <label>Supply</label>
                             <input
-                              type='text'
+                              type='number'
                               {...register("supply")}
                               className='form-control'
                               placeholder='e. g. “after purchasing you’ll able to get the real product”'
@@ -195,20 +171,20 @@ const CreateCollection = () => {
                             {menuItems?.map((item, index) => {
                               return (
                                 <li key={index} style={{
-                                  backgroundColor: chainId == item?.key ? '#f6f6f6' : '#0c0d23',
-                                  border: chainId == item?.key ? '1px solid white' : '1px solid white',
+                                  backgroundColor: chainId == item?.value ? '#f6f6f6' : '#0c0d23',
+                                  border: chainId == item?.value ? '1px solid white' : '1px solid white',
                                 }}>
                                   <div
                                     style={{
                                       cursor: 'pointer'
                                     }}
-                                    onClick={() => setchainId(item?.key)}
+                                    onClick={() => setchainId(item?.value)}
                                   >
                                     {item?.icon}
                                     <a
                                       className='ml-2'
                                       style={{
-                                        color: chainId == item?.key ? '#0c0d23' : '#8d99ff',
+                                        color: chainId == item?.value ? '#0c0d23' : '#8d99ff',
                                       }}
                                     >
                                       {item?.value}
@@ -226,8 +202,8 @@ const CreateCollection = () => {
                         <div className='form-group'>
                           <label>Crypto Cost</label>
                           <input
-                            type='text'
-                            {...register("crypto_cost")}
+                            type='number'
+                            {...register("cryptoCost")}
                             className='form-control'
                             placeholder='e. g. “after purchasing you’ll able to get the real product”'
 
@@ -237,11 +213,6 @@ const CreateCollection = () => {
                       <div className='col-lg-12 col-md-12 text-center'>
                         <button
                           className='default-btn border-radius-5'
-                        >
-                          Cook New Nft
-                        </button>
-                        <button
-                          className='default-btn border-radius-5 ml-5'
                         >
                           Create NFT(Mint Later)
                         </button>

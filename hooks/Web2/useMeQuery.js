@@ -18,11 +18,9 @@ const useMeQuery = (options = {}) => {
     keepPreviousData: true,
   });
 };
-const fetchFollowerData = async ({queryKey}) => {
-  console.log('queryKey', queryKey);
+const fetchFollowerData = async ({ queryKey }) => {
   let info=queryKey[1];
   const { data } = await http.get(`follows/isfollow/${info?.me}/${info?.author}`);
-  console.log('isFOllowData',data);
   return data.isFollow
 }
 

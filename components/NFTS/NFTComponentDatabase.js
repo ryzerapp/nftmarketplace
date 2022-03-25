@@ -197,7 +197,7 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, user, editO
                         if (openDialogTitle == "Open NFT") {
                             router.push(`/nft/${nft?.id}`)
                         }
-                        else if (openDialogTitle == "Mint Now") {
+                        else if (openDialogTitle == "Mint NFT") {
                             mintNFTHandle()
                         }
                     }
