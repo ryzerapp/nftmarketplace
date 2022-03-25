@@ -216,9 +216,9 @@ const SearchEngine = ({ }) => {
                                                                                     </div>
                                                                                     <div className='content'>
                                                                                         <h3>
-                                                                                            <a href='/item-details'>{nft?.name ? nft?.name :
-                                                                                                nft?.metadata?.name ? nft?.metadata?.name :
-                                                                                                    nft?.metadata ? nft?.metadata : ""
+                                                                                            <a href='/item-details'>{
+                                                                                                nft?.name ? nft?.name :
+                                                                                                    nft?.metadata?.name ? nft?.metadata?.name : ""
                                                                                             }</a>
                                                                                         </h3>
                                                                                         <div className='content-in'>
