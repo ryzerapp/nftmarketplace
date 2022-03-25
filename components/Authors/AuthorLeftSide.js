@@ -1,6 +1,30 @@
-import React from 'react'
+import { useQueryClient } from "react-query";
+import React, { useEffect } from 'react'
+import { useUpdateFollow } from '../../hooks/Web2/mutations/useFollowMutation'
+import { useFollowerQuery, useMeQuery } from '../../hooks/Web2/useMeQuery'
+import toast from 'react-hot-toast';
 
 export default function AuthorLeftSide({ user }) {
+    const queryClient = useQueryClient();
+    const { data, isFetched, isLoading } = useMeQuery()
+    const { data: dataFollow, isFetched: isFetchedFollow, isLoading: isLoadingFollow } = useFollowerQuery({
+        me: data?.user?.id,
+        author: user?.id
+    })
+    const { mutate: updateFollower } = useUpdateFollow()
+    const followButton = async (obj) => {
+        await updateFollower({
+            followeeId: obj.followeeId,
+            followerId: data?.user?.id,
+        }, {
+            onSuccess: async (res) => {
+                queryClient.invalidateQueries(`user_${obj.userName}`)
+                queryClient.invalidateQueries(`USER`)
+                queryClient.invalidateQueries(`isfollow`)
+                toast.success("Followed")
+            }
+        })
+    }
     return (
         <>
             <div className='col-lg-3'>
@@ -31,28 +55,19 @@ export default function AuthorLeftSide({ user }) {
                     <div className='author-content'>
                         <div className='content-left'>
                             <span>Followers</span>
-                            <h4>2941</h4>
+                            <h4>{user?.total_followers ? user.total_followers : 0}</h4>
                         </div>
 
-                        <div className='content-right'>
-                            Follow
-                            <ul className='author-social'>
-                                <li>
-                                    <a href='https://www.facebook.com/' target='_blank'>
-                                        <i className='ri-facebook-fill'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='https://www.instagram.com/' target='_blank'>
-                                        <i className='ri-instagram-fill'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='https://twitter.com/' target='_blank'>
-                                        <i className='ri-twitter-fill'></i>
-                                    </a>
-                                </li>
-                            </ul>
+                        <div>
+                            <button className='content-right' disabled={dataFollow} onClick={() => { followButton({ followeeId: user.id, userName: user?.username }) }}>
+                            {/* <button className='content-right' disabled={dataFollow ? "true" : "false"} onClick={() => { followButton({ followeeId: user.id, userName: user?.username }) }}> */}
+                                {dataFollow ?
+                                    <div>following</div> :
+                                    <div>follow</div>
+                                }
+                                {console.log('dataFollow', dataFollow)}
+
+                            </button>
                         </div>
                     </div>
                 </div>
