@@ -17,7 +17,7 @@ const MenusList = ({ user }) => {
 	return (
 		<div className="container-fluid">
 			<nav className="navbar navbar-expand-md navbar-light">
-				<Link href="/discover">
+				<Link href="/">
 					<a className="navbar-brand">
 						<img
 							src="/images/logo.png"

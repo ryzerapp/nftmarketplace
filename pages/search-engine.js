@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useMoralis } from 'react-moralis';
-import web3 from 'web3'
+import { XMasonry, XBlock } from "react-xmasonry";
 import Loader from '../components/Common/Loader';
-import NFTComponentBlockChainSearch from '../components/NFTS/NFTComponentBlockChainSearch';
 import { useIPFS } from '../hooks/Web3/useIPFS';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const category = ['Search by Title', 'Search by Author Address', 'Search by Contract Address']
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./../components/Common/Logos";
@@ -165,7 +164,7 @@ const SearchEngine = ({ }) => {
 
                                 </ul>
                             </div>
-                            <div className="form">
+                            <div className="form pb-3">
                                 <i className="fa fa-search"></i>
                                 <input type="text"
                                     value={searchValue}
@@ -190,26 +189,55 @@ const SearchEngine = ({ }) => {
                                         searchResultNFTs && searchResultNFTs?.length > 0
                                             ? (
                                                 <>
-                                                    <div className='row justify-content-center mt-5'>
-                                                        {
-                                                            searchResultNFTs?.length < 100
-                                                                ?
-                                                                searchResultNFTs?.map((nft) => {
-                                                                    return (
-                                                                        <NFTComponentBlockChainSearch nft={nft} key={nft?.token_uri} />
-                                                                    )
-                                                                })
-                                                                :
-                                                                (searchResultNFTs.length > 100 ? (
-                                                                    searchResultNFTs?.map((nft) => {
-                                                                        return (
-                                                                            <NFTComponentBlockChainSearch nft={nft} key={nft?.token_uri} />
-                                                                        )
-                                                                    })
-                                                                ) : <><h1 className='text-center pt-5'>Try Another Search</h1></>
-                                                                )
-                                                        }
-                                                    </div>
+                                                    <XMasonry>
+                                                        {searchResultNFTs?.map((nft) => (
+                                                            <XBlock>
+                                                                {
+                                                                    nft?.image_url ? (
+                                                                        <div className="article">
+                                                                            <div className="imageBox">
+
+                                                                                <div className='featured-card box-shadow'>
+                                                                                    <div className='featured-card-img'>
+                                                                                        <a href='/item-details'>
+                                                                                            <img
+                                                                                                key={nft?.token_uri}
+                                                                                                src={nft?.image_url}
+                                                                                                style={{ width: "100%", display: "block" }}
+                                                                                                onError={({ currentTarget }) => {
+                                                                                                    currentTarget.onerror = null; // prevents looping
+                                                                                                    currentTarget.src = "../images/notfoundimage.png";
+                                                                                                }}
+                                                                                            />
+                                                                                        </a>
+                                                                                        <button type='button' className='default-btn border-radius-5'>
+                                                                                            Open NFT
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div className='content'>
+                                                                                        <h3>
+                                                                                            <a href='/item-details'>{nft?.name ? nft?.name :
+                                                                                                nft?.metadata?.name ? nft?.metadata?.name :
+                                                                                                    nft?.metadata ? nft?.metadata : ""
+                                                                                            }</a>
+                                                                                        </h3>
+                                                                                        <div className='content-in'>
+                                                                                            <div className='featured-card-left'>
+                                                                                                <span>Name:{nft?.name}</span>
+                                                                                                <h4>Token Id: {nft?.token_id}</h4>
+                                                                                                <h4>Created Date: {new Date(nft?.synced_at).toDateString()}</h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    ) : null
+                                                                }
+
+                                                            </XBlock>
+                                                        ))}
+                                                    </XMasonry>
                                                 </>
                                             ) :
                                             <><h1 className='text-center pt-5'>Try Another Search</h1></> 

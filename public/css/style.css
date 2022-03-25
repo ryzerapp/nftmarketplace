@@ -79,6 +79,35 @@ body {
     border-left: 1px solid #d1d5db
 }
 
+@keyframes comeIn {
+    0% { transform: scale(.5); opacity: 0; }
+    75% { transform: scale(1.03); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+#ArticlesDemo .xmasonry .xblock {
+    animation: comeIn ease 0.5s;
+    animation-iteration-count: 1;
+    transition: left .3s ease, top .3s ease;
+}
+.article {
+    margin: 7px;
+    padding: 5px;
+    border-radius: 20px !important;
+}
+.article .title {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    box-sizing: border-box;
+    color: white;
+    text-shadow: 0 1px 3px black, 0 1px 3px black;
+    font-size: 21px;
+    padding: 6px;
+    background: -moz-linear-gradient(top, rgba(69,72,77,0) 0%, rgba(52,54,58,0.5) 25%, rgba(0,0,0,0.8) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(69,72,77,0) 0%,rgba(52,54,58,0.5) 25%,rgba(0,0,0,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(69,72,77,0) 0%,rgba(52,54,58,0.5) 25%,rgba(0,0,0,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
 .search-engine .left-pan {
     padding-left: 7px
 }
