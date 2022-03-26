@@ -190,7 +190,7 @@ const SearchEngine = ({ }) => {
                                                 <>
                                                     <XMasonry>
                                                         {searchResultNFTs?.map((nft) => (
-                                                            <XBlock key={nfts?.id}>
+                                                            <XBlock key={searchResultNFTs?.id}>
                                                                 {
                                                                     nft?.image_url ? (
                                                                         <NFTMasonry nft={nft}></NFTMasonry>
