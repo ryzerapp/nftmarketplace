@@ -7,7 +7,7 @@ export default function RenderNFTInTabs({ openDialogTitle, editOrDelete, user, n
         <>
             <XMasonry>
                 {nfts?.map((nft) => (
-                    <XBlock>
+                    <XBlock key={nft?.id}>
                         {
                             nft?.image_url ? (
                                 <NFTDetails

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 export default function NFTDetails({ nft }) {
     const router = useRouter()
+    console.log(nft)
     return (
         <div className="article">
             <div className='featured-card box-shadow'>

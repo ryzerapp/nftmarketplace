@@ -48,9 +48,8 @@ const Auction = ({ }) => {
                                 {
                                     data?.map((auction) => {
                                         return (
-                                            <>
-                                                <AuctionComponent auction={auction}></AuctionComponent>
-                                            </>
+                                            <AuctionComponent key={auction?.id}
+                                                auction={auction}></AuctionComponent>
                                         )
                                     })
                                 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import CollectionComponent from '../Collection/CollectionComponent'
 import { XMasonry, XBlock } from "react-xmasonry";
 import CollectionDetails from '../Collection/CollectionDetails';
 
@@ -9,7 +8,7 @@ export default function RenderCollectionInTabs({ collections }) {
             <>
                 <XMasonry>
                     {collections?.map((res) => (
-                        <XBlock>
+                        <XBlock key={res?.id}>
                             {
                                 < CollectionDetails
                                     collection={res}

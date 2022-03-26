@@ -27,7 +27,7 @@ const TopSeller = ({ pt100 }) => {
 
             {data && data?.length > 0 && data?.slice(0, 4)?.map((author, index) => (
               (
-                <div className='col-lg-3 col-6 col-md-4'>
+                <div className='col-lg-3 col-6 col-md-4' key={author?.id}>
                   <div className='top-sellers-item'>
                     <div className='number'>{index + 1}.</div>
                     <div className='top-sellers-img'>

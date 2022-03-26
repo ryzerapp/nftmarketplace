@@ -104,7 +104,6 @@ const UserProfile = () => {
       <Loader />
     )
   }
-  console.log(data?.user?.nfts?.filter((nft) => !nft.nft_is_minted))
   return (
     <>
       <div className='author-profile-area pt-70'>

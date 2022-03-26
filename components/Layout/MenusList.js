@@ -187,20 +187,20 @@ const MenusList = ({ user }) => {
 						{token && (
 							<li className="nav-item" style={{ display: "flex" }}>
 								<a href="#" className="nav-link" style={avatarStyle}>
-									<i class="ri-user-3-line"></i>
+									<i className="ri-user-3-line"></i>
 								</a>
 								<span style={{ color: 'white' }}>{user?.username || localStorage.getItem('username')}</span>
 								<ul className="dropdown-menu">
 									<li className="nav-item">
 										<Link href="/profile" activeClassName="active">
-											<a class Name="nav-link">
+											<a className="nav-link">
 												Profile
 											</a>
 										</Link>
 									</li>
 									<li className="nav-item">
 										<Link href="/#" activeClassName="active">
-											<a class Name="nav-link">
+											<a className="nav-link">
 												Notifications
 											</a>
 										</Link>
