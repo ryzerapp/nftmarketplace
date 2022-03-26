@@ -3,7 +3,7 @@ import http from "../../utils/http";
 
 const fetchCollectionData = async ({ }) => {
   const { data } = await http.get('/collection');
-  return { collections: data };
+  return data;
 };
 
 const useCollections = (options = {}) => {

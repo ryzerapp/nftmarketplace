@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
+import { XBlock, XMasonry } from 'react-xmasonry';
+import CollectionComponent from '../components/Collection/CollectionComponent';
+import CollectionDetails from '../components/Collection/CollectionDetails';
 import InvolvedArea from '../components/Common/InvolvedArea';
 import Loader from '../components/Common/Loader';
-import RenderCollectionInTabs from '../components/Tabs/RenderCollectionInTabs';
 import { useCollections } from '../hooks/Web2/useCollections';
-import { useMeQuery } from '../hooks/Web2/useMeQuery';
 
 const Collection = () => {
-  const { data, isLoading } = useCollections();
-  const { data: users } = useMeQuery()
+  const { data: collections, isLoading } = useCollections();
   if (isLoading) {
     return (
       <Loader />
@@ -17,11 +17,18 @@ const Collection = () => {
     <>
       <div className='container'>
         <div className='row justify-content-center  pt-70'>
-          <RenderCollectionInTabs
-            user={users?.user}
-            collections={data?.collections ? data?.collections : []}
-            message="You Don't Have Any Collection"
-          />
+          <XMasonry>
+            {collections?.map((res) => (
+              <XBlock key={res?.id}>
+                {
+                  < CollectionDetails
+                    collection={res}
+                  />
+                }
+
+              </XBlock>
+            ))}
+          </XMasonry>
         </div>
       </div>
       <InvolvedArea />

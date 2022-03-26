@@ -21,6 +21,8 @@ import AuthorLeftSide from '../Authors/AuthorLeftSide';
 import RenderNFTInTabs from '../Tabs/RenderNFTInTabs';
 import RenderCollectionInTabs from '../Tabs/RenderCollectionInTabs';
 import NFTListComponentBlockChain from '../NFTS/NFTListComponentBlockChain';
+import NFTComponentDatabase from '../NFTS/NFTComponentDatabase';
+import { XBlock, XMasonry } from 'react-xmasonry';
 const schema = yup
   .object({
     email: yup
@@ -102,6 +104,7 @@ const UserProfile = () => {
       <Loader />
     )
   }
+  console.log(data?.user?.nfts?.filter((nft) => !nft.nft_is_minted))
   return (
     <>
       <div className='author-profile-area pt-70'>
@@ -260,14 +263,23 @@ const UserProfile = () => {
                             <div className='border border-red'>
                               <div className='row justify-content-ceneter px-4'>
                                 <div className='pt-4'></div>
-                                <RenderNFTInTabs
-                                  openDialogTitle={"Mint NFT"}
-                                  editOrDelete={true}
-                                  user={data?.user}
-                                  profile={true}
-                                  nfts={data?.user?.nfts?.filter((nft) => !nft.nft_is_minted)}
-                                  message="You Don't Have Unminted NFTs"
-                                />
+                                <XMasonry>
+                                  {data?.user?.nfts?.filter((nft) => !nft.nft_is_minted).map((nft) => (
+                                    <XBlock key={nft?.id}>
+                                      {
+                                        <NFTComponentDatabase
+                                          nft={nft}
+                                          openDialogTitle={"Mint NFT"}
+                                          user={data?.user}
+                                          editOrDelete={true}
+                                          profile={true}
+                                          formCollection={false}
+                                        />
+                                      }
+
+                                    </XBlock>
+                                  ))}
+                                </XMasonry>
                               </div>
                               <div className='border border-red'>
                                 <div className='row justify-content-ceneter px-4'>

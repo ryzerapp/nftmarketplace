@@ -3,10 +3,9 @@ import { useMoralis } from 'react-moralis';
 import { XMasonry, XBlock } from "react-xmasonry";
 import Loader from '../components/Common/Loader';
 import { useIPFS } from '../hooks/Web3/useIPFS';
-import toast from 'react-hot-toast';
-
 const category = ['Search by Title', 'Search by Author Address', 'Search by Contract Address']
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./../components/Common/Logos";
+import NFTMasonry from '../components/NFTS/NFTMasonry';
 const menuItems = [
     {
         key: "eth",
@@ -91,10 +90,10 @@ const SearchEngine = ({ }) => {
 
     const handleClick = async () => {
         if (selectedCategory != "Search by Title") {
-            if (!web3.utils.isAddress(searchValue)) {
-                toast.error("Please add valid web 3 address.");
-                return false;
-            }
+            // if (!web3.utils.isAddress(searchValue)) {
+            //     toast.error("Please add valid web 3 address.");
+            //     return false;
+            // }
         }
         setLoader(true)
         await setData(searchValue)
@@ -194,44 +193,7 @@ const SearchEngine = ({ }) => {
                                                             <XBlock>
                                                                 {
                                                                     nft?.image_url ? (
-                                                                        <div className="article">
-                                                                            <div className="imageBox">
-
-                                                                                <div className='featured-card box-shadow'>
-                                                                                    <div className='featured-card-img'>
-                                                                                        <a href='/item-details'>
-                                                                                            <img
-                                                                                                key={nft?.token_uri}
-                                                                                                src={nft?.image_url}
-                                                                                                style={{ width: "100%", display: "block" }}
-                                                                                                onError={({ currentTarget }) => {
-                                                                                                    currentTarget.onerror = null; // prevents looping
-                                                                                                    currentTarget.src = "../images/notfoundimage.png";
-                                                                                                }}
-                                                                                            />
-                                                                                        </a>
-                                                                                        <button type='button' className='default-btn border-radius-5'>
-                                                                                            Open NFT
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div className='content'>
-                                                                                        <h3>
-                                                                                            <a href='/item-details'>{
-                                                                                                nft?.name ? nft?.name :
-                                                                                                    nft?.metadata?.name ? nft?.metadata?.name : ""
-                                                                                            }</a>
-                                                                                        </h3>
-                                                                                        <div className='content-in'>
-                                                                                            <div className='featured-card-left'>
-                                                                                                <span>Name:{nft?.name}</span>
-                                                                                                <h4>Token Id: {nft?.token_id}</h4>
-                                                                                                <h4>Created Date: {new Date(nft?.synced_at).toDateString()}</h4>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                        <NFTMasonry nft={nft}></NFTMasonry>
                                                                     ) : null
                                                                 }
 

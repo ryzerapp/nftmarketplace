@@ -181,7 +181,7 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, user, editO
         });
     }
     return (
-        <div className='col-lg-3 col-md-4'>
+        <div className="article">
             <div className='featured-card box-shadow'>
                 <div className='featured-card-img'>
                     <img src={nft?.image_url}
@@ -214,17 +214,12 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, user, editO
                     </h3>
                     <div className='content-in'>
                         <div className='featured-card-left'>
-                            <span>Name:{nft?.name}</span>
                             <h4>Token Id: {nft?.id}</h4>
                             <h4>Created Date: {new Date(nft?.created_at).toDateString()}</h4>
                         </div>
-
-                        <a href='/item-details' className='featured-content-btn'>
-                            <i className='ri-arrow-right-line'></i>
-                        </a>
                     </div>
-                    <div className='row text-center'>
-                        {!formCollection ? (
+                    {/* <div className='row text-center'>
+                        {!formCollection && !profile ? (
                             <div className='col-lg-12'>
                                 <a href={`/author-profile?author_name=${profile ? user?.username : nft?.author?.username}`} className='featured-user-option'>
                                     <img
@@ -261,8 +256,7 @@ export default function NFTComponentDatabase({ nft, openDialogTitle, user, editO
                             </div>
                         </div>
 
-                    </div>
-
+                    </div> */}
                 </div>
             </div>
         </div >

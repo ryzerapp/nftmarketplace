@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
+import { XMasonry, XBlock } from "react-xmasonry";
 import { useMoralis } from 'react-moralis';
 import { useQuery } from 'react-query';
 import { useIPFS } from '../../hooks/Web3/useIPFS';
 import { useWeb3 } from '../../providers/Web3Context';
 import Loader from '../Common/Loader';
-import NFTComponentBlockChain from './NFTComponentBlockChain';
 import NFTComponentBlockChainSearch from './NFTComponentBlockChainSearch';
+import NFTMasonry from './NFTMasonry';
 
 const NFTListComponentBlockChain = ({ brefetch, walletAddressPassed }) => {
 
@@ -63,24 +64,21 @@ const NFTListComponentBlockChain = ({ brefetch, walletAddressPassed }) => {
   return (
     <>
       <div className='row justify-content-center'>
+        <XMasonry  >
+          {
+            nftBalance?.map((nft) => (
+              <XBlock key={nft?.token_uri}>
+                {
+                  nft?.image_url ? (
+                    <NFTMasonry
+                      nft={nft}
+                    />
+                  ) : null
+                }
 
-        {nftBalance?.length > 0 ?
-          nftBalance?.map((res) =>
-          (
-            <NFTComponentBlockChainSearch
-              nft={res}
-              key={res?.token_uri}
-            />
-          )
-          ) : <>
-            <div className='container mt-100'>
-              <div className='row'>
-                <div className='col-xs-1 section-title pb-70 pt-50' align="center">
-                  <p>You Don't Have Any NFT On Chain {networkId}</p>
-                </div>
-              </div>
-            </div>
-          </>}
+              </XBlock>
+            ))}
+        </XMasonry>
       </div>
     </>
   );
