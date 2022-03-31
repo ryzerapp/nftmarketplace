@@ -47,6 +47,7 @@ function MoralisDappProvider({ children }) {
     });
 
     Moralis.onAccountChanged(function (address) {
+      console.log(address)
       if (address)
         dispatch({ type: Actions.SET_USER_ADDRESS, walletAddress: address[0] })
     });

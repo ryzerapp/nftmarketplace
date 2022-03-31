@@ -1,18 +1,19 @@
 import { useMoralis } from 'react-moralis';
-import { useMoralisDapp } from '../providers/MoralisDappProvider/MoralisDappProvider';
 import Chains from '../components/Common/Chains';
 import toast, { Toaster } from 'react-hot-toast';
 import React from 'react';
 import { useWeb3 } from '../providers/Web3Context';
+import useChain from "../hooks/Web3/useChain";
+
 const notify = (message) => toast(message);
 const AddWallet = () => {
   const { authenticate, authError, isAuthenticated, logout } = useMoralis();
-  const [networkName, setNetworkName] = React.useState("");
   const { state: { networkId } } = useWeb3();
+  const { switchNetwork } = useChain();
 
   React.useEffect(() => {
     if (networkId) {
-      setNetworkName(networkId);
+      switchNetwork(networkId)
     }
   }, [networkId])
 
@@ -35,10 +36,21 @@ const AddWallet = () => {
     <>
       <div className='wallet-area pt-50 pb-70'>
         <div className='container'>
-          <p style={{ color: "white" }}>Networkid: {networkName}</p>
           <Chains></Chains>
-          <div className='row pt-5'>
+          <div className='row pt-100'>
+            <button className="btn btn-danger"
+              onClick={() => handleConnect()}
+            >{isAuthenticated ? "Disconnect" : "Connect"}</button>
+          </div>
+        </div>
+      </div>
+      <Toaster></Toaster>
+    </>
+  );
+};
 
+export default AddWallet;
+{/* <div className='row pt-5'>
             <div className='col-lg-4 col-6'>
               <div className='wallet-card'>
                 <img src='../images/wallet-img/wallet-img1.png' alt='Images' />
@@ -61,12 +73,4 @@ const AddWallet = () => {
                 <div className='top-btn'>Cryptonium Wallet</div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <Toaster></Toaster>
-    </>
-  );
-};
-
-export default AddWallet;
+          </div> */}

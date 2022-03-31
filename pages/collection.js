@@ -8,7 +8,6 @@ import { useWeb3 } from '../providers/Web3Context';
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
 
-
 const Collection = () => {
   const { Moralis, isWeb3Enabled, isAuthenticated } = useMoralis();
   const { state: { walletAddress, networkId } } = useWeb3();

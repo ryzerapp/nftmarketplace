@@ -1,90 +1,27 @@
 import React, { useEffect, useState } from "react";
 import useChain from "../../hooks/Web3/useChain";
-import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
-import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./Logos";
 
 import 'react-dropdown/style.css';
 import { useWeb3 } from "../../providers/Web3Context";
 import { Actions } from "../../providers/Web3Context/reducer";
-
-const menuItems = [
-  {
-    key: "0x1",
-    value: "Ethereum",
-    icon: <ETHLogo />,
-  },
-  {
-    key: "0x4",
-    value: "Rinkeby Testnet",
-    icon: <ETHLogo />,
-  },
-  {
-    key: "0x38",
-    value: "Binance",
-    icon: <BSCLogo />,
-  },
-  {
-    key: "0x61",
-    value: "Smart Chain Testnet",
-    icon: <BSCLogo />,
-  },
-  {
-    key: "0x89",
-    value: "Polygon",
-    icon: <PolygonLogo />,
-  },
-  {
-    key: "0x13881",
-    value: "Mumbai",
-    icon: <PolygonLogo />,
-  },
-  {
-    key: "0xa86a",
-    value: "Avalanche",
-    icon: <AvaxLogo />,
-  },
-  {
-    key: "0xa869",
-    value: "Avalanche Testnet",
-    icon: <AvaxLogo />,
-  }
-];
-
-const Dropdown = ({ label, value, options, onChange }) => {
-  return (
-    <div className="pt-20">
-      <label>
-        {label}
-        <select className="form-select-lg" aria-label="Default select example" value={value} onChange={onChange}>
-          {options.map((option) => (
-            <option
-              key={option.key} value={option.key}>{option.value}</option>
-          ))}
-        </select>
-      </label>
-    </div>
-  );
-};
+import { menuItems } from "../../utils/constants";
+import { useMoralis } from "react-moralis";
 
 function Chains() {
   const { switchNetwork } = useChain();
-  const { chainId } = useMoralisDapp();
-  const [selected, setSelected] = useState();
-
+  const { state: { networkId } } = useWeb3();
+  const [selectchain, setSelectchain] = useState("Ethereum")
   const { dispatch } = useWeb3();
+  const { isAuthenticated } = useMoralis();
 
   useEffect(() => {
-    if (!chainId) return null;
-    const newSelected = menuItems.find((item) => item.key === chainId);
-    setSelected(newSelected);
-  }, [chainId]);
+    const newSelected = menuItems.find((item) => item.value === selectchain);
+    dispatch({ type: Actions.SET_NETWORK_ID, networkId: newSelected?.key });
+    if (!networkId) return null;
+    if (!isAuthenticated)
+      switchNetwork(newSelected?.key);
+  }, [selectchain]);
 
-  const handleChange = (event) => {
-    setSelected(event.target.value)
-    if (selected)
-      dispatch({ type: Actions.SET_NETWORK_ID, chainId: selected });
-    switchNetwork(event.target.value);
-  };
   return (
     <div className="container text-center">
       <h2 style={{ color: "white" }}>Connect Your wallet</h2>
@@ -94,12 +31,43 @@ function Chains() {
       <p style={{ color: "white" }}>
         Select available Chains
       </p>
-      <Dropdown
-        label=""
-        options={menuItems}
-        value={selected}
-        onChange={handleChange}
-      />
+      <div className="d-flex flex-row justify-content-start align-items-center pt-20" >
+        <div
+          style={{
+            height: 50
+          }}
+          className='collection-category text-center pb-3 pl-3'>
+          <ul>
+            {menuItems?.map((item, index) => {
+              return (
+                <li key={index} style={{
+                  backgroundColor: selectchain == item?.value ? '#f6f6f6' : '#0c0d23',
+                  border: selectchain == item?.value ? '1px solid white' : '1px solid white',
+                }}>
+                  <div
+                    style={{
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => setSelectchain(item?.value)}
+                  >
+                    {item?.icon}
+                    <a
+                      className='ml-2'
+                      style={{
+                        color: selectchain == item?.value ? '#0c0d23' : '#8d99ff',
+                      }}
+                    >
+                      {item?.value}
+                    </a>
+                  </div>
+
+                </li>
+              )
+            })}
+
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
