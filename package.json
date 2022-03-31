@@ -19,6 +19,7 @@
     "@walletconnect/web3-provider": "^1.7.1",
     "@web3auth/web3auth": "^0.3.2",
     "axios": "^0.22.0",
+    "hardhat": "^2.9.2",
     "install": "^0.13.0",
     "js-cookie": "^3.0.1",
     "jsonwebtoken": "^8.5.1",

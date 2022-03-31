@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { XMasonry, XBlock } from "react-xmasonry";
-import { useMoralis } from 'react-moralis';
+import { useMoralis, useMoralisWeb3Api } from 'react-moralis';
 import { useQuery } from 'react-query';
 import { useIPFS } from '../../hooks/Web3/useIPFS';
 import { useWeb3 } from '../../providers/Web3Context';
 import Loader from '../Common/Loader';
-import NFTComponentBlockChainSearch from './NFTComponentBlockChainSearch';
 import NFTMasonry from './NFTMasonry';
 
 const NFTListComponentBlockChain = ({ brefetch, walletAddressPassed }) => {
@@ -13,7 +12,6 @@ const NFTListComponentBlockChain = ({ brefetch, walletAddressPassed }) => {
   const { Moralis, isWeb3Enabled, isAuthenticated } = useMoralis();
   const { state: { walletAddress, networkId } } = useWeb3();
   const { resolveLink } = useIPFS();
-
   const nftBalanceJson = async (data) => {
     if (data?.result) {
       let NFTs = data?.result;
