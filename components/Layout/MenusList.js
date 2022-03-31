@@ -2,18 +2,15 @@ import React from "react";
 import Link from "next/link";
 import { handleLogout } from "../../utils/auth";
 import { useMoralis } from "react-moralis";
-import { getAuthCredentials, isAuthenticated } from "../../utils/auth-utils";
 
 const MenusList = ({ user }) => {
 	const { isAuthenticated: web3Authentication } = useMoralis();
-	const { token, permissions } = getAuthCredentials();
 	const avatarStyle = {
 		padding: "0px 5px",
 		borderRadius: "25px",
 		marginRight: "8px",
 		backgroundColor: "lightgray",
 	};
-
 	return (
 		<div className="container-fluid">
 			<nav className="navbar navbar-expand-md navbar-light">
@@ -94,7 +91,7 @@ const MenusList = ({ user }) => {
 							<ul className="dropdown-menu">
 								<li className="nav-item">
 									<Link
-										href={!isAuthenticated({ token, permissions }) ? "/login" : "/collection"}
+										href={!web3Authentication ? "/add-wallet" : "/collection"}
 										activeClassName="active"
 									>
 										<a className="nav-link">Collection</a>
@@ -103,7 +100,7 @@ const MenusList = ({ user }) => {
 
 								<li className="nav-item">
 									<Link
-										href={!isAuthenticated({ token, permissions }) ? "/login" : "/create-new-collection"}
+										href={!web3Authentication ? "/add-wallet" : "/create-new-collection"}
 										activeClassName="active"
 									>
 										<a className="nav-link">
@@ -156,7 +153,7 @@ const MenusList = ({ user }) => {
 							<ul className="dropdown-menu">
 								<li className="nav-item">
 									<Link
-										href={!isAuthenticated({ token, permissions }) ? "/login" : "/play-nft-game"}
+										href={!web3Authentication ? "/add-wallet" : "/play-nft-game"}
 										activeClassName="active"
 									>
 										<a className="nav-link">Play Game</a>
@@ -184,7 +181,7 @@ const MenusList = ({ user }) => {
 								</li>
 							</ul>
 						</li>
-						{token && (
+						{web3Authentication && (
 							<li className="nav-item" style={{ display: "flex" }}>
 								<a href="#" className="nav-link" style={avatarStyle}>
 									<i className="ri-user-3-line"></i>
@@ -219,7 +216,7 @@ const MenusList = ({ user }) => {
 					<div className="others-options">
 
 						<ul className="optional-item-list">
-							{!token && (
+							{!web3Authentication && (
 								<li>
 									<Link
 										href="/login"

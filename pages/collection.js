@@ -14,6 +14,7 @@ const Collection = () => {
   const router = useRouter()
   const setData = async () => {
     const options = { chain: networkId, address: walletAddress };
+    console.log(options)
     const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
     var dataArr = polygonNFTs?.result?.map(item => {
       return [item.token_address, {
