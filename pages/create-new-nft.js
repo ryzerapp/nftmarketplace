@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import http from '../utils/http'
 import toast, { Toaster } from 'react-hot-toast';
+import imageCompression from 'browser-image-compression';
 import { useState } from 'react';
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./../components/Common/Logos";
 const menuItems = [
@@ -26,26 +27,58 @@ const menuItems = [
   },
 ];
 const CreateCollection = () => {
+  const [imageUrl, setimageUrl] = useState("#")
+  const [imageData, setImageData] = useState()
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [chainId, setchainId] = useState("Ethereum")
+  async function ImageResizeNew(file) {
+    const imageFile = file;
+    console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+    const options = {
+      maxSizeMB: 0.7,
+      maxWidthOrHeight: 150,
+      useWebWorker: true,
+      fileType: "WEBP",
+    }
+    try {
+      const compressedFile = await imageCompression(imageFile, options);
+      console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`);
+      return compressedFile;
+    } catch (error) {
+      console.log(error);
+    }
 
+  }
+  const handleImageChange = async (event) => {
+    if (event.target.files) {
+      const image = await ImageResizeNew(event.target.files[0]);
+      setImageData(image)
+      if (image) {
+        setimageUrl(URL.createObjectURL(image));
+      }
+    }
+
+  }
   const onSubmit = async (data) => {
     try {
       const payload = {
         ...data,
+        image_url: imageData,
         cryptoType: chainId
       };
+      console.log(payload)
       delete payload?.collection_name;
-      if (payload?.image_url?.length > 0) {
+      if (payload.image_url) {
+
         const formData = new FormData();
-        formData.append("file", data?.image_url[0]);
-        formData.append("fileName", data?.image_url[0]?.name);
+        formData.append("file", payload?.image_url);
+        formData.append("fileName", payload?.image_url?.name);
         try {
           const res = await http.post("/attachments",
             formData
           );
           if (res?.status == 201) {
-            payload?.image_url = res?.data?.image;
+            payload.image_url = res?.data?.image;
           }
         } catch (ex) {
           reset()
@@ -145,11 +178,12 @@ const CreateCollection = () => {
                           <div className='form-group'>
                             <label>Choose NFT Image</label>
                             <input
-                              {...register("image_url")}
+                              onChange={(event) => handleImageChange(event)}
                               className='profileButton-input'
                               type='file'
                               accept='image/*'
                             />
+                            <img src={imageUrl} />
                           </div>
                         </div>
                       </div>
