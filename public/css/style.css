@@ -1217,16 +1217,21 @@ Navbar Area
 }
 
 .navbar-area {
-  background-color: var(--whiteColor);
+  background-color: var(--darkBg);
 }
-
+.navbar-area h1 {
+  color: var(--whiteColor);
+}
+.navbar-area i {
+  color: var(--whiteColor);
+}
 .navbar-area.is-sticky {
   top: 0;
   left: 0;
   width: 100%;
   z-index: 999;
   position: fixed;
-  background-color: var(--whiteColor) !important;
+  background-color: var(--darkBg) !important;
   -webkit-box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
   -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;

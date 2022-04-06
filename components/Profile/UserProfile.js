@@ -48,12 +48,12 @@ const UserProfile = () => {
   const { data, isFetched, isLoading } = useMeQuery()
   const { data: savedNfts } = useSavednftsQuery()
   const { data: savedCollection } = useCollectionSavedByUser();
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
     defaultValues: {
       first_name: "",
       last_name: "",
       professional_summery: "",
-      walletAddress: ""
+      username: ""
     },
   });
   const { mutate: updateUserData } = useUpdateUserData()
@@ -93,6 +93,7 @@ const UserProfile = () => {
         onSuccess: async (res) => {
           queryClient.invalidateQueries('USER')
           toast.success("Successfully Updated.")
+          reset()
         }
       })
     } catch (error) {
@@ -145,6 +146,23 @@ const UserProfile = () => {
                             <div className='collection-form'>
                               <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className='row'>
+                                  <div className='col-lg-12 col-md-12'>
+                                    <div className='form-group'>
+                                      <label>Username</label>
+                                      <input
+                                        type='text'
+                                        name="username"
+                                        {...register("username")}
+                                        className='form-control'
+                                        placeholder='e. g. micwilson'
+                                      />
+                                      <ErrorMessage
+                                        errors={errors}
+                                        name="username"
+                                        render={({ message }) => <p style={{ color: "#f14D5D", padding: 10 }}>{message}</p>}
+                                      />
+                                    </div>
+                                  </div>
                                   <div className='col-lg-12'>
                                     <div className='form-group'>
                                       <label>Frist Name</label>
@@ -198,23 +216,6 @@ const UserProfile = () => {
                                     </div>
                                   </div>
 
-                                  <div className='col-lg-12 col-md-12'>
-                                    <div className='form-group'>
-                                      <label>Web 3.0 Wallet Address</label>
-                                      <input
-                                        type='text'
-                                        name="walletAddress"
-                                        {...register("walletAddress")}
-                                        className='form-control'
-                                        placeholder='e. g. 0x1D5E50754b504A6893E692C92aFeB2d530E79FB1'
-                                      />
-                                      <ErrorMessage
-                                        errors={errors}
-                                        name="walletAddress"
-                                        render={({ message }) => <p style={{ color: "#f14D5D", padding: 10 }}>{message}</p>}
-                                      />
-                                    </div>
-                                  </div>
 
                                   <div className='col-lg-12 col-md-12'>
                                     <div className='form-group'>

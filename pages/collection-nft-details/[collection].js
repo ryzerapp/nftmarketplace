@@ -44,7 +44,6 @@ const Collection = ({ collection }) => {
 
   const setData = async () => {
     const options = { chain: networkId, address: walletAddress, token_address: collection };
-    console.log(options);
     const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
     const data = await nftBalanceJson(polygonNFTs)
     return data;

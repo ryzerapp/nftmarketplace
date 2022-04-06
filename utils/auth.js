@@ -1,6 +1,4 @@
-import cookie from "js-cookie";
 import Router from "next/router";
-import toast from "react-hot-toast";
 import { removeAuthCredentials, setAuthCredentials } from "./auth-utils";
 
 /**
@@ -33,7 +31,6 @@ export const redirectUser = (ctx, location) => {
 export const handleLogout = () => {
 	localStorage.removeItem('walletAddress')
 	removeAuthCredentials()
-	toast.success("Logout successful");
 };
 
 export const handleLogoutLogin = () => {

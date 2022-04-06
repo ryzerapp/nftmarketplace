@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { handleLogout } from "../../utils/auth";
 import { useMoralis } from "react-moralis";
 
 const MenusList = ({ user }) => {
@@ -117,14 +116,6 @@ const MenusList = ({ user }) => {
 								<i className="ri-arrow-down-s-line"></i>
 							</a>
 							<ul className="dropdown-menu">
-								{/* <li className="nav-item">
-									<Link
-										href="/about"
-										activeClassName="active"
-									>
-										<a className="nav-link">About Us</a>
-									</Link>
-								</li> */}
 								<li className="nav-item">
 									<Link
 										href="/authors"
@@ -186,7 +177,7 @@ const MenusList = ({ user }) => {
 								<a href="#" className="nav-link" style={avatarStyle}>
 									<i className="ri-user-3-line"></i>
 								</a>
-								<span style={{ color: 'white' }}>{user?.username || localStorage.getItem('username')}</span>
+								<span style={{ color: 'white' }}>{user?.username || localStorage.getItem('walletAddress')}</span>
 								<ul className="dropdown-menu">
 									<li className="nav-item">
 										<Link href="/profile" activeClassName="active">
@@ -202,13 +193,6 @@ const MenusList = ({ user }) => {
 											</a>
 										</Link>
 									</li>
-									{/* <li className="nav-item">
-										<Link href="/">
-											<a className="nav-link" onClick={() => handleLogout()}>
-												Logout
-											</a>
-										</Link>
-									</li> */}
 								</ul>
 							</li>
 						)}
@@ -216,7 +200,7 @@ const MenusList = ({ user }) => {
 					<div className="others-options">
 
 						<ul className="optional-item-list">
-							{!web3Authentication && (
+							{/* {!web3Authentication && (
 								<li>
 									<Link
 										href="/login"
@@ -225,8 +209,7 @@ const MenusList = ({ user }) => {
 										<a>Login</a>
 									</Link>
 								</li>
-							)}
-
+							)} */}
 							<li>
 
 								<Link

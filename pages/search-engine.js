@@ -65,19 +65,16 @@ const SearchEngine = ({ }) => {
     const setData = async (search) => {
         var data;
         if (selectedCategory == "Search by Title") {
-            console.log('ttile')
             const options = { q: search, chain: chainId };
             const NFTs = await Moralis.Web3API.token.searchNFTs(options);
             data = await nftBalanceJson(NFTs)
         }
         else if (selectedCategory == "Search by Author Address") {
-            console.log('Author')
             const options = { chain: chainId, address: search };
             const NFTs = await Moralis.Web3API.account.getNFTs(options);
             data = await nftBalanceJson(NFTs)
         }
         else if (selectedCategory == "Search by Contract Address") {
-            console.log('Contract')
             const options = { chain: chainId, address: search };
             const NFTs = await Moralis.Web3API.account.getNFTs(options);
             data = await nftBalanceJson(NFTs)

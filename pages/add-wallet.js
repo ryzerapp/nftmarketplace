@@ -44,7 +44,7 @@ const AddWallet = () => {
                 onSuccess: (res) => {
                   if (res?.data?.statusCode == 200) {
                     handleLogin(res?.data);
-                    router.replace('/discover')
+                    router.replace('/profile')
                     dispatch({ type: Actions.SET_USER, user: res?.data?.user })
                   }
                   else {
@@ -64,7 +64,6 @@ const AddWallet = () => {
             toast.success("Wallet Connected.")
           }
         })
-
     }
     else
     {

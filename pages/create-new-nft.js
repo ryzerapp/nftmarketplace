@@ -33,7 +33,6 @@ const CreateCollection = () => {
   const [chainId, setchainId] = useState("Ethereum")
   async function ImageResizeNew(file) {
     const imageFile = file;
-    console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
     const options = {
       maxSizeMB: 0.7,
       maxWidthOrHeight: 150,
@@ -42,7 +41,6 @@ const CreateCollection = () => {
     }
     try {
       const compressedFile = await imageCompression(imageFile, options);
-      console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`);
       return compressedFile;
     } catch (error) {
       console.log(error);
@@ -66,7 +64,6 @@ const CreateCollection = () => {
         image_url: imageData,
         cryptoType: chainId
       };
-      console.log(payload)
       delete payload?.collection_name;
       if (payload.image_url) {
 

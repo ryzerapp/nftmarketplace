@@ -3,9 +3,14 @@ import { useMoralis } from "react-moralis";
 import MoralisDappContext from "./context";
 import { useWeb3 } from "../Web3Context";
 import { Actions } from "../Web3Context/reducer";
+import { useRegisterMutation } from "../../hooks/Web2/mutations/useRegisterMutation";
+import { handleLogin, handleLogout } from "../../utils/auth";
+import { useRouter } from "next/router";
 
 function MoralisDappProvider({ children }) {
   const { web3, Moralis, user, chainId } = useMoralis();
+  const router = useRouter();
+  const { mutate, isLoading: loading } = useRegisterMutation()
   const { dispatch } = useWeb3();
   const changeAddress = () => {
     if (chainId == "0x4") {
@@ -47,7 +52,25 @@ function MoralisDappProvider({ children }) {
 
     Moralis.onAccountChanged(function (address) {
       if (address)
-        dispatch({ type: Actions.SET_USER_ADDRESS, walletAddress: address[0] })
+      {
+        dispatch({ type: Actions.SET_USER_ADDRESS, walletAddress: address })
+        mutate(
+          { "walletAddress": address },
+          {
+            onSuccess: (res) => {
+              if (res?.data?.statusCode == 200) {
+                handleLogout()
+                handleLogin(res?.data);
+                router.replace('/profile')
+                dispatch({ type: Actions.SET_USER, user: res?.data?.user })
+              }
+            },
+            onError: (error) => {
+              console.log(error)
+            }
+          }
+        );
+      }
     });
   }, []);
 

@@ -120,7 +120,7 @@ const NavbarTwo = () => {
 									<div className="side-nav justify-content-center align-items-center">
 										<div className="side-nav-item">
 											<ul className="optional-item-list">
-												{user == undefined ? (
+												{/* {user == undefined ? (
 													<li>
 															<Link
 																href="/login"
@@ -134,7 +134,7 @@ const NavbarTwo = () => {
 													<li>
 															<a onClick={() => handleLogoutHandler()}>Logout</a>
 													</li>
-												)}
+												)} */}
 
 												<li>
 
