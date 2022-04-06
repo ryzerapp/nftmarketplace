@@ -30,6 +30,7 @@ const CreateCollectionAreaNew = () => {
       "description": "This nft created Using Our Game.",
       "collection_id": "cryptonium"
     }).then((res) => {
+      console.log(res?.data)
       setImage(res?.data?.image_url)
       setNftData(res?.data)
       setLoader(false)
@@ -128,14 +129,12 @@ const CreateCollectionAreaNew = () => {
                       />) : null
                   }
                 </div>
-                <div className='col-lg-6 col-md-12 p-4'>
+                <div className='col-lg-6 col-md-12 p-4 game-details' >
                   {
                     nftData ?
                       (
                         <>
                           <h3>{nftData?.name}</h3>
-                          <hr></hr>
-                          <h3>{nftData?.author}</h3>
                           <hr></hr>
                           <h3>{nftData?.description}</h3>
                           <hr></hr>

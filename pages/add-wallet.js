@@ -6,48 +6,75 @@ import { useWeb3 } from '../providers/Web3Context';
 import useChain from "../hooks/Web3/useChain";
 import { Actions } from '../providers/Web3Context/reducer';
 import { menuItems } from '../utils/constants';
+import Layout from '../components/Layout/Layout';
+import { useRegisterMutation } from '../hooks/Web2/mutations/useRegisterMutation';
+import { useRouter } from 'next/router';
+import { handleLogin, handleLogout } from '../utils/auth';
 
-const notify = (message) => toast(message);
 const AddWallet = () => {
-
+  const router = useRouter();
+  const { mutate, isLoading: loading } = useRegisterMutation()
   const [selectchain, setSelectchain] = useState()
   const { authenticate, authError, isAuthenticated, logout } = useMoralis();
   const { state: { networkId } } = useWeb3();
   const { switchNetwork } = useChain();
   const { dispatch } = useWeb3();
-
   React.useEffect(() => {
     const newSelected = menuItems.find((item) => item.key === networkId);
-    console.log(newSelected)
     setSelectchain(newSelected?.value)
   }, [])
-  console.log('selectchain', selectchain)
   const handleConnect = async () => {
     if (!selectchain?.key && !isAuthenticated) {
-      notify("Please Choose Blockchain")
+      toast.error("Please Choose Blockchain")
       return;
     }
     if (!isAuthenticated && selectchain?.key) {
-      console.log(selectchain?.key)
       await switchNetwork(selectchain?.key)
-      const data = await authenticate()
-      if (authError && data == undefined)
-        notify(authError.message)
-      else
-        if (data != undefined)
-        {
-          dispatch({ type: Actions.SET_NETWORK_ID, networkId: selectchain?.key });
-          notify("Wallet Connected.")
-        }
+      await authenticate({ signingMessage: "My custom message" })
+        .then(async (user) => {
+          if (authError)
+            toast.error(authError.message)
+          else
+          {
+            console.log(user.get('ethAddress'))
+            await dispatch({ type: Actions.SET_NETWORK_ID, networkId: selectchain?.key });
+            mutate(
+              { "walletAddress": user?.get('ethAddress') },
+              {
+                onSuccess: (res) => {
+                  if (res?.data?.statusCode == 200) {
+                    handleLogin(res?.data);
+                    router.replace('/discover')
+                    dispatch({ type: Actions.SET_USER, user: res?.data?.user })
+                  }
+                  else {
+                    toast.error(res?.data?.message)
+                  }
+                },
+                onError: (error) => {
+
+                  const { data } = error.response;
+
+                  if (data) {
+                    toast.error(data?.message);
+                  }
+                }
+              }
+            );
+            toast.success("Wallet Connected.")
+          }
+        })
+
     }
     else
     {
       await logout()
-      notify("Wallet Disconnected.")
+      handleLogout()
+      toast.success("Wallet Disconnected.")
     }
   }
   return (
-    <>
+    <Layout>
       <div className='wallet-area pt-50 pb-70'>
         <div className='container'>
           <Chains
@@ -61,8 +88,7 @@ const AddWallet = () => {
           </div>
         </div>
       </div>
-      <Toaster></Toaster>
-    </>
+    </Layout>
   );
 };
 

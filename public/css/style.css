@@ -126,6 +126,14 @@ body {
     box-shadow: none;
     border: none
 }
+.game-details h3
+{
+  color:var(--whiteColor)
+}
+.game-details hr
+{
+  color:var(--whiteColor)
+}
 .user-area,
 .wallet-area,
 .author-profile-area {
