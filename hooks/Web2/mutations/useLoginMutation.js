@@ -9,7 +9,6 @@ export const useLoginMutation = () => {
     return useMutation(loginData, {
         onSuccess: () => { },
         onSettled: () => {
-            // queryClient.invalidateQueries("USERTICKETSDETAILS");
         },
     });
 };

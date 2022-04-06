@@ -7,7 +7,6 @@ import { Actions } from "../Web3Context/reducer";
 function MoralisDappProvider({ children }) {
   const { web3, Moralis, user, chainId } = useMoralis();
   const { dispatch } = useWeb3();
-
   const changeAddress = () => {
     if (chainId == "0x4") {
       dispatch({
@@ -47,7 +46,6 @@ function MoralisDappProvider({ children }) {
     });
 
     Moralis.onAccountChanged(function (address) {
-      console.log(address)
       if (address)
         dispatch({ type: Actions.SET_USER_ADDRESS, walletAddress: address[0] })
     });

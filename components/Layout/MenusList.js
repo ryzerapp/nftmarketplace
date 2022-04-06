@@ -202,13 +202,13 @@ const MenusList = ({ user }) => {
 											</a>
 										</Link>
 									</li>
-									<li className="nav-item">
+									{/* <li className="nav-item">
 										<Link href="/">
 											<a className="nav-link" onClick={() => handleLogout()}>
 												Logout
 											</a>
 										</Link>
-									</li>
+									</li> */}
 								</ul>
 							</li>
 						)}

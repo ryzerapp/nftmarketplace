@@ -6,6 +6,7 @@ module.exports = {
 	images: {
 		domains: [
 			'via.placeholder.com',
+			"nftmarketplacenew.s3.ap-south-1.amazonaws.com",
 			'res.cloudinary.com',
 			's3.amazonaws.com',
 			'theproart.s3.ap-south-1.amazonaws.com',
