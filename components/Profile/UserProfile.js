@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import http from '../../utils/http'
 import toast from 'react-hot-toast';
 import { ErrorMessage } from "@hookform/error-message";
-
+import Collection from '../../pages/collection'
 const Tabs = dynamic(
   import('react-tabs').then((mod) => mod.Tabs),
   { ssr: false }
@@ -301,13 +301,14 @@ const UserProfile = () => {
                             <div className='border border-red'>
                               <div className='row justify-content-ceneter px-4'>
                                 <div className='pt-4'></div>
-                                <RenderCollectionInTabs
+                                <Collection />
+                                {/* <RenderCollectionInTabs
                                   editOrDelete={true}
                                   user={data?.user}
                                   profile={true}
                                   collections={data?.user?.collections}
                                   message="You Don't Have Any Collection"
-                                />
+                                /> */}
                               </div>
                             </div>
                           </div>

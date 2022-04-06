@@ -76,7 +76,6 @@ const Collection = () => {
           </XMasonry>
         </div>
       </div>
-      <InvolvedArea />
     </Layout>
   );
 };
