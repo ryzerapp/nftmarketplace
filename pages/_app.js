@@ -5,6 +5,7 @@ import "../public/css/style.css";
 import "../public/css/responsive.css";
 
 import GoTop from "../components/Shared/GoTop";
+import { ModalProvider } from "../components/ui/modal/modal.context";
 import { Toaster } from "react-hot-toast";
 import Head from "next/head";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -20,34 +21,37 @@ const APP_ID = process.env.NEXT_PUBLIC_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL;
 
 import HeaderFooter from "../components/Layout/HeaderFooter";
+import ManagedModal from "../components/ui/modal/managed-modal";
 function MyApp({ Component, pageProps }) {
 	const isServerInfo = APP_ID && SERVER_URL ? true : false;
 
 	if (isServerInfo) {
 		return (
 			<QueryClientProvider client={queryClientRef}>
+				<ModalProvider>
+					<ManagedModal />
+					<Head>
+						<title>Cryptonium NFT Marketplace</title>
+						<meta
+							name="viewport"
+							content="initial-scale=1.0, width=device-width"
+						/>
+						{/* <script src="https://cdn.tailwindcss.com"></script> */}
+					</Head>
+					<MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
+						<Web3ContextProvider>
+							<MoralisDappProvider>
+								<HeaderFooter>
+									{<Component {...pageProps} />}
+								</HeaderFooter>
+							</MoralisDappProvider>
+						</Web3ContextProvider>
+					</MoralisProvider>
 
-				<Head>
-					<title>Cryptonium NFT Marketplace</title>
-					<meta
-						name="viewport"
-						content="initial-scale=1.0, width=device-width"
-					/>
-				</Head>
-				<MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
-					<Web3ContextProvider>
-						<MoralisDappProvider>
-							<HeaderFooter>
-								{<Component {...pageProps} />}
-							</HeaderFooter>
-						</MoralisDappProvider>
-					</Web3ContextProvider>
-				</MoralisProvider>
+					<GoTop scrollStepInPx="100" delayInMs="10.50" />
 
-				<GoTop scrollStepInPx="100" delayInMs="10.50" />
-
-				<Toaster position="top-center" reverseOrder={false} />
-
+					<Toaster position="top-center" reverseOrder={false} />
+				</ModalProvider>
 			</QueryClientProvider >
 
 		)

@@ -16,13 +16,13 @@ import * as yup from "yup";
 import { useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import { useQueryClient } from 'react-query';
 import CreateAuction from '../../pages/auction/create';
-import AuctionNFT from '../Auction/AuctionNFT';
 import AuthorLeftSide from '../Authors/AuthorLeftSide';
 import RenderNFTInTabs from '../Tabs/RenderNFTInTabs';
 import RenderCollectionInTabs from '../Tabs/RenderCollectionInTabs';
 import NFTListComponentBlockChain from '../NFTS/NFTListComponentBlockChain';
 import NFTComponentDatabase from '../NFTS/NFTComponentDatabase';
 import { XBlock, XMasonry } from 'react-xmasonry';
+import AuctionNFTPrivate from '../Auction/AuctionNFTPrivate';
 const schema = yup
   .object({
     email: yup
@@ -326,7 +326,7 @@ const UserProfile = () => {
                                 {data?.user?.auctions?.length > 0 ?
                                   data?.user?.auctions?.map((auction) =>
                                   (
-                                    <AuctionNFT key={auction.id} data={auction} isfromProfile={true} />
+                                    <AuctionNFTPrivate key={auction.id} data={auction} isfromProfile={true} />
                                   )) : <>
                                     <div className='container mt-100'>
                                       <div className='row'>
