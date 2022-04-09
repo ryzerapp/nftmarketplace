@@ -23,6 +23,7 @@ import NFTListComponentBlockChain from '../NFTS/NFTListComponentBlockChain';
 import NFTComponentDatabase from '../NFTS/NFTComponentDatabase';
 import { XBlock, XMasonry } from 'react-xmasonry';
 import AuctionNFTPrivate from '../Auction/AuctionNFTPrivate';
+import Layout from '../Layout/Layout';
 const schema = yup
   .object({
     email: yup
@@ -106,7 +107,7 @@ const UserProfile = () => {
     )
   }
   return (
-    <>
+    <Layout>
       <div className='author-profile-area pt-70'>
         <div className='container'>
           <div className='row'>
@@ -395,7 +396,7 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 
