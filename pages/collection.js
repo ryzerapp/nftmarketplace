@@ -7,14 +7,29 @@ import { useMoralis } from 'react-moralis';
 import { useWeb3 } from '../providers/Web3Context';
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
+import { useIPFS } from '../hooks/Web3/useIPFS';
 
 const Collection = () => {
   const { Moralis, isWeb3Enabled, isAuthenticated } = useMoralis();
   const { state: { walletAddress, networkId } } = useWeb3();
   const router = useRouter()
+  const { resolveLink } = useIPFS();
+  const nftBalanceJson = async (data) => {
+    let NFTs = data;
+    for (let NFT of NFTs) {
+      try {
+        await fetch(NFT?.token_uri)
+          .then(async (response) => await response.json())
+          .then((data) => {
+            NFT.image_url = resolveLink(data.image);
+          });
+      } catch (error) {
+      }
+    }
+    return NFTs;
+  };
   const setData = async () => {
     const options = { chain: networkId, address: walletAddress };
-    console.log(options)
     const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
     var dataArr = polygonNFTs?.result?.map(item => {
       return [item.token_address, {
@@ -22,10 +37,13 @@ const Collection = () => {
         name: item?.name,
         symbol: item?.symbol,
         contract_type: item?.contract_type,
+        token_uri: item?.token_uri,
       }]
     });
     var maparr = new Map(dataArr); // create key value pair from array of array
-    return [...maparr.values()];
+    var finalArray = [...maparr.values()];
+    await nftBalanceJson(finalArray)
+    return finalArray;
   };
   const { data: collections, isLoading, refetch } = useQuery(['usercollection'], setData, {
     keepPreviousData: true,
@@ -57,6 +75,16 @@ const Collection = () => {
                   <div className="article">
                     <div className='featured-card box-shadow'>
                       <div className='featured-card-img'>
+                        <a href='#'>
+                          <img
+                            src={collection?.image_url}
+                            style={{ width: "100%", display: "block" }}
+                            onError={({ currentTarget }) => {
+                              currentTarget.onerror = null; // prevents looping
+                              currentTarget.src = "../images/notfoundimage.png";
+                            }}
+                          />
+                        </a>
                         <button type='button' className='default-btn border-radius-5' onClick={() =>
                           router.push(`/collection-nft-details/${collection?.token_address}`)}>
                           Open Collection
