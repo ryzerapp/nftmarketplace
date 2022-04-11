@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../public/fonts/remixicon.css";
 import "../public/css/bootstrap.min.css";
 import "../public/css/style.css";
+
 import "../public/css/responsive.css";
 
 import GoTop from "../components/Shared/GoTop";
