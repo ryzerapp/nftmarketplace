@@ -4,6 +4,12 @@ import toast, { Toaster } from 'react-hot-toast';
 import imageCompression from 'browser-image-compression';
 import { useState } from 'react';
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./../components/Common/Logos";
+import { useWeb3 } from "../providers/Web3Context";
+import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
+import { useRouter } from 'next/router';
+import { useIPFS } from '../hooks/Web3/useIPFS';
+import { useQuery } from 'react-query';
+
 const menuItems = [
   {
     key: "eth",
@@ -60,22 +66,20 @@ const CreateCollection = () => {
   const onSubmit = async (data) => {
     try {
       const payload = {
-        ...data,
-        image_url: imageData,
-        cryptoType: chainId
-      };
-      delete payload?.collection_name;
-      if (payload.image_url) {
+        ...data
+      }
+      if (data?.image?.length > 0) {
 
         const formData = new FormData();
-        formData.append("file", payload?.image_url);
-        formData.append("fileName", payload?.image_url?.name);
+        formData.append("file", data?.image[0]);
+        formData.append("fileName", data?.image[0]?.name);
         try {
           const res = await http.post("/attachments",
             formData
           );
           if (res?.status == 201) {
-            payload.image_url = res?.data?.image;
+            payload.image = res?.data?.image;
+            mintNFTHandle(payload)
           }
         } catch (ex) {
           reset()
@@ -83,21 +87,6 @@ const CreateCollection = () => {
           return;
         }
       }
-      await http.post('/nfts/save_nft', payload).then(async (res) => {
-        if (res?.status == 201) {
-          reset()
-          toast.success("Successfully Created.")
-        }
-        else {
-          toast.success(res?.data?.message)
-        }
-
-      })
-        .catch((err) => {
-          reset()
-          toast.error(err?.response?.data?.message)
-        });
-
     } catch (error) {
       reset()
       const { data } = error.response.data;
@@ -106,10 +95,85 @@ const CreateCollection = () => {
       }
     }
   };
-
+  async function mintNFTHandle(data) {
+    const nftDataJson = {
+      ...data
+    };
+    if (!isAuthenticated) {
+      toast.success("Please Connect Web3.0 Wallet")
+      return;
+    }
+    const file = new Moralis.File("file.json", {
+      base64: btoa(JSON.stringify(nftDataJson, undefined, 1)),
+      type: 'json'
+    });
+    const moralisFileJson = await file.saveIPFS();
+    await mintNFT(moralisFileJson._ipfs);
+  }
+  const { state: { nftTokenAddress } } =
+    useWeb3();
+  const { state: { nftTokenABI } } = useWeb3()
+  const { Moralis, isAuthenticated } = useMoralis();
+  const contractProcessor = useWeb3ExecuteFunction();
+  const { state: { walletAddress, networkId } } = useWeb3();
+  const router = useRouter()
+  const { resolveLink } = useIPFS();
+  const nftBalanceJson = async (data) => {
+    let NFTs = data;
+    for (let NFT of NFTs) {
+      try {
+        await fetch(NFT?.token_uri)
+          .then(async (response) => await response.json())
+          .then((data) => {
+            NFT.image_url = resolveLink(data.image);
+          });
+      } catch (error) {
+      }
+    }
+    return NFTs;
+  };
+  const setData = async () => {
+    const options = { chain: networkId, address: walletAddress };
+    const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
+    var dataArr = polygonNFTs?.result?.map(item => {
+      return [item.token_address, {
+        token_address: item?.token_address,
+        name: item?.name,
+        symbol: item?.symbol,
+        contract_type: item?.contract_type,
+        token_uri: item?.token_uri,
+      }]
+    });
+    var maparr = new Map(dataArr); // create key value pair from array of array
+    var finalArray = [...maparr.values()];
+    await nftBalanceJson(finalArray)
+    return finalArray;
+  };
+  const { data: collections, isLoading, refetch } = useQuery(['usercollection'], setData, {
+    keepPreviousData: true,
+  });
+  async function mintNFT(tokenURI) {
+    let options = {
+      contractAddress: nftTokenAddress,
+      functionName: "createToken",
+      abi: nftTokenABI,
+      params: {
+        tokenURI: tokenURI,
+      },
+    };
+    await contractProcessor.fetch({
+      params: options,
+      onSuccess: async (res) => {
+        console.log(res)
+      },
+      onError: (error) => {
+        console.log(error);
+      },
+    });
+  }
   return (
     <>
-      <div className="container">
+      {/* <div className="container">
         <div className='user-area pt-100 pb-70'>
           <div className='container'
           >
@@ -252,6 +316,150 @@ const CreateCollection = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div> */}
+      <div class="create-items mt-3 pt-3 mt-md-4 pt-md-4 mt-lg-5 pt-lg-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7 create-form-outer">
+              <div class="title-heading mb-4 pb-2 pb-lg-0 ">
+                <h2 class="headingWh ">Create collectible item</h2>
+                <p>Meet the rules of NFT-art placement in <a href="#">our help center</a></p>
+              </div>
+              <div class="create-form">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div class="row">
+
+                    <div class="col-6 pb-md-4 pb-3 ">
+                      <div class="img-choosen">
+                        <img src="../images/single.svg" class="img-fluid" alt="choose img" />
+                        <label>Single Image</label>
+                      </div>
+                    </div>
+                    <div class="col-6 pb-md-4 pb-3 ">
+                      <div class="img-choosen">
+                        <img src="../images/multiple.svg" class="img-fluid" alt="choose img" />
+                        <label>Multiple Image</label>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12 pb-md-4 pb-3">
+                      <label>Upload file</label>
+                      <div class="custom-file-upload">
+                        <div class="file-upload">
+                          <div class="image-upload-wrap">
+                            <input class="file-upload-input"
+                              {...register("image")}
+                              type='file'
+                              accept="image/*" />
+                            <div class="drag-text">
+                              <img src="../images/upload-icon.svg" class="img-fluid" alt="upload icon" />
+                            </div>
+                          </div>
+                          <div class="file-upload-content mt-3">
+                            <div class="title-wrapouter">
+                              <div class="uploaded-img">
+                                <img class="file-upload-image" src="#" alt="your image" />
+                              </div>
+                              <div class="image-title-wrap">
+                                <span class="image-title">Uploaded Image Title</span>
+                                <button type="button" onClick="removeUpload()" class="remove-image"> Remove</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-7 col-6 pb-md-4 pb-3">
+                      <label>Price</label>
+                      <input type="text"
+                        {...register("price")}
+                        placeholder="Price" class="form-control" />
+                    </div>
+                    <div class="col-md-5 col-6 pb-md-4 pb-3">
+                      <label>Open for Bids</label>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input"
+                          {...register("openforbid")}
+                          type="checkbox" role="switch" checked />
+                      </div>
+                    </div>
+                    <div class="col-md-7 pb-md-4 pb-3">
+                      <label>Choose collection</label>
+                      <div class="btn-group w-100">
+                        <button class="filterbtn dropdown-toggle text-start"
+                          type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                          New collection
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+                          <li><a class="dropdown-item" href="#">Memes</a></li>
+                          <li><a class="dropdown-item" href="#">Photography</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-xl-9 pb-md-4 pb-3">
+                      <label>Item Name</label>
+                      <input type="text"
+                        {...register("name")}
+                        placeholder="Enter Name" class="form-control" />
+                    </div>
+                    <div class="col-xl-9 pb-md-4 pb-3">
+                      <label>Description</label>
+                      <textarea class="form-control"
+                        {...register("description")}
+                        placeholder="Enter the description"></textarea>
+                    </div>
+                    <div class="col-md-7 col-6 pb-md-4 pb-3">
+                      <label>Royalties</label>
+                      <input type="text"
+                        {...register("royalties")}
+                        placeholder=" 0,10,20% or more" class="form-control" />
+                    </div>
+                    <div class="col-md-5 col-6 pb-md-4 pb-3">
+                      <label>Unlock once purchased</label>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input"
+                          {...register("purchased")}
+                          type="checkbox" role="switch"
+                          id="flexSwitchCheckChecked" checked />
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12 pt-3 d-none d-lg-block ">
+                      <button class="btn btnlightblue m-auto m-md-0 d-table d-md-block">Create</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-5 mt-5 mt-lg-0">
+              <div class="title-heading mb-4">
+                <h2 class="headingWh ">Preview of item</h2>
+              </div>
+              <div class="aboutitem">
+                <div class="aboutitemImg">
+                  <img class="img-fluid" src="../images/item-prev.png" alt="img" /></div>
+                <div class="bgdarkbluecolor aboutitemcnt">
+                  <div class="itemtitlecode">
+                    <h2 class="textgraycolor">Cryptosharks</h2>
+                    <h3 class="textwhitecolor">Cryptosharks #92991</h3>
+                  </div>
+                  <div class="itemtitlePrice">
+                    <h2 class="textgraycolor">Price</h2>
+                    <h3 class="textwhitecolor">
+                      <img src="../images/priceicon.svg" /> <strong>0, 006</strong></h3>
+                    <h4 class="textgraycolor"><span>
+                      <img src="../images/hearticon.svg" /></span> 56</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-1 mb-2 ">
+                <button class="btn btnlightblue savebtn d-block m-auto d-lg-none">Save</button>
+              </div>
+
+
             </div>
           </div>
         </div>
