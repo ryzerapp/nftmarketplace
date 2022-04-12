@@ -5,6 +5,9 @@ import { MODAL_VIEWS, useModalAction, useModalState } from './modal.context';
 const EditAuction = dynamic(
   () => import('../../Auction/AuctionEdit')
 );
+const InstaFeed = dynamic(
+  ()=> import('../../instagram/instaFeed')
+)
 
 const ManagedModal = () => {
   const { isOpen, view, data } = useModalState();
@@ -13,6 +16,7 @@ const ManagedModal = () => {
   return (
     <Modal open={isOpen} onClose={closeModal}>
       {view === MODAL_VIEWS.EDIT_AUCTION && <EditAuction />}
+      {view === MODAL_VIEWS.SHOW_INSTA_FEED && <InstaFeed />}
       {/* {view === 'LOGIN_VIEW' && <Login />} */}
       {/* {view === 'REGISTER' && <Register />}*/}
 

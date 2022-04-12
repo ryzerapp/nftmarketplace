@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { handleLogout } from "../../utils/auth";
 import { useMoralis } from "react-moralis";
 
 const MenusList = ({ user }) => {
@@ -172,6 +173,13 @@ const MenusList = ({ user }) => {
 								</li>
 							</ul>
 						</li>
+
+						<li className="nav-item">
+							<a href="/insta" className="nav-link">
+								Kudos
+							</a>
+							
+						</li>
 						{web3Authentication && (
 							<li className="nav-item" style={{ display: "flex" }}>
 								<a href="#" className="nav-link" style={avatarStyle}>
@@ -190,6 +198,13 @@ const MenusList = ({ user }) => {
 										<Link href="/#" activeClassName="active">
 											<a className="nav-link">
 												Notifications
+											</a>
+										</Link>
+									</li>
+									<li className="nav-item">
+										<Link href="/">
+											<a className="nav-link" onClick={() => handleLogout()}>
+												Logout
 											</a>
 										</Link>
 									</li>
