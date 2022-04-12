@@ -6,7 +6,7 @@ const EditAuction = dynamic(
   () => import('../../Auction/AuctionEdit')
 );
 const InstaFeed = dynamic(
-  ()=> import('../../instagram/instaFeed')
+  ()=> import('../../Instagram/InstaFeed')
 )
 
 const ManagedModal = () => {
