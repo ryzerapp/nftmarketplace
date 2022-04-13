@@ -70,14 +70,14 @@ const Collection = () => {
         <div className='row justify-content-center  pt-70'>
           {collections?.map((collection) => (
             <>
-              <div class="col-md-6 col-xl-3 mb-4">
-                <div class="aboutitem">
-                  <div class="aboutitemImg">
+              <div className="col-md-6 col-xl-3 mb-4">
+                <div className="aboutitem">
+                  <div className="aboutitemImg">
                     <img
                       src={collection?.image_url}
                       style={{
                         width: "100%",
-                        "object-fit": "cover",
+                        objectFit: "cover",
                         height: "250px",
                         cursor: "pointer"
                       }}
@@ -95,12 +95,12 @@ const Collection = () => {
                       Open Collection
                     </button>
                   </div>
-                  <div class="bgdarkbluecolor aboutitemcnt">
-                    <div class="itemtitlecode">
-                      <h2 class="textgraycolor">{collection?.name}</h2>
+                  <div className="bgdarkbluecolor aboutitemcnt">
+                    <div className="itemtitlecode">
+                      <h2 className="textgraycolor">{collection?.name}</h2>
                     </div>
-                    <div class="itemtitlePrice">
-                      <h2 class="textgraycolor">{collection?.contract_type}</h2>
+                    <div className="itemtitlePrice">
+                      <h2 className="textgraycolor">{collection?.contract_type}</h2>
                     </div>
                   </div>
                 </div>

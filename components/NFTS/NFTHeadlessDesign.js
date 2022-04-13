@@ -67,14 +67,14 @@ export default function NFTHeadlessDesign({ nft, title: openDialogTitle }) {
         });
     }
     return (
-        <div class="col-md-6 col-xl-3 mb-4">
-            <div class="aboutitem">
-                <div class="aboutitemImg">
+        <div className="col-md-6 col-xl-3 mb-4">
+            <div className="aboutitem">
+                <div className="aboutitemImg">
                     <img
                         src={nft?.image_url}
                         style={{
                             width: "100%",
-                            "object-fit": "cover",
+                            objectFit: "cover",
                             height: "250px",
                             cursor: "pointer"
                         }}
@@ -100,21 +100,21 @@ export default function NFTHeadlessDesign({ nft, title: openDialogTitle }) {
                         {openDialogTitle ? openDialogTitle : "Open NFT"}
                     </button>
                 </div>
-                <div class="bgdarkbluecolor aboutitemcnt">
-                    <div class="itemtitlecode">
-                        <h2 class="textgraycolor">{nft?.name}</h2>
-                        <h3 class="textwhitecolor">
+                <div className="bgdarkbluecolor aboutitemcnt">
+                    <div className="itemtitlecode">
+                        <h2 className="textgraycolor">{nft?.name}</h2>
+                        <h3 className="textwhitecolor">
                             {
                                 nft?.metadata?.name ? nft?.metadata?.name :
                                     nft?.token_id ? nft?.token_id : ""
                             }
                         </h3>
                     </div>
-                    <div class="itemtitlePrice">
-                        <h2 class="textgraycolor">Price</h2>
-                        <h3 class="textwhitecolor">
+                    <div className="itemtitlePrice">
+                        <h2 className="textgraycolor">Price</h2>
+                        <h3 className="textwhitecolor">
                             <img src="../images/priceicon.svg" /> <strong>0,006</strong></h3>
-                        <h4 class="textgraycolor"><span>
+                        <h4 className="textgraycolor"><span>
                             <img src="../images/hearticon.svg" /></span> 0</h4>
                     </div>
                 </div>

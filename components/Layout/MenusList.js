@@ -28,60 +28,29 @@ const MenusList = ({ user }) => {
 						/>
 					</a>
 				</Link>
-
-				{/* <div className="nav-widget-form">
-					<form className="search-form">
-						<input
-							type="search"
-							className="form-control"
-							placeholder="Search items, Creators "
-						/>
-						<button type="submit">
-							<i className="ri-search-line"></i>
-						</button>
-					</form>
-				</div> */}
-
 				<div
 					className="collapse navbar-collapse mean-menu"
 					id="navbarSupportedContent"
 				>
 					<ul className="navbar-nav m-auto">
 						<li className="nav-item">
-							<a href="#" className="nav-link ">
-								Discover
-								<i className="ri-arrow-down-s-line"></i>
-							</a>
-							<ul className="dropdown-menu">
-								<li className="nav-item">
-									<Link
-										href="/activity"
-										activeClassName="active"
-									>
-										<a className="nav-link">Activity</a>
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link
-										href="/search-engine"
-										activeClassName="active"
-									>
-										<a className="nav-link">Search Engine</a>
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link
-										href="/discover"
-										activeClassName="active"
-									>
-										<a className="nav-link">
-											Discover Exclusive Digital Assets
-										</a>
-									</Link>
-								</li>
-							</ul>
+							<Link
+								href="/discover"
+								activeClassName="active"
+							>
+								<a className="nav-link">
+									Discover
+								</a>
+							</Link>
 						</li>
-
+						<li className="nav-item">
+							<Link
+								href="/activity"
+								activeClassName="active"
+							>
+								<a className="nav-link">Activity</a>
+							</Link>
+						</li>
 						<li className="nav-item">
 							<a href="#" className="nav-link">
 								Collection
@@ -150,18 +119,6 @@ const MenusList = ({ user }) => {
 										<a className="nav-link">Play Game</a>
 									</Link>
 								</li>
-
-								<li className="nav-item">
-									<Link
-										href={!web3Authentication ? "/add-wallet" : "/yournfts"}
-										activeClassName="active"
-									>
-										<a className="nav-link">
-											Your NFT
-										</a>
-									</Link>
-								</li>
-
 								<li className="nav-item">
 									<Link
 										href={!web3Authentication ? "/add-wallet" : "/create-new-nft"}
@@ -177,7 +134,7 @@ const MenusList = ({ user }) => {
 								<a href="#" className="nav-link" style={avatarStyle}>
 									<i className="ri-user-3-line"></i>
 								</a>
-								<span style={{ color: 'white' }}>{user?.username || localStorage.getItem('walletAddress')}</span>
+								<span style={{ color: 'white' }}>{user?.username}</span>
 								<ul className="dropdown-menu">
 									<li className="nav-item">
 										<Link href="/profile" activeClassName="active">

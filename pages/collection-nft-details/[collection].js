@@ -79,66 +79,66 @@ const Collection = ({ collection }) => {
   return (
     <Layout>
       <div className='container'>
-        <div class="authoreprofile authoSm mt-0 mt-md-5 pt-0 pt-md-2">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="authoreproimg">
-                  <div class="authoreproimgBox">
-                    <img class="img-fluid d-none d-md-block"
+        <div className="authoreprofile authoSm mt-0 mt-md-5 pt-0 pt-md-2">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="authoreproimg">
+                  <div className="authoreproimgBox">
+                    <img className="img-fluid d-none d-md-block"
 
                       src="../images/authoprofilebannerimg.jpeg" alt="img" />
-                    <img class="img-fluid d-block d-md-none"
+                    <img className="img-fluid d-block d-md-none"
                       src="../images/authprobannersm01.jpeg" alt="img" />
                   </div>
-                  <div class="authoreproicon"><img class="img-fluid"
+                  <div className="authoreproicon"><img className="img-fluid"
                     style={{
                       borderRadius: "50%"
                     }}
                     src="../images/authorproicon01.jpeg" alt="img" /></div>
                 </div>
-                <div class="auProfileDetail">
-                  <div class="joincommunity auSocial">
+                <div className="auProfileDetail">
+                  <div className="joincommunity auSocial">
                     <ul>
-                      <li><a href="#"><img class="img-fluid" src="../images/activityicon.svg" alt="img" /></a></li>
-                      <li><a href="#"><img class="img-fluid" src="../images/discordbutton.svg" alt="img" /></a></li>
-                      <li><a href="#"><img class="img-fluid" src="../images/insta.svg" alt="img" /></a></li>
-                      <li><a href="#"><img class="img-fluid" src="../images/twitter.svg" alt="img" /></a></li>
+                      <li><a href="#"><img className="img-fluid" src="../images/activityicon.svg" alt="img" /></a></li>
+                      <li><a href="#"><img className="img-fluid" src="../images/discordbutton.svg" alt="img" /></a></li>
+                      <li><a href="#"><img className="img-fluid" src="../images/insta.svg" alt="img" /></a></li>
+                      <li><a href="#"><img className="img-fluid" src="../images/twitter.svg" alt="img" /></a></li>
                     </ul>
 
                   </div>
-                  <div class="prCnt">
-                    <h2 class="textwhitecolor">{
+                  <div className="prCnt">
+                    <h2 className="textwhitecolor">{
                       nftBalance && nftBalance[0]?.name
                     }</h2>
-                    <h3 class="textgraycolor mt-3 mb-4"><span class="textbluecolor">Last updated:</span> October 21st,  2021 at 3 AM</h3>
-                    <p class="textgraycolor">There are many variations of passages of Lorem Ipsum available, but<br /> the majority have suffered alteration in some form, by injected</p>
+                    <h3 className="textgraycolor mt-3 mb-4"><span className="textbluecolor">Last updated:</span> October 21st,  2021 at 3 AM</h3>
+                    <p className="textgraycolor">There are many variations of passages of Lorem Ipsum available, but<br /> the majority have suffered alteration in some form, by injected</p>
                   </div>
 
                 </div>
-                <div class="showResultTop">
+                <div className="showResultTop">
                   <ul>
                     <li>
-                      <span class="textgraycolor">Items</span>
-                      <strong class="textwhitecolor">{collectionData?.totalItems}</strong>
+                      <span className="textgraycolor">Items</span>
+                      <strong className="textwhitecolor">{collectionData?.totalItems}</strong>
                     </li>
 
                     <li>
-                      <span class="textgraycolor">Owners</span>
-                      <strong class="textwhitecolor">{collectionData?.totalOwners}</strong>
+                      <span className="textgraycolor">Owners</span>
+                      <strong className="textwhitecolor">{collectionData?.totalOwners}</strong>
                     </li>
 
                     <li>
-                      <span class="textgraycolor">Floor Price</span>
-                      <strong class="textwhitecolor">
-                        <img class="img-fluid" src="../images/priceicon.svg" alt="img" />
+                      <span className="textgraycolor">Floor Price</span>
+                      <strong className="textwhitecolor">
+                        <img className="img-fluid" src="../images/priceicon.svg" alt="img" />
                         {collectionData?.floorprice}</strong>
                     </li>
 
                     <li>
-                      <span class="textgraycolor">Volume Traded</span>
-                      <strong class="textwhitecolor">
-                        <img class="img-fluid" src="../images/priceicon.svg" alt="img" />
+                      <span className="textgraycolor">Volume Traded</span>
+                      <strong className="textwhitecolor">
+                        <img className="img-fluid" src="../images/priceicon.svg" alt="img" />
                         {collectionData?.totalvolumes}</strong>
                     </li>
                   </ul>
@@ -147,63 +147,63 @@ const Collection = ({ collection }) => {
             </div>
           </div>
         </div>
-        <div class="popularCollection mt-3 pt-3 mt-md-4 pt-md-4">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="row d-none d-md-flex">
-                  <div class="col-md-6 col-xl-3 mb-3 mb-xl-0">
-                    <button class="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        <div className="popularCollection mt-3 pt-3 mt-md-4 pt-md-4">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="row d-none d-md-flex">
+                  <div className="col-md-6 col-xl-3 mb-3 mb-xl-0">
+                    <button className="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                       Price
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <li><a class="dropdown-item" href="#">Highest price</a></li>
-                      <li><a class="dropdown-item" href="#">Lowest Price</a></li>
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <li><a className="dropdown-item" href="#">Highest price</a></li>
+                      <li><a className="dropdown-item" href="#">Lowest Price</a></li>
                     </ul>
                   </div>
 
-                  <div class="col-md-6 col-xl-3 mb-3 mb-xl-0">
-                    <button class="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <div className="col-md-6 col-xl-3 mb-3 mb-xl-0">
+                    <button className="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                       Newest
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <li><a class="dropdown-item" href="#">Newest</a></li>
-                      <li><a class="dropdown-item" href="#">Oldest</a></li>
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <li><a className="dropdown-item" href="#">Newest</a></li>
+                      <li><a className="dropdown-item" href="#">Oldest</a></li>
                     </ul>
                   </div>
 
-                  <div class="col-md-6 col-xl-3">
-                    <button class="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <div className="col-md-6 col-xl-3">
+                    <button className="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                       All items
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <li><a class="dropdown-item" href="#">Single items</a></li>
-                      <li><a class="dropdown-item" href="#">Bundles</a></li>
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <li><a className="dropdown-item" href="#">Single items</a></li>
+                      <li><a className="dropdown-item" href="#">Bundles</a></li>
                     </ul>
                   </div>
 
-                  <div class="col-md-6 col-xl-3">
-                    <button class="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <div className="col-md-6 col-xl-3">
+                    <button className="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                       Currency
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <li><a class="dropdown-item" href="#">USD</a></li>
-                      <li><a class="dropdown-item" href="#">Ethereum</a></li>
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <li><a className="dropdown-item" href="#">USD</a></li>
+                      <li><a className="dropdown-item" href="#">Ethereum</a></li>
                     </ul>
                   </div>
                 </div>
-                <div class="row mt-2 mt-md-5">
+                <div className="row mt-2 mt-md-5">
                   {
                     nftBalance?.map((nft) => (
                       <>
-                        <div class="col-md-6 col-xl-3 mb-4" key={nft?.token_uri}>
-                          <div class="aboutitem">
-                            <div class="aboutitemImg">
+                        <div className="col-md-6 col-xl-3 mb-4" key={nft?.token_uri}>
+                          <div className="aboutitem">
+                            <div className="aboutitemImg">
                               <img
                                 src={nft?.image_url}
                                 style={{
                                   width: "100%",
-                                  "object-fit": "cover",
+                                  objectFit: "cover",
                                   height: "250px",
                                   cursor: "pointer"
                                 }}
@@ -217,21 +217,21 @@ const Collection = ({ collection }) => {
                                 }}
                               />
                             </div>
-                            <div class="bgdarkbluecolor aboutitemcnt">
-                              <div class="itemtitlecode">
-                                <h2 class="textgraycolor">{nft?.name}</h2>
-                                <h3 class="textwhitecolor">
+                            <div className="bgdarkbluecolor aboutitemcnt">
+                              <div className="itemtitlecode">
+                                <h2 className="textgraycolor">{nft?.name}</h2>
+                                <h3 className="textwhitecolor">
                                   {
                                     nft?.metadata?.name ? nft?.metadata?.name :
                                       nft?.token_id ? nft?.token_id : ""
                                   }
                                 </h3>
                               </div>
-                              <div class="itemtitlePrice">
-                                <h2 class="textgraycolor">Price</h2>
-                                <h3 class="textwhitecolor">
+                              <div className="itemtitlePrice">
+                                <h2 className="textgraycolor">Price</h2>
+                                <h3 className="textwhitecolor">
                                   <img src="../images/priceicon.svg" /> <strong>0,006</strong></h3>
-                                <h4 class="textgraycolor"><span>
+                                <h4 className="textgraycolor"><span>
                                   <img src="../images/hearticon.svg" /></span> 0</h4>
                               </div>
                             </div>
