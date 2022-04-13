@@ -5,7 +5,7 @@ import Loader from '../components/Common/Loader';
 import { useIPFS } from '../hooks/Web3/useIPFS';
 const category = ['Search by Title', 'Search by Author Address', 'Search by Contract Address']
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./../components/Common/Logos";
-import NFTMasonry from '../components/NFTS/NFTMasonry';
+import NFTHeadlessDesign from '../components/NFTS/NFTHeadlessDesign';
 const menuItems = [
     {
         key: "eth",
@@ -79,6 +79,8 @@ const SearchEngine = ({ }) => {
             const NFTs = await Moralis.Web3API.account.getNFTs(options);
             data = await nftBalanceJson(NFTs)
         }
+        if (data)
+            data = data?.filter((nft) => nft.image_url !== undefined)
         setLoader(false)
         setsearchResultNFTs([]);
         setsearchResultNFTs(data);
@@ -185,18 +187,23 @@ const SearchEngine = ({ }) => {
                                         searchResultNFTs && searchResultNFTs?.length > 0
                                             ? (
                                                 <>
-                                                    <XMasonry>
-                                                        {searchResultNFTs?.map((nft) => (
-                                                            <XBlock key={searchResultNFTs?.id}>
-                                                                {
-                                                                    nft?.image_url ? (
-                                                                        <NFTMasonry nft={nft}></NFTMasonry>
-                                                                    ) : null
-                                                                }
-
-                                                            </XBlock>
-                                                        ))}
-                                                    </XMasonry>
+                                                    <div className='row justify-content-left'>
+                                                        <div align="center">
+                                                            <div className='row justify-content-ceneter px-4'>
+                                                                <div className="row mt-2 mt-md-5">
+                                                                    {
+                                                                        searchResultNFTs?.map((nft) => (
+                                                                            <>
+                                                                                <NFTHeadlessDesign
+                                                                                    title={"Open NFT"}
+                                                                                    price={false}
+                                                                                    nft={nft} />
+                                                                            </>
+                                                                        ))}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </>
                                             ) :
                                             <><h1 className='text-center pt-5'>Try Another Search</h1></> 

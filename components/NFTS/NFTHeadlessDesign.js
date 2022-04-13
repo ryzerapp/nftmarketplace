@@ -5,7 +5,7 @@ import { useMoralis, useWeb3ExecuteFunction } from 'react-moralis';
 import { useQueryClient } from 'react-query';
 import toast from 'react-hot-toast';
 import http from '../../utils/http';
-export default function NFTHeadlessDesign({ nft, title: openDialogTitle }) {
+export default function NFTHeadlessDesign({ nft, title: openDialogTitle, price = true }) {
     const router = useRouter()
     const { state: { nftTokenAddress } } =
         useWeb3();
@@ -110,13 +110,17 @@ export default function NFTHeadlessDesign({ nft, title: openDialogTitle }) {
                             }
                         </h3>
                     </div>
-                    <div className="itemtitlePrice">
-                        <h2 className="textgraycolor">Price</h2>
-                        <h3 className="textwhitecolor">
-                            <img src="../images/priceicon.svg" /> <strong>0,006</strong></h3>
-                        <h4 className="textgraycolor"><span>
-                            <img src="../images/hearticon.svg" /></span> 0</h4>
-                    </div>
+                    {price ?
+                        <>
+                            <div className="itemtitlePrice">
+                                <h2 className="textgraycolor">Price</h2>
+                                <h3 className="textwhitecolor">
+                                    <img src="../images/priceicon.svg" /> <strong>0,006</strong></h3>
+                                {/* <h4 className="textgraycolor"><span> */}
+                                {/* <img src="../images/hearticon.svg" /></span> 0</h4> */}
+                            </div>
+                        </> : <></>}
+
                 </div>
             </div>
         </div >
