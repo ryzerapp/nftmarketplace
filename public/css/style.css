@@ -8683,8 +8683,6 @@ a:hover{text-decoration:none;-moz-transition:all .2s;-webkit-transition:all .2s;
 .textgreencolor{color:#4F8A60;}
 .btnlightblue{background:#019DEA;font-weight:500;font-size:15px;}
 .btndarkblue{background:#0E2542;font-weight:500;font-size:15px;}
-button.btn{border:none;padding:20px 20px;min-width:180px;border-radius:5px;color:#fff;text-align:center;}
-button.btn:hover,button.btn:focus{background:#000;color:#fff;outline:none;box-shadow:none;}
 .filterbtn{position:relative;border:1px solid rgba(94,102,125,0.7);border-radius:10px;background:none;font-weight:400;font-size:14px;color:#fff;padding:10px 20px;width:100%;}
 .blueScroll::-webkit-scrollbar{width:5px;border-radius:10px;}
 .blueScroll::-webkit-scrollbar-track{background:rgba(62,82,108,1);border-radius:10px;border:2px solid #050d1d;}
