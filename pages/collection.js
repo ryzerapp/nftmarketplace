@@ -68,7 +68,46 @@ const Collection = () => {
     <Layout>
       <div className='container'>
         <div className='row justify-content-center  pt-70'>
-          <XMasonry>
+          {collections?.map((collection) => (
+            <>
+              <div class="col-md-6 col-xl-3 mb-4">
+                <div class="aboutitem">
+                  <div class="aboutitemImg">
+                    <img
+                      src={collection?.image_url}
+                      style={{
+                        width: "100%",
+                        "object-fit": "cover",
+                        height: "250px",
+                        cursor: "pointer"
+                      }}
+                      onClick={() => {
+                        router.push(`/nft/${collection?.token_id}`)
+                      }
+                      }
+                      onError={({ currentTarget }) => {
+                        currentTarget.onerror = null; // prevents looping
+                        currentTarget.src = "../images/notfoundimage.png";
+                      }}
+                    />
+                    <button type='button' className='default-btn border-radius-5' onClick={() =>
+                      router.push(`/collection-nft-details/${collection?.token_address}`)}>
+                      Open Collection
+                    </button>
+                  </div>
+                  <div class="bgdarkbluecolor aboutitemcnt">
+                    <div class="itemtitlecode">
+                      <h2 class="textgraycolor">{collection?.name}</h2>
+                    </div>
+                    <div class="itemtitlePrice">
+                      <h2 class="textgraycolor">{collection?.contract_type}</h2>
+                    </div>
+                  </div>
+                </div>
+              </div >
+            </>
+          ))}
+          {/* <XMasonry>
             {collections?.map((collection) => (
               <XBlock key={collection?.token_address}>
                 {
@@ -101,7 +140,7 @@ const Collection = () => {
                 }
               </XBlock>
             ))}
-          </XMasonry>
+          </XMasonry> */}
         </div>
       </div>
     </Layout>

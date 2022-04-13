@@ -4946,26 +4946,27 @@ Featured Area
 .featured-tab-area .tabs li {
   display: inline-block;
   line-height: initial;
-  margin-right: 20px;
 }
 
 .featured-tab-area .tabs li:last-child {
   margin-right: 0;
 }
-
 .featured-tab-area .tabs li a {
   display: inline-block;
   position: relative;
-  color: var(--titleColor);
+  color: var(--whiteColor);
   padding: 13px 26px 10px;
-  background-color: #e5e5e5;
-  border-radius: 5px;
+  background-color:var(--darkBg);
+  border:1px solid white;
   cursor: pointer;
 }
-
+.featured-tab-area .tabs li a:hover {
+  color: var(--pinkColor);
+}
 .featured-tab-area .tabs li.active a {
   background-color: var(--pinkColor);
   color: var(--whiteColor);
+  border-radius: 10;
 }
 
 .featured-tab-area .tabs li.current a {
@@ -5293,7 +5294,23 @@ Featured Area
   -webkit-transform: translateY(-50%) translateX(-50%);
   transform: translateY(-50%) translateX(-50%);
 }
-
+.aboutitem .aboutitemImg .default-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: 15px;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-50%) translateX(-50%);
+  transform: translateY(-50%) translateX(-50%);
+}
+.aboutitemImg:hover .default-btn {
+  opacity: 1;
+  margin-top:0;
+  visibility: visible;
+}
 .featured-card .content {
   padding: 20px 15px 25px;
 }
