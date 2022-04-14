@@ -10779,6 +10779,7 @@ select:focus {
         line-height: 50px;
         font-weight: 700;
         margin-bottom: 50px;
+        color:'white';
         text-transform: uppercase; }
     .footer .subscribe-box .icon {
       width: 100%;
