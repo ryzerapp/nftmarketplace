@@ -3,12 +3,6 @@ import Pagination from '../components/Common/Pagination';
 const BlogOne = () => {
   return (
     <>
-      {/* <PageBanner
-        bannerHeading='Blog Left Sidebar'
-        parentTitle='Community'
-        pageTitle='Blog Left Sidebar'
-        bg='inner-bg1'
-      /> */}
       <div className='blog-area-two pt-100 pb-70'>
         <div className='container'>
           <div className='section-title'>

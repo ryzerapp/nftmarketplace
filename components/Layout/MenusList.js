@@ -51,33 +51,7 @@ const MenusList = ({ user }) => {
 								<a className="nav-link">Activity</a>
 							</Link>
 						</li>
-						<li className="nav-item">
-							<a href="#" className="nav-link">
-								Collection
-								<i className="ri-arrow-down-s-line"></i>
-							</a>
-							<ul className="dropdown-menu">
-								<li className="nav-item">
-									<Link
-										href={!web3Authentication ? "/add-wallet" : "/collection"}
-										activeClassName="active"
-									>
-										<a className="nav-link">Collection</a>
-									</Link>
-								</li>
 
-								<li className="nav-item">
-									<Link
-										href={!web3Authentication ? "/add-wallet" : "/create-new-collection"}
-										activeClassName="active"
-									>
-										<a className="nav-link">
-											Create Collection
-										</a>
-									</Link>
-								</li>
-							</ul>
-						</li>
 
 						<li className="nav-item">
 							<a href="#" className="nav-link">
@@ -106,28 +80,12 @@ const MenusList = ({ user }) => {
 							</ul>
 						</li>
 						<li className="nav-item">
-							<a href="#" className="nav-link">
-								NFT'S
-								<i className="ri-arrow-down-s-line"></i>
-							</a>
-							<ul className="dropdown-menu">
-								<li className="nav-item">
-									<Link
-										href={!web3Authentication ? "/add-wallet" : "/play-nft-game"}
-										activeClassName="active"
-									>
-										<a className="nav-link">Play Game</a>
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link
-										href={!web3Authentication ? "/add-wallet" : "/create-new-nft"}
-										activeClassName="active"
-									>
-										<a className="nav-link">Create New NFT</a>
-									</Link>
-								</li>
-							</ul>
+							<Link
+								href={!web3Authentication ? "/add-wallet" : "/game"}
+								activeClassName="active"
+							>
+								<a className="nav-link">Play Game</a>
+							</Link>
 						</li>
 						{web3Authentication && (
 							<li className="nav-item" style={{ display: "flex" }}>
@@ -144,10 +102,30 @@ const MenusList = ({ user }) => {
 										</Link>
 									</li>
 									<li className="nav-item">
-										<Link href="/#" activeClassName="active">
+										<Link
+											href={!web3Authentication ? "/add-wallet" : "/collection"}
+											activeClassName="active"
+										>
+											<a className="nav-link">My Collection</a>
+										</Link>
+									</li>
+
+									<li className="nav-item">
+										<Link
+											href={!web3Authentication ? "/add-wallet" : "/create-new-collection"}
+											activeClassName="active"
+										>
 											<a className="nav-link">
-												Notifications
+												Create Collection
 											</a>
+										</Link>
+									</li>
+									<li className="nav-item">
+										<Link
+											href={!web3Authentication ? "/add-wallet" : "/create-new-nft"}
+											activeClassName="active"
+										>
+											<a className="nav-link">Create New NFT</a>
 										</Link>
 									</li>
 								</ul>
