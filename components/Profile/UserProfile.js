@@ -129,7 +129,7 @@ const UserProfile = () => {
                       height: 130
                     }}
                     src={
-                      data?.user?.profile_photo ? data?.user?.profile_photo : `"../images/authorproicon01.jpeg"`
+                      data?.user?.profile_photo ? data?.user?.profile_photo : `../images/authorproicon01.jpeg`
 
                     } alt="img" /></div>
                 </div>
