@@ -79,14 +79,32 @@ const MenusList = ({ user }) => {
 								</li>
 							</ul>
 						</li>
-						<li className="nav-item">
-							<Link
-								href={"/game"}
-								activeClassName="active"
-							>
-								<a className="nav-link">Play Game</a>
-							</Link>
+						<li className="nav-item" style={{ display: "flex" }}>
+							<a className="nav-link">Crypto Game
+								<i className="ri-arrow-down-s-line"></i>
+							</a>
+							<span style={{ color: 'white' }}>{user?.username}</span>
+							<ul className="dropdown-menu">
+								<li className="nav-item">
+									<Link
+										href={"/game"}
+										activeClassName="active"
+									>
+										<a className="nav-link">How It's Work?</a>
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link
+										href={"/play-nft-game"}
+										activeClassName="active"
+									>
+										<a className="nav-link">Generate Avatar</a>
+									</Link>
+								</li>
+							</ul>
 						</li>
+
+
 						{web3Authentication && (
 							<li className="nav-item" style={{ display: "flex" }}>
 								<a href="#" className="nav-link" style={avatarStyle}>
