@@ -83,7 +83,6 @@ const MenusList = ({ user }) => {
 							<a className="nav-link">Crypto Game
 								<i className="ri-arrow-down-s-line"></i>
 							</a>
-							<span style={{ color: 'white' }}>{user?.username}</span>
 							<ul className="dropdown-menu">
 								<li className="nav-item">
 									<Link

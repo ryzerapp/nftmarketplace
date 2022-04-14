@@ -112,17 +112,17 @@ const UserProfile = () => {
       <div className='author-profile-area'>
         <div className='container'>
           <div className='row'>
-            <div class="authoreprofile authoSm mt-0 mt-md-5 pt-0 pt-md-2">
-              <div class="col-lg-12">
-                <div class="authoreproimg">
-                  <div class="authoreproimgBox">
-                    <img class="img-fluid d-none d-md-block"
+            <div className="authoreprofile authoSm mt-0 mt-md-5 pt-0 pt-md-2">
+              <div className="col-lg-12">
+                <div className="authoreproimg">
+                  <div className="authoreproimgBox">
+                    <img className="img-fluid d-none d-md-block"
 
                       src="../images/authoprofilebannerimg.jpeg" alt="img" />
-                    <img class="img-fluid d-block d-md-none"
+                    <img className="img-fluid d-block d-md-none"
                       src="../images/authprobannersm01.jpeg" alt="img" />
                   </div>
-                  <div class="authoreproicon"><img
+                  <div className="authoreproicon"><img
                     style={{
                       borderRadius: "50%",
                       width: 130,
@@ -133,23 +133,23 @@ const UserProfile = () => {
 
                     } alt="img" /></div>
                 </div>
-                <div class="auProfileDetail">
-                  <div class="joincommunity auSocial">
+                <div className="auProfileDetail">
+                  <div className="joincommunity auSocial">
                     <ul>
-                      <li><a href="#"><img class="img-fluid" src="../images/activityicon.svg" alt="img" /></a></li>
-                      <li><a href="#"><img class="img-fluid" src="../images/discordbutton.svg" alt="img" /></a></li>
-                      <li><a href="#"><img class="img-fluid" src="../images/insta.svg" alt="img" /></a></li>
-                      <li><a href="#"><img class="img-fluid" src="../images/twitter.svg" alt="img" /></a></li>
+                      <li><a href="#"><img className="img-fluid" src="../images/activityicon.svg" alt="img" /></a></li>
+                      <li><a href="#"><img className="img-fluid" src="../images/discordbutton.svg" alt="img" /></a></li>
+                      <li><a href="#"><img className="img-fluid" src="../images/insta.svg" alt="img" /></a></li>
+                      <li><a href="#"><img className="img-fluid" src="../images/twitter.svg" alt="img" /></a></li>
                     </ul>
 
                   </div>
-                  <div class="prCnt">
-                    <h2 class="textwhitecolor">{
+                  <div className="prCnt">
+                    <h2 className="textwhitecolor">{
                       data?.user?.username ? data?.user?.username : "Unnamed"
                     }</h2>
-                    <h3 class="textgraycolor mt-3 mb-4"><span style={{ color: '#f14d5d' }}>Last updated:</span> {data?.user?.updated_at}</h3>
-                    <p class="textgraycolor">{data?.user?.walletAddress}</p>
-                    <p class="textgraycolor">{data?.user?.professional_summery}</p>
+                    <h3 className="textgraycolor mt-3 mb-4"><span style={{ color: '#f14d5d' }}>Last updated:</span> {data?.user?.updated_at}</h3>
+                    <p className="textgraycolor">{data?.user?.walletAddress}</p>
+                    <p className="textgraycolor">{data?.user?.professional_summery}</p>
                   </div>
                 </div>
               </div>
@@ -301,7 +301,7 @@ const UserProfile = () => {
                         <div className='row justify-content-left'>
                           <div align="center">
                             <div className='row justify-content-ceneter px-4'>
-                              <div class="row mt-2 mt-md-5">
+                              <div className="row mt-2 mt-md-5">
                                 {
                                   data?.user?.nfts?.filter((nft) => !nft.nft_is_minted)?.map((nft) => (
                                     <>

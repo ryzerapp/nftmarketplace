@@ -62,7 +62,7 @@ const NFTListComponentBlockChain = ({ brefetch, walletAddressPassed }) => {
   return (
     <>
       <div className='row justify-content-center'>
-        <div class="row mt-2 mt-md-5">
+        <div className="row mt-2 mt-md-5">
           {
             nftBalance?.map((nft) => (
               <>
