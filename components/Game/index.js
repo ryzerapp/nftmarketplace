@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 import { useGameNft } from '../../hooks/Web2/useNftOfCollection'
 
@@ -5,6 +6,7 @@ export default function index() {
     const { data, isFetched, isLoading } = useGameNft({
         limit: 10
     })
+    console.log(data);
     return (
         <>
             <div className="hero-area">
@@ -71,7 +73,6 @@ export default function index() {
                                                         <h4 className="title">
                                                             Git to Friend
                                                         </h4>
-                                                        {/* <a href="#" className="link">read more <i className="fas fa-arrow-right"></i></a> */}
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,9 +154,10 @@ export default function index() {
                                 </h2>
                                 <p className="text">
                                     The India's First Crypto Gaming Marketplace.
-                                    <br></br>
-                                    Recently generated Avatar.
                                 </p>
+                                <h5 className="subtitle">
+                                    Recently generated Avatar.
+                                </h5>
                             </div>
                         </div>
                     </div>
@@ -167,39 +169,44 @@ export default function index() {
                                         <table className="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">USER</th>
-                                                    <th scope="col">BET ID</th>
-                                                    <th scope="col">BET AMOUNT</th>
-                                                    <th scope="col">CHANCE</th>
-                                                    <th scope="col">GAME</th>
-                                                    <th scope="col">PROFIT</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Avatar</th>
+                                                    <th scope="col">Edition</th>
+                                                    <th scope="col">Created Date</th>
+                                                    <th scope="col">Created By</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <img src="../images/people/p1.png" alt="" />
-                                                        Tom Bass
-                                                    </td>
-                                                    <td>
-                                                        b799b8724b
-                                                    </td>
-                                                    <td>
-                                                        <img src="../images/icon1.png" alt="" />
-                                                        0.00000051
-                                                    </td>
-                                                    <td>70%</td>
-                                                    <td>Dice</td>
-                                                    <td>
-                                                        <img src="../images/icon1.png" alt="" />
-                                                        0.00000051
-                                                    </td>
-                                                </tr>
+                                                {data && data?.map((nft) => {
+                                                    return (
+                                                        <tr key={nft?.id}>
+                                                            <td>
+                                                                {nft?.name}
+                                                            </td>
+                                                            <td>
+                                                                <Link href={`/nft/${nft?.id}`}>
+                                                                    <img
+                                                                        style={{ cursor: 'pointer' }}
+                                                                        src={nft?.image_url} alt="" />
+                                                                </Link>
+                                                            </td>
+                                                            <td>
+                                                                {nft?.edition}
+                                                            </td>
+                                                            <td>
+                                                                {new Date(nft?.created_at).toDateString()}
+                                                            </td>
+                                                            <td>
+                                                                {nft?.author ? nft?.autor?.username ? nft?.autor?.username : "Cryptonium" : 'Cryptonium'}
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                })}
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                                <div className="tab-pane fade" id="pills-my-bets" role="tabpanel" aria-labelledby="pills-my-bets-tab">
+                                {/* <div className="tab-pane fade" id="pills-my-bets" role="tabpanel" aria-labelledby="pills-my-bets-tab">
                                     <div className="responsive-table">
                                         <table className="table">
                                             <thead>
@@ -614,7 +621,7 @@ export default function index() {
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
