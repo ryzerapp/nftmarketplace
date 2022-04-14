@@ -10223,7 +10223,7 @@ select:focus {
       bottom: -35px;
       max-width: 27%; }
   .breadcrumb-area.bc-affiliate {
-    padding: 260px 0px 212px; }
+    padding: 100px 0px 212px; }
     .breadcrumb-area.bc-affiliate .bc-img {
       position: absolute;
       right: 0px;
@@ -12776,6 +12776,7 @@ select:focus {
     font-size: 28px;
     line-height: 38px;
     font-weight: 700;
+    color: white;
     text-transform: uppercase;
     margin-bottom: 14px; }
   .single-deposit-bonus .content p {
@@ -12860,13 +12861,10 @@ select:focus {
 /* Awards Area End */
 /*  How Play Area Start */
 .how-play {
-  padding: 112px 0px 593px;
-  background: url(../images/how-play.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  padding: 112px 0px 0px;
   background-position: center; }
   .how-play .section-heading {
-    margin-bottom: 59px; }
+    margin-bottom: 40px; }
 
 .single-h-play {
   text-align: center; }
@@ -12913,6 +12911,7 @@ select:focus {
     line-height: 38px;
     font-weight: 700;
     text-transform: uppercase;
+    color:'white' !important;
     margin-bottom: 14px; }
   .single-process .text {
     font-size: 24px;

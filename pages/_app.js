@@ -38,7 +38,6 @@ function MyApp({ Component, pageProps }) {
 							content="initial-scale=1.0, width=device-width"
 						/>
 						<script src="../js/popper.min.js"></script>
-						<script src="../js/bootstrap.min.js"></script>
 						<script src="../js/plugin.js"></script>
 						<script src="../js/TweenMax.js"></script>
 						<script src="../js/mousemoveparallax.js"></script>

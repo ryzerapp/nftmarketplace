@@ -81,7 +81,7 @@ const MenusList = ({ user }) => {
 						</li>
 						<li className="nav-item">
 							<Link
-								href={!web3Authentication ? "/add-wallet" : "/game"}
+								href={"/game"}
 								activeClassName="active"
 							>
 								<a className="nav-link">Play Game</a>
