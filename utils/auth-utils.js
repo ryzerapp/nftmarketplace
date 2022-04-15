@@ -4,7 +4,7 @@ import { AUTH_CRED, TOKEN } from "./constants";
 
 export function setAuthCredentials(token, permissions) {
   Cookie.set(AUTH_CRED, JSON.stringify({ token, permissions }), {
-    expires: 1,
+    expires: 5000,
   });
 }
 export function removeAuthCredentials() {
