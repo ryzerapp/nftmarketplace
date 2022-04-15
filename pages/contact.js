@@ -1,16 +1,47 @@
-import InvolvedArea from '../components/Common/InvolvedArea';
-
 const Contact = () => {
   return (
     <>
-      {/* <PageBanner
-        bannerHeading='Contact Us'
-        parentTitle='Contact Us'
-        pageTitle=''
-        bg='inner-bg2'
-      /> */}
+      <section class="contact">
+        <img class="left-img" src="../images/contact-left.png" alt="" />
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+              <div class="section-heading">
+                <h5 class="subtitle">
+                  Contact Us
+                </h5>
+                <h2 class="title">
+                  Get in Touch
+                </h2>
+                <p class="text">
+                  If you have any query then feel free to reach out to us.
+                  <br />
+                  Our team we get back you within 24hr.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="col-lg-6">
+              <div class="contact-form-wrapper">
+                <div class="contact-box">
+                  <h4 class="title">
+                    Send Us a Message
+                  </h4>
+                  <form action="#">
+                    <input type="text" class="input-field" placeholder="Enter Your Full Name" />
+                    <input type="email" class="input-field" placeholder="Enter Your Email Address" />
+                    <textarea class="input-field textarea" placeholder="Message *" ></textarea>
+                    <button type="submit" class="mybtn1">SUBMIT NOW</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div className='contact-info-area  pt-100 pb-70'>
+      {/* <div className='contact-info-area  pt-100 pb-70'>
         <div className='container'>
           <div className='section-title text-center'>
             <h2>Contact Info</h2>
@@ -162,8 +193,7 @@ const Contact = () => {
             </form>
           </div>
         </div>
-      </div>
-      <InvolvedArea />
+      </div> */}
     </>
   );
 };

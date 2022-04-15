@@ -9,7 +9,7 @@ This files table contents are outlined below>>>>>
 
 *******************************************
 *******************************************
-** - Default CSS Style 
+** - Default CSS Style
 ** - Section Title Style
 ** - Navbar Area Style
 ** - Main Banner Area CSS Style
@@ -384,7 +384,7 @@ Default Btn CSS
 }
 
 /*================================
-Section Title Style 
+Section Title Style
 ===================================*/
 .section-title span {
   font-size: 15px;
@@ -1752,7 +1752,7 @@ Navbar Area
 Navbar Area End
 ===================================*/
 /*=================================
-Main Banner Area 
+Main Banner Area
 ====================================*/
 .banner-area {
   background-color: #0a1831;
@@ -2660,7 +2660,7 @@ Inner Banner Area
 }
 
 /*=================================
-Trending Area 
+Trending Area
 ====================================*/
 .trending-slider {
   position: relative;
@@ -6705,6 +6705,7 @@ Blog Area
   margin-bottom: 30px;
   background-color: var(--whiteColor);
   border-radius: 15px;
+  overflow: hidden;
 }
 
 .blog-card .blog-img {
@@ -8360,7 +8361,7 @@ Footer Area
 }
 
 /*=================================
-Go Top Area 
+Go Top Area
 ====================================*/
 .go-top {
   position: fixed;
@@ -9513,7 +9514,7 @@ header{padding:15px 0;background:#050D1D;box-shadow:0px 4px 4px rgb(0 0 0 / 25%)
 .logo{width:100%;justify-content:center;}
 .bannercntSec{flex-direction:revert;}
 .bannercnt{padding:40px 0 0;}
-.bannerImg-sm { position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; align-content: center; } 
+.bannerImg-sm { position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; align-content: center; }
 .bannerImg-sm img { margin: auto; display: block; }
 /*.slick-slide { padding: 0; }*/
 

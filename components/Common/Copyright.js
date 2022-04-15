@@ -17,13 +17,13 @@ const Copyright = () => {
 
 								<ul className="copy-right-list">
 									<li>
-										<Link href="/terms-condition">
+										<Link href="/">
 											<a>Terms & Conditions</a>
 										</Link>
 									</li>
 
 									<li>
-										<Link href="/privacy-policy">
+										<Link href="/">
 											<a>Privacy Policy</a>
 										</Link>
 									</li>
