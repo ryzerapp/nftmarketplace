@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
-import "../public/fonts/remixicon.css";
 import "../public/css/bootstrap.min.css";
 import "../public/css/style.css";
 
 import "../public/css/responsive.css";
+// import "../public/css/jquery-ui-min.css";
+// import "../public/css/fancybox.css";
+// import "../public/css/owl.carousel.min.css";
+import "../public/css/remixicon.css";
+import "../public/css/flaticon.css";
+import "../public/css/aos.css";
+import "../public/css/dark-theme.css";
+
 
 import GoTop from "../components/Shared/GoTop";
 import { ModalProvider } from "../components/ui/modal/modal.context";
