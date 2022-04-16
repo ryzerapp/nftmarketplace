@@ -320,143 +320,143 @@ const CreateCollection = () => {
           </div>
         </div>
       </div> */}
-      <div class="create-items mt-3 pt-3 mt-md-4 pt-md-4 mt-lg-5 pt-lg-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-7 create-form-outer">
-              <div class="title-heading mb-4 pb-2 pb-lg-0 ">
-                <h2 class="headingWh ">Create collectible item</h2>
+      <div className="create-items mt-3 pt-3 mt-md-4 pt-md-4 mt-lg-5 pt-lg-5">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-7 create-form-outer">
+              <div className="title-heading mb-4 pb-2 pb-lg-0 ">
+                <h2 className="headingWh ">Create collectible item</h2>
                 <p>Meet the rules of NFT-art placement in <a href="#">our help center</a></p>
               </div>
-              <div class="create-form">
+              <div className="create-form">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <div class="row">
+                  <div className="row">
 
-                    <div class="col-6 pb-md-4 pb-3 ">
-                      <div class="img-choosen">
-                        <img src="../images/single.svg" class="img-fluid" alt="choose img" />
+                    <div className="col-6 pb-md-4 pb-3 ">
+                      <div className="img-choosen">
+                        <img src="../images/single.svg" className="img-fluid" alt="choose img" />
                         <label>Single Image</label>
                       </div>
                     </div>
-                    <div class="col-6 pb-md-4 pb-3 ">
-                      <div class="img-choosen">
-                        <img src="../images/multiple.svg" class="img-fluid" alt="choose img" />
+                    <div className="col-6 pb-md-4 pb-3 ">
+                      <div className="img-choosen">
+                        <img src="../images/multiple.svg" className="img-fluid" alt="choose img" />
                         <label>Multiple Image</label>
                       </div>
                     </div>
 
-                    <div class="col-lg-12 pb-md-4 pb-3">
+                    <div className="col-lg-12 pb-md-4 pb-3">
                       <label>Upload file</label>
-                      <div class="custom-file-upload">
-                        <div class="file-upload">
-                          <div class="image-upload-wrap">
-                            <input class="file-upload-input"
+                      <div className="custom-file-upload">
+                        <div className="file-upload">
+                          <div className="image-upload-wrap">
+                            <input className="file-upload-input"
                               {...register("image")}
                               type='file'
                               accept="image/*" />
-                            <div class="drag-text">
-                              <img src="../images/upload-icon.svg" class="img-fluid" alt="upload icon" />
+                            <div className="drag-text">
+                              <img src="../images/upload-icon.svg" className="img-fluid" alt="upload icon" />
                             </div>
                           </div>
-                          <div class="file-upload-content mt-3">
-                            <div class="title-wrapouter">
-                              <div class="uploaded-img">
-                                <img class="file-upload-image" src="#" alt="your image" />
+                          <div className="file-upload-content mt-3">
+                            <div className="title-wrapouter">
+                              <div className="uploaded-img">
+                                <img className="file-upload-image" src="#" alt="your image" />
                               </div>
-                              <div class="image-title-wrap">
-                                <span class="image-title">Uploaded Image Title</span>
-                                <button type="button" onClick="removeUpload()" class="remove-image"> Remove</button>
+                              <div className="image-title-wrap">
+                                <span className="image-title">Uploaded Image Title</span>
+                                <button type="button" onClick="removeUpload()" className="remove-image"> Remove</button>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-7 col-6 pb-md-4 pb-3">
+                    <div className="col-md-7 col-6 pb-md-4 pb-3">
                       <label>Price</label>
                       <input type="text"
                         {...register("price")}
-                        placeholder="Price" class="form-control" />
+                        placeholder="Price" className="form-control" />
                     </div>
-                    <div class="col-md-5 col-6 pb-md-4 pb-3">
+                    <div className="col-md-5 col-6 pb-md-4 pb-3">
                       <label>Open for Bids</label>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input"
+                      <div className="form-check form-switch">
+                        <input className="form-check-input"
                           {...register("openforbid")}
                           type="checkbox" role="switch" checked />
                       </div>
                     </div>
-                    <div class="col-md-7 pb-md-4 pb-3">
+                    <div className="col-md-7 pb-md-4 pb-3">
                       <label>Choose collection</label>
-                      <div class="btn-group w-100">
-                        <button class="filterbtn dropdown-toggle text-start"
+                      <div className="btn-group w-100">
+                        <button className="filterbtn dropdown-toggle text-start"
                           type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                           New collection
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
-                          <li><a class="dropdown-item" href="#">Memes</a></li>
-                          <li><a class="dropdown-item" href="#">Photography</a></li>
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+                          <li><a className="dropdown-item" href="#">Memes</a></li>
+                          <li><a className="dropdown-item" href="#">Photography</a></li>
                         </ul>
                       </div>
                     </div>
-                    <div class="col-xl-9 pb-md-4 pb-3">
+                    <div className="col-xl-9 pb-md-4 pb-3">
                       <label>Item Name</label>
                       <input type="text"
                         {...register("name")}
-                        placeholder="Enter Name" class="form-control" />
+                        placeholder="Enter Name" className="form-control" />
                     </div>
-                    <div class="col-xl-9 pb-md-4 pb-3">
+                    <div className="col-xl-9 pb-md-4 pb-3">
                       <label>Description</label>
-                      <textarea class="form-control"
+                      <textarea className="form-control"
                         {...register("description")}
                         placeholder="Enter the description"></textarea>
                     </div>
-                    <div class="col-md-7 col-6 pb-md-4 pb-3">
+                    <div className="col-md-7 col-6 pb-md-4 pb-3">
                       <label>Royalties</label>
                       <input type="text"
                         {...register("royalties")}
-                        placeholder=" 0,10,20% or more" class="form-control" />
+                        placeholder=" 0,10,20% or more" className="form-control" />
                     </div>
-                    <div class="col-md-5 col-6 pb-md-4 pb-3">
+                    <div className="col-md-5 col-6 pb-md-4 pb-3">
                       <label>Unlock once purchased</label>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input"
+                      <div className="form-check form-switch">
+                        <input className="form-check-input"
                           {...register("purchased")}
                           type="checkbox" role="switch"
                           id="flexSwitchCheckChecked" checked />
                       </div>
                     </div>
 
-                    <div class="col-lg-12 pt-3 d-none d-lg-block ">
-                      <button class="btn btnlightblue m-auto m-md-0 d-table d-md-block">Create</button>
+                    <div className="col-lg-12 pt-3 d-none d-lg-block ">
+                      <button className="btn btnlightblue m-auto m-md-0 d-table d-md-block">Create</button>
                     </div>
                   </div>
                 </form>
               </div>
             </div>
-            <div class="col-lg-5 mt-5 mt-lg-0">
-              <div class="title-heading mb-4">
-                <h2 class="headingWh ">Preview of item</h2>
+            <div className="col-lg-5 mt-5 mt-lg-0">
+              <div className="title-heading mb-4">
+                <h2 className="headingWh ">Preview of item</h2>
               </div>
-              <div class="aboutitem">
-                <div class="aboutitemImg">
-                  <img class="img-fluid" src="../images/item-prev.png" alt="img" /></div>
-                <div class="bgdarkbluecolor aboutitemcnt">
-                  <div class="itemtitlecode">
-                    <h2 class="textgraycolor">Cryptosharks</h2>
-                    <h3 class="textwhitecolor">Cryptosharks #92991</h3>
+              <div className="aboutitem">
+                <div className="aboutitemImg">
+                  <img className="img-fluid" src="../images/item-prev.png" alt="img" /></div>
+                <div className="bgdarkbluecolor aboutitemcnt">
+                  <div className="itemtitlecode">
+                    <h2 className="textgraycolor">Cryptosharks</h2>
+                    <h3 className="textwhitecolor">Cryptosharks #92991</h3>
                   </div>
-                  <div class="itemtitlePrice">
-                    <h2 class="textgraycolor">Price</h2>
-                    <h3 class="textwhitecolor">
+                  <div className="itemtitlePrice">
+                    <h2 className="textgraycolor">Price</h2>
+                    <h3 className="textwhitecolor">
                       <img src="../images/priceicon.svg" /> <strong>0, 006</strong></h3>
-                    <h4 class="textgraycolor"><span>
+                    <h4 className="textgraycolor"><span>
                       <img src="../images/hearticon.svg" /></span> 56</h4>
                   </div>
                 </div>
               </div>
-              <div class="mt-4 pt-1 mb-2 ">
-                <button class="btn btnlightblue savebtn d-block m-auto d-lg-none">Save</button>
+              <div className="mt-4 pt-1 mb-2 ">
+                <button className="btn btnlightblue savebtn d-block m-auto d-lg-none">Save</button>
               </div>
 
 

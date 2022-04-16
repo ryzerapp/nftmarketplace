@@ -4,64 +4,64 @@ const ActivityArea = ({ activity = [], isLoading }) => {
 
   return (
     <>
-      <div class="activitySec mt-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <h2 class="headingWh mb-2 mb-md-4">Activity</h2>
+      <div className="activitySec mt-5">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <h2 className="headingWh mb-2 mb-md-4">Activity</h2>
             </div>
           </div>
-          {/* <div class="row">
-            <div class="col-md-12 col-lg-6">
-              <div class="row">
-                <div class="col-md-6 col-xl-4  mb-3 mt-2 mb-md-0 mt-md-0">
-                  <div class="btn-group">
-                    <button class="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          {/* <div className="row">
+            <div className="col-md-12 col-lg-6">
+              <div className="row">
+                <div className="col-md-6 col-xl-4  mb-3 mt-2 mb-md-0 mt-md-0">
+                  <div className="btn-group">
+                    <button className="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                       Event type
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <li><a class="dropdown-item" href="#">Listings</a></li>
-                      <li><a class="dropdown-item" href="#">Sales</a></li>
-                      <li><a class="dropdown-item" href="#">Bids</a></li>
-                      <li><a class="dropdown-item" href="#">Transfers</a></li>
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <li><a className="dropdown-item" href="#">Listings</a></li>
+                      <li><a className="dropdown-item" href="#">Sales</a></li>
+                      <li><a className="dropdown-item" href="#">Bids</a></li>
+                      <li><a className="dropdown-item" href="#">Transfers</a></li>
                     </ul>
                   </div>
                 </div>
 
 
-                <div class="col-md-6 col-xl-4">
-                  <div class="btn-group">
-                    <button class="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <div className="col-md-6 col-xl-4">
+                  <div className="btn-group">
+                    <button className="filterbtn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                       All chains
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <li><a class="dropdown-item" href="#">Ethereum</a></li>
-                      <li><a class="dropdown-item" href="#">Polygon</a></li>
-                      <li><a class="dropdown-item" href="#">Klaytn</a></li>
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <li><a className="dropdown-item" href="#">Ethereum</a></li>
+                      <li><a className="dropdown-item" href="#">Polygon</a></li>
+                      <li><a className="dropdown-item" href="#">Klaytn</a></li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-12 col-lg-6 activityTags 1d-flex justify-content-end d-none d-lg-flex">
-              <button class="btn btndarkblue">Bids</button>
-              <button class="btn btndarkblue">Listings</button>
-              <button class="btn btnlightblue">Clear All <img src="../images/closeicon.svg" alt="img" /></button>
+            <div className="col-md-12 col-lg-6 activityTags 1d-flex justify-content-end d-none d-lg-flex">
+              <button className="btn btndarkblue">Bids</button>
+              <button className="btn btndarkblue">Listings</button>
+              <button className="btn btnlightblue">Clear All <img src="../images/closeicon.svg" alt="img" /></button>
             </div>
           </div> */}
-          <div class="row mt-3 mt-md-5">
-            <div class="col-md-12">
-              <div class="activityTable">
+          <div className="row mt-3 mt-md-5">
+            <div className="col-md-12">
+              <div className="activityTable">
                 <table>
                   <tbody><tr>
                     <th>EVENT TYPE</th>
                     <th>ITEM</th>
-                    <th class=" text-end">PRICE</th>
-                    <th class="text-center">QUANTITY</th>
-                    <th class=" text-end">FROM</th>
-                    <th class=" text-end">TO</th>
-                    <th class=" text-end">VIEW</th>
-                    <th class=" text-end">TIME</th>
+                    <th className=" text-end">PRICE</th>
+                    <th className="text-center">QUANTITY</th>
+                    <th className=" text-end">FROM</th>
+                    <th className=" text-end">TO</th>
+                    <th className=" text-end">VIEW</th>
+                    <th className=" text-end">TIME</th>
                   </tr>
                     {
                       isLoading ?
@@ -72,35 +72,35 @@ const ActivityArea = ({ activity = [], isLoading }) => {
                           {activity && activity?.map((act) => {
                             return (
                               <tr>
-                                <td class="textwhitecolor offericon">
+                                <td className="textwhitecolor offericon">
                                   <img src="../images/handicon.svg" alt="img" /> Offer
                                 </td>
-                                <td class="textwhitecolor">
+                                <td className="textwhitecolor">
                                   {act?.token_id}
-                                  {/* <div class="actiCollect">
-                              <div class="activitItem"><img class="img-fluid" src="../images/activityItem01.svg" alt="img" /></div>
-                              <div class="actiCnt">
-                                <span class="textgraycolor">Jungle Freaks</span>
+                                  {/* <div className="actiCollect">
+                              <div className="activitItem"><img className="img-fluid" src="../images/activityItem01.svg" alt="img" /></div>
+                              <div className="actiCnt">
+                                <span className="textgraycolor">Jungle Freaks</span>
                                 Jungle Freaks by Trosley
-                                <div class="actiCntSm"><img class="img-fluid" src="../images/priceicon.svg" alt="img" /> 0,002</div>
+                                <div className="actiCntSm"><img className="img-fluid" src="../images/priceicon.svg" alt="img" /> 0,002</div>
                               </div>
                             </div> */}
                                 </td>
-                                <td class="textwhitecolor text-end">{act?.price && <img class="img-fluid" src="../images/priceicon.svg" alt="img" />}{act?.price ? act?.price : "---"}</td>
-                                <td class="textwhitecolor text-center">{act?.amount}</td>
-                                <td class="textbluecolor text-end">{act?.from_address == "0x0000000000000000000000000000000000000000" ? "null" : act?.from_address?.substring(1, 5) + "...."}</td>
-                                <td class="textbluecolor text-end"><a
+                                <td className="textwhitecolor text-end">{act?.price && <img className="img-fluid" src="../images/priceicon.svg" alt="img" />}{act?.price ? act?.price : "---"}</td>
+                                <td className="textwhitecolor text-center">{act?.amount}</td>
+                                <td className="textbluecolor text-end">{act?.from_address == "0x0000000000000000000000000000000000000000" ? "null" : act?.from_address?.substring(1, 5) + "...."}</td>
+                                <td className="textbluecolor text-end"><a
                                   style={{
                                     cursor: "pointer",
                                   }}
                                   href={`/author/${act?.to_address}`}
                                 >{act?.to_address?.substring(1, 5) + "...."}</a></td>
-                                <td class="textbluecolor text-end"><a
+                                <td className="textbluecolor text-end"><a
                                   style={{
                                     cursor: "pointer",
                                   }}
                                   href={`https://mumbai.polygonscan.com/tx/${act?.transaction_hash}`}>View On Blockchain</a></td>
-                                <td class="textbluecolor text-end"><div class="offericonSm"><img src="../images/handicon.svg" alt="img" /> Offer</div>{new Date(act?.block_timestamp)?.toDateString()}</td>
+                                <td className="textbluecolor text-end"><div className="offericonSm"><img src="../images/handicon.svg" alt="img" /> Offer</div>{new Date(act?.block_timestamp)?.toDateString()}</td>
                               </tr>
                             )
                           })}

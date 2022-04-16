@@ -38,12 +38,10 @@ function MyApp({ Component, pageProps }) {
 							content="initial-scale=1.0, width=device-width"
 						/>
 						<script src="../js/popper.min.js"></script>
-						<script src="../js/bootstrap.min.js"></script>
-						<script src="../js/plugin.js"></script>
+						{/* <script src="../js/plugin.js"></script> */}
 						<script src="../js/TweenMax.js"></script>
-						<script src="../js/mousemoveparallax.js"></script>
-						<script src="../js/main.js"></script>
-						{/* <script src="https://cdn.tailwindcss.com"></script> */}
+						{/* <script src="../js/mousemoveparallax.js"></script> */}
+						{/* <script src="../js/main.js"></script> */}
 					</Head>
 					<MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
 						<Web3ContextProvider>

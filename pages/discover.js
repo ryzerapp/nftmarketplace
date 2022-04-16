@@ -28,7 +28,7 @@ const Index = ({ data, trendingData }) => {
 
             <AuthorArea />
 
-            <BlogArea />
+            {/* <BlogArea /> */}
 
             <CollectionsArea />
 

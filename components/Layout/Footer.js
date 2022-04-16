@@ -81,23 +81,23 @@ const Footer = () => {
 								<h3>My Account</h3>
 								<ul className="footer-list">
 									<li>
-										<Link href="/authors">
-											<a>Authors</a>
-										</Link>
-									</li>
-									<li>
 										<Link href="/collection">
-											<a>Collection</a>
+											<a>My Collection</a>
 										</Link>
 									</li>
 									<li>
-										<Link href="/coming-soon">
-											<a>Coming Soon</a>
+										<Link href="/profile">
+											<a>My Profile</a>
 										</Link>
 									</li>
 									<li>
-										<Link href="/categories">
-											<a>Categories</a>
+										<Link href="/game">
+											<a>Game Center</a>
+										</Link>
+									</li>
+									<li>
+										<Link href="/create-new-collection">
+											<a>Create Collection</a>
 										</Link>
 									</li>
 								</ul>
@@ -109,18 +109,18 @@ const Footer = () => {
 								<h3>Resources</h3>
 								<ul className="footer-list">
 									<li>
-										<Link href="/help-center">
+										<Link href="/">
 											<a>Helps & Support</a>
 										</Link>
 									</li>
 									<li>
-										<Link href="/auction">
+										<Link href="/">
 											<a>Live Auctions</a>
 										</Link>
 									</li>
 
 									<li>
-										<Link href="/help-center">
+										<Link href="/">
 											<a>Help Center</a>
 										</Link>
 									</li>
@@ -139,7 +139,7 @@ const Footer = () => {
 								<h3>Company</h3>
 								<ul className="footer-list">
 									<li>
-										<Link href="/about">
+										<Link href="/">
 											<a>About Us</a>
 										</Link>
 									</li>
