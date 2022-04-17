@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 import { useIPFS } from '../../hooks/Web3/useIPFS';
 import { useWeb3 } from '../../providers/Web3Context';
 import Loader from '../Common/Loader';
-import NFTMasonry from './NFTMasonry';
+import NFTHeadlessDesign from './NFTHeadlessDesign';
 
 const NFTListComponentBlockChain = ({ brefetch, walletAddressPassed }) => {
 
@@ -62,21 +62,18 @@ const NFTListComponentBlockChain = ({ brefetch, walletAddressPassed }) => {
   return (
     <>
       <div className='row justify-content-center'>
-        <XMasonry  >
+        <div className="row mt-2 mt-md-5">
           {
             nftBalance?.map((nft) => (
-              <XBlock key={nft?.token_uri}>
-                {
-                  nft?.image_url ? (
-                    <NFTMasonry
-                      nft={nft}
-                    />
-                  ) : null
-                }
-
-              </XBlock>
+              <>
+                <NFTHeadlessDesign
+                  title={"Open NFT"}
+                  nft={nft} />
+              </>
             ))}
-        </XMasonry>
+        </div>
+        {/* 
+         */}
       </div>
     </>
   );

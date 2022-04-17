@@ -1,23 +1,38 @@
-import PageBanner from '../components/Common/PageBanner';
 import ActivityArea from '../components/Activity/ActivityArea';
 import TrendingArea from '../components/Common/TrendingArea';
 import baseUrl from "../utils/baseUrl";
-
+import Layout from '../components/Layout/Layout'
+import { useMoralis } from 'react-moralis';
+import { useWeb3 } from '../providers/Web3Context';
+import { useQuery } from 'react-query';
+import { useEffect } from 'react';
 const Activity = ({ trendingData }) => {
+
+  const { Moralis, isWeb3Enabled, isAuthenticated } = useMoralis();
+  const { state: { walletAddress, networkId } } = useWeb3();
+
+  const setData = async () => {
+    const options = { chain: networkId, address: walletAddress };
+    const polygonNFTs = await Moralis.Web3API.account.getNFTTransfers(options);
+    return polygonNFTs;
+  };
+
+  const { data: activity, isLoading, refetch } = useQuery(['useractivity'], setData, {
+    keepPreviousData: true,
+    enabled: false
+  });
+  console.log(activity);
+  useEffect(() => {
+    if (isWeb3Enabled && isAuthenticated)
+      refetch()
+  }, [isWeb3Enabled, networkId, walletAddress]);
+
   return (
-    <>
-      {/* <PageBanner
-        bannerHeading='Recent Activity'
-        parentTitle='Activity'
-        pageTitle=''
-        bg='inner-bg8'
-      /> */}
+    <Layout>
 
-      <ActivityArea />
-
-      <TrendingArea trendingData={trendingData} bg="trending-area-bg-two"/>
-
-    </>
+      <ActivityArea activity={activity?.result} isLoading={isLoading} />
+      {/* <TrendingArea trendingData={trendingData} bg="trending-area-bg-two"/> */}
+    </Layout>
   );
 };
 

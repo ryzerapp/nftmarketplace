@@ -23,6 +23,8 @@ import NFTListComponentBlockChain from '../NFTS/NFTListComponentBlockChain';
 import NFTComponentDatabase from '../NFTS/NFTComponentDatabase';
 import { XBlock, XMasonry } from 'react-xmasonry';
 import AuctionNFTPrivate from '../Auction/AuctionNFTPrivate';
+import Layout from '../Layout/Layout';
+import NFTHeadlessDesign from '../NFTS/NFTHeadlessDesign';
 const schema = yup
   .object({
     email: yup
@@ -106,22 +108,66 @@ const UserProfile = () => {
     )
   }
   return (
-    <>
-      <div className='author-profile-area pt-70'>
+    <Layout>
+      <div className='author-profile-area'>
         <div className='container'>
           <div className='row'>
-            <AuthorLeftSide user={data?.user} />
-            <div className='col-lg-9'>
-              <div className='tab featured-tab-area featured-tab-area-ml author-tab-area'>
+            <div className="authoreprofile authoSm mt-0 mt-md-5 pt-0 pt-md-2">
+              <div className="col-lg-12">
+                <div className="authoreproimg">
+                  <div className="authoreproimgBox">
+                    <img className="img-fluid d-none d-md-block"
+
+                      src="../images/authoprofilebannerimg.jpeg" alt="img" />
+                    <img className="img-fluid d-block d-md-none"
+                      src="../images/authprobannersm01.jpeg" alt="img" />
+                  </div>
+                  <div className="authoreproicon"><img
+                    style={{
+                      borderRadius: "50%",
+                      width: 130,
+                      height: 130
+                    }}
+                    src={
+                      data?.user?.profile_photo ? data?.user?.profile_photo : `../images/authorproicon01.jpeg`
+
+                    } alt="img" /></div>
+                </div>
+                <div className="auProfileDetail">
+                  <div className="joincommunity auSocial">
+                    <ul>
+                      <li><a href="#"><img className="img-fluid" src="../images/activityicon.svg" alt="img" /></a></li>
+                      <li><a href="#"><img className="img-fluid" src="../images/discordbutton.svg" alt="img" /></a></li>
+                      <li><a href="#"><img className="img-fluid" src="../images/insta.svg" alt="img" /></a></li>
+                      <li><a href="#"><img className="img-fluid" src="../images/twitter.svg" alt="img" /></a></li>
+                    </ul>
+
+                  </div>
+                  <div className="prCnt">
+                    <h2 className="textwhitecolor">{
+                      data?.user?.username ? data?.user?.username : "Unnamed"
+                    }</h2>
+                    <h3 className="textgraycolor mt-3 mb-4"><span style={{ color: '#f14d5d' }}>Last updated:</span> {data?.user?.updated_at}</h3>
+                    <p className="textgraycolor">{data?.user?.walletAddress}</p>
+                    <p className="textgraycolor">{data?.user?.professional_summery}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='col-lg-12 pt-70'>
+              <div className='tab featured-tab-area
+              featured-tab-area-ml
+              author-tab-area'>
                 <Tabs>
-                  <div className='col-lg-12'>
+                  <div className='col-lg-12 text-center'
+                  >
                     <ul className='tabs author-tabs'>
                       <TabList>
                         <Tab>
                           <a>Update Profile</a>
                         </Tab>
                         <Tab>
-                          <a>Create Auctions</a>
+                          <a>UnMinted NFT's</a>
                         </Tab>
                         <Tab>
                           <a>NFT's</a>
@@ -133,12 +179,16 @@ const UserProfile = () => {
                           <a>Auctions</a>
                         </Tab>
                         <Tab>
-                          <a>Saved Items</a>
+                          <a>Create Auction</a>
                         </Tab>
+                        {/* <Tab>
+                          <a>Saved Items</a>
+                        </Tab> */}
                       </TabList>
                     </ul>
                   </div>
-                  <div className='tab_content author_tab_content pt-45'>
+                  {/* <hr style={{ color: 'white' }}></hr> */}
+                  <div className='tab_content author_tab_content'>
                     <TabPanel>
                       <div className='tabs_item'>
                         <div className='row justify-content-left'>
@@ -249,142 +299,122 @@ const UserProfile = () => {
 
                       </div>
                     </TabPanel>
-
                     <TabPanel>
                       <div className='tabs_item'>
-                        <CreateAuction nfts={data?.user?.nfts?.filter((nft) => !nft.auction_iscreated)}></CreateAuction>
-                      </div>
-                    </TabPanel>
-
-                    <TabPanel>
-                      <div className='tabs_item pb-70'>
                         <div className='row justify-content-left'>
-                          <div className='' align="center">
-                            <div className='border border-red'>
-                              <div className='row justify-content-ceneter px-4'>
-                                <div className='pt-4'></div>
-                                <XMasonry>
-                                  {data?.user?.nfts?.filter((nft) => !nft.nft_is_minted).map((nft) => (
-                                    <XBlock key={nft?.id}>
-                                      {
-                                        <NFTComponentDatabase
-                                          nft={nft}
-                                          openDialogTitle={"Mint NFT"}
-                                          user={data?.user}
-                                          editOrDelete={true}
-                                          profile={true}
-                                          formCollection={false}
-                                        />
-                                      }
-
-                                    </XBlock>
+                          <div align="center">
+                            <div className='row justify-content-ceneter px-4'>
+                              <div className="row mt-2 mt-md-5">
+                                {
+                                  data?.user?.nfts?.filter((nft) => !nft.nft_is_minted)?.map((nft) => (
+                                    <>
+                                      <NFTHeadlessDesign
+                                        title={"Mint NFT"}
+                                        nft={nft} />
+                                    </>
                                   ))}
-                                </XMasonry>
                               </div>
-                              <div className='border border-red'>
-                                <div className='row justify-content-ceneter px-4'>
-                                  <div className='pt-4'></div>
-                                  <NFTListComponentBlockChain></NFTListComponentBlockChain>
-                                </div>
-                              </div>
+                              {/* <XMasonry>
+                                {data?.user?.nfts?.filter((nft) => !nft.nft_is_minted).map((nft) => (
+                                  <XBlock key={nft?.id}>
+                                    {
+                                      <NFTComponentDatabase
+                                        nft={nft}
+                                        openDialogTitle={"Mint NFT"}
+                                        user={data?.user}
+                                        editOrDelete={true}
+                                        profile={true}
+                                        formCollection={false}
+                                      />
+                                    }
+
+                                  </XBlock>
+                                ))}
+                              </XMasonry> */}
+                            </div>
+                          </div>
+                        </div>
+                        {/* <CreateAuction nfts={data?.user?.nfts?.filter((nft) => !nft.auction_iscreated)}></CreateAuction> */}
+                      </div>
+                    </TabPanel>
+                    <TabPanel>
+                      <div className='tabs_item'>
+                        <div className='row justify-content-left'>
+                          <div align="center">
+                            <div className='row justify-content-ceneter px-4'>
+                              <NFTListComponentBlockChain></NFTListComponentBlockChain>
                             </div>
                           </div>
                         </div>
                       </div>
-
                     </TabPanel>
-
                     <TabPanel>
-                      <div className='tabs_item pb-70'>
+                      <div className='tabs_item'>
                         <div className='row justify-content-left'>
-                          <div className='' align="center">
-                            <div className='border border-red'>
-                              <div className='row justify-content-ceneter px-4'>
-                                <div className='pt-4'></div>
-                                <Collection />
-                                {/* <RenderCollectionInTabs
-                                  editOrDelete={true}
-                                  user={data?.user}
-                                  profile={true}
-                                  collections={data?.user?.collections}
-                                  message="You Don't Have Any Collection"
-                                /> */}
-                              </div>
+                          <div align="center">
+                            <div className='row justify-content-ceneter px-4'>
+                              <Collection />
                             </div>
                           </div>
                         </div>
                       </div>
                     </TabPanel>
-
                     <TabPanel>
-                      <div className='tabs_item pb-70'>
-                        <div className='row justify-content-left'>
-                          <div className='' align="center">
-                            <div className='border border-red'>
-                              <div className='row justify-content-ceneter px-4'>
-                                <div className='pt-4'></div>
-                                {data?.user?.auctions?.length > 0 ?
-                                  data?.user?.auctions?.map((auction) =>
-                                  (
-                                    <AuctionNFTPrivate key={auction.id} data={auction} isfromProfile={true} />
-                                  )) : <>
-                                    <div className='container mt-100'>
-                                      <div className='row'>
-                                        <div className='col-xs-1 section-title pb-70 pt-50' align="center">
-                                          <p>You Don't Have Any Auction</p>
-                                        </div>
+                      <div className='tabs_item'>
+                        <div className='row  justify-content-ceneter'>
+                          <div align="center">
+                            <div className='px-4'>
+                              <div className='pt-5'></div>
+                              {data?.user?.auctions?.length > 0 ?
+                                data?.user?.auctions?.map((auction) =>
+                                (
+                                  <AuctionNFTPrivate key={auction.id} data={auction} isfromProfile={true} />
+                                )) : <>
+                                  <div className='container mt-100'>
+                                    <div className='row'>
+                                      <div className='col-xs-1 section-title pb-70 pt-50' align="center">
+                                        <p>You Don't Have Any Auction</p>
                                       </div>
                                     </div>
-                                  </>}
-                              </div>
+                                  </div>
+                                </>}
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div className='tabs_item pb-70'>
-                        <div className='row justify-content-left'>
-
-                        </div>
-                      </div>
                     </TabPanel>
-
                     <TabPanel>
-                      <div className='tabs_item pb-70'>
+                      <div className='tabs_item'>
                         <div className='row justify-content-left'>
-                          <div className='' align="center">
-                            <div className='border border-red'>
-                              <p className='justify-content-left pt-4'>Saved Collection</p>
+                          {/* <div align="center">
+                            <p className='justify-content-left pt-4'>Saved Collection</p>
+                            <div className='row justify-content-ceneter px-4'>
+                              <hr ></hr>
+                              <RenderCollectionInTabs
+                                editOrDelete={true}
+                                user={data?.user}
+                                profile={true}
+                                collections={savedCollection ? savedCollection : []}
+                                message="You Don't Have Any Collection"
+                              />
+                            </div>
+                          </div>
+
+                          <div className='row pt-3'>
+                            <div align="center">
+                              <p className='justify-content-left pt-4'>Saved NFTS</p>
                               <div className='row justify-content-ceneter px-4'>
                                 <hr ></hr>
-                                <RenderCollectionInTabs
+                                <RenderNFTInTabs
+                                  openDialogTitle={"Open NFT"}
                                   editOrDelete={true}
                                   user={data?.user}
-                                  profile={true}
-                                  collections={savedCollection ? savedCollection : []}
-                                  message="You Don't Have Any Collection"
+                                  nfts={savedNfts ? savedNfts : []}
+                                  message="You Don't Have Saved NFTs"
                                 />
                               </div>
                             </div>
-                          </div>
-
-                          <div className='row pt-3 pb-70s'>
-                            <div className='' align="center">
-                              <div className='border border-red'>
-                                <p className='justify-content-left pt-4'>Saved NFTS</p>
-                                <div className='row justify-content-ceneter px-4'>
-                                  <hr ></hr>
-                                  <RenderNFTInTabs
-                                    openDialogTitle={"Open NFT"}
-                                    editOrDelete={true}
-                                    user={data?.user}
-                                    nfts={savedNfts ? savedNfts : []}
-                                    message="You Don't Have Saved NFTs"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
+                          </div> */}
                         </div>
                       </div>
                     </TabPanel>
@@ -395,7 +425,7 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

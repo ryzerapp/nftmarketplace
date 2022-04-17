@@ -29,87 +29,30 @@ const MenusList = ({ user }) => {
 						/>
 					</a>
 				</Link>
-
-				{/* <div className="nav-widget-form">
-					<form className="search-form">
-						<input
-							type="search"
-							className="form-control"
-							placeholder="Search items, Creators "
-						/>
-						<button type="submit">
-							<i className="ri-search-line"></i>
-						</button>
-					</form>
-				</div> */}
-
 				<div
 					className="collapse navbar-collapse mean-menu"
 					id="navbarSupportedContent"
 				>
 					<ul className="navbar-nav m-auto">
 						<li className="nav-item">
-							<a href="#" className="nav-link ">
-								Discover
-								<i className="ri-arrow-down-s-line"></i>
-							</a>
-							<ul className="dropdown-menu">
-								<li className="nav-item">
-									<Link
-										href="/activity"
-										activeClassName="active"
-									>
-										<a className="nav-link">Activity</a>
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link
-										href="/search-engine"
-										activeClassName="active"
-									>
-										<a className="nav-link">Search Engine</a>
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link
-										href="/discover"
-										activeClassName="active"
-									>
-										<a className="nav-link">
-											Discover Exclusive Digital Assets
-										</a>
-									</Link>
-								</li>
-							</ul>
+							<Link
+								href="/discover"
+								activeClassName="active"
+							>
+								<a className="nav-link">
+									Discover
+								</a>
+							</Link>
 						</li>
-
 						<li className="nav-item">
-							<a href="#" className="nav-link">
-								Collection
-								<i className="ri-arrow-down-s-line"></i>
-							</a>
-							<ul className="dropdown-menu">
-								<li className="nav-item">
-									<Link
-										href={!web3Authentication ? "/add-wallet" : "/collection"}
-										activeClassName="active"
-									>
-										<a className="nav-link">Collection</a>
-									</Link>
-								</li>
-
-								<li className="nav-item">
-									<Link
-										href={!web3Authentication ? "/add-wallet" : "/create-new-collection"}
-										activeClassName="active"
-									>
-										<a className="nav-link">
-											Create Collection
-										</a>
-									</Link>
-								</li>
-							</ul>
+							<Link
+								href="/activity"
+								activeClassName="active"
+							>
+								<a className="nav-link">Activity</a>
+							</Link>
 						</li>
+
 
 						<li className="nav-item">
 							<a href="#" className="nav-link">
@@ -137,55 +80,36 @@ const MenusList = ({ user }) => {
 								</li>
 							</ul>
 						</li>
-						<li className="nav-item">
-							<a href="#" className="nav-link">
-								NFT'S
+						<li className="nav-item" style={{ display: "flex" }}>
+							<a className="nav-link">Crypto Game
 								<i className="ri-arrow-down-s-line"></i>
 							</a>
 							<ul className="dropdown-menu">
 								<li className="nav-item">
 									<Link
-										href={!web3Authentication ? "/add-wallet" : "/play-nft-game"}
+										href={"/game"}
 										activeClassName="active"
 									>
-										<a className="nav-link">Play Game</a>
+										<a className="nav-link">How It's Work?</a>
 									</Link>
 								</li>
-
 								<li className="nav-item">
 									<Link
-										href={!web3Authentication ? "/add-wallet" : "/yournfts"}
+										href={"/play-nft-game"}
 										activeClassName="active"
 									>
-										<a className="nav-link">
-											Your NFT
-										</a>
-									</Link>
-								</li>
-
-								<li className="nav-item">
-									<Link
-										href={!web3Authentication ? "/add-wallet" : "/create-new-nft"}
-										activeClassName="active"
-									>
-										<a className="nav-link">Create New NFT</a>
+										<a className="nav-link">Generate Avatar</a>
 									</Link>
 								</li>
 							</ul>
 						</li>
 
-						<li className="nav-item">
-							<a href="/insta" className="nav-link">
-								Kudos
-							</a>
-							
-						</li>
 						{web3Authentication && (
 							<li className="nav-item" style={{ display: "flex" }}>
 								<a href="#" className="nav-link" style={avatarStyle}>
 									<i className="ri-user-3-line"></i>
 								</a>
-								<span style={{ color: 'white' }}>{user?.username || localStorage.getItem('walletAddress')}</span>
+								<span style={{ color: 'white' }}>{user?.username}</span>
 								<ul className="dropdown-menu">
 									<li className="nav-item">
 										<Link href="/profile" activeClassName="active">
@@ -195,17 +119,30 @@ const MenusList = ({ user }) => {
 										</Link>
 									</li>
 									<li className="nav-item">
-										<Link href="/#" activeClassName="active">
+										<Link
+											href={!web3Authentication ? "/add-wallet" : "/collection"}
+											activeClassName="active"
+										>
+											<a className="nav-link">My Collection</a>
+										</Link>
+									</li>
+
+									<li className="nav-item">
+										<Link
+											href={!web3Authentication ? "/add-wallet" : "/create-new-collection"}
+											activeClassName="active"
+										>
 											<a className="nav-link">
-												Notifications
+												Create Collection
 											</a>
 										</Link>
 									</li>
 									<li className="nav-item">
-										<Link href="/">
-											<a className="nav-link" onClick={() => handleLogout()}>
-												Logout
-											</a>
+										<Link
+											href={!web3Authentication ? "/add-wallet" : "/create-new-nft"}
+											activeClassName="active"
+										>
+											<a className="nav-link">Create New NFT</a>
 										</Link>
 									</li>
 								</ul>

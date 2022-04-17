@@ -7,6 +7,8 @@ import toast, { Toaster } from 'react-hot-toast';
 const notify = (message) => toast(message);
 import Loader from '../Common/Loader'
 import { useWeb3 } from '../../providers/Web3Context';
+import browserSignature from 'browser-signature';
+
 const CreateCollectionAreaNew = () => {
 
   const { state: { nftTokenAddress, user } } =
@@ -24,12 +26,18 @@ const CreateCollectionAreaNew = () => {
     setImage(undefined)
     setNftData(undefined)
     setLoader(true)
-    await http.post('/nfts/generate_nft', {
+    const signature = browserSignature();
+    var payload = {
       "numberOfNft": 1,
-      "author": user?.username,
       "description": "This nft created Using Our Game.",
-      "collection_id": "cryptonium"
-    }).then((res) => {
+      "collection_id": "cryptonium",
+      "browser_signature": signature
+    }
+    if (user?.username) {
+      payload.author = user?.username
+    }
+
+    await http.post('/nfts/generate_nft', payload).then((res) => {
       console.log(res?.data)
       setImage(res?.data?.image_url)
       setNftData(res?.data)
@@ -87,6 +95,9 @@ const CreateCollectionAreaNew = () => {
 
           if (res.data.status_code == 200)
             notify("Your NFT is Created.")
+
+          setImage(undefined)
+          setNftData(undefined)
           setLoaderNft(false)
 
         }).catch((err) => {
@@ -102,10 +113,29 @@ const CreateCollectionAreaNew = () => {
   }
   return (
     <>
-      <div className='collection-widget-area pt-100 pb-70'>
+      <section className="bonus-banner">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-8 col-md-10">
+              <div className="section-heading">
+                <h5 className="subtitle">
+                  Play Game and Get your Avatar
+                </h5>
+                <h2 className="title">
+                  GET INSTANTLY!
+                </h2>
+                <a
+                  onClick={() => handelCreate()}
+                  className="mybtn1">Create Avatar Now!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div className='collection-widget-area'>
         <div className='container'>
           <div className='row'>
-            <div className='col-xs-1 section-title  pb-70' align="center">
+            {/* <div className='col-xs-1 section-title  pb-70' align="center">
               <h2>Create NFT Item</h2>
               <button
                 type='submit'
@@ -114,9 +144,9 @@ const CreateCollectionAreaNew = () => {
               >
                 Play Game
               </button>
-            </div>
+            </div> */}
             {loader ? <Loader /> : null}
-            <div className='col-lg-12 col-md-6 d-flex flex-row justify-content-center'>
+            <div className='col-lg-12 col-md-6 d-flex flex-row justify-content-center pt-70'>
               <div className='row'>
                 <div className='col-lg-6 col-md-12'>
                   {
@@ -154,13 +184,11 @@ const CreateCollectionAreaNew = () => {
             </div>
             {
               imageUrl ? (<div className='col-xs-1 section-title  pb-70 pt-70' align="center">
-                <button
+                <a
                   type='submit'
-                  className='default-btn border-radius-5 mt-4'
                   onClick={() => mintNFTHandle()}
-                >
-                  Cook New Nft
-                </button>
+                  className="mybtn1">Cook New Nft Of Generated Avatar
+                </a>
               </div>) : null
             }
             {loaderNft ? <Loader></Loader> : null}

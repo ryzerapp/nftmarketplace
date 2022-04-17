@@ -1,9 +1,10 @@
 import Layout from "../components/Layout/Layout";
-import DarkProNew from '../components/HomeTwo/DarkProNew';
+import SearchEngine from './search-engine';
+import Subscribe from '../components/Common/Subscribe'
 const Index = () => {
 	return (
 		<Layout>
-			<DarkProNew />
+			<SearchEngine />
 		</Layout>
 	);
 };

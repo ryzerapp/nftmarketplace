@@ -63,14 +63,6 @@ const NavbarTwo = () => {
 									)}
 								</div>
 								<div className="logo">
-									{/* <Link href="/">
-										<a>
-											<img
-												src="../images/logo-2.png"
-												alt="logo"
-											/>
-										</a>
-									</Link> */}
 									<h1>Cryptonium</h1>
 								</div>
 							</div>
@@ -120,22 +112,6 @@ const NavbarTwo = () => {
 									<div className="side-nav justify-content-center align-items-center">
 										<div className="side-nav-item">
 											<ul className="optional-item-list">
-												{/* {user == undefined ? (
-													<li>
-															<Link
-																href="/login"
-																activeClassName="active"
-															>
-																<a>Login</a>
-															</Link>
-														</li>
-
-												) : (
-													<li>
-															<a onClick={() => handleLogoutHandler()}>Logout</a>
-													</li>
-												)} */}
-
 												<li>
 
 													<Link

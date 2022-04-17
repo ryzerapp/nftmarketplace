@@ -3,12 +3,6 @@ import Pagination from '../components/Common/Pagination';
 const BlogOne = () => {
   return (
     <>
-      {/* <PageBanner
-        bannerHeading='Blog Left Sidebar'
-        parentTitle='Community'
-        pageTitle='Blog Left Sidebar'
-        bg='inner-bg1'
-      /> */}
       <div className='blog-area-two pt-100 pb-70'>
         <div className='container'>
           <div className='section-title'>
@@ -19,7 +13,7 @@ const BlogOne = () => {
             <div className='col-lg-4 col-md-6'>
               <div className='blog-card box-shadow'>
                 <div className='blog-img'>
-                  <a href='blog-details.html'>
+                  <a href='/blog-details'>
                     <img src='../images/blog/blog-img1.jpg' alt='Images' />
                   </a>
 
@@ -36,7 +30,7 @@ const BlogOne = () => {
 
                 <div className='content'>
                   <h3>
-                    <a href='blog-details.html'>
+                    <a href='/blog-details'>
                       Announcing Our $100m Raise, Led By A16z
                     </a>
                   </h3>
@@ -51,7 +45,7 @@ const BlogOne = () => {
             <div className='col-lg-4 col-md-6'>
               <div className='blog-card box-shadow'>
                 <div className='blog-img'>
-                  <a href='blog-details.html'>
+                  <a href='/blog-details'>
                     <img src='../images/blog/blog-img2.jpg' alt='Images' />
                   </a>
 
@@ -68,7 +62,7 @@ const BlogOne = () => {
 
                 <div className='content'>
                   <h3>
-                    <a href='blog-details.html'>
+                    <a href='/blog-details'>
                       Edition365: A Portrait Of The Year That Changed Everything
                     </a>
                   </h3>
@@ -83,7 +77,7 @@ const BlogOne = () => {
             <div className='col-lg-4 col-md-6'>
               <div className='blog-card box-shadow'>
                 <div className='blog-img'>
-                  <a href='blog-details.html'>
+                  <a href='/blog-details'>
                     <img src='../images/blog/blog-img3.jpg' alt='Images' />
                   </a>
 
@@ -100,7 +94,7 @@ const BlogOne = () => {
 
                 <div className='content'>
                   <h3>
-                    <a href='blog-details.html'>
+                    <a href='/blog-details'>
                       Christie’s Ended Up Selling For $69 Million In Nft
                       Marketplace
                     </a>
@@ -116,7 +110,7 @@ const BlogOne = () => {
             <div className='col-lg-4 col-md-6'>
               <div className='blog-card box-shadow'>
                 <div className='blog-img'>
-                  <a href='blog-details.html'>
+                  <a href='/blog-details'>
                     <img src='../images/blog/blog-img4.jpg' alt='Images' />
                   </a>
 
@@ -133,7 +127,7 @@ const BlogOne = () => {
 
                 <div className='content'>
                   <h3>
-                    <a href='blog-details.html'>
+                    <a href='/blog-details'>
                       Artist Interview: Arran Schonberg (Divergence_art)
                     </a>
                   </h3>
@@ -148,7 +142,7 @@ const BlogOne = () => {
             <div className='col-lg-4 col-md-6'>
               <div className='blog-card box-shadow'>
                 <div className='blog-img'>
-                  <a href='blog-details.html'>
+                  <a href='/blog-details'>
                     <img src='../images/blog/blog-img5.jpg' alt='Images' />
                   </a>
 
@@ -165,7 +159,7 @@ const BlogOne = () => {
 
                 <div className='content'>
                   <h3>
-                    <a href='blog-details.html'>
+                    <a href='/blog-details'>
                       12 Curated Works For Cadaf On Online
                     </a>
                   </h3>
@@ -180,7 +174,7 @@ const BlogOne = () => {
             <div className='col-lg-4 col-md-6'>
               <div className='blog-card box-shadow'>
                 <div className='blog-img'>
-                  <a href='blog-details.html'>
+                  <a href='/blog-details'>
                     <img src='../images/blog/blog-img6.jpg' alt='Images' />
                   </a>
 
@@ -197,7 +191,7 @@ const BlogOne = () => {
 
                 <div className='content'>
                   <h3>
-                    <a href='blog-details.html'>
+                    <a href='/blog-details'>
                       The Biggest Drop In Times Square Since New Years Eve
                     </a>
                   </h3>
@@ -212,7 +206,7 @@ const BlogOne = () => {
             <div className='col-lg-4 col-md-6'>
               <div className='blog-card box-shadow'>
                 <div className='blog-img'>
-                  <a href='blog-details.html'>
+                  <a href='/blog-details'>
                     <img src='../images/blog/blog-img7.jpg' alt='Images' />
                   </a>
 
@@ -230,7 +224,7 @@ const BlogOne = () => {
 
                 <div className='content'>
                   <h3>
-                    <a href='blog-details.html'>
+                    <a href='/blog-details'>
                       Daz 3d, The Digitals And A Groundbreaking NFT
                     </a>
                   </h3>
@@ -245,7 +239,7 @@ const BlogOne = () => {
             <div className='col-lg-4 col-md-6'>
               <div className='blog-card box-shadow'>
                 <div className='blog-img'>
-                  <a href='blog-details.html'>
+                  <a href='/blog-details'>
                     <img src='../images/blog/blog-img8.jpg' alt='Images' />
                   </a>
 
@@ -262,7 +256,7 @@ const BlogOne = () => {
 
                 <div className='content'>
                   <h3>
-                    <a href='blog-details.html'>
+                    <a href='/blog-details'>
                       The Journey Of A Never Seen Before Photograph
                     </a>
                   </h3>
@@ -277,7 +271,7 @@ const BlogOne = () => {
             <div className='col-lg-4 col-md-6'>
               <div className='blog-card box-shadow'>
                 <div className='blog-img'>
-                  <a href='blog-details.html'>
+                  <a href='/blog-details'>
                     <img src='../images/blog/blog-img9.jpg' alt='Images' />
                   </a>
 
@@ -294,7 +288,7 @@ const BlogOne = () => {
 
                 <div className='content'>
                   <h3>
-                    <a href='blog-details.html'>
+                    <a href='/blog-details'>
                       Dazn’s Face The Fearless: Highlights From Canelo’s{' '}
                     </a>
                   </h3>

@@ -4,23 +4,32 @@ import { useForm } from "react-hook-form";
 import http from '../utils/http'
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/router';
+import { ethers } from "ethers";
 const notify = (message) => toast(message);
+import ABI from './../contracts_abi/NFT.json';
+import bytecode from './../contracts_abi/bytecode.json';
+import { useWeb3 } from '../providers/Web3Context';
 
 export default function CreateNft() {
 
     const [selectedCategory, setselectedCategory] = useState('Art');
     const { register, handleSubmit, formState: { errors } } = useForm();
     const router = useRouter()
+    const { state: { walletAddress } } = useWeb3();
     const onSubmit = async (data) => {
         let dataTemp = { ...data };
         delete dataTemp?.collection_cover
         delete dataTemp?.collection_logo
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const signer = provider.getSigner()
+        const factory = new ethers.ContractFactory(ABI, bytecode, signer)
+        const contract = await factory.deploy(process.env.NEXT_PUBLIC_NFTTOKEN_RINKEYBY_ADDRESS, dataTemp?.collection_name, dataTemp?.symbol);
         try {
             const payload = {
                 ...dataTemp,
                 "category": selectedCategory,
+                "collection_address": contract?.address
             };
-
             await http.post('/collection', payload).then(async (res) => {
                 if (res?.status == 201) {
                     let collection_id = res?.data?.collection?.id;
@@ -61,7 +70,6 @@ export default function CreateNft() {
                         const res = await http.put(`/collection/${collection_id}`,
                             finalObj
                         );
-                        console.log(res)
                         if (res?.status == 200) {
                             router.push('/collection')
                             notify(res?.data?.message)
@@ -115,10 +123,10 @@ export default function CreateNft() {
 
                                                 <div className='col-lg-12 col-md-12'>
                                                     <div className='form-group'>
-                                                        <label>Description</label>
+                                                        <label>Collection Symbol</label>
                                                         <input
                                                             type='text'
-                                                            {...register("description")}
+                                                            {...register("symbol")}
                                                             className='form-control'
                                                             placeholder='e. g. “after purchasing you’ll able to get the real product”'
 

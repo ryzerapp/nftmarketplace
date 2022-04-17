@@ -14,6 +14,10 @@ const fetchNftTreandingArtwork = async ({ }) => {
   const { data } = await http.get(`/nfts/getTrendingArtwork`);
   return data
 };
+const fetchGameNFt = async ({ queryKey }) => {
+  const { data } = await http.get(`/nfts?limit=${queryKey[1].limit}`);
+  return data
+};
 const useNftOfCollection = (options = {}) => {
   return useQuery([`collection_${options.collection_name}`, options], fetchNftDataOfCollection, {
     keepPreviousData: true,
@@ -25,4 +29,9 @@ const useNftTreandingArtwork = (options = {}) => {
     keepPreviousData: true,
   });
 };
-export { useNftOfCollection, useNftTreandingArtwork };
+const useGameNft = (options = {}) => {
+  return useQuery([`useGameNft`, options], fetchGameNFt, {
+    keepPreviousData: true,
+  });
+};
+export { useNftOfCollection, useNftTreandingArtwork, useGameNft };

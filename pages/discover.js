@@ -24,11 +24,11 @@ const Index = ({ data, trendingData }) => {
 
             <AuctionArea />
 
-            <Testimonial />
+            {/* <Testimonial /> */}
 
             <AuthorArea />
 
-            <BlogArea />
+            {/* <BlogArea /> */}
 
             <CollectionsArea />
 
