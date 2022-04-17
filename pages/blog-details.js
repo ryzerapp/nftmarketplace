@@ -3,7 +3,7 @@ const BlogDetails = () => {
     <>
       <div>
         <div className="page-wrapper">
-          <div className="search-area">
+          {/* <div className="search-area">
             <div className="container">
               <form action="#">
                 <div className="form-group">
@@ -14,13 +14,13 @@ const BlogDetails = () => {
                 <i className="ri-close-line"></i>
               </button>
             </div>
-          </div>
+          </div> */}
           <div className="content-wrapper">
 
             <div className="blog-details-wrap ptb-100">
               <div className="container">
                 <div className="row gx-5">
-                  <div className="col-xl-8">
+                  <div className="col-xl-12">
                     <article>
                       <h2>NFTs Are Too Important For Best Artist</h2>
                       <ul className="post-metainfo  list-style">
@@ -180,16 +180,16 @@ const BlogDetails = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="comment-item reply">
+                        <div className="comment-item">
                           <div className="comment-author-img">
-                            <img src="../images/blog/author-3.jpg" alt="mage" />
+                            <img src="../images/blog/author-2.jpg" alt="mage" />
                           </div>
                           <div className="comment-author-wrap">
                             <div className="comment-author-info">
                               <div className="row align-items-start">
                                 <div className="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
                                   <div className="comment-author-name">
-                                    <h5>Everly Leah <span className="comment-date">30 Jan, 2021 | 9:00 PM</span></h5>
+                                    <h5>Olivic Dsuza <span className="comment-date">22 Feb, 2022 | 10:21 AM</span></h5>
                                   </div>
                                 </div>
                                 <div className="col-md-3 col-sm-12 col-12 text-md-end order-md-2 order-sm-3 order-3">
@@ -207,16 +207,16 @@ const BlogDetails = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="comment-item">
+                        <div className="comment-item reply">
                           <div className="comment-author-img">
-                            <img src="../images/blog/author-4.jpg" alt="mage" />
+                            <img src="../images/blog/author-3.jpg" alt="mage" />
                           </div>
                           <div className="comment-author-wrap">
                             <div className="comment-author-info">
                               <div className="row align-items-start">
                                 <div className="col-md-9 col-sm-12 col-12 order-md-1 order-sm-1 order-1">
                                   <div className="comment-author-name">
-                                    <h5>Michel Jackson <span className="comment-date">12 Jan, 2021 | 12:00 PM</span></h5>
+                                    <h5>Everly Leah <span className="comment-date">30 Jan, 2021 | 9:00 PM</span></h5>
                                   </div>
                                 </div>
                                 <div className="col-md-3 col-sm-12 col-12 text-md-end order-md-2 order-sm-3 order-3">
@@ -273,7 +273,7 @@ const BlogDetails = () => {
                       </form>
                     </div>
                   </div>
-                  <div className="col-xl-4">
+                  {/* <div className="col-xl-4">
                     <div className="sidebar">
                       <div className="sidebar-widget style4">
                         <div className="search-box">
@@ -375,7 +375,7 @@ const BlogDetails = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

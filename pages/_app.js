@@ -47,6 +47,15 @@ function MyApp({ Component, pageProps }) {
 						<script src="../js/popper.min.js"></script>
 						{/* <script src="../js/plugin.js"></script> */}
 						<script src="../js/TweenMax.js"></script>
+						<script src="../js/aos.js"></script>
+						<script src="../js/owl.carousel.min.js"></script>
+						<script src="../js/jquery.countdown.min.js"></script>
+						<script src="../js/jquery-ui-min.js"></script>
+						<script src="../js/fancybox.js"></script>
+						<script src="../js/mixitup.min.js"></script>
+						<script src="../js/jquery.appear.js"></script>
+						<script src="../js/tweenmax.min.js"></script>
+						<script src="../js/main.js"></script>
 						{/* <script src="../js/mousemoveparallax.js"></script> */}
 						{/* <script src="../js/main.js"></script> */}
 					</Head>
