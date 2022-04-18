@@ -31,41 +31,26 @@ const useAccessToken = () => {
 export default function Insta() {
 
     const [feeds, setFeeds] = useState()
+    const [code, setCode] = useState(null)
     const [authorizationCode, setAuthorizationCode] = useState(null)
     const router = useRouter()
     const { openModal } = useModalAction();
     const { mutate, isLoading } = useAccessToken()
 
     console.log('query code :', router.query.code);
-    let code = router.query.code
-    let accessToken = 'IGQVJWNjREOGJ6UHZArajNCb3hXYktCcTBHN05OT1JQQ2gzSDlLR1ZAXWUlPaG9oa0FTWlZA2RXA1VkZA5VG5SUENVdEZAVRHZA1RG1RNUpNWm8xMWtiVjlhT0g5WFE0WEQzTUFWZA2lpUmJR';
+    // let code = router.query.code
+    // if (router.query.code != null) {
+    //     mutate(router.query.code)
+    // }
+    // let accessToken = 'IGQVJWNjREOGJ6UHZArajNCb3hXYktCcTBHN05OT1JQQ2gzSDlLR1ZAXWUlPaG9oa0FTWlZA2RXA1VkZA5VG5SUENVdEZAVRHZA1RG1RNUpNWm8xMWtiVjlhT0g5WFE0WEQzTUFWZA2lpUmJR';
 
     async function fetchDataFromToken(token) {
-        token = accessToken;
+        console.log('imported token', token)
         let url = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,caption&access_token=${token}`
         let res = await axios.get(url);
         console.log('feed data', res)
         setFeeds(res.data.data)
     }
-
-    useEffect(() => {
-        fetchDataFromToken();
-    }, [])
-    
-    // fetchDataFromToken('token');
-    // useEffect(() => {
-    //     if (code && authorizationCode==null) {
-    //         setAuthorizationCode(code)
-    //     }
-    // })
-
-    // useEffect(() => {
-    //     if (authorizationCode != null) {
-    //         console.log('run1')
-    //         mutate({ code:authorizationCode });
-    //         // console.log('useefffffff', useefffffff)
-    //     }
-    // }, [authorizationCode])
 
     async function handleJoin(id) {
         let data = feeds.find(feed => feed.id === id)
@@ -73,8 +58,25 @@ export default function Insta() {
         return openModal(MODAL_VIEWS.SHOW_INSTA_FEED, { feed: data });
     }
 
+    async function fetchToken() {
+        // let data = await axios.post(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/instagram/access-token`, { code: router.query.code })
+        axios.post(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/instagram/access-token`, { code: router.query.code })
+            .then(async (res) => {
+                console.log('data of token :', res);
+                let token = res.data.access_token;
+                console.log('integrated token', token)
+                let url = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,caption&access_token=${token}`
+                let res2 = await axios.get(url);
+                console.log('feed data', res2)
+                setFeeds(res2.data.data)
+            })
+    }
+
     return (
         <>
+            <button onClick={fetchToken}>
+                fetch token
+            </button>
             {
                 feeds ?
                     (<>
@@ -93,7 +95,7 @@ export default function Insta() {
                                             <button variant="primary" onClick={() => handleJoin(feed?.id)} >open</button>
                                         </Card.Body>
                                     </Card>
-                                   
+
                                 </>)
                             })}
                             {console.log('ffff', feeds)}
