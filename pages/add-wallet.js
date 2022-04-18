@@ -120,7 +120,7 @@ const AddWallet = () => {
                   </ul>
                 </div>
                 <div className="text-center">
-                  <button className="btn"
+                  <button className="btnnew"
                     style={{
                       padding: 10,
                       width: "20%",

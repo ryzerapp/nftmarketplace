@@ -3,6 +3,7 @@ import BannerArea from '../components/HomeTwo/BannerArea';
 import NavbarTwo from '../components/Layout/NavbarTwo';
 import TopSeller from '../components/Common/TopSeller';
 import AuctionArea from '../components/Auction/AuctionArea';
+import AuctionAreaNew from '../components/Auction/AuctionAreaNew';
 import FeaturedArea from '../components/Common/FeaturedArea';
 import Testimonial from '../components/Common/Testimonial';
 import AuthorArea from '../components/HomeTwo/AuthorArea'
@@ -25,8 +26,6 @@ const Index = ({ data, trendingData }) => {
             <AuctionArea />
 
             {/* <Testimonial /> */}
-
-            <AuthorArea />
 
             {/* <BlogArea /> */}
 

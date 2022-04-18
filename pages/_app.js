@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../public/css/bootstrap.min.css";
 import "../public/css/style.css";
+import "../public/css/game.css";
 
 import "../public/css/responsive.css";
-// import "../public/css/jquery-ui-min.css";
-// import "../public/css/fancybox.css";
-// import "../public/css/owl.carousel.min.css";
 import "../public/css/remixicon.css";
 import "../public/css/flaticon.css";
 import "../public/css/aos.css";
@@ -44,19 +42,17 @@ function MyApp({ Component, pageProps }) {
 							name="viewport"
 							content="initial-scale=1.0, width=device-width"
 						/>
+						<link rel="stylesheet" href="../css/nedo.css"></link>
 						<script src="../js/popper.min.js"></script>
-						{/* <script src="../js/plugin.js"></script> */}
 						<script src="../js/TweenMax.js"></script>
 						<script src="../js/aos.js"></script>
-						<script src="../js/owl.carousel.min.js"></script>
-						<script src="../js/jquery.countdown.min.js"></script>
-						<script src="../js/jquery-ui-min.js"></script>
-						<script src="../js/fancybox.js"></script>
+						{/* <script src="../js/owl.carousel.min.js"></script> */}
+						{/* <script src="../js/jquery.countdown.min.js"></script> */}
+						{/* <script src="../js/jquery-ui-min.js"></script> */}
+						{/* <script src="../js/fancybox.js"></script> */}
 						<script src="../js/mixitup.min.js"></script>
-						<script src="../js/jquery.appear.js"></script>
+						{/* <script src="../js/jquery.appear.js"></script> */}
 						<script src="../js/tweenmax.min.js"></script>
-						<script src="../js/main.js"></script>
-						{/* <script src="../js/mousemoveparallax.js"></script> */}
 						{/* <script src="../js/main.js"></script> */}
 					</Head>
 					<MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>

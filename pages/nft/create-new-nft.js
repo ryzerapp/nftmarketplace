@@ -1,15 +1,20 @@
 import { useForm } from "react-hook-form";
-import http from '../utils/http'
+import http from '../../utils/http'
 import toast, { Toaster } from 'react-hot-toast';
 import imageCompression from 'browser-image-compression';
 import { useState } from 'react';
-import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./../components/Common/Logos";
-import { useWeb3 } from "../providers/Web3Context";
+import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "../../components/Common/Logos";
+import { useWeb3 } from "../../providers/Web3Context";
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import { useRouter } from 'next/router';
-import { useIPFS } from '../hooks/Web3/useIPFS';
+import { useIPFS } from '../../hooks/Web3/useIPFS';
 import { useQuery } from 'react-query';
-
+const style1 = { color: 'white' }
+const style2 = {
+  backgroundColor: '#08091b',
+  border: '1px solid white',
+  color: 'white'
+}
 const menuItems = [
   {
     key: "eth",
@@ -172,8 +177,145 @@ const CreateCollection = () => {
     });
   }
   return (
-    <>
-      {/* <div className="container">
+    <div className="content-wrapper">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-4">
+              <h3>Preview Item</h3>
+              <div className="auction-card style10">
+                <div className="auction-img">
+                  <img className="w-100" src="../images/auction/auction-item-12.jpg" alt="Image" />
+                </div>
+                <div className="auction-info-wrap">
+                  <div className="auction-title">
+                    <h3><a href="item-details.html">Flame Dress By Balmain</a></h3>
+                    <button type="button"><i className="flaticon-heart"></i></button>
+                  </div>
+                  <div className="auction-author-info">
+                    <div className="author-info">
+                      <div className="author-img">
+                        <img src="../images/author/author-4.jpg" alt="Image" />
+                      </div>
+                      <div className="author-name">
+                        <span>Creator</span>
+                        <h6>Angie Herath</h6>
+                      </div>
+                    </div>
+                    <div className="auction-bid">
+                      <span>Current Bid</span>
+                      <h6>3.66 ETH</h6>
+                    </div>
+                  </div>
+                <button type="button" className="btnnew style1" data-bs-toggle="modal" data-bs-target="#placeBid">Place Bid</button>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-8">
+              <form action="#" className="create-collection-form">
+                <div className="content-title">
+                <h3 style={{ ...style1 }}>Create New NFT</h3>
+                </div>
+              <div className="row pt-30">
+                  <div className="col-12">
+                  <div className="form-group">
+                      <div className="upload-btn">
+                      <button
+                        type="button">Upload a file</button>
+                        <input type="file" name="myfile" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <div className="radio-btn">
+                      <div className="form-group">
+                        <input type="radio"
+                          id="test1" name="radio-group" />
+                      <label htmlFor="test1">Fixed Price</label>
+                      </div>
+                      <div className="form-group">
+                        <input type="radio" id="test2" name="radio-group" />
+                      <label htmlFor="test2">Unlock Purchased</label>
+                      </div>
+                      <div className="form-group">
+                        <input type="radio" id="test3" name="radio-group" />
+                      <label htmlFor="test3">Open For Bids</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <div className="form-group">
+                    <label style={{ ...style1 }} htmlFor="title">Title</label>
+                    <input style={{ ...style2 }} type="text"
+                        className="inputColor"
+                        name="title" id="title"
+                        placeholder="Flame dress By Balmain" />
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <div className="form-group">
+                    <label style={{ ...style1 }} htmlFor="item_desc">Description</label>
+                    <textarea
+                      style={{ ...style2 }}
+                      name="item_desc" id="item_desc" cols="30" rows="10" placeholder="Write Short Description"></textarea>
+                    </div>
+                  </div>
+                  <div className="col-lg-6">
+                    <div className="form-group">
+                    <label style={{ ...style1 }} htmlFor="price">Price</label>
+                    <input style={{ ...style2 }} type="number" name="price" id="price" placeholder="1.356 ETH" />
+                    </div>
+                  </div>
+                  <div className="col-lg-6 col-12">
+                    <div className="form-group">
+                    <label style={{ ...style1 }} htmlFor="category">Category</label>
+                    <select style={{ ...style2 }} name="category" id="category">
+                        <option value="1">Art</option>
+                        <option value="2">Music</option>
+                        <option value="3">Collectibles</option>
+                      </select>
+                    </div>
+                </div>
+                  <div className="col-lg-4 col-12">
+                    <div className="form-group">
+                    <label style={{ ...style1 }} htmlFor="royalty">Royality</label>
+                    <input style={{ ...style2 }} type="number" name="royalty" id="royalty" placeholder="5%" />
+                    </div>
+                  </div>
+                  <div className="col-lg-4 col-12">
+                    <div className="form-group">
+                    <label style={{ ...style1 }} htmlFor="no_copies">No of Copies</label>
+                    <input style={{ ...style2 }} type="number" name="no_copies" id="no_copies" placeholder="13" />
+                    </div>
+                  </div>
+                  <div className="col-lg-4 col-12">
+                    <div className="form-group">
+                    <label style={{ ...style1 }} htmlFor="size">Size</label>
+                    <input style={{ ...style2 }} type="number" name="size" id="size" placeholder="25" />
+                    </div>
+                  </div>
+                </div>
+                <div className="row align-items-center">
+                  <div className="col-md-6 col-sm-7">
+                    <div className="checkbox">
+                    <input style={{ ...style2 }} type="checkbox" id="test_1" />
+                    <label style={{ ...style1 }} htmlFor="test_1">I agree to all <a href="terms-of-service.html" className="link style1">terms & conditions</a>.</label>
+                    </div>
+                  </div>
+                  <div className="col-md-6 col-sm-5 text-sm-end">
+                  <button type="submit" className="btnnew style1">Create NFT</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+
+  );
+};
+
+export default CreateCollection;
+{/* <div className="container">
         <div className='user-area pt-100 pb-70'>
           <div className='container'
           >
@@ -320,7 +462,7 @@ const CreateCollection = () => {
           </div>
         </div>
       </div> */}
-      <div className="create-items mt-3 pt-3 mt-md-4 pt-md-4 mt-lg-5 pt-lg-5">
+{/* <div className="create-items mt-3 pt-3 mt-md-4 pt-md-4 mt-lg-5 pt-lg-5">
         <div className="container">
           <div className="row">
             <div className="col-lg-7 create-form-outer">
@@ -379,7 +521,7 @@ const CreateCollection = () => {
                         placeholder="Price" className="form-control" />
                     </div>
                     <div className="col-md-5 col-6 pb-md-4 pb-3">
-                      <label>Open for Bids</label>
+                      <label>Open htmlFor Bids</label>
                       <div className="form-check form-switch">
                         <input className="form-check-input"
                           {...register("openforbid")}
@@ -463,9 +605,4 @@ const CreateCollection = () => {
             </div>
           </div>
         </div>
-      </div>
-    </>
-  );
-};
-
-export default CreateCollection;
+      </div> */}

@@ -2,6 +2,7 @@ import React from 'react'
 export default function
     () {
     return (
+        <div class="page-wrapper">
         <header class="header-wrap style2">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
@@ -188,6 +189,7 @@ export default function
                     </div>
                 </div>
             </div>
-        </header>
+            </header>
+        </div>
     )
 }
