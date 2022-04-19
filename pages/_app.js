@@ -22,6 +22,7 @@ const queryClientRef = new QueryClient()
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import Web3ContextProvider from '../providers/Web3Context/index'
+import mixpanel from 'mixpanel-browser';
 
 const APP_ID = process.env.NEXT_PUBLIC_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL;
@@ -30,7 +31,13 @@ import HeaderFooter from "../components/Layout/HeaderFooter";
 import ManagedModal from "../components/ui/modal/managed-modal";
 function MyApp({ Component, pageProps }) {
 	const isServerInfo = APP_ID && SERVER_URL ? true : false;
-
+	useEffect(() => {
+		if (process.env.NEXT_PUBLIC_ENV == 'production') {
+			mixpanel.init(process.env.NEXT_PUBLIC_MXTOOL,
+				{ debug: process.env.NEXT_PUBLIC_ENV == 'production' ? false : true, ignore_dnt: true });
+			mixpanel.track('Open WebSites');
+		}
+	}, []);
 	if (isServerInfo) {
 		return (
 			<QueryClientProvider client={queryClientRef}>
