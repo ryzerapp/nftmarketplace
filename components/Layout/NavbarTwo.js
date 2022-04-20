@@ -63,7 +63,15 @@ const NavbarTwo = () => {
 									)}
 								</div>
 								<div className="logo">
-									<h1>Cryptonium</h1>
+									<img
+										style={{
+											objectFit: 'contain',
+											width: 70,
+											height: 70
+										}}
+										src="../images/logo-2.png"
+										alt="Footer Logo"
+									/>
 								</div>
 							</div>
 						</div>

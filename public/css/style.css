@@ -1595,7 +1595,7 @@ Navbar Area
   z-index: 999;
   position: absolute;
   right: 55px;
-  top: -38px;
+  top: -67px;
 }
 
 .side-nav-responsive .dot-menu .circle-inner {
@@ -8771,7 +8771,10 @@ a:hover{text-decoration:none;-moz-transition:all .2s;-webkit-transition:all .2s;
 .circlebg2{position:absolute;left:0;right:0;top:30px;z-index:-1;margin:auto;text-align:center;}
 .circlebg3{position:absolute;right:0;top:0;z-index:-1;}
 header{padding:35px 0 0;z-index:1;position:relative;}
-.logo{display:inline-flex;align-items:center;align-content:center;min-width:100px;}
+.logo{display:inline-flex;
+  align-items:center;
+  align-content:center;
+  min-width:100px;}
 .searchform{display:inline-flex;align-items:center;align-content:center;}
 
 /*header .row .col-md-12{display: flex; align-items:center;align-content:center; justify-content: space-between;}*/
@@ -9511,7 +9514,6 @@ header{padding:15px 0;background:#050D1D;box-shadow:0px 4px 4px rgb(0 0 0 / 25%)
 /* nav.navbar .navbar-nav li.nav-item{margin:0 0 28px;} */
 /* nav.navbar .navbar-nav .nav-link{position:relative;} */
 /* nav.navbar .navbar-nav .nav-link:before{position:absolute;content:'';right:-4px;top:7px;background:url(../images/downsmicon.png) 0 0 no-repeat;width:15px;height:10px;} */
-.logo{width:100%;justify-content:center;}
 .bannercntSec{flex-direction:revert;}
 .bannercnt{padding:40px 0 0;}
 .bannerImg-sm { position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; align-content: center; }
