@@ -130,11 +130,6 @@ const AddWallet = () => {
                 </div>
                 <div className="text-center">
                   <button className="btnnew"
-                    style={{
-                      padding: 10,
-                      width: "20%",
-                      backgroundColor: '#f14d5d'
-                    }}
                     onClick={() => handleConnect()}
                   >{isAuthenticated ? "Disconnect" : "Connect"}</button>
                 </div>

@@ -15,7 +15,7 @@ const AuthorArea = () => {
             <div className='col-lg-4 col-md-4'>
               <div className='author-btn text-end'>
                 <Link href='/authors'>
-                  <a className='default-btn border-radius-5'>Explore More</a>
+                  <a className='btnnew'>Explore More</a>
                 </Link>
               </div>
             </div>

@@ -284,7 +284,7 @@ const UserProfile = () => {
                                 </div>
                                 <div className='col-lg-12 col-md-12 text-center'>
                                   <button
-                                    className='default-btn border-radius-5'
+                                    className='btnnew'
                                   >
                                     Update Profile
                                   </button>

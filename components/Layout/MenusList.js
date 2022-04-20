@@ -23,6 +23,11 @@ const MenusList = ({ user }) => {
 
 						<img
 							src="/images/logo-2.png"
+							style={{
+								objectFit: 'contain',
+								width: 100,
+								height: 100
+							}}
 							alt="Logo"
 							className="black-logo"
 						/>
@@ -168,7 +173,7 @@ const MenusList = ({ user }) => {
 									href="/add-wallet"
 									activeClassName="active"
 								>
-									<a className="active">{
+									<a className="btnnew">{
 										web3Authentication == false ? "Connect Wallet" : "MeataMask Connected"
 									}</a>
 								</Link>

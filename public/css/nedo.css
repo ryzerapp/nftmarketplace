@@ -660,7 +660,7 @@ select {
     z-index: 1;
     border: none;
     padding: 14px 42px;
-    border-radius: 0;
+    border-radius: 100;
     color: #fff;
     overflow: hidden;
     white-space: nowrap;

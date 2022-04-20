@@ -12,6 +12,11 @@ const Footer = () => {
 									<Link href="/">
 										<a>
 											<img
+												style={{
+													objectFit: 'contain',
+													width: 200,
+													height: 100
+												}}
 												src="../images/footer-logo.png"
 												alt="Footer Logo"
 											/>
