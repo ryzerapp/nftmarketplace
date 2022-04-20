@@ -21,7 +21,11 @@ const Footer = () => {
 		//   alert(JSON.stringify(data));
 		await createContactus(data, {
 			onSuccess: async (res) => {
-				toast.success("Thanks for subscribing!");
+				if (res.data.statusCode == 400) {
+					toast.success(res.data.message);
+				} else {
+					toast.success(res.data.message);
+				}
 				reset();
 			}
 		})
