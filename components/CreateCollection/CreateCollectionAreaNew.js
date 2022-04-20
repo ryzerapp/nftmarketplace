@@ -126,7 +126,7 @@ const CreateCollectionAreaNew = () => {
                 </h2>
                 <a
                   onClick={() => handelCreate()}
-                  className="mybtn1">Create Avatar Now!</a>
+                  className="btnnew">{`${("Create Avatar Now!").toUpperCase()}`}</a>
               </div>
             </div>
           </div>

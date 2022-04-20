@@ -199,16 +199,6 @@ button:focus {
   border: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 600;
-  color: var(--titleColor);
-  line-height: 1.4;
-}
 
 h3 {
   font-size: 22px;
@@ -9970,10 +9960,8 @@ select:focus {
   background: -o-linear-gradient(right, #1c294e, #1c294e);
   background: linear-gradient(to left, #1c294e, #1c294e); }
   .mybtn2:hover {
-    background: -webkit-gradient(linear, left top, right top, from(#ff344d), to(#d2273c));
-    background: -webkit-linear-gradient(left, #ff344d, #d2273c);
-    background: -o-linear-gradient(left, #ff344d, #d2273c);
-    background: linear-gradient(to right, #ff344d, #d2273c);
+    background: -webkit-gradient(linear, left top, right top, from(#a146e8), color-stop(35%, #6c63d0), to(#387db8));
+    background: linear-gradient(90deg, #a146e8 0%, #6c63d0 35%, #387db8 100%);
     color: #fff;
     -webkit-transform: translateY(-2px);
     -ms-transform: translateY(-2px);
@@ -11541,11 +11529,7 @@ select:focus {
 
 /* Our Vision Area Start */
 .our-vision {
-  padding: 112px 0px 86px;
-  background: url(../images/our-vision.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover; }
+  padding: 112px 0px 86px; }
   .our-vision .section-heading {
     margin-bottom: 78px; }
   .our-vision .single-vision {

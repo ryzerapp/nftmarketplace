@@ -144,7 +144,7 @@ const Footer = () => {
 								<h3>Company</h3>
 								<ul className="footer-list">
 									<li>
-										<Link href="/">
+										<Link href="/about">
 											<a>About Us</a>
 										</Link>
 									</li>

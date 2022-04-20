@@ -6,7 +6,6 @@ export default function index() {
     const { data, isFetched, isLoading } = useGameNft({
         limit: 10
     })
-    console.log(data);
     return (
         <>
             <div className="hero-area">
@@ -27,7 +26,7 @@ export default function index() {
                                         Sell that avatar and earn money.
                                     </p>
                                     <div className="links">
-                                        <a href="/play-nft-game" className="mybtn1 link1">Play Now!</a>
+                                        <a href="/play-nft-game" className="btnnew link1">Play Now!</a>
                                     </div>
                                 </div>
                             </div>
@@ -682,7 +681,7 @@ export default function index() {
                                         Get started in less than 2 min - no credit card
                                         required.Gain early access to Cryptonium Game and  experience crypto like never before.
                                     </p>
-                                    <a href="/play-nft-game" className="mybtn1">Play  Now!</a>
+                                    <a href="/play-nft-game" className="btnnew">Play  Now!</a>
                                 </div>
                             </div>
                         </div>

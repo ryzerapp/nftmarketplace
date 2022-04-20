@@ -116,7 +116,7 @@ export default function PlayGame() {
                                         20 Free Avatar
                                     </h4>
                                     <p>
-                                        in your next 20 referral
+                                        in your next 5 referral
                                     </p>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ export default function PlayGame() {
                                         30 free avatar and 100 python coin
                                     </h4>
                                     <p>
-                                        in your next 20 referral
+                                        in your next 5 referral
                                     </p>
                                 </div>
                             </div>
@@ -153,7 +153,9 @@ export default function PlayGame() {
                                     <br></br>
                                     Follow All the step to get your reward.
                                 </p>
-                                <a href="#" className="mybtn1">Bonus terms & conditions</a>
+                                <a href="#" className="btnnew">
+                                    {`${("Bonus terms & conditions").toUpperCase()}`}
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -344,7 +346,7 @@ export default function PlayGame() {
                                 <p className="text">
                                     We provide our affiliates with a whole set of promo tools in different formats to enable them to promote our services effectively to different target markets. To help you keep on top of the game we publish recent news on our website regularly.
                                 </p>
-                                <a href="#" className="mybtn1">join Now! </a>
+                                <a href="#" className="btnnew">{`${("join Now!").toUpperCase()}`} </a>
                             </div>
                         </div>
                     </div>
