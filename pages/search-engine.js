@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMoralis } from 'react-moralis';
-import { XMasonry, XBlock } from "react-xmasonry";
 import Loader from '../components/Common/Loader';
 import { useIPFS } from '../hooks/Web3/useIPFS';
 const category = ['Search by Title', 'Search by Author Address', 'Search by Contract Address']
@@ -28,6 +27,7 @@ const menuItems = [
         icon: <AvaxLogo />,
     },
 ];
+import ReactPaginate from 'react-paginate';
 const SearchEngine = ({ }) => {
     const [searchValue, setsearchValue] = useState("")
     const [searchResultNFTs, setsearchResultNFTs] = useState([])
@@ -36,7 +36,18 @@ const SearchEngine = ({ }) => {
     const [loader, setLoader] = useState(false)
     const [selectedCategory, setselectedCategory] = useState('Search by Title');
     const { resolveLink } = useIPFS();
+    const [pageCount, setpageCount] = useState(0);
 
+    let limit = 12;
+
+    useEffect(() => {
+    }, [searchResultNFTs]);
+
+    const handlePageClick = async (data) => {
+        let currentPage = data.selected + 1;
+        setLoader(true)
+        await setData(searchValue, currentPage);
+    };
     const nftBalanceJson = async (data) => {
         if (data?.result) {
             let NFTs = data?.result;
@@ -62,12 +73,24 @@ const SearchEngine = ({ }) => {
             return NFTs;
         }
     };
-    const setData = async (search) => {
+    const setData = async (search, currentPage = 1) => {
         var data;
         if (selectedCategory == "Search by Title") {
-            const options = { q: search, chain: chainId };
+            let cursor = null
+            let owners = {}
+
+            const options = {
+                q: search,
+                chain: chainId,
+                offset: (currentPage - 1) * limit + 1,
+                limit: limit,
+                order: 'DESC',
+                filter: "name"
+            };
             const NFTs = await Moralis.Web3API.token.searchNFTs(options);
+            setpageCount(Math.ceil(NFTs?.total / limit));
             data = await nftBalanceJson(NFTs)
+            console.log(data);
         }
         else if (selectedCategory == "Search by Author Address") {
             const options = { chain: chainId, address: search };
@@ -195,6 +218,7 @@ const SearchEngine = ({ }) => {
                                                                         searchResultNFTs?.map((nft) => (
                                                                             <>
                                                                                 <NFTHeadlessDesign
+                                                                                    key={nft?.token_uri}
                                                                                     title={"Open NFT"}
                                                                                     price={false}
                                                                                     nft={nft} />
@@ -212,6 +236,29 @@ const SearchEngine = ({ }) => {
                         }
                     </div>
                 </div>
+                {/* {searchResultNFTs && searchResultNFTs?.length > 0
+                    && */}
+                <ReactPaginate
+                    previousLabel={"Previous"}
+                    nextLabel={"Next"}
+                    breakLabel={"..."}
+                    pageCount={pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={3}
+                    onPageChange={handlePageClick}
+                    containerClassName={"pagination justify-content-center"}
+                    pageClassName={"page-item"}
+                    pageLinkClassName={"page-link"}
+                    previousClassName={"page-item"}
+                    previousLinkClassName={"page-link"}
+                    nextClassName={"page-item"}
+                    nextLinkClassName={"page-link"}
+                    breakClassName={"page-item"}
+                    breakLinkClassName={"page-link"}
+                    activeClassName={"active"}
+                />
+                {/* } */}
+
             </div>
         </>
     );
