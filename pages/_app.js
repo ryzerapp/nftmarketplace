@@ -9,7 +9,7 @@ import "../public/css/flaticon.css";
 import "../public/css/aos.css";
 import "../public/css/dark-theme.css";
 
-
+import CookieConsent, { Cookies } from "react-cookie-consent";
 import GoTop from "../components/Shared/GoTop";
 import { ModalProvider } from "../components/ui/modal/modal.context";
 import { Toaster } from "react-hot-toast";
@@ -53,31 +53,46 @@ function MyApp({ Component, pageProps }) {
 						<script src="../js/popper.min.js"></script>
 						<script src="../js/TweenMax.js"></script>
 						<script src="../js/aos.js"></script>
-						{/* <script src="../js/owl.carousel.min.js"></script> */}
-						{/* <script src="../js/jquery.countdown.min.js"></script> */}
-						{/* <script src="../js/jquery-ui-min.js"></script> */}
-						{/* <script src="../js/fancybox.js"></script> */}
 						<script src="../js/mixitup.min.js"></script>
-						{/* <script src="../js/jquery.appear.js"></script> */}
 						<script src="../js/tweenmax.min.js"></script>
-						{/* <script src="../js/main.js"></script> */}
 					</Head>
 					<MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
 						<Web3ContextProvider>
 							<MoralisDappProvider>
 								<HeaderFooter>
 									{<Component {...pageProps} />}
+									<CookieConsent
+										enableDeclineButton
+										location="bottom"
+										buttonText="Accept Cookies"
+										declineButtonText="Decline Cookies"
+										cookieName="AcceptCookies"
+										style={{ background: "#2B373B" }}
+										buttonClasses="btnnew"
+										buttonStyle={{
+											color: 'white',
+											padding: 10,
+											borderRadius: 5
+										}}
+										declineButtonStyle={{
+											color: "white",
+											fontSize: "16px",
+											padding: 10,
+											backgroundColor: "#F14D5D",
+											borderRadius: 5
+										}}
+										expires={30}
+									>
+										This website uses cookies to enhance the user experience.{" "}
+									</CookieConsent>
 								</HeaderFooter>
 							</MoralisDappProvider>
 						</Web3ContextProvider>
 					</MoralisProvider>
-
 					<GoTop scrollStepInPx="100" delayInMs="10.50" />
-
 					<Toaster position="top-center" reverseOrder={false} />
 				</ModalProvider>
 			</QueryClientProvider >
-
 		)
 	}
 	else {
