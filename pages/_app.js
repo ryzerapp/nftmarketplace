@@ -83,7 +83,11 @@ function MyApp({ Component, pageProps }) {
 										}}
 										expires={30}
 									>
-										This website uses cookies to enhance the user experience.{" "}
+										Cryptonium uses cookies to provide necessary
+										website functionality,
+										improve your experience and analyze our traffic.
+										By using our website, you agree to our Privacy Policy and
+										our cookies usage.{" "}
 									</CookieConsent>
 								</HeaderFooter>
 							</MoralisDappProvider>

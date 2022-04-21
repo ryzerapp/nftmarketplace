@@ -17,7 +17,7 @@ const Copyright = () => {
 
 								<ul className="copy-right-list">
 									<li>
-										<Link href="/">
+										<Link href="/terms-condition">
 											<a>Terms & Conditions</a>
 										</Link>
 									</li>
