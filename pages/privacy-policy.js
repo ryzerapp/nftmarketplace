@@ -1,8 +1,3 @@
-import NavbarTwo from '../components/Layout/NavbarTwo';
-import PageBanner from '../components/Common/PageBanner';
-import Footer from '../components/Layout/Footer';
-import Copyright from '../components/Common/Copyright';
-
 const style = {
   spane: {
     color: "#F14D5D"
@@ -26,6 +21,12 @@ const style = {
     color: "#FFFFFF",
     
   },
+  h3: {
+    color: "#F14D5D"
+  },
+  p: {
+    color: "#eaeaea"
+  },
   td: {
   border: "1px solid #FFFFFF",
   borderCollapse: "collapse",
@@ -35,41 +36,29 @@ const style = {
 const PrivacyPolicy = () => {
   return (
     <>
-      {/* <PageBanner
-        bannerHeading='Cryptonium Privacy Policy'
-        parentTitle='Pages'
-        pageTitle='Privacy Policy'
-        bg='inner-bg8'
-      /> */}
-
-
-     
-
-
-       <div className='privacy-policy-area pt-100 pb-70'>
+      <div className='privacy-policy-area ptb-70'>
         <div className='container'>
           <div className='section-title text-center'>
-            <span className='sp-title2'>Privacy Policy</span>
             <h2 className='m-auto'>Cryptonium Privacy Policy</h2>
           </div>
           <div className='row pt-45'>
             <div className='col-lg-12'>
               <div className='single-content'>
               <div className='single-content'>
-                <h3>1. WHAT INFORMATION DO WE COLLECT?</h3>
+                  <h3 style={style.h3}>1. WHAT INFORMATION DO WE COLLECT?</h3>
                 <h4>
                 Personal information you disclose to us
                 </h4>
-                <p>
+                  <p style={style.p}>
                 <b style={style.bold}> In Short : </b>
                  We collect personal information that you provide to us.
                 </p>
-                <p>
+                  <p style={style.p}>
                 We collect personal information that you voluntarily provide to us when you register on the Services, 
                 express an interest in obtaining information about us or our products and Services, 
                 when you participate in activities on the Services, or otherwise when you contact us.
                 </p>
-                <p>
+                  <p style={style.p}>
                 <b style={style.bold}> Personal Information Provided by You. </b>
                 The personal information that we collect depends on the context of your interactions with us and the Services, 
                 the choices you make, and the products and features you use. 
@@ -82,29 +71,29 @@ const PrivacyPolicy = () => {
                   <li style={style.li}>Phone numbers </li>
                   <li style={style.li}>Media </li>
                 </ol>
-                <p>
+                  <p style={style.p}>
                 Sensitive Information. We do not process sensitive information.
                 </p>
-                <p>
+                  <p style={style.p}>
                 Payment Data. We may collect data necessary to process your payment if you make purchases, 
                 such as your payment instrument number (such as a credit card number), and the security code associated with your payment instrument. 
                 All payment data is stored by Metamask . 
                 You may find their privacy notice link(s) here: <a href= 'https://consensys.net/privacy-policy/'> Privacy Policy</a> .
                 </p>
-                <p>
+                  <p style={style.p}>
                 All personal information that you provide to us must be true, complete, 
                 and accurate, and you must notify us of any changes to such personal information.
                 </p>
               </div>
 
               <div className='single-content'>
-                <h3>2. HOW DO WE PROCESS YOUR INFORMATION?</h3>
-                <p>
+                  <h3 style={style.h3}>2. HOW DO WE PROCESS YOUR INFORMATION?</h3>
+                  <p style={style.p}>
                 <b style={style.bold}> In Short : </b>
                 We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, 
                 and to comply with law. We may also process your information for other purposes with your consent.
                 </p>
-                <p>
+                  <p style={style.p}>
                 We process your personal information for a variety of reasons, depending on how you interact with our Services, including:
                 </p>
                 <ol style={style.ul}>
@@ -114,18 +103,18 @@ const PrivacyPolicy = () => {
               </div>
 
               <div className='single-content'>
-                <h3>3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR INFORMATION?</h3>
-                <p>
+                  <h3 style={style.h3}>3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR INFORMATION?</h3>
+                  <p style={style.p}>
                 <b style={style.bold}> In Short : </b>
                 We only process your personal information when we believe it is necessary and 
                 we have a valid legal reason (i.e., legal basis) to do so under applicable law, like with your consent, 
                 to comply with laws, to provide you with services to enter into or fulfill our contractual obligations, 
                 to protect your rights, or to fulfill our legitimate business interests.
                 </p>
-                <p>
+                  <p style={style.p}>
                 If you are located in the EU or UK, this section applies to you.
                 </p>
-                <p>
+                  <p style={style.p}>
                 The General Data Protection Regulation (GDPR) and UK GDPR require us to explain the valid legal bases we rely on in order to 
                 process your personal information. As such, 
                 we may rely on the following legal bases to process your personal information:
@@ -135,15 +124,15 @@ const PrivacyPolicy = () => {
                   <li style={style.li}><b style={style.bold}> Legal Obligations. </b> We may process your information where we believe it is necessary for compliance with our legal obligations, such as to cooperate with a law enforcement body or regulatory agency, exercise or defend our legal rights, or disclose your information as evidence in litigation in which we are involved. </li>
                   <li style={style.li}><b style={style.bold}> Vital Interests. </b>  We may process your information where we believe it is necessary to protect your vital interests or the vital interests of a third party, such as situations involving potential threats to the safety of any person.</li>
                 </ol>
-                <p>
+                  <p style={style.p}>
                 If you are located in Canada, this section applies to you.
                 </p>  
-                <p>
+                  <p style={style.p}>
                 We may process your information if you have given us specific permission to use your personal information for a specific purpose, or 
                 in situations where your permission can be inferred. 
                 You can withdraw your consent at any time. Click <a href='here'>here</a> to learn more.
                 </p>
-                <p>
+                  <p style={style.p}>
                 In some exceptional cases, we may be legally permitted under 
                 applicable law to process your information without your consent, including, for example:
                 </p>
@@ -164,12 +153,12 @@ const PrivacyPolicy = () => {
               </div>
 
               <div className='single-content'>
-                <h3>4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</h3>
-                <p>
+                  <h3 style={style.h3}>4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</h3>
+                  <p style={style.p}>
                 <b style={style.bold}> In Short : </b>
                  We may share information in specific situations described in this section and/or with the following third parties.
                 </p>
-                <p>
+                  <p style={style.p}>
                 We may need to share your personal information in the following situations:
                 </p>
                 <ol style={style.ul}>
@@ -178,17 +167,17 @@ const PrivacyPolicy = () => {
               </div>
 
               <div className='single-content'>
-                <h3> 5. HOW LONG DO WE KEEP YOUR INFORMATION?</h3>
-                <p>
+                  <h3 style={style.h3}> 5. HOW LONG DO WE KEEP YOUR INFORMATION?</h3>
+                  <p style={style.p}>
                 <b style={style.bold}> In Short : </b>
                 We keep your information for as long as necessary to fulfill the purposes outlined in this privacy notice unless otherwise required by law.
                 </p>
-                <p>
+                  <p style={style.p}>
                 We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy notice, 
                 unless a longer retention period is required or permitted by law. No purpose in this notice will require us 
                 keeping your personal information for longer than two (2) months past the start of the idle period of the user's account .
                 </p>
-                <p>
+                  <p style={style.p}>
                 When we have no ongoing legitimate business need to process your personal information, 
                 we will either delete or anonymize such information, or, if this is not possible, then 
                 we will securely store your personal information and isolate it from any further processing until deletion is possible.
@@ -196,14 +185,14 @@ const PrivacyPolicy = () => {
               </div>
 
               <div className='single-content'>
-                <h3> 6. WHAT ARE YOUR PRIVACY RIGHTS?</h3>
-                <p>
+                  <h3 style={style.h3}> 6. WHAT ARE YOUR PRIVACY RIGHTS?</h3>
+                  <p style={style.p}>
                 <b style={style.bold}> In Short : </b>
                 In some regions, such as the European Economic Area (EEA), United Kingdom (UK), and Canada, 
                 you have rights that allow you greater access to and control over your personal information. You may review, change, 
                 or terminate your account at any time.
                 </p>
-                <p>
+                  <p style={style.p}>
                 In some regions (like the EEA, UK, and Canada), you have certain rights under applicable data protection laws. 
                 These may include the right 
                 </p>
@@ -213,18 +202,18 @@ const PrivacyPolicy = () => {
                   <li style={style.li}>To restrict the processing of your personal information; and </li>
                   <li style={style.li}>If applicable, to data portability. In certain circumstances, you may also have the right to object to the processing of your personal information. You can make such a request by contacting us by using the contact details provided in the section “ HOW CAN YOU CONTACT US ABOUT THIS NOTICE?” below. </li>
                 </ol>
-                <p>
+                  <p style={style.p}>
                 We will consider and act upon any request in accordance with applicable data protection laws.
                 </p>
-                <p>
+                  <p style={style.p}>
                 If you are located in the EEA or UK and you believe we are unlawfully processing your personal information, you also have the right to complain to your local data protection supervisory authority. You can find their contact details
                 here: <a href =' https://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm'> Newsroom</a>
                 </p>
-                <p>
+                  <p style={style.p}>
                 If you are located in Switzerland, the contact details for the data protection authorities are available 
                 here:<a href =' https://www.edoeb.admin.ch/edoeb/en/home.html'>Freedom of information </a>.
                 </p>
-                <p>
+                  <p style={style.p}>
                 <b style={style.bold}>Withdrawing your consent : </b>
                 If we are relying on your consent to process your personal 
                 information, which may be express and/or implied consent depending on the applicable law, 
@@ -232,12 +221,12 @@ const PrivacyPolicy = () => {
                 time by contacting us by using the contact details provided in the section
                 " HOW CAN YOU CONTACT US ABOUT THIS NOTICE?" below or updating your preferences .
                 </p>
-                <p>
+                  <p style={style.p}>
                 However, please note that this will not affect the lawfulness of 
                 the processing before its withdrawal, nor when applicable law allows, will it 
                 affect the processing of your personal information conducted in reliance on lawful processing grounds other than consent.
                 </p>
-                <p>
+                  <p style={style.p}>
                 <b style={style.bold}> Opting out of marketing and promotional communications : </b>
                  You can unsubscribe from our marketing and promotional communications at any time by 
                  clicking on the unsubscribe link in the emails that we send, or by contacting us using the 
@@ -246,29 +235,29 @@ const PrivacyPolicy = () => {
                  you service-related messages that are necessary for the administration and use of your account, 
                  to respond to service requests, or for other non-marketing purposes.
                 </p>
-                <p>
+                  <p style={style.p}>
                 Account Information
                 </p>
-                <p>
+                  <p style={style.p}>
                 If you would at any time like to review or change the information in your account or terminate your account, you can:
                 </p>
                 <ol style={style.ul}>
                   <li style={style.li}>Log in to your account settings and update your user account. </li> 
                   <li style={style.li}>Contact us using the contact information provided. </li>
                 </ol>  
-                <p>
+                  <p style={style.p}>
                 Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. 
                 However, we may retain some information in our files to prevent fraud, troubleshoot problems, 
                 assist with any investigations, enforce our legal terms and/or comply with applicable legal requirements.
                 </p>
-                <p>
+                  <p style={style.p}>
                 If you have questions or comments about your privacy rights, you may email us at opensiddhu993@gmail.com .
                 </p>
               </div>
 
               <div className='single-content'>
-                <h3>7. CONTROLS FOR DO-NOT-TRACK FEATURES</h3>
-                <p>
+                  <h3 style={style.h3}>7. CONTROLS FOR DO-NOT-TRACK FEATURES</h3>
+                  <p style={style.p}>
                 Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track ("DNT") 
                 feature or setting you can activate to signal your privacy preference not to have data about your online browsing 
                 activities monitored and collected. At this stage no uniform technology standard for recognizing and implementing DNT 
@@ -279,13 +268,13 @@ const PrivacyPolicy = () => {
               </div>
 
 
-                <h3>8. DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?</h3>
-                <p>
+                <h3 style={style.h3}>8. DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?</h3>
+                <p style={style.p}>
                  <b style={style.bold}> In Short : </b>
                 Yes, if you are a resident of California, you are granted specific rights 
                 regarding access to your personal information.
                 </p>
-                <p>
+                <p style={style.p}>
                 California Civil Code Section 1798.83, also known as the "Shine The Light" law, permits our 
                 users who are California residents to request and obtain from us, once a year and free of charge, 
                 information about categories of personal information (if any) we disclosed to third parties for direct 
@@ -294,7 +283,7 @@ const PrivacyPolicy = () => {
                 like to make such a request, 
                 please submit your request in writing to us using the contact information provided below.
                 </p>
-                <p>
+                <p style={style.p}>
                 If you are under 18 years of age, reside in California, and have a registered account with Services, 
                 you have the right to request removal of unwanted data that you publicly post on the Services. 
                 To request removal of such data, please contact us using the contact information provided below and 
@@ -303,22 +292,22 @@ const PrivacyPolicy = () => {
                 that the data may not be completely or comprehensively removed from all our systems.
                 </p>
                 <h4>CCPA Privacy Notice</h4>
-                <p>
+                <p style={style.p}>
                 The California Code of Regulations defines a "resident" as:
                 </p>
                 <ol style={style.ul}>
                   <li style={style.li}>Every individual who is in the State of California for other than a temporary or transitory purpose and</li>
                   <li style={style.li}>Every individual who is domiciled in the State of California who is outside the State of California for a temporary or transitory purpose</li>
                 </ol>  
-                <p>
+                <p style={style.p}>
                 All other individuals are defined as "non-residents."
                 </p>
-                <p>
+                <p style={style.p}>
                 If this definition of "resident" applies to you, we must adhere to 
                 certain rights and obligations regarding your personal information.
                 </p>
                 <p style={style.bold}> <b>What categories of personal information do we collect?</b></p>
-                <p>We have collected the following categories of personal information in the past twelve (12) months:</p>
+                <p style={style.p}>We have collected the following categories of personal information in the past twelve (12) months:</p>
               
               <table style={style.table}>
                 <tr style={style.tr}>
@@ -382,7 +371,7 @@ const PrivacyPolicy = () => {
                   <td style={style.td}> NO</td>
                 </tr>
               </table>
-              <p>
+                <p style={style.p}>
               We may also collect other personal information outside of these categories instances where you interact with us in person, online, or by phone or mail in the context of:
               </p>
               <ol style={style.ul}>
@@ -393,13 +382,13 @@ const PrivacyPolicy = () => {
               <p style={style.bold}>
                  How do we use and share your personal information?
               </p>
-              <p>
+                <p style={style.p}>
               More information about our data collection and sharing practices can be found in this privacy notice .
               </p>
-              <p>
+                <p style={style.p}>
                 You may contact us by email at opensiddhu993@gmail.com , or by referring to the contact details at the bottom of this document.
               </p>
-              <p>
+                <p style={style.p}>
               If you are using an authorized agent to exercise your
               right to opt out we may deny a request if the authorized agent does not 
               submit proof that they have been validly authorized to act on your behalf.
@@ -407,35 +396,35 @@ const PrivacyPolicy = () => {
               <p style={style.bold}>
               Will your information be shared with anyone else?
               </p>
-              <p>
+                <p style={style.p}>
               We may disclose your personal information with our service providers pursuant to a written contract between us and each service provider. 
               Each service provider is a for-profit entity that processes the information on our behalf.
               </p>
-              <p>
+                <p style={style.p}>
               We may use your personal information for our own business purposes, such as for undertaking internal research for technological development and demonstration. 
               This is not considered to be "selling" of your personal information.
               </p>
-              <p>
+                <p style={style.p}>
               Cryptonium has not disclosed or sold any personal information to third parties for a business or commercial purpose in the preceding twelve (12) months. 
               Cryptonium will not sell personal information in the future belonging to website visitors, users, and other consumers.
               </p>
               <p style={style.bold}>
               Your rights with respect to your personal data
               </p>
-              <p>
+                <p style={style.p}>
               Right to request deletion of the data — Request to delete
               </p>
-              <p>
+                <p style={style.p}>
               You can ask for the deletion of your personal information. If you ask us to delete your personal information, 
               we will respect your request and delete your personal information, subject to certain exceptions provided by law, 
               such as the exercise by another consumer of his or her right to free speech, our compliance 
               requirements resulting from a legal obligation, 
               or any processing that may be required to protect against illegal activities.
               </p>
-              <p>
+                <p style={style.p}>
               Right to be informed — Request to know
               </p>
-              <p>
+                <p style={style.p}>
               Depending on the circumstances, you have a right to know:
               </p>
               <ol style={style.ul}>
@@ -447,20 +436,20 @@ const PrivacyPolicy = () => {
                   <li style={style.li}>The categories of third parties to whom the personal information was sold or disclosed for a business purpose; and </li>
                   <li style={style.li}>The business or commercial purpose for collecting or selling personal information. </li>
               </ol>
-              <p>
+                <p style={style.p}>
                In accordance with applicable law, we are not obligated to provide or delete consumer information that is de-identified 
                in response to a consumer request or to re-identify individual data to verify a consumer request.
                </p>
-               <p>
+                <p style={style.p}>
                Right to Non-Discrimination for the Exercise of a Consumer’s Privacy Rights
                </p>
-               <p>
+                <p style={style.p}>
                We will not discriminate against you if you exercise your privacy rights.
                </p>
-               <p>
+                <p style={style.p}>
                Verification process
                </p>
-               <p>
+                <p style={style.p}>
                Upon receiving your request, we will need to verify your identity to determine you are the same person about 
                whom we have the information in our system. These verification efforts require us to ask you to provide information 
                so that we can match it with information you have previously provided us. For instance, depending on the type of request 
@@ -468,14 +457,14 @@ const PrivacyPolicy = () => {
                we already have on file, or we may contact you through a communication method 
                that you have previously provided to us. We may also use other verification methods as the circumstances dictate.
                </p>
-               <p>
+                <p style={style.p}>
                We will only use personal information provided in your request to verify your identity or authority to make the request. 
                To the extent possible, we will avoid requesting additional information from you for the purposes of verification. However, 
                if we cannot verify your identity from the information already maintained by us, we may request that you provide additional 
                information for the purposes of verifying your identity and for security or fraud-prevention purposes. 
                We will delete such additionally provided information as soon as we finish verifying you.
                </p>
-               <p>
+                <p style={style.p}>
                Other privacy rights
                </p>
                <ol style={style.ul}>
@@ -484,7 +473,7 @@ const PrivacyPolicy = () => {
                   <li style={style.li}>You can designate an authorized agent to make a request under the CCPA on your behalf. We may deny a request from an authorized agent that does not submit proof that they have been validly authorized to act on your behalf in accordance with the CCPA. </li>
                   <li style={style.li}>You may request to opt out from future selling of your personal information to third parties. Upon receiving an opt-out request, we will act upon the request as soon as feasibly possible, but no later than fifteen (15) days from the date of the request submission. </li>
                </ol>
-               <p>
+                <p style={style.p}>
                To exercise these rights, you can contact us by email at opensiddhu993@gmail.com , or 
                by referring to the contact details at the bottom of this document. 
                If you have a complaint about how we handle your data, we would like to hear from you.
@@ -492,12 +481,12 @@ const PrivacyPolicy = () => {
               </div>
 
               <div className='single-content'>
-                <h3> 9. DO WE MAKE UPDATES TO THIS NOTICE?</h3>
-                <p>
+                <h3 style={style.h3}> 9. DO WE MAKE UPDATES TO THIS NOTICE?</h3>
+                <p style={style.p}>
                 <b style={style.bold}> In Short : </b>
                 Yes, we will update this notice as necessary to stay compliant with relevant laws..
                 </p>
-                <p>
+                <p style={style.p}>
                 We may update this privacy notice from time to time. The updated version will be indicated by an updated 
                 "Revised" date and the updated version will be effective as soon as it is accessible. If we make material changes to 
                 this privacy notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. 
@@ -505,9 +494,9 @@ const PrivacyPolicy = () => {
                 </p>
               </div>
 
-              <div className='single-content'>
-                <h3> 10. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h3>
-                <p>
+              {/* <div className='single-content'>
+                <h3 style={style.h3}> 10. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h3>
+                <p style={style.p}>
                 If you have questions or comments about this notice, you may email us at opensiddhu993@gmail.com or by post to:
                 </p>
                 <ol style={style.ul}>
@@ -516,13 +505,13 @@ const PrivacyPolicy = () => {
                   <li style={style.li}>Ahmedabad </li>
                   <li style={style.li}>Ahmedabad , Gujarat 382350 </li>
                   <li style={style.li}>India </li>
-                </ol>  
-              </div>
+                </ol>
+              </div> */}
 
           
               <div className='single-content'>
-                <h3> 11. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</h3>
-                <p>
+                <h3 style={style.h3}> 10. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</h3>
+                <p style={style.p}>
                 Based on the applicable laws of your country, you may have the right to request access to the personal 
                 information we collect from you, change that information, or delete it in some circumstances. 
                 To request to review, update, or delete your personal information, please visit: <a href= 'https://cryptonium.in/profile'>Get Involved</a> .

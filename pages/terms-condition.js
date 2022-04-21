@@ -7,6 +7,12 @@ const style = {
   },
   li: {
     color: "white"
+  },
+  p: {
+    color: "#eaeaea"
+  },
+  h3: {
+    color: "#F14D5D"
   }
 }
 const TermsCondition = () => {
@@ -25,8 +31,8 @@ const TermsCondition = () => {
               </div>
 
               <div className='single-content'>
-                <h3>1. AGREEMENT TO TERMS</h3>
-                <p>
+                <h3 style={style.h3}>1. AGREEMENT TO TERMS</h3>
+                <p style={style.p}>
                   These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity 
                   and Cryptonium concerning your access to and use of the <a href='https://www.cryptonium.in/'>website</a>  as well as any other media form, media channel,
                   mobile website or mobile application related,
@@ -35,12 +41,10 @@ const TermsCondition = () => {
                   You agree that by accessing the Site,
                   you have read, understood, and agreed to be
                   bound by all of these Terms of Use.
-                  <span style={style.spane}>
-                    IF YOU DO NOT AGREE WITH ALL OF THESE TERMS OF USE, 
-                    THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SITE AND YOU MUST DISCONTINUE USE IMMEDIATELY.
-                  </span>
+                  If you do not agree with all of these terms of use,
+                  Then you are expressly prohibited from using the site and you must discontinue use immediately.
                 </p>
-                <p>
+                <p style={style.p}>
                   Supplemental terms and conditions or documents that may be posted on the Site from time to time are hereby expressly incorporated herein by reference. 
                   We reserve the right, in our sole discretion, 
                   to make changes or modifications to these Terms of Use from time to time. 
@@ -50,7 +54,7 @@ const TermsCondition = () => {
                   You will be subject to, and will be deemed to have been made aware of and to have accepted, 
                   the changes in any revised Terms of Use by your continued use of the Site after the date such revised Terms of Use are posted.
                 </p>
-                <p>
+                <p style={style.p}>
                   The information provided on the Site is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or 
                   use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country. 
                   Accordingly, those persons who choose to access the Site from other locations do so on their own initiative and are solely responsible for compliance with local laws, 
@@ -59,8 +63,8 @@ const TermsCondition = () => {
               </div>
               
               <div className='single-content'>
-                <h3>2. INTELLECTUAL PROPERTY RIGHTS</h3>
-                <p>
+                <h3 style={style.h3}>2. INTELLECTUAL PROPERTY RIGHTS</h3>
+                <p style={style.p}>
                 Unless otherwise indicated,
                 the Site is our proprietary property and all source code,
                 databases, functionality, software, website designs, audio, video, text, photographs, and 
@@ -72,7 +76,7 @@ const TermsCondition = () => {
                 no Content or Marks may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose whatsoever,
                 without our express prior written permission.
                 </p>
-               <p>
+                <p style={style.p}>
                Provided that you are eligible to use the Site, 
                you are granted a limited license to access and use the Site and to download or print a copy of any portion of the Content to which 
                you have properly gained access solely for your personal, non-commercial use.
@@ -82,8 +86,8 @@ const TermsCondition = () => {
 
 
               <div className='single-content'>
-                <h3>3. USER REPRESENTATIONS</h3>
-                <p>
+                <h3 style={style.h3}>3. USER REPRESENTATIONS</h3>
+                <p style={style.p}>
                   By using the Site, you represent and warrant that: 
                 </p>
                 <ol style={style.ul}>
@@ -94,8 +98,8 @@ const TermsCondition = () => {
               </div>
 
               <div className='single-content'>
-                <h3>4. USER REGISTRATION</h3>
-                <p>
+                <h3 style={style.h3}>4. USER REGISTRATION</h3>
+                <p style={style.p}>
                 You may be required to register with the Site.
                 You agree to keep your password confidential and will be responsible for all use of your account and 
                 password. We reserve the right to remove, reclaim, or change a username you select if we determine, 
@@ -104,13 +108,13 @@ const TermsCondition = () => {
               </div>
 
               <div className='single-content'>
-                <h3>5. PROHIBITED ACTIVITIES</h3>
-                <p>
+                <h3 style={style.h3}>5. PROHIBITED ACTIVITIES</h3>
+                <p style={style.p}>
                 You may not access or use the Site for any purpose other than that for which we make the Site available. 
                 The Site may not be used in connection with any commercial endeavors except those that are specifically
                 endorsed or approved by us.
                 </p>
-                <p>
+                <p style={style.p}>
                 As a user of the Site, you agree not to:
                 </p>
                 <ol style={style.ul}>
@@ -140,8 +144,8 @@ const TermsCondition = () => {
               </div>
 
               <div className='single-content'>
-                <h3>6. USER GENERATED CONTRIBUTIONS</h3>
-                <p>
+                <h3 style={style.h3}>6. USER GENERATED CONTRIBUTIONS</h3>
+                <p style={style.p}>
                 The Site may invite you to chat, contribute to, or participate in blogs, message boards, online forums, 
                 and other functionality, and may provide you with the opportunity to create, submit, post, display,
                 transmit, perform, publish, distribute, or broadcast content and materials to us or on the Site, 
@@ -167,15 +171,15 @@ const TermsCondition = () => {
                   <li style={style.li}>Your Contributions do not include any offensive comments that are connected to race, national origin, gender, sexual preference, or physical handicap. </li>
                   <li style={style.li}>Your Contributions do not otherwise violate, or link to material that violates, any provision of these Terms of Use, or any applicable law or regulation. </li>
                 </ol>
-               <p>
+                <p style={style.p}>
                Any use of the Site in violation of the foregoing violates these Terms of Use and may 
                result in, among other things, termination or suspension of your rights to use the Site.
                </p>
               </div> 
 
                 <div className='single-content'>
-                <h3>7. CONTRIBUTION LICENSE</h3>
-                <p>
+                <h3 style={style.h3}>7. CONTRIBUTION LICENSE</h3>
+                <p style={style.p}>
                 By posting your Contributions to any part of the Site, 
                 you automatically grant, and you represent and warrant that you have the right to grant, 
                 to us an unrestricted, unlimited, irrevocable, perpetual, non-exclusive, transferable, 
@@ -188,14 +192,14 @@ const TermsCondition = () => {
                 foregoing. The use and distribution may occur in any media formats and through any media 
                 channels.
                 </p>
-                <p>
+                <p style={style.p}>
                 This license will apply to any form, media, or technology now known or hereafter developed, 
                 and includes our use of your name, company name, and franchise name, as applicable, and 
                 any of the trademarks, service marks, trade names, logos, and personal and commercial 
                 images you provide. You waive all moral rights in your Contributions, and you warrant that 
                 moral rights have not otherwise been asserted in your Contributions.
                 </p>
-                <p>
+                <p style={style.p}>
                 We do not assert any ownership over your Contributions. 
                 You retain full ownership of all of your Contributions and any intellectual property 
                 rights or other proprietary rights associated with your Contributions. 
@@ -204,7 +208,7 @@ const TermsCondition = () => {
                 Contributions to the Site and you expressly agree to exonerate us from any and all 
                 responsibility and to refrain from any legal action against us regarding your Contributions.
                 </p>
-                <p>
+                <p style={style.p}>
                 We have the right, in our sole and absolute discretion; 
                 </p>
                 <ol style={style.ul}>
@@ -215,8 +219,8 @@ const TermsCondition = () => {
               </div>
 
                 <div className='single-content'>
-                <h3>8. GUIDELINES FOR REVIEWS</h3>
-                <p>
+                <h3 style={style.h3}>8. GUIDELINES FOR REVIEWS</h3>
+                <p style={style.p}>
                 We may provide you areas on the Site to leave reviews or ratings. 
                 When posting a review, you must comply with the following criteria: 
                 </p>
@@ -233,9 +237,9 @@ const TermsCondition = () => {
               </div>
 
                 <div className='single-content'>
-                <h3>9. MOBILE APPLICATION LICENSE</h3>
+                <h3 style={style.h3}>9. MOBILE APPLICATION LICENSE</h3>
                 <h4>Use License</h4>
-                <p>
+                <p style={style.p}>
                 If you access the Site via a mobile application, then we grant you a revocable, 
                 non-exclusive, non-transferable, limited right to install and use the mobile application 
                 on wireless electronic devices owned or controlled by you, and to access and use the mobile 
@@ -254,7 +258,7 @@ const TermsCondition = () => {
                   <li style={style.li}>Use any proprietary information or any of our interfaces or our other intellectual property in the design, development, manufacture, licensing, or distribution of any applications, accessories, or devices for use with the application.</li>
                 </ol>
                 <h4>Apple and Android Devices</h4>
-                <p>
+                <p style={style.p}>
                 The following terms apply when you use a mobile application obtained from either 
                 the Apple Store or Google Play  to access the Site: 
                 </p>
@@ -274,8 +278,8 @@ const TermsCondition = () => {
               </div>
 
                 <div className='single-content'>
-                <h3>10. SUBMISSIONS</h3>
-                <p>
+                <h3 style={style.h3}>10. SUBMISSIONS</h3>
+                <p style={style.p}>
                 You acknowledge and agree that any questions, comments, suggestions, ideas, feedback, or 
                 other information regarding the Site provided by you to us are non-confidential and 
                 shall become our sole property. We shall own exclusive rights, including all intellectual 
@@ -290,8 +294,8 @@ const TermsCondition = () => {
               </div>
 
                 <div className='single-content'>
-                <h3>11. SITE MANAGEMENT</h3>
-                <p>
+                <h3 style={style.h3}>11. SITE MANAGEMENT</h3>
+                <p style={style.p}>
                 We reserve the right, but not the obligation, to: 
                 </p>
                 <ol style={style.ul}>
@@ -304,8 +308,8 @@ const TermsCondition = () => {
               </div>
 
                 <div className='single-content'>
-                <h3>12. PRIVACY POLICY </h3>
-                <p>
+                <h3 style={style.h3}>12. PRIVACY POLICY </h3>
+                <p style={style.p}>
                 We care about data privacy and security. 
                 Please review our Privacy Policy: <a href= 'https://cryptonium.in/privacy-policy'> Cryptonium Privacy Policy </a> . 
                 By using the Site, you agree to be bound by our Privacy Policy, 
@@ -318,8 +322,8 @@ const TermsCondition = () => {
               </div>
 
                 <div className='single-content'>
-                <h3>13. TERM AND TERMINATION</h3>
-                <p>
+                <h3 style={style.h3}>13. TERM AND TERMINATION</h3>
+                <p style={style.p}>
                 These Terms of Use shall remain in full force and effect while you use the Site.
                 These terms of use shall remain in full force and effect while you use the site. 
                 Without limiting any other provision of these terms of use, we reserve the right to, 
@@ -330,7 +334,7 @@ const TermsCondition = () => {
                 or delete your account and  any content or information that you posted at any time, without 
                 warning, in our sole discretion.
                 </p>
-                <p>
+                <p style={style.p}>
                 If we terminate or suspend your account for any reason, you are prohibited 
                 from registering and creating a new account under your name, a fake or borrowed name, 
                 or the name of any third party, even if you may be acting on behalf of the third party. 
@@ -341,15 +345,15 @@ const TermsCondition = () => {
               </div>   
 
                <div className='single-content'>
-                <h3>14. MODIFICATIONS AND INTERRUPTIONS</h3>
-                <p>
+                <h3 style={style.h3}>14. MODIFICATIONS AND INTERRUPTIONS</h3>
+                <p style={style.p}>
                 We reserve the right to change, modify, or remove the contents of the Site at any time or 
                 for any reason at our sole discretion without notice. However, we have no obligation to 
                 update any information on our Site. We also reserve the right to modify or discontinue all 
                 or part of the Site without notice at any time. We will not be liable to you or any third 
                 party for any modification, price change, suspension, or discontinuance of the Site.
                 </p>
-                <p>
+                <p style={style.p}>
                 We cannot guarantee the Site will be available at all times. We may experience hardware, 
                 software, or other problems or need to perform maintenance related to the Site, resulting in 
                 interruptions, delays, or errors. We reserve the right to change, revise, update, suspend, 
@@ -362,8 +366,8 @@ const TermsCondition = () => {
               </div>           
 
                <div className='single-content'>
-                <h3>15. GOVERNING LAW </h3>
-                <p>
+                <h3 style={style.h3}>15. GOVERNING LAW </h3>
+                <p style={style.p}>
                 These Terms shall be governed by and defined following the laws of India . 
                 Cryptonium and yourself irrevocably consent that the courts of India  shall have exclusive 
                 jurisdiction to resolve any dispute which may arise in connection with these terms.
@@ -371,16 +375,16 @@ const TermsCondition = () => {
               </div>           
 
                <div className='single-content'>
-                <h3>16. DISPUTE RESOLUTION</h3>
+                <h3 style={style.h3}>16. DISPUTE RESOLUTION</h3>
                 <h4>Informal Negotiations</h4>
-                <p>
+                <p style={style.p}>
                 To expedite resolution and control the cost of any dispute, controversy, or claim related 
                 to these Terms of Use brought by either you or us, the Parties agree to first attempt to negotiate any Dispute 
                 informally for at least __________ days before initiating arbitration. Such informal negotiations 
                 commence upon written notice from one Party to the other Party.
                 </p>
                 <h4>Binding Arbitration</h4>
-                <p>
+                <p style={style.p}>
                 Any dispute arising out of or in connection with this contract, 
                 including any question regarding its existence, validity, or termination, shall be referred to and 
                 finally resolved by the International Commercial Arbitration Court under the European Arbitration 
@@ -391,7 +395,7 @@ const TermsCondition = () => {
                 The governing law of the contract shall be the substantive law of __________ .
                 </p>
                 <h4>Restrictions</h4>
-                <p>
+                <p style={style.p}>
                 The Parties agree that any arbitration shall be limited to the Dispute 
                 between the Parties individually. To the full extent permitted by law, 
                 </p>
@@ -403,8 +407,8 @@ const TermsCondition = () => {
               </div>           
 
                <div className='single-content'>
-                <h3>17. CORRECTIONS</h3>
-                <p>
+                <h3 style={style.h3}>17. CORRECTIONS</h3>
+                <p style={style.p}>
                 There may be information on the Site that contains typographical errors, 
                 inaccuracies, or omissions, including descriptions, pricing, availability, 
                 and various other information. We reserve the right to correct any errors, inaccuracies, 
@@ -414,8 +418,8 @@ const TermsCondition = () => {
               </div>           
 
                <div className='single-content'>
-                <h3>18. DISCLAIMER</h3>
-                <p>
+                <h3 style={style.h3}>18. DISCLAIMER</h3>
+                <p style={style.p}>
                 The site is provided on an as-is and as-available basis. 
                 You agree that your use of the site and our services will be at your sole risk. 
                 To the fullest extent permitted by law, we disclaim all warranties, express or implied, 
@@ -436,8 +440,8 @@ const TermsCondition = () => {
               </div>           
 
                <div className='single-content'>
-                <h3>19. LIMITATIONS OF LIABILITY</h3>
-                <p>
+                <h3 style={style.h3}>19. LIMITATIONS OF LIABILITY</h3>
+                <p style={style.p}>
                 In no event will we or our directors, employees, 
                 or agents be liable to you or any third party for any direct, indirect, 
                 consequential, exemplary, incidental, special, or punitive damages, including lost profit, 
@@ -453,8 +457,8 @@ const TermsCondition = () => {
               </div>           
 
                <div className='single-content'>
-                <h3>20. INDEMNIFICATION</h3>
-                <p> 
+                <h3 style={style.h3}>20. INDEMNIFICATION</h3>
+                <p style={style.p}> 
                   You agree to defend, indemnify, and hold us harmless, including our subsidiaries, 
                   affiliates, and all of our respective officers, agents, partners, and employees, 
                   from and against any loss, damage, liability, claim, or demand, including reasonable 
@@ -471,8 +475,8 @@ const TermsCondition = () => {
               </div>   
 
                <div className='single-content'>
-                <h3>21. USER DATA</h3>
-                <p>
+                <h3 style={style.h3}>21. USER DATA</h3>
+                <p style={style.p}>
                 We will maintain certain data that you transmit to the Site for the purpose 
                 of managing the performance of the Site, as well as data relating to your use of the Site. 
                 Although we perform regular routine backups of data, you are solely responsible for all data
@@ -484,8 +488,8 @@ const TermsCondition = () => {
               </div>      
 
                <div className='single-content'>
-                <h3>22. ELECTRONIC COMMUNICATIONS, TRANSACTIONS, AND SIGNATURES</h3>
-                <p>
+                <h3 style={style.h3}>22. ELECTRONIC COMMUNICATIONS, TRANSACTIONS, AND SIGNATURES</h3>
+                <p style={style.p}>
                 Visiting the site, sending us emails, and completing online forms constitute electronic 
                 communications. You consent to receive electronic communications, and you agree that all 
                 agreements, notices, disclosures, and other communications we provide to you electronically, 
@@ -500,8 +504,8 @@ const TermsCondition = () => {
               </div>      
 
                <div className='single-content'>
-                <h3>23. CALIFORNIA USERS AND RESIDENTS</h3>
-                <p>
+                <h3 style={style.h3}>23. CALIFORNIA USERS AND RESIDENTS</h3>
+                <p style={style.p}>
                 If any complaint with us is not satisfactorily resolved, you can contact the 
                 Complaint Assistance Unit of the Division of Consumer Services of the California 
                 Department of Consumer Affairs in writing at 1625 North Market Blvd., Suite N 112, 
@@ -510,8 +514,8 @@ const TermsCondition = () => {
               </div>      
 
                <div className='single-content'>
-                <h3>24. MISCELLANEOUS</h3>
-                <p>
+                <h3 style={style.h3}>24. MISCELLANEOUS</h3>
+                <p style={style.p}>
                 These Terms of Use and any policies or operating rules posted by us on the Site or in 
                 respect to the Site constitute the entire agreement and understanding between you and us. 
                 Our failure to exercise or enforce any right or provision of these Terms of Use shall not operate 
@@ -528,22 +532,6 @@ const TermsCondition = () => {
                 signing by the parties hereto to execute these Terms of Use.
                 </p>
               </div>      
-
-               <div className='single-content'>
-                <h3>25. CONTACT US</h3>
-                <h4>In order to resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at:</h4>
-                <p> <b>Cryptonium</b></p>
-                <p> <b>nikol naroda</b></p>
-                <p> <b>ahmedabad , gujarat 382350</b></p>
-                <p> <b>India</b></p>
-                <p> <b>Phone:  919909166848</b></p>
-                <p> <b>opensiddhu993@gmail.com</b></p>
-                <p>
-                These terms of use were created using Termly's <a href='Terms and Conditions Generator'>Terms and Conditions Generator</a>. 
-                </p>
-              </div>      
-
-                                                                         
             </div>
           </div>
         </div>
