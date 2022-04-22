@@ -23,7 +23,7 @@ const Copyright = () => {
 									</li>
 
 									<li>
-										<Link href="/">
+										<Link href="/privacy-policy">
 											<a>Privacy Policy</a>
 										</Link>
 									</li>
