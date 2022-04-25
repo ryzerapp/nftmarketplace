@@ -267,6 +267,7 @@ const UserProfile = () => {
                                   <div className='col-lg-12 col-md-12'>
                                     <div className='form-group'>
                                       <label>Profile Photo</label>
+
                                       <input
                                         {...register("profile_photo")}
                                         className='profileButton-input'
@@ -362,19 +363,19 @@ const UserProfile = () => {
                           <div align="center">
                             <div className='px-4'>
                               <div className='pt-5'></div>
-                                {data?.user?.auctions?.length > 0 ?
-                                  data?.user?.auctions?.map((auction) =>
-                                  (
-                                    <AuctionNFTPrivate key={auction.id} data={auction} isfromProfile={true} />
-                                  )) : <>
-                                    <div className='container mt-100'>
-                                      <div className='row'>
-                                        <div className='col-xs-1 section-title pb-70 pt-50' align="center">
-                                          <p>You Don't Have Any Auction</p>
-                                        </div>
+                              {data?.user?.auctions?.length > 0 ?
+                                data?.user?.auctions?.map((auction) =>
+                                (
+                                  <AuctionNFTPrivate key={auction.id} data={auction} isfromProfile={true} />
+                                )) : <>
+                                  <div className='container mt-100'>
+                                    <div className='row'>
+                                      <div className='col-xs-1 section-title pb-70 pt-50' align="center">
+                                        <p>You Don't Have Any Auction</p>
                                       </div>
                                     </div>
-                                  </>}
+                                  </div>
+                                </>}
                             </div>
                           </div>
                         </div>
@@ -384,30 +385,30 @@ const UserProfile = () => {
                       <div className='tabs_item'>
                         <div className='row justify-content-left'>
                           <div align="center">
-                              <p className='justify-content-left pt-4'>Saved Collection</p>
-                              <div className='row justify-content-ceneter px-4'>
-                                <hr ></hr>
-                                <RenderCollectionInTabs
-                                  editOrDelete={true}
-                                  user={data?.user}
-                                  profile={true}
-                                  collections={savedCollection ? savedCollection : []}
-                                  message="You Don't Have Any Collection"
+                            <p className='justify-content-left pt-4'>Saved Collection</p>
+                            <div className='row justify-content-ceneter px-4'>
+                              <hr ></hr>
+                              <RenderCollectionInTabs
+                                editOrDelete={true}
+                                user={data?.user}
+                                profile={true}
+                                collections={savedCollection ? savedCollection : []}
+                                message="You Don't Have Any Collection"
                               />
                             </div>
                           </div>
 
                           <div className='row pt-3'>
                             <div align="center">
-                                <p className='justify-content-left pt-4'>Saved NFTS</p>
-                                <div className='row justify-content-ceneter px-4'>
-                                  <hr ></hr>
-                                  <RenderNFTInTabs
-                                    openDialogTitle={"Open NFT"}
-                                    editOrDelete={true}
-                                    user={data?.user}
-                                    nfts={savedNfts ? savedNfts : []}
-                                    message="You Don't Have Saved NFTs"
+                              <p className='justify-content-left pt-4'>Saved NFTS</p>
+                              <div className='row justify-content-ceneter px-4'>
+                                <hr ></hr>
+                                <RenderNFTInTabs
+                                  openDialogTitle={"Open NFT"}
+                                  editOrDelete={true}
+                                  user={data?.user}
+                                  nfts={savedNfts ? savedNfts : []}
+                                  message="You Don't Have Saved NFTs"
                                 />
                               </div>
                             </div>

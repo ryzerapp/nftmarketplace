@@ -25,6 +25,7 @@
     "browser-signature": "^1.0.4",
     "ethers": "^5.6.2",
     "hardhat": "^2.9.2",
+    "input-file": "^1.1.0",
     "install": "^0.13.0",
     "js-cookie": "^3.0.1",
     "jsonwebtoken": "^8.5.1",

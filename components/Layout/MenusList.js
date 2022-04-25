@@ -84,7 +84,7 @@ const MenusList = ({ user }) => {
 								</li>
 							</ul>
 						</li>
-						<li className="nav-item" style={{ display: "flex" }}>
+						<li className="nav-item">
 							<a className="nav-link">Crypto Game
 								<i className="ri-arrow-down-s-line"></i>
 							</a>
