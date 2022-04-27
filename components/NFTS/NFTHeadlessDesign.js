@@ -5,10 +5,16 @@ import { useMoralis, useWeb3ExecuteFunction } from 'react-moralis';
 import { useQueryClient } from 'react-query';
 import toast from 'react-hot-toast';
 import http from '../../utils/http';
+import { MODAL_VIEWS, useModalAction } from '../ui/modal/modal.context';
 export default function NFTHeadlessDesign({ nft, title: openDialogTitle, price = true }) {
+    const { openModal } = useModalAction();
+    function handleOpenModal() {
+        return openModal(MODAL_VIEWS.MINT_NFT, nft);
+    }
     const router = useRouter()
     const { state: { nftTokenAddress } } =
         useWeb3();
+
     const queryClient = useQueryClient();
     const { state: { nftTokenABI } } = useWeb3()
     const { Moralis, isAuthenticated } = useMoralis();
@@ -92,7 +98,7 @@ export default function NFTHeadlessDesign({ nft, title: openDialogTitle, price =
                             router.push(`/nft/${nft?.id}`)
                         }
                         else if (openDialogTitle == "Mint NFT") {
-                            mintNFTHandle()
+                            handleOpenModal();
                         }
                     }
                     }

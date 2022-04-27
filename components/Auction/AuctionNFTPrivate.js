@@ -6,7 +6,6 @@ import { MODAL_VIEWS, useModalAction, useModalState } from "../ui/modal/modal.co
 const AuctionNFTPrivate = ({ data, isfromProfile }) => {
 	const { openModal } = useModalAction();
 	function handleJoin() {
-		console.log('first data', data);
 		return openModal(MODAL_VIEWS.EDIT_AUCTION, data);
 	}
 	const [days, setDays] = useState("");
@@ -121,10 +120,12 @@ const AuctionNFTPrivate = ({ data, isfromProfile }) => {
 						</div>
 
 					</div>
-					<Link href="/add-wallet">
-						<a className="place-btn">Place Bid</a>
-					</Link>
-					<a className="place-btn" onClick={handleJoin}>Edit auction</a>
+					<div className="d-flex justify-content-center">
+						<Link href="/add-wallet">
+							<a className="place-btn">Place Bid</a>
+						</Link>
+						<a className="place-btn ml-3" onClick={handleJoin}>Edit auction</a>
+					</div>
 				</div>
 			</div>
 		</div>

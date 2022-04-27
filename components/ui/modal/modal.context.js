@@ -2,7 +2,7 @@ import React from 'react';
 
 export const MODAL_VIEWS = {
   EDIT_AUCTION: 'EDIT_AUCTION',
-  REGISTER: 'REGISTER'
+  MINT_NFT: 'MINT_NFT'
 }
 
 const initialState = {

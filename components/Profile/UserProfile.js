@@ -25,6 +25,8 @@ import { XBlock, XMasonry } from 'react-xmasonry';
 import AuctionNFTPrivate from '../Auction/AuctionNFTPrivate';
 import Layout from '../Layout/Layout';
 import NFTHeadlessDesign from '../NFTS/NFTHeadlessDesign';
+import { useWeb3 } from '../../providers/Web3Context';
+import { useMoralis } from 'react-moralis';
 const schema = yup
   .object({
     email: yup
@@ -47,9 +49,10 @@ const Heading = ({ heading }) => {
   )
 }
 const UserProfile = () => {
-  const { data, isFetched, isLoading } = useMeQuery()
-  const { data: savedNfts } = useSavednftsQuery()
-  const { data: savedCollection } = useCollectionSavedByUser();
+  const { state: { walletAddress, networkId } } = useWeb3();
+  const { Moralis, isWeb3Enabled, isAuthenticated } = useMoralis();
+  const { data, isFetched, isLoading } = useMeQuery();
+
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     defaultValues: {
       first_name: "",
@@ -381,7 +384,7 @@ const UserProfile = () => {
                         </div>
                       </div>
                     </TabPanel>
-                    <TabPanel>
+                    {/* <TabPanel>
                       <div className='tabs_item'>
                         <div className='row justify-content-left'>
                           <div align="center">
@@ -415,7 +418,7 @@ const UserProfile = () => {
                           </div>
                         </div>
                       </div>
-                    </TabPanel>
+                    </TabPanel> */}
                   </div>
                 </Tabs>
               </div>
