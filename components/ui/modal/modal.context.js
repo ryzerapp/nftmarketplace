@@ -2,6 +2,7 @@ import React from 'react';
 
 export const MODAL_VIEWS = {
   EDIT_AUCTION: 'EDIT_AUCTION',
+  SHOW_INSTA_FEED:'SHOW_INSTA_FEED',
   REGISTER: 'REGISTER'
 }
 
