@@ -107,6 +107,13 @@ const MenusList = ({ user }) => {
 								</li>
 							</ul>
 						</li>
+						{
+							web3Authentication && <li className="nav-item">
+								<a href="insta" className="nav-link">
+									Explore Feeds
+								</a>
+							</li>
+						}
 
 
 						{web3Authentication && (
