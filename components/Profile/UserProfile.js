@@ -273,7 +273,7 @@ const UserProfile = () => {
 
                                       <input
                                         {...register("profile_photo")}
-                                        className='profileButton-input'
+                                        className='choose-file-btn'
                                         type='file'
                                         name="profile_photo"
                                         accept='image/*'
