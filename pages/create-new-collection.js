@@ -157,7 +157,7 @@ export default function CreateNft() {
                                                         <label>Choose Collection Logo</label>
                                                         <input
                                                             {...register("collection_logo")}
-                                                            className='profileButton-input'
+                                                            className='choose-file-btn'
                                                             type='file'
                                                             accept='image/*'
                                                         />
@@ -168,7 +168,7 @@ export default function CreateNft() {
                                                         <label>Choose Collection Cover</label>
                                                         <input
                                                             {...register("collection_cover")}
-                                                            className='profileButton-input'
+                                                            className='choose-file-btn'
                                                             type='file'
                                                             accept='image/*'
                                                         />

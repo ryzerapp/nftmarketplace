@@ -3852,13 +3852,15 @@ Collection Form Area
 
 .collection-form .form-group .form-control {
   height: 50px;
-  color: var(--bodyColor);
-  border: none;
+
   background-color: var(--whiteColor);
   font-size: 15px;
   padding: 15px 20px;
   width: 100%;
-  border-radius: 30px;
+  background-color: rgb(8, 9, 27);
+  border: 1px solid white;
+  color: white;
+  /* border-radius: 30px; */
 }
 
 .collection-form .form-group .form-control:focus {
@@ -18318,6 +18320,24 @@ select:focus {
   }
 }
 
+@media (max-width: 497px) {
+  .search-engine {
+    width: 400px;
+  }
+}
+
+@media (max-width: 520px) {
+  .search-engine {
+    max-width: 400px;
+  }
+}
+
+/* @media (max-width: 761px) {
+  .side-nav-responsive .dot-menu {
+    padding-right: 150px;
+  }
+} */
+
 ol,
 ul {
   padding-left: 0rem;
@@ -18345,12 +18365,12 @@ ul {
   background-color: red;
 }
 
-input[type="file"] {
-  /* position: absolute; */
+/* input[type="file"] {
+  position: absolute;
   height: 50px;
-  color: var(--bodyColor);
-  border: none;
-  background-color: var(--whiteColor);
+  background-color: rgb(8, 9, 27);
+  border: 1px solid white;
+  color: white;
   font-size: 15px;
   padding: 11px 20px;
   width: 100%;
@@ -18359,7 +18379,7 @@ input[type="file"] {
   top: 0;
   width: 100%;
   cursor: pointer;
-}
+} */
 
 input[type="file"]:focus {
   outline: none;
@@ -18381,4 +18401,30 @@ input[type="file"]:focus {
   white-space: nowrap;
   /* overflow: hidden; */
   text-overflow: ellipsis;
+}
+
+.choose-file-btn {
+  height: 50px;
+  background-color: rgb(8, 9, 27);
+  border: 1px solid white;
+  color: white;
+  font-size: 15px;
+  /* padding: 11px 20px; */
+  width: 100%;
+  /* border-radius: 30px; */
+  left: 0;
+  top: 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+::-webkit-file-upload-button {
+  color: white;
+  background: linear-gradient(90deg, #a146e8 0%, #6c63d0 35%, #387db8 100%);
+  padding: 15px;
+  padding-bottom: 7px;
+}
+
+::-webkit-file-upload-button:hover {
+  background: #f14d5d;
 }
