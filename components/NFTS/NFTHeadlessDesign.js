@@ -98,7 +98,7 @@ export default function NFTHeadlessDesign({ nft, title: openDialogTitle, price =
                             router.push(`/nft/${nft?.id}`)
                         }
                         else if (openDialogTitle == "Mint NFT") {
-                            handleOpenModal();
+                            router.push(`/nft/create-new-nft?nft_id=${nft?.id}`)
                         }
                     }
                     }

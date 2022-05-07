@@ -7,9 +7,6 @@ import { useRouter } from 'next/router';
 import { useModalAction, useModalState } from '../ui/modal/modal.context';
 import { useQueryClient } from 'react-query'
 export default function SelectCollection() {
-    const queryClient = useQueryClient();
-    const query = queryClient.getQueryData('collectionmoralis');
-    console.log('query', query)
     const {
         data,
     } = useModalState();

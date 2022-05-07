@@ -9,19 +9,13 @@ const Tabs = dynamic(
   { ssr: false }
 );
 import { resetIdCounter, Tab, TabList, TabPanel } from 'react-tabs';
-import { useCollectionSavedByUser, useMeQuery, useSavednftsQuery } from '../../hooks/Web2/useMeQuery';
+import { useMeQuery } from '../../hooks/Web2/useMeQuery';
 import Loader from '../Common/Loader';
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
 import { useUpdateUserData } from '../../hooks/Web2/mutations/useUpdateUserData';
 import { useQueryClient } from 'react-query';
-import CreateAuction from '../../pages/auction/create';
-import AuthorLeftSide from '../Authors/AuthorLeftSide';
-import RenderNFTInTabs from '../Tabs/RenderNFTInTabs';
-import RenderCollectionInTabs from '../Tabs/RenderCollectionInTabs';
 import NFTListComponentBlockChain from '../NFTS/NFTListComponentBlockChain';
-import NFTComponentDatabase from '../NFTS/NFTComponentDatabase';
-import { XBlock, XMasonry } from 'react-xmasonry';
 import AuctionNFTPrivate from '../Auction/AuctionNFTPrivate';
 import Layout from '../Layout/Layout';
 import NFTHeadlessDesign from '../NFTS/NFTHeadlessDesign';

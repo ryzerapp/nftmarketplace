@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useEffect } from 'react'
 import http from '../../utils/http'
 import toast, { Toaster } from 'react-hot-toast';
 import imageCompression from 'browser-image-compression';
@@ -7,13 +8,16 @@ import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "../../components/Common
 import { useWeb3 } from "../../providers/Web3Context";
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import { useRouter } from 'next/router';
-import { useIPFS } from '../../hooks/Web3/useIPFS';
-import { useQuery } from 'react-query';
+import { useMoralisCollectionsLazy } from "../../hooks/Web2/useCollections";
+import { useGetNftByID } from "../../hooks/Web2/useNftOfCollection";
 const style1 = { color: 'white' }
 const style2 = {
   backgroundColor: '#08091b',
   border: '1px solid white',
   color: 'white'
+}
+const blackStyle = {
+  color: 'black'
 }
 const menuItems = [
   {
@@ -40,8 +44,31 @@ const menuItems = [
 const CreateCollection = () => {
   const [imageUrl, setimageUrl] = useState("#")
   const [imageData, setImageData] = useState()
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
-  const [chainId, setchainId] = useState("Ethereum")
+  const [collections, setcollections] = useState([])
+  const { state: { walletAddress, networkId } } = useWeb3();
+  const router = useRouter()
+  const { data: nft
+  } = useGetNftByID({
+    id: router?.query?.nft_id
+  })
+  const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm({
+    defaultValues: {
+      name: '',
+      image: "",
+      description: '',
+      collection: collections && collections.length > 0 ? collections[0].token_address : '',
+      fixed: false,
+      forbids: false,
+      unlock: false,
+      no_copies: 1,
+      price: 1,
+      royalty: 5,
+    }
+  });
+  const { state: { nftTokenAddress } } = useWeb3();
+  const { state: { nftTokenABI } } = useWeb3()
+  const { Moralis, isAuthenticated } = useMoralis();
+  const contractProcessor = useWeb3ExecuteFunction();
   async function ImageResizeNew(file) {
     const imageFile = file;
     const options = {
@@ -70,26 +97,31 @@ const CreateCollection = () => {
   }
   const onSubmit = async (data) => {
     try {
-      const payload = {
-        ...data
+      if (nft?.length > 0) {
+        await mintNFTHandle(data)
       }
-      if (data?.image?.length > 0) {
+      else {
+        const payload = {
+          ...data
+        }
+        if (data?.image?.length > 0) {
 
-        const formData = new FormData();
-        formData.append("file", data?.image[0]);
-        formData.append("fileName", data?.image[0]?.name);
-        try {
-          const res = await http.post("/attachments",
-            formData
-          );
-          if (res?.status == 201) {
-            payload.image = res?.data?.image;
-            mintNFTHandle(payload)
+          const formData = new FormData();
+          formData.append("file", data?.image[0]);
+          formData.append("fileName", data?.image[0]?.name);
+          try {
+            const res = await http.post("/attachments",
+              formData
+            );
+            if (res?.status == 201) {
+              payload.image = res?.data?.image;
+              mintNFTHandle(payload)
+            }
+          } catch (ex) {
+            reset()
+            console.log(ex);
+            return;
           }
-        } catch (ex) {
-          reset()
-          console.log(ex);
-          return;
         }
       }
     } catch (error) {
@@ -101,9 +133,17 @@ const CreateCollection = () => {
     }
   };
   async function mintNFTHandle(data) {
-    const nftDataJson = {
+    var nftDataJson = {
       ...data
     };
+    if (nft?.length > 0) {
+      const { attributes, created_at,
+        edition, unique_string } = nft[0];
+      nftDataJson = {
+        ...nftDataJson, attributes, created_at,
+        edition, unique_string
+      };
+    }
     if (!isAuthenticated) {
       toast.success("Please Connect Web3.0 Wallet")
       return;
@@ -113,59 +153,18 @@ const CreateCollection = () => {
       type: 'json'
     });
     const moralisFileJson = await file.saveIPFS();
-    await mintNFT(moralisFileJson._ipfs);
+    await mintNFT(moralisFileJson._ipfs, data?.collection);
   }
-  const { state: { nftTokenAddress } } =
-    useWeb3();
-  const { state: { nftTokenABI } } = useWeb3()
-  const { Moralis, isAuthenticated } = useMoralis();
-  const contractProcessor = useWeb3ExecuteFunction();
-  const { state: { walletAddress, networkId } } = useWeb3();
-  const router = useRouter()
-  const { resolveLink } = useIPFS();
-  const nftBalanceJson = async (data) => {
-    let NFTs = data;
-    for (let NFT of NFTs) {
-      try {
-        await fetch(NFT?.token_uri)
-          .then(async (response) => await response.json())
-          .then((data) => {
-            NFT.image_url = resolveLink(data.image);
-          });
-      } catch (error) {
-      }
-    }
-    return NFTs;
-  };
-  const setData = async () => {
-    const options = { chain: networkId, address: walletAddress };
-    const polygonNFTs = await Moralis.Web3API.account.getNFTs(options);
-    var dataArr = polygonNFTs?.result?.map(item => {
-      return [item.token_address, {
-        token_address: item?.token_address,
-        name: item?.name,
-        symbol: item?.symbol,
-        contract_type: item?.contract_type,
-        token_uri: item?.token_uri,
-      }]
-    });
-    var maparr = new Map(dataArr); // create key value pair from array of array
-    var finalArray = [...maparr.values()];
-    await nftBalanceJson(finalArray)
-    return finalArray;
-  };
-  const { data: collections, isLoading, refetch } = useQuery(['usercollection'], setData, {
-    keepPreviousData: true,
-  });
-  async function mintNFT(tokenURI) {
+  async function mintNFT(tokenURI, address = nftTokenAddress) {
     let options = {
-      contractAddress: nftTokenAddress,
+      contractAddress: address,
       functionName: "createToken",
       abi: nftTokenABI,
       params: {
         tokenURI: tokenURI,
       },
     };
+    console.log(options);
     await contractProcessor.fetch({
       params: options,
       onSuccess: async (res) => {
@@ -176,10 +175,27 @@ const CreateCollection = () => {
       },
     });
   }
+  useEffect(() => {
+    if (nft?.length > 0) {
+      setValue('name', nft[0]?.name)
+      setValue('description', nft[0]?.description)
+      setValue('image', nft[0]?.image_url)
+      const object = localStorage.getItem('collection');
+      if (object) {
+        // setcollections(JSON.parse(object))
+        console.log(JSON.parse(object))
+        // setValue('collection', collections[0].token_address)
+      }
+    }
+  }, [nft]);
+  useEffect(() => {
+
+  }, [collections]);
   return (
-    <div className="content-wrapper">
       <div className="container">
-        <div className="row">
+      <div className="row"
+        style={{ marginRight: 'auto' }}
+      >
           <div className="col-lg-4">
             <h3>Preview Item</h3>
             <div className="auction-card style10">
@@ -189,6 +205,18 @@ const CreateCollection = () => {
               <div className="auction-info-wrap">
                 <div className="auction-title">
                   <h3><a href="item-details.html">Flame Dress By Balmain</a></h3>
+                <img className="w-100" src={
+                  router?.query?.nft_id ?
+                    (nft && nft[0]?.image_url)
+                    : "../images/auction/auction-item-12.jpg"
+                } alt="Image" />
+              </div>
+              <div className="auction-info-wrap">
+                <div className="auction-title">
+                  <h3 style={blackStyle}>
+                    {router?.query?.nft_id ?
+                      (nft && nft[0]?.name) : "Your NFT Name"}
+                  </h3>
                   <button type="button"><i className="flaticon-heart"></i></button>
                 </div>
                 <div className="auction-author-info">
@@ -211,7 +239,7 @@ const CreateCollection = () => {
             </div>
           </div>
           <div className="col-lg-8">
-            <form action="#" className="create-collection-form">
+            <form onSubmit={handleSubmit(onSubmit)} className="create-collection-form">
               <div className="content-title">
                 <h3 style={{ ...style1 }}>Create New NFT</h3>
               </div>
@@ -225,30 +253,52 @@ const CreateCollection = () => {
                     </div>
                   </div>
                 </div>
+                {nft == undefined ?
+                  (<div className="col-12">
+                    <div className="form-group">
+                      <div className="upload-btn">
+                        <button
+                          type="button">Upload a file</button>
+                        <input type="file"
+                          {...register("image")}
+                          name="myfile" />
+                      </div>
+                    </div>
+                  </div>) : null}
                 <div className="col-12">
                   <div className="radio-btn">
                     <div className="form-group">
                       <input type="radio"
-                        id="test1" name="radio-group" />
-                      <label htmlFor="test1">Fixed Price</label>
+                        id="test1"
+                        {...register("fixed")}
+                        name="radio-group" />
+                      <label >Fixed Price</label>
                     </div>
                     <div className="form-group">
-                      <input type="radio" id="test2" name="radio-group" />
-                      <label htmlFor="test2">Unlock Purchased</label>
+                      <input type="radio" id="test2"
+                        {...register("unlock")}
+                        name="radio-group" />
+                      <label >Unlock Purchased</label>
                     </div>
                     <div className="form-group">
-                      <input type="radio" id="test3" name="radio-group" />
-                      <label htmlFor="test3">Open For Bids</label>
+                      <input type="radio"
+                        id="test3"
+                        {...register("forbids")}
+                        name="radio-group" />
+                      <label >Open For Bids</label>
                     </div>
                   </div>
                 </div>
                 <div className="col-12">
                   <div className="form-group">
                     <label style={{ ...style1 }} htmlFor="title">Title</label>
-                    <input style={{ ...style2 }} type="text"
+                    <input style={{ ...style2 }}
+                      type="text"
                       className="inputColor"
                       name="title" id="title"
-                      placeholder="Flame dress By Balmain" />
+                      {...register("name")}
+                      placeholder={"Flame dress By Balmain"}
+                    />
                   </div>
                 </div>
                 <div className="col-12">
@@ -257,6 +307,15 @@ const CreateCollection = () => {
                     <textarea
                       style={{ ...style2 }}
                       name="item_desc" id="item_desc" cols="30" rows="10" placeholder="Write Short Description"></textarea>
+                    <label style={{ ...style1 }}>Description</label>
+                    <textarea
+                      style={{ ...style2 }}
+                      name="description"
+                      id="item_desc"
+                      cols="30"
+                      rows="20"
+                      {...register("description")}
+                      placeholder={"Write Short Description"}></textarea>
                   </div>
                 </div>
                 <div className="col-lg-6">
@@ -291,14 +350,66 @@ const CreateCollection = () => {
                   <div className="form-group">
                     <label style={{ ...style1 }} htmlFor="size">Size</label>
                     <input style={{ ...style2 }} type="number" name="size" id="size" placeholder="25" />
+                    <label style={{ ...style1 }}>Price</label>
+                    <input style={{ ...style2 }}
+                      type="number"
+                      name="price"
+                      id="price"
+                      {...register("price")}
+                      placeholder="1.356 ETH" />
+                  </div>
+                </div>
+                <div className="col-lg-6 col-12">
+                  <div className="form-group">
+                    <label style={{ ...style1 }} >Select Collection</label>
+                    <select style={{ ...style2 }}
+                      name="category"
+                      {...register("collection")}
+                      id="category">
+                      {
+                        collections && collections?.length > 0
+                        && collections?.map((collection) => (
+                          <option
+                            key={collection?.token_address}
+                            value={collection?.token_address}>{collection?.name}</option>
+                        ))
+                      }
+                    </select>
+                  </div>
+                </div>
+                <div className="col-lg-6 col-12">
+                  <div className="form-group">
+                    <label style={{ ...style1 }} >Royality</label>
+                    <input style={{ ...style2 }}
+                      type="number"
+                      name="royalty"
+                      id="royalty"
+                      {...register("royalty")}
+                      placeholder="5%" />
+                  </div>
+                </div>
+                <div className="col-lg-6 col-12">
+                  <div className="form-group">
+                    <label style={{ ...style1 }} >No of Copies</label>
+                    <input style={{ ...style2 }}
+                      type="number"
+                      name="no_copies"
+                      id="no_copies"
+                      {...register("no_copies")}
+                      placeholder="13" />
                   </div>
                 </div>
               </div>
               <div className="row align-items-center">
                 <div className="col-md-6 col-sm-7">
                   <div className="checkbox">
-                    <input style={{ ...style2 }} type="checkbox" id="test_1" />
-                    <label style={{ ...style1 }} htmlFor="test_1">I agree to all <a href="terms-of-service.html" className="link style1">terms & conditions</a>.</label>
+                    <input style={{ ...style2 }}
+                      type="checkbox"
+                      {...register("agree")}
+                    />
+                    <label style={{ ...style1 }} >I agree to all
+                      <a href="/terms-of-service" className="link style1">
+                        terms & conditions</a>.</label>
                   </div>
                 </div>
                 <div className="col-md-6 col-sm-5 text-sm-end">

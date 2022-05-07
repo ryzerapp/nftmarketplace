@@ -3,11 +3,11 @@ import { useWeb3 } from '../../providers/Web3Context';
 import Loader from '../Common/Loader';
 import NFTHeadlessDesign from './NFTHeadlessDesign';
 
-const NFTListComponentBlockChain = ({ }) => {
+const NFTListComponentBlockChain = ({ walletAddressPassed }) => {
   const { state: { walletAddress, networkId } } = useWeb3();
   const { data: nftBalance, isLoading, } = useMoralisNFTS({
     "chain": networkId,
-    "address": walletAddress
+    "address": walletAddressPassed ? walletAddressPassed : walletAddress
   });
   if (isLoading) {
     return (

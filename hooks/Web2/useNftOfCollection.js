@@ -18,6 +18,13 @@ const fetchGameNFt = async ({ queryKey }) => {
   const { data } = await http.get(`/nfts?limit=${queryKey[1].limit}`);
   return data
 };
+const fetchNFtByid = async ({ queryKey }) => {
+  if (queryKey[1]?.id == undefined) {
+    return {};
+  }
+  const { data } = await http.get(`/nfts/${queryKey[1].id}`);
+  return data
+};
 const useNftOfCollection = (options = {}) => {
   return useQuery([`collection_${options.collection_name}`, options], fetchNftDataOfCollection, {
     keepPreviousData: true,
@@ -34,4 +41,9 @@ const useGameNft = (options = {}) => {
     keepPreviousData: true,
   });
 };
-export { useNftOfCollection, useNftTreandingArtwork, useGameNft };
+const useGetNftByID = (options = {}) => {
+  return useQuery([`nft_id_${options?.id}`, options], fetchNFtByid, {
+    keepPreviousData: true,
+  });
+};
+export { useNftOfCollection, useNftTreandingArtwork, useGameNft, useGetNftByID };
