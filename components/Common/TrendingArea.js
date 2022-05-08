@@ -65,7 +65,7 @@ const TrendingArea = ({ bg, trendingData }) => {
 					<div className="trending-slider pt-45">
 						{display ? (
 							<OwlCarousel {...options}>
-								{trendingData.map((nft) => {
+								{trendingData?.map((nft) => {
 									return (
 										<NftCardWithoutTime
 											data={nft}
